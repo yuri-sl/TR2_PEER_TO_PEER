@@ -1,88 +1,94 @@
 import socket
-import threading
 import json
 import hashlib
-import uuid
-
-users = {}       # username -> {"password_hash": ..., "files": [...]}
-files = {}       # filename -> {"hash": ..., "size": ..., "peers": [...]}
-sessions = {}    # token -> username
+import os
 
 HOST = 'localhost'
 PORT = 5000
+USER_LIST_PATH = 'user_list.json'
 
-def hash_password(password):
-    return hashlib.sha256(password.encode()).hexdigest()
 
-def handle_client(conn, addr):
-    print(f"[+] Conexão de {addr}")
-    with conn:
-        data = conn.recv(4096).decode()
-        if not data:
-            return
-        try:
-            request = json.loads(data)
-            action = request.get("action")
+def carregar_usuarios():
+    if not os.path.exists(USER_LIST_PATH):
+        f = open(USER_LIST_PATH,'w')
+        json.dump({},f)
+    else:
+        f = open(USER_LIST_PATH,'r')
+        print("O Arquivo existe!")
+        return json.load(f)
 
-            if action == "register":
-                username = request["username"]
-                password = request["password"]
-                if username in users:
-                    response = {"status": "error", "message": "Usuário já existe"}
-                else:
-                    users[username] = {"password_hash": hash_password(password), "files": []}
-                    response = {"status": "ok", "message": "Registrado com sucesso"}
+def salvar_usuarios(usuario_input):
+    f = open(USER_LIST_PATH,'w')
+    json.dump(usuario_input,f,indent=4)
 
-            elif action == "login":
-                username = request["username"]
-                password = request["password"]
-                user = users.get(username)
-                if user and user["password_hash"] == hash_password(password):
-                    token = str(uuid.uuid4())
-                    sessions[token] = username
-                    response = {"status": "ok", "token": token}
-                else:
-                    response = {"status": "error", "message": "Credenciais inválidas"}
+def registrar_usuario(username, password):
+    usarios_sistema = carregar_usuarios()
+    if username in usarios_sistema:
+        msg = "Usuário já existe cadastrado no sistema!"
+        return False, msg
+    hash_senha = hashlib.sha256(password.encode()).hexdigest()
+    usarios_sistema[username] = {"password": hash_senha}
+    salvar_usuarios(usarios_sistema)
+    msg = "Usuário registrado com sucesso!"
+    return True,msg
 
-            elif action == "announce":
-                token = request.get("token")
-                if token not in sessions:
-                    response = {"status": "error", "message": "Token inválido"}
-                else:
-                    username = sessions[token]
-                    for file in request["files"]:
-                        filename = file["filename"]
-                        file_hash = file["hash"]
-                        size = file["size"]
+def login(username,password):
+    usuarios_sistema = carregar_usuarios()
+    if (username not in usuarios_sistema):
+        return False, "Usuário não encontrado no sistema!"
+    hash_senha = hashlib.sha256(password.encode()).hexdigest()
+    if(
+        usuarios_sistema[username]["password"] != hash_senha
+    ):
+        return False,"senha incorreta!"
+    return True,"Login Efetuado com sucesso!"
 
-                        # Adiciona arquivo ao peer
-                        users[username]["files"].append(file)
+def protocolos_aceitos(mensagem, client_socket):
+    if mensagem['action'] == 'register':
+        username = mensagem["username"]
+        password = mensagem["password"]
+        sucesso, msg = registrar_usuario(username, password)
+        print(f"A mensagem dada pela função foi: {msg}, e o status de sucesso foi: {sucesso}")
+        resposta = {"status": "ok" if sucesso else "erro", "mensagem": msg}
+        client_socket.sendall(json.dumps(resposta).encode())
+    if mensagem['action'] == 'login':
+        username = mensagem["username"]
+        password = mensagem["password"]
+        sucesso,msg = login(username,password)
+        print(f"O login obteve sucesso?{sucesso}, a mensagem dada foi: {msg}")
+        client_socket.send(json.dumps(resposta).encode())
+    else:
+        resposta = {"status": "erro", "mensagem": "Ação desconhecida."}
+        client_socket.sendall(json.dumps(resposta).encode())
 
-                        # Registra no dicionário global
-                        if filename not in files:
-                            files[filename] = {"hash": file_hash, "size": size, "peers": [username]}
-                        else:
-                            if username not in files[filename]["peers"]:
-                                files[filename]["peers"].append(username)
-
-                    response = {"status": "ok", "message": "Arquivos anunciados com sucesso"}
-
-            else:
-                response = {"status": "error", "message": "Ação desconhecida"}
-
-        except Exception as e:
-            response = {"status": "error", "message": f"Erro no servidor: {str(e)}"}
-
-        conn.sendall(json.dumps(response).encode())
 
 def start_tracker():
-    print(f"[TRACKER] Rodando em {HOST}:{PORT}")
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.bind((HOST, PORT))
-        s.listen()
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_socket.bind((HOST, PORT))
+    server_socket.listen()
+    print(f"[TRACKER] INICIADO EM: {HOST}:{PORT}")
+
+    while True:
+        client_socket, addr = server_socket.accept()
+        print(f"[+] Nova conexão de {addr}")
+
+        buffer = b""
         while True:
-            conn, addr = s.accept()
-            threading.Thread(target=handle_client, args=(conn, addr), daemon=True).start()
+            chunk = client_socket.recv(4096)
+            if not chunk:
+                break
+            buffer += chunk
+
+        data = buffer.decode()
+        if data:
+            try:
+                mensagem = json.loads(data)
+                print(f"Entrou no Try. Mensagem recebida foi: {mensagem}")
+                protocolos_aceitos(mensagem, client_socket)
+            except Exception as e:
+                client_socket.sendall(json.dumps({"status": "erro", "mensagem": str(e)}).encode())
+
+        client_socket.close()
 
 if __name__ == "__main__":
     start_tracker()
