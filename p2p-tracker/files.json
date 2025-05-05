@@ -1,0 +1,9 @@
+{
+  "nome_arquivo.mp4": [
+    {
+      "tamanho": 1234567,
+      "hash": "ab34f...",
+      "peer": "joao"
+    }
+  ]
+}

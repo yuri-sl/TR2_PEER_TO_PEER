@@ -6,6 +6,7 @@ import os
 HOST = 'localhost'
 PORT = 5000
 USER_LIST_PATH = 'user_list.json'
+FILES_LIST_PATH = 'files.json'
 
 
 def carregar_usuarios():
@@ -42,6 +43,16 @@ def login(username,password):
     ):
         return False,"senha incorreta!"
     return True,"Login Efetuado com sucesso!"
+
+def carregar_arquivos():
+    if not os.path.exists(FILES_LIST_PATH):
+        return {}
+    f = open(FILES_LIST_PATH,'r')
+    return json.load(f)
+
+def salvar_arquivos(dados):
+    f = open(FILES_LIST_PATH,'r')
+    json.dump(dados, f, indent=4)
 
 def protocolos_aceitos(mensagem, client_socket):
     if mensagem['action'] == 'register':
