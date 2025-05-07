@@ -2,6 +2,7 @@ import socket
 import json
 import hashlib
 import os
+import threading
 
 HOST = 'localhost'
 PORT = 5000
@@ -82,17 +83,8 @@ def protocolos_aceitos(mensagem, client_socket):
         resposta = {"status": "erro", "mensagem": "Ação desconhecida."}
         client_socket.sendall(json.dumps(resposta).encode())
 
-
-def start_tracker():
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind((HOST, PORT))
-    server_socket.listen()
-    print(f"[TRACKER] INICIADO EM: {HOST}:{PORT}")
-
-    while True:
-        client_socket, addr = server_socket.accept()
-        print(f"[+] Nova conexão de {addr}")
-
+def start_tracker(client_socket, addr):
+    try:
         buffer = b""
         while True:
             chunk = client_socket.recv(4096)
@@ -108,8 +100,21 @@ def start_tracker():
                 protocolos_aceitos(mensagem, client_socket)
             except Exception as e:
                 client_socket.sendall(json.dumps({"status": "erro", "mensagem": str(e)}).encode())
-
+    except Exception as e:
+        print(f"Erro na conexão com {addr}: {e}")
+    finally:
         client_socket.close()
+        print(f"Conexão encerrada com {addr}")
 
 if __name__ == "__main__":
-    start_tracker()
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_socket.bind((HOST, PORT))
+    server_socket.listen()
+    print(f"[TRACKER] INICIADO EM: {HOST}:{PORT}")
+
+    while True:
+        client_socket, addr = server_socket.accept()
+        print(f"[+] Nova conexão de {addr}")
+        thread = threading.Thread(target=start_tracker, args=(client_socket, addr))
+        thread.start()
+
