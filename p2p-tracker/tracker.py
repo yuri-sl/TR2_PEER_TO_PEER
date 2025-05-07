@@ -54,6 +54,12 @@ def salvar_arquivos(dados):
     f = open(FILES_LIST_PATH,'r')
     json.dump(dados, f, indent=4)
 
+def list_clients():
+    print("ok")
+
+def list_files():
+    print("ok")
+
 def protocolos_aceitos(mensagem, client_socket):
     if mensagem['action'] == 'register':
         username = mensagem["username"]
@@ -62,12 +68,16 @@ def protocolos_aceitos(mensagem, client_socket):
         print(f"A mensagem dada pela função foi: {msg}, e o status de sucesso foi: {sucesso}")
         resposta = {"status": "ok" if sucesso else "erro", "mensagem": msg}
         client_socket.sendall(json.dumps(resposta).encode())
-    if mensagem['action'] == 'login':
+    elif mensagem['action'] == 'login':
         username = mensagem["username"]
         password = mensagem["password"]
         sucesso,msg = login(username,password)
         print(f"O login obteve sucesso?{sucesso}, a mensagem dada foi: {msg}")
-        client_socket.send(json.dumps(resposta).encode())
+        client_socket.sendall(json.dumps(resposta).encode())
+    elif mensagem['action'] == 'list_clients':
+        list_clients()
+    elif mensagem['action'] == 'list_files':
+        list_files()
     else:
         resposta = {"status": "erro", "mensagem": "Ação desconhecida."}
         client_socket.sendall(json.dumps(resposta).encode())

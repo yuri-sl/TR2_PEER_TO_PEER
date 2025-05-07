@@ -16,9 +16,11 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((HOST, PORT))
 s.sendall(json.dumps(mensagem).encode())
 s.shutdown(socket.SHUT_WR)  # Indica que terminou de enviar dados
+resposta = s.recv(4096)
+print("Resposta:", resposta.decode())
 
-print(mensagem['action'] == 'register')
-if (mensagem['action'] == 'register'):
+print(mensagem['action'] == 'login')
+if (mensagem['action'] == 'login'):
     username = mensagem['username']
     password = mensagem['password']
     result = (username,password)
