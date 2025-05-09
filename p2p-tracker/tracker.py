@@ -3,12 +3,13 @@ import json
 import hashlib
 import os
 import threading
+import time 
 
 HOST = 'localhost'
 PORT = 5000
 USER_LIST_PATH = 'user_list.json'
 FILES_LIST_PATH = 'files.json'
-session = []
+session = {}
 
 def carregar_usuarios():
     if not os.path.exists(USER_LIST_PATH):
@@ -74,32 +75,33 @@ def protocolos_base(mensagem, client_socket):
     if mensagem['action'] == 'register':    # Se registrar 
         username = mensagem["username"]
         password = mensagem["password"]
-        sucesso, msg = registrar_usuario(username, password)
+        sucesso, msg = registrar_usuario(username, password)            # Bool caso aceito e a mensagem 
         print(f"A mensagem dada pela função foi: {msg}, e o status de sucesso foi: {sucesso}")
         resposta = {"status": "ok" if sucesso else "erro", "mensagem": msg}
-        client_socket.sendall(json.dumps(resposta).encode())
-    elif mensagem['action'] == 'login':     # Fazer login
+        client_socket.sendall(json.dumps(resposta).encode())            # resposta para o cliente
+    elif mensagem['action'] == 'login':                                 # Fazer login
         username = mensagem["username"]
         password = mensagem["password"]
-        sucesso,msg = login(username,password)
+        sucesso,msg = login(username,password)                          # Bool caso aceito e a mensagem 
         if sucesso:
-            session.append(username)
+            session[username] = 0                                       # Inicia o tempo de heartbeat deste cliente
         print(f"O login obteve sucesso?{sucesso}, a mensagem dada foi: {msg}")
         resposta = {"status": "ok" if sucesso else "erro", "mensagem": msg}
         client_socket.sendall(json.dumps(resposta).encode())
     else:
         resposta = {"status": "erro", "mensagem": "Ação desconhecida."}
-        client_socket.sendall(json.dumps(resposta).encode())
+        client_socket.sendall(json.dumps(resposta).encode())            # Caso nenhuma das acoes tenha sido aceitas
 
 def protocolos_restritos(mensagem, client_socket):  # Apenas se tiver login
     if mensagem['action'] == 'list_clients':        # Saber quem sao os peers ativos
-        peers = list_clients()
+        #peers = list_clients()
+        peers = list(session.keys())
         resposta = {"status": "ok", "mensagem": peers}
         client_socket.sendall(json.dumps(resposta).encode())
     elif mensagem['action'] == 'list_files':        # Saber quais arquivos estao disponiveis
         list_files()
     else:
-        resposta = {"status": "erro", "mensagem": "Ação desconhecida."}
+        resposta = {"status": "erro", "mensagem": "Ação desconhecida ou não esta logado."}
         client_socket.sendall(json.dumps(resposta).encode())
 
 def handle_clients(client_socket, addr):
@@ -118,8 +120,9 @@ def handle_clients(client_socket, addr):
                 user = mensagem['username'] # Nome do usuario
                 print(f"Entrou no Try. Mensagem recebida foi: {mensagem}")
                 if mensagem['action'] == 'exit' and user in session:# Sai da sessao caso esteja conectado
-                    session.remove(user)                            # Nao e mais um peers ativo
+                    session.pop(user, None)                         # Nao e mais um peers ativo
                 elif user in session:                               # Se estiver logado pode continuar
+                    session[user] = 0                               # Renova o tempo do usuario
                     protocolos_restritos(mensagem, client_socket)
                 else:                                               # Se nao tem que registrar ou logar
                     protocolos_base(mensagem, client_socket)
@@ -130,7 +133,20 @@ def handle_clients(client_socket, addr):
     except Exception as e:                                          # Caso nao consiga conectar com o cliente
         print(f"Erro na conexão com {addr}: {e}")
 
+def heartbeat(s):
+    while True:
+        time.sleep(1)
+        for u in list(s.keys()):                                    # copia as chaves para evitar erro de modificação durante iteração
+            if s[u] >= 60:
+                print(f"Removendo {u} por inatividade")
+                s.pop(u, None)                                      # Remove usuário inativo
+            else:
+                s[u] += 1                                           # Incrementa contador de tempo
+                print(f"{u,s[u]}")                                  # Retirar depois
+
 def start_tracker():                                                    # Inicia o server
+    heartbeatpeers = threading.Thread(target=heartbeat, args=(session,), daemon = True) # Uma thread comeca a resolver 
+    heartbeatpeers.start()                                              # Começa a thread
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)   # Conexão TCP
     server_socket.bind((HOST, PORT))                                    # Conexão no host 'localhost' e porta 5000
     server_socket.listen()                                              # Espera a conexão
