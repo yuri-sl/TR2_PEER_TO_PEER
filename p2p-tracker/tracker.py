@@ -8,7 +8,7 @@ HOST = 'localhost'
 PORT = 5000
 USER_LIST_PATH = 'user_list.json'
 FILES_LIST_PATH = 'files.json'
-
+session = []
 
 def carregar_usuarios():
     if not os.path.exists(USER_LIST_PATH):
@@ -56,12 +56,21 @@ def salvar_arquivos(dados):
     json.dump(dados, f, indent=4)
 
 def list_clients():
-    print("ok")
+    if not os.path.exists(USER_LIST_PATH):
+        print("Arquivo de usuários não encontrado.")
+        return {}
+    with open(USER_LIST_PATH, 'r') as f:
+        data = json.load(f)
+        lista_usuarios = list(data.keys())
+        print("Usuários cadastrados:")
+        for usuario in lista_usuarios:
+            print(f" - {usuario}")
+        return lista_usuarios
 
 def list_files():
     print("ok")
 
-def protocolos_aceitos(mensagem, client_socket):
+def protocolos_base(mensagem, client_socket):
     if mensagem['action'] == 'register':
         username = mensagem["username"]
         password = mensagem["password"]
@@ -73,17 +82,27 @@ def protocolos_aceitos(mensagem, client_socket):
         username = mensagem["username"]
         password = mensagem["password"]
         sucesso,msg = login(username,password)
+        if sucesso:
+            session.append(username)
         print(f"O login obteve sucesso?{sucesso}, a mensagem dada foi: {msg}")
+        resposta = {"status": "ok" if sucesso else "erro", "mensagem": msg}
         client_socket.sendall(json.dumps(resposta).encode())
-    elif mensagem['action'] == 'list_clients':
-        list_clients()
+    else:
+        resposta = {"status": "erro", "mensagem": "Ação desconhecida."}
+        client_socket.sendall(json.dumps(resposta).encode())
+
+def protocolos_restritos(mensagem, client_socket):
+    if mensagem['action'] == 'list_clients':
+        peers = list_clients()
+        resposta = {"status": "ok", "mensagem": peers}
+        client_socket.sendall(json.dumps(resposta).encode())
     elif mensagem['action'] == 'list_files':
         list_files()
     else:
         resposta = {"status": "erro", "mensagem": "Ação desconhecida."}
         client_socket.sendall(json.dumps(resposta).encode())
 
-def start_tracker(client_socket, addr):
+def handle_clients(client_socket, addr):
     try:
         buffer = b""
         while True:
@@ -96,25 +115,33 @@ def start_tracker(client_socket, addr):
         if data:
             try:
                 mensagem = json.loads(data)
+                user = mensagem['username']
                 print(f"Entrou no Try. Mensagem recebida foi: {mensagem}")
-                protocolos_aceitos(mensagem, client_socket)
+                if mensagem['action'] == 'exit':
+                    SERVER = False
+                elif user in session:
+                    protocolos_restritos(mensagem, client_socket)
+                else:
+                    protocolos_base(mensagem, client_socket)
             except Exception as e:
                 client_socket.sendall(json.dumps({"status": "erro", "mensagem": str(e)}).encode())
-    except Exception as e:
-        print(f"Erro na conexão com {addr}: {e}")
-    finally:
         client_socket.close()
         print(f"Conexão encerrada com {addr}")
+    except Exception as e:
+        print(f"Erro na conexão com {addr}: {e}")
 
-if __name__ == "__main__":
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind((HOST, PORT))
-    server_socket.listen()
-    print(f"[TRACKER] INICIADO EM: {HOST}:{PORT}")
+def start_tracker():
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)   # Conexão TCP
+    server_socket.bind((HOST, PORT))                                    # Conexão no host 'localhost' e porta 5000
+    server_socket.listen()                                              # Espera a conexão
+    print(f"[TRACKER] INICIADO EM: {HOST}:{PORT}")                      
 
     while True:
-        client_socket, addr = server_socket.accept()
-        print(f"[+] Nova conexão de {addr}")
-        thread = threading.Thread(target=start_tracker, args=(client_socket, addr))
-        thread.start()
+        client_socket, addr = server_socket.accept()                    # Aguarda os peers
+        print(f"[+] Nova conexão de {addr}")                            
+        thread = threading.Thread(target=handle_clients, args=(client_socket, addr)) # Uma thread comeca a resolver 
+        thread.start()      # Começa a thread
+
+if __name__ == "__main__":
+    start_tracker()
 

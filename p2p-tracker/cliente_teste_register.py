@@ -8,7 +8,7 @@ USER_LIST_PATH = 'user_list.json'
 
 mensagem = {
     "action": "register",
-    "username": "shinigami2",
+    "username": "shinigami",
     "password": "123456"
 }
 
@@ -18,7 +18,7 @@ s.sendall(json.dumps(mensagem).encode())
 s.shutdown(socket.SHUT_WR)  # Indica que terminou de enviar dados
 resposta = s.recv(4096)
 print("Resposta:", resposta.decode())
-
+"""
 print(mensagem['action'] == 'register')
 if (mensagem['action'] == 'register'):
     username = mensagem['username']
@@ -31,7 +31,7 @@ if os.path.exists(USER_LIST_PATH):
     f = open(USER_LIST_PATH, 'r')
     print(json.load(f))
     #return json.load(f)
-
+"""
 # def carregar_usuarios():
 #     if not os.path.exists(USER_LIST_PATH):
 #         open()
