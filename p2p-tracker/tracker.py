@@ -61,7 +61,7 @@ def list_clients():
         return {}
     with open(USER_LIST_PATH, 'r') as f:
         data = json.load(f)
-        lista_usuarios = list(data.keys())
+        lista_usuarios = list(data.keys())  # Lista de usuarios ativos
         print("Usuários cadastrados:")
         for usuario in lista_usuarios:
             print(f" - {usuario}")
@@ -71,14 +71,14 @@ def list_files():
     print("ok")
 
 def protocolos_base(mensagem, client_socket):
-    if mensagem['action'] == 'register':
+    if mensagem['action'] == 'register':    # Se registrar 
         username = mensagem["username"]
         password = mensagem["password"]
         sucesso, msg = registrar_usuario(username, password)
         print(f"A mensagem dada pela função foi: {msg}, e o status de sucesso foi: {sucesso}")
         resposta = {"status": "ok" if sucesso else "erro", "mensagem": msg}
         client_socket.sendall(json.dumps(resposta).encode())
-    elif mensagem['action'] == 'login':
+    elif mensagem['action'] == 'login':     # Fazer login
         username = mensagem["username"]
         password = mensagem["password"]
         sucesso,msg = login(username,password)
@@ -91,12 +91,12 @@ def protocolos_base(mensagem, client_socket):
         resposta = {"status": "erro", "mensagem": "Ação desconhecida."}
         client_socket.sendall(json.dumps(resposta).encode())
 
-def protocolos_restritos(mensagem, client_socket):
-    if mensagem['action'] == 'list_clients':
+def protocolos_restritos(mensagem, client_socket):  # Apenas se tiver login
+    if mensagem['action'] == 'list_clients':        # Saber quem sao os peers ativos
         peers = list_clients()
         resposta = {"status": "ok", "mensagem": peers}
         client_socket.sendall(json.dumps(resposta).encode())
-    elif mensagem['action'] == 'list_files':
+    elif mensagem['action'] == 'list_files':        # Saber quais arquivos estao disponiveis
         list_files()
     else:
         resposta = {"status": "erro", "mensagem": "Ação desconhecida."}
@@ -104,33 +104,33 @@ def protocolos_restritos(mensagem, client_socket):
 
 def handle_clients(client_socket, addr):
     try:
-        buffer = b""
+        buffer = b""                        # Acumula a mensagem recebida
         while True:
-            chunk = client_socket.recv(4096)
-            if not chunk:
+            chunk = client_socket.recv(4096)# Recebe a mensagem
+            if not chunk:                   # Se estiver vazia terminou a mensagem
                 break
-            buffer += chunk
+            buffer += chunk                 # Vai juntando a mensagem
 
-        data = buffer.decode()
-        if data:
+        data = buffer.decode()              # Decodifica a mensagem
+        if data:                            # Se tiver decodificado tenta 
             try:
                 mensagem = json.loads(data)
-                user = mensagem['username']
+                user = mensagem['username'] # Nome do usuario
                 print(f"Entrou no Try. Mensagem recebida foi: {mensagem}")
-                if mensagem['action'] == 'exit':
-                    SERVER = False
-                elif user in session:
+                if mensagem['action'] == 'exit' and user in session:# Sai da sessao caso esteja conectado
+                    session.remove(user)                            # Nao e mais um peers ativo
+                elif user in session:                               # Se estiver logado pode continuar
                     protocolos_restritos(mensagem, client_socket)
-                else:
+                else:                                               # Se nao tem que registrar ou logar
                     protocolos_base(mensagem, client_socket)
-            except Exception as e:
+            except Exception as e:                                  # Caso algum deles de errado sai com msg de erro
                 client_socket.sendall(json.dumps({"status": "erro", "mensagem": str(e)}).encode())
-        client_socket.close()
+        client_socket.close()                                       # Sempre fecha a conexao 
         print(f"Conexão encerrada com {addr}")
-    except Exception as e:
+    except Exception as e:                                          # Caso nao consiga conectar com o cliente
         print(f"Erro na conexão com {addr}: {e}")
 
-def start_tracker():
+def start_tracker():                                                    # Inicia o server
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)   # Conexão TCP
     server_socket.bind((HOST, PORT))                                    # Conexão no host 'localhost' e porta 5000
     server_socket.listen()                                              # Espera a conexão
@@ -143,5 +143,5 @@ def start_tracker():
         thread.start()      # Começa a thread
 
 if __name__ == "__main__":
-    start_tracker()
+    start_tracker()         # INIT
 
