@@ -8,7 +8,7 @@ USER_LIST_PATH = 'user_list.json'
 
 mensagem = {
     "action": "register",
-    "username": "shinigami2",
+    "username": "shinigami3",
     "password": "123456"
 }
 
