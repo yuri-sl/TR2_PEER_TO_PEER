@@ -91,19 +91,34 @@ def interactiveMenu_1():
         operation = int(input("insira a sua operação desejada:\n"))
 
         if operation == 4:
-            print("Anunciar arquivo ainda não implementado no sistema.")
-            input("Pressione Enter para continuar")
+            try:
+                dados = {
+                    "action": "list_files",
+                    "username": usuario_logado
+                }
+                resposta = send_to_tracker(dados)
+                print("Arquivos dos Peers Ativos: ")
+                for files in resposta.get("mensagem", []):
+                    print(f" - {files}")
+                input("Pressione Enter para continuar")
+            except:
+                print("Você provavavelmente foi desligado por inatividade")
+                input("Pressione Enter para continuar")
 
         elif operation == 5:
-            dados = {
-                "action": "list_clients",
-                "username": usuario_logado
-            }
-            resposta = send_to_tracker(dados)
-            print("Peers Ativos: ")
-            for peer in resposta.get("mensagem", []):
-                print(f" - {peer}")
-            input("Pressione Enter para continuar")
+            try:
+                dados = {
+                    "action": "list_clients",
+                    "username": usuario_logado
+                }
+                resposta = send_to_tracker(dados)
+                print("Peers Ativos: ")
+                for peer in resposta.get("mensagem", []):
+                    print(f" - {peer}")
+                input("Pressione Enter para continuar")
+            except:
+                print("Você provavavelmente foi desligado por inatividade")
+                input("Pressione Enter para continuar")
 
         elif operation == 6:
             dados = {
@@ -114,7 +129,7 @@ def interactiveMenu_1():
             usuario_logado = None
             print("sessão finalizada.")
             input("Pressione Enter para continuar.")
-
+            return False
         else:
             print("Opção inválida.")
             input("Pressione Enter para continuar")
