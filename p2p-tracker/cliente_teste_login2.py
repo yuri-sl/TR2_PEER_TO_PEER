@@ -5,11 +5,12 @@ import os
 HOST = 'localhost'
 PORT = 5000
 USER_LIST_PATH = 'user_list.json'
-
+arquivos = [f for f in os.listdir('.') if os.path.isfile(f) and f.endswith('.py')]
 mensagem = {
     "action": "login",
     "username": "shinigami3",
-    "password": "123456"
+    "password": "123456",
+    "files"   : arquivos
 }
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

@@ -10,6 +10,7 @@ PORT = 5000
 USER_LIST_PATH = 'user_list.json'
 FILES_LIST_PATH = 'files.json'
 session = {}
+files = {}
 
 def carregar_usuarios():
     if not os.path.exists(USER_LIST_PATH):
@@ -68,9 +69,18 @@ def list_clients():
             print(f" - {usuario}")
         return lista_usuarios
 
-def list_files():
-    print("ok")
-
+def list_files(peers):
+    return files
+"""
+def map_files_to_peers(peers):
+    arquivo_para_peers = {}
+    for peer, arquivos in peers.items():
+        for arquivo in arquivos:
+            if arquivo not in arquivo_para_peers:
+                arquivo_para_peers[arquivo] = []
+            arquivo_para_peers[arquivo].append(peer)
+    return arquivo_para_peers
+"""
 def protocolos_base(mensagem, client_socket):
     if mensagem['action'] == 'register':    # Se registrar 
         username = mensagem["username"]
@@ -85,6 +95,7 @@ def protocolos_base(mensagem, client_socket):
         sucesso,msg = login(username,password)                          # Bool caso aceito e a mensagem 
         if sucesso:
             session[username] = 0                                       # Inicia o tempo de heartbeat deste cliente
+            files[username] = mensagem['files']
         print(f"O login obteve sucesso?{sucesso}, a mensagem dada foi: {msg}")
         resposta = {"status": "ok" if sucesso else "erro", "mensagem": msg}
         client_socket.sendall(json.dumps(resposta).encode())
@@ -99,7 +110,10 @@ def protocolos_restritos(mensagem, client_socket):  # Apenas se tiver login
         resposta = {"status": "ok", "mensagem": peers}
         client_socket.sendall(json.dumps(resposta).encode())
     elif mensagem['action'] == 'list_files':        # Saber quais arquivos estao disponiveis
-        list_files()
+        peers = list(session.keys())
+        arquivos = list_files(peers)
+        resposta = {"status": "ok", "mensagem": arquivos}
+        client_socket.sendall(json.dumps(resposta).encode())
     else:
         resposta = {"status": "erro", "mensagem": "Ação desconhecida ou não esta logado."}
         client_socket.sendall(json.dumps(resposta).encode())
@@ -121,6 +135,7 @@ def handle_clients(client_socket, addr):
                 print(f"Entrou no Try. Mensagem recebida foi: {mensagem}")
                 if mensagem['action'] == 'exit' and user in session:# Sai da sessao caso esteja conectado
                     session.pop(user, None)                         # Nao e mais um peers ativo
+                    files.pop(user, None)                         # Nao e mais um peers ativo
                 elif user in session:                               # Se estiver logado pode continuar
                     session[user] = 0                               # Renova o tempo do usuario
                     protocolos_restritos(mensagem, client_socket)
@@ -140,6 +155,7 @@ def heartbeat(s):
             if s[u] >= 60:
                 print(f"Removendo {u} por inatividade")
                 s.pop(u, None)                                      # Remove usuário inativo
+
             else:
                 s[u] += 1                                           # Incrementa contador de tempo
                 print(f"{u,s[u]}")                                  # Retirar depois

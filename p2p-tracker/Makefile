@@ -15,6 +15,7 @@ client:				# rodar depois em um outro bash
 	sleep 3
 #	Ver os peers ativos e reinicio do heartbeat
 	python3 cliente_teste_peers.py
+	python3 cliente_teste_files.py
 	python3 cliente_teste_exit.py
 
 kill:					# finalizar o teste

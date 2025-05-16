@@ -62,10 +62,12 @@ def interactiveMenu_1():
         elif operation == 2:
             username_login = input("Insira o seu nome de usuário: ")
             password = input("Insira sua senha: ")
+            arquivos = [f for f in os.listdir('.') if os.path.isfile(f) and f.endswith('.py')]
             dados = {
                 "action": "login",
                 "username": username_login,
-                "password": password
+                "password": password,
+                "files"   : arquivos
             }
             resposta = send_to_tracker(dados)
             print("Dados recebidos!")
@@ -98,8 +100,7 @@ def interactiveMenu_1():
                 }
                 resposta = send_to_tracker(dados)
                 print("Arquivos dos Peers Ativos: ")
-                for files in resposta.get("mensagem", []):
-                    print(f" - {files}")
+                print(files)
                 input("Pressione Enter para continuar")
             except:
                 print("Você provavavelmente foi desligado por inatividade")
