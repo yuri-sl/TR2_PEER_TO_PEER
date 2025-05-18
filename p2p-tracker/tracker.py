@@ -11,6 +11,7 @@ USER_LIST_PATH = 'user_list.json'
 FILES_LIST_PATH = 'files.json'
 session = {}
 files = {}
+avaiableForChat = []
 
 def carregar_usuarios():
     if not os.path.exists(USER_LIST_PATH):
@@ -96,6 +97,9 @@ def protocolos_base(mensagem, client_socket):
         if sucesso:
             session[username] = 0                                       # Inicia o tempo de heartbeat deste cliente
             files[username] = mensagem['files']
+            user_port = mensagem['chat_port']
+            user_ip = client_socket.getpeername()[0]
+            avaiableForChat.append((username,user_ip,user_port))
         print(f"O login obteve sucesso?{sucesso}, a mensagem dada foi: {msg}")
         resposta = {"status": "ok" if sucesso else "erro", "mensagem": msg}
         client_socket.sendall(json.dumps(resposta).encode())
@@ -114,10 +118,51 @@ def protocolos_restritos(mensagem, client_socket):  # Apenas se tiver login
         arquivos = list_files(peers)
         resposta = {"status": "ok", "mensagem": arquivos}
         client_socket.sendall(json.dumps(resposta).encode())
+    elif mensagem['action'] == "get_peer_info":
+        asked_user = mensagem['username']
+        peer_found = None
+
+        for user, ip, port in avaiableForChat:
+            if asked_user == user:
+                peer_found = {"ip": ip, "port": port}
+                break
+
+        if peer_found:
+            resposta = {"status": "ok", "mensagem": peer_found}
+        else:
+            resposta = {"status": "erro", "mensagem": "Usuário não está online para chat."}
+
+        client_socket.sendall(json.dumps(resposta).encode())
+#       print("ação recebida!!!")
+#        asked_user = mensagem['username']
+#        peer_found = None
+#        asked_port = 0
+#        for user,port in avaiableForChat:
+#            if asked_user == user:
+#                peer_found = {"ip":addr[0],"port":port}
+#                break
+#           if peer_found:
+#                resposta = {"status":"ok",
+#                            "mensagem":peer_found}
+#            else:
+#                resposta = {"status":"erro","mensagem":
+#                            "user n existe para chat"}
+#            client_socket.sendall(json.dumps(resposta).encode())
+        #for tuples in avaiableForChat:
+        #    userLogged = tuples[0]
+        #    if(asked_user==userLogged):
+        #        print("USER FOUND!!")
+        #        asked_port = tuples[1]
+
+#        if asked_port!=0:
+#            print("YOU CAN TALK WITH THIS PERSON!")
+#        else:
+#            print("YOU CAN NOT TALK WITH THIS PERSON!")
+
+
     else:
         resposta = {"status": "erro", "mensagem": "Ação desconhecida ou não esta logado."}
         client_socket.sendall(json.dumps(resposta).encode())
-
 def handle_clients(client_socket, addr):
     try:
         buffer = b""                        # Acumula a mensagem recebida
