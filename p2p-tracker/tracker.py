@@ -133,6 +133,25 @@ def protocolos_restritos(mensagem, client_socket):  # Apenas se tiver login
             resposta = {"status": "erro", "mensagem": "Usuário não está online para chat."}
 
         client_socket.sendall(json.dumps(resposta).encode())
+    elif mensagem['action'] == 'heartbeat':
+        user = mensagem['username']
+        if user in session:
+            session[user] = 0
+            resposta = {"status":"ok","mensagem":"Heartbeat recebido"}
+        else:
+            resposta = {"status":"erro","mensagem":"Usuário desconectado"}
+        client_socket.sendall(json.dumps(resposta).encode())
+    elif mensagem['action'] == 'update_files':
+        username = mensagem['username']
+        novos_arquivos = mensagem['files']
+        if username in session:
+            files[username] = novos_arquivos
+            print(f"[Tracker] Arquivos atualizados: ",files)
+            resposta = {"status": "ok", "mensagem": f"{len(novos_arquivos)} arquivo(s) anunciado(s) com sucesso!"}
+        else:
+            resposta = {"status": "erro", "mensagem": "Usuário não está logado"}
+        client_socket.sendall(json.dumps(resposta).encode())
+
 #       print("ação recebida!!!")
 #        asked_user = mensagem['username']
 #        peer_found = None

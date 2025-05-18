@@ -8,7 +8,7 @@ import random
 from peer_messages import *
 
 menu_1 = "MENU PRINCIPAL \n1 - Registrar;\n2 - Login no Sistema;\n3 - Sair do sistema;"
-menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer \n7- Sair do Sistema;"
+menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Sair do Sistema;\n8 - Anunciar arquivos manualmente;"
 
 def send_to_tracker(data):
     HOST = 'localhost'
@@ -30,6 +30,53 @@ def send_to_tracker(data):
     except ConnectionRefusedError:
         print("Não foi possível iniciar o Tracker. ele já está ativo?")
         return {"status":"erro","mensagem":"Tracker não disponível."}
+def start_heartbeat(username):
+    def loop():
+        time.sleep(1)  # <- aqui: espera o login ser processado no Tracker
+        while True:
+            try:
+                dados = {"action": "heartbeat", "username": username}
+                resposta = send_to_tracker(dados)
+                if resposta.get("status") != "ok":
+                    print("⚠️ Você foi desconectado por inatividade. Faça login novamente.")
+                    os._exit(1)
+                time.sleep(30)
+            except:
+                print("⚠️ Erro de conexão no heartbeat. Encerrando cliente.")
+                os._exit(1)
+    threading.Thread(target=loop, daemon=True).start()
+
+def salvar_mensagem(usuario_remetente,destinatario,mensagem,caminho_arquivo = "messages_list.json"):
+    registro_mensagem = {
+        "usuario_remetente":usuario_remetente,
+        "usuario_destinatario":destinatario,
+        "mensagem":mensagem
+    }
+
+    mensagens_salvas = []
+
+    if os.path.exists(caminho_arquivo):
+        try:
+            f = open(caminho_arquivo,"r",encoding="utf-8")
+            conteudo = f.read().strip()
+            if conteudo:
+                dados = json.loads(conteudo)
+                if isinstance(dados,list):
+                    mensagens_salvas = dados
+                else:
+                    print("Formato inválido detectado em messages_list.json. Substituindo por lista.")
+            else:
+                print("Arquivo vazio, criando nova lista de mensagens")
+        except json.JSONDecodeError as e:
+            print(f"Erro ao decodificar JSON: {e}. Reiniciando arquivo.")
+        except Exception as e:
+            print(f"Erro ao ler arquivo: {e}. Reiniciando arquivo.")
+    mensagens_salvas.append(registro_mensagem)
+
+    f = open(caminho_arquivo,"w",encoding="utf-8")
+    json.dumps(mensagens_salvas,f,indent=4,ensure_ascii=False)
+
+        
 
 def is_tracker_running(host = 'localhost',port=5000):
     try:
@@ -43,7 +90,7 @@ def is_tracker_running(host = 'localhost',port=5000):
 def interactiveMenu_1():
     usuario_logado = None
     chat_port = 5000 + random.randint(1,1000)
-    chat_host = 'localhost'
+    os.system('cls||clear')
 
     while True:
         os.system('cls||clear')
@@ -70,6 +117,7 @@ def interactiveMenu_1():
 
             print(resposta["mensagem"])
             input("Pressione enter para continuar")
+            os.system('cls||clear')
 
         elif operation == 2:
             username_login = input("Insira o seu nome de usuário: ")
@@ -83,15 +131,19 @@ def interactiveMenu_1():
                 "chat_port": chat_port
             }
             resposta = send_to_tracker(dados)
-            print("Dados recebidos!")
-            print(resposta)
+            print("Resposta recebida!")
+            #print(resposta)
 
             if resposta.get("status") == "ok":
                 print(resposta["mensagem"])
                 usuario_logado = username_login
                 start_peer_server(chat_port,usuario_logado)
+                start_heartbeat(usuario_logado)
                 break  # break the first menu loop and go to the second
+            if resposta.get("status") == "erro":
+                print("Erro - ",resposta['mensagem'])
             input("Pressione enter para continuar")
+            os.system('cls||clear')
 
         elif operation == 3:
             print("Bye Bye!!")
@@ -100,10 +152,11 @@ def interactiveMenu_1():
         else:
             print("Operação inválida!")
             input("Pressione Enter para continuar")
+            os.system('cls||clear')
 
     # Now you're logged in (usuario_logado is set)
     while usuario_logado:
-        os.system('cls||clear')
+        os.system('cls||clear') #Limpar o diretório
         print(menu_2)
         operation = int(input("insira a sua operação desejada:\n"))
 
@@ -115,8 +168,10 @@ def interactiveMenu_1():
                 }
                 resposta = send_to_tracker(dados)
                 print("Arquivos dos Peers Ativos: ")
+                print(resposta["mensagem"])
                 print(files)
                 input("Pressione Enter para continuar")
+                os.system('cls||clear')
             except:
                 print("Você provavavelmente foi desligado por inatividade")
                 input("Pressione Enter para continuar")
@@ -135,6 +190,7 @@ def interactiveMenu_1():
                     else:
                         print(f" - {peer}")
                 input("Pressione Enter para continuar")
+                os.system('cls||clear')
             except:
                 print("Você provavavelmente foi desligado por inatividade")
                 input("Pressione Enter para continuar")
@@ -147,10 +203,13 @@ def interactiveMenu_1():
                 resposta = send_to_tracker(dados)
                 print("Peers Ativos: ")
                 for peer in resposta.get("mensagem", []):
-                    print(f" - {peer}")
+                    if(peer == usuario_logado):
+                        print(f" - {peer} (Você)")
+                    else:
+                        print(f" - {peer}")
                 accept_chat = int(input(("Gostaria de comunicar com um Peer?\n1-Sim    0-Não\n")))
                 if accept_chat == 1:
-                    selected_user = (input("Digite o nome do usuário que deseja falar com"))
+                    selected_user = (input("Digite o nome do usuário que deseja falar com\n"))
                     for user in resposta.get("mensagem",[]):
                         if selected_user == user:
                             print("Usuário Escolhido para conversar com sucesso!")
@@ -168,6 +227,25 @@ def interactiveMenu_1():
                                 print(f"Digite a sua mensagem para falar com {selected_user}:")
                                 texto = input("Digite sua mensagem:")
                                 send_message_to_peer(peer_ip,peer_port,usuario_logado,selected_user,texto)
+                                #Escrevendo a mensagem em JSON
+
+                                registro_mensagem = {
+                                    "usuario_remetente":usuario_logado,
+                                    "usuario_destino":selected_user,
+                                    "mensagem":texto
+                                }
+                                msgPath = "messages_list.json"
+
+                                #Verifica se o arquivo já existe e carrega o interior dele
+                                if os.path.exists(msgPath):
+                                    print("Arquivo existe!")
+                                    f = open(msgPath,"r",encoding="utf-8")
+                                    recorded_messages = json.load(f)
+                                else:
+                                    recorded_messages = []
+                                recorded_messages.append(registro_mensagem)
+                                f = open(msgPath,"w",encoding="utf-8")
+                                json.dump(recorded_messages,f,indent=4,ensure_ascii=False)
                             else:
                                 print("Erro ao obter infos do User")
                             break
@@ -177,8 +255,9 @@ def interactiveMenu_1():
                             print("Este usuário não está online ou não existe!")
 
                 input("Pressione Enter para continuar")
+                os.system('cls||clear')
             except:
-                print("Você provavavelmente foi desligado por inatividade")
+                #print("Você provavavelmente foi desligado por inatividade")
                 input("Pressione Enter para continuar")
         elif operation == 7:
             dados = {
@@ -189,10 +268,16 @@ def interactiveMenu_1():
             usuario_logado = None
             print("sessão finalizada.")
             input("Pressione Enter para continuar.")
+            os.system('cls||clear')
             return False
+        elif operation == 8:
+            announce_files(usuario_logado)
+            input("Pressione Enter para continuar")
+            os.system('cls||clear')
         else:
             print("Opção inválida.")
             input("Pressione Enter para continuar")
+            os.system('cls||clear')
 
 
 while True:
@@ -215,10 +300,11 @@ while True:
             print("End of Program")
             break
     else:
-        print("Gostaria de se comportar como um cliente?")
-        ans2 = int(input(" 1- Sim, 0 - Não"))
+        os.system('cls||clear')
+        print("Gostaria de se comportar como um cliente?\n")
+        ans2 = int(input(" 1- Sim, 0 - Não\n"))
         if (ans2==1):
-            print("Implementar verificação de existência de Tracker Aivo!")
+            #print("Implementar verificação de existência de Tracker Aitvo!")
             print("=====BEM VINDO======\nAO WHATSAPP#2")
             result = interactiveMenu_1()
             if(result):
@@ -227,3 +313,4 @@ while True:
             else:
                 print("End of Program")
                 break
+        os.system('cls||clear')
