@@ -6,9 +6,28 @@ import socket
 import json
 import random
 from peer_messages import *
+import platform
+import platform
+import shutil
 
 menu_1 = "MENU PRINCIPAL \n1 - Registrar;\n2 - Login no Sistema;\n3 - Sair do sistema;"
 menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Sair do Sistema;\n8 - Anunciar arquivos manualmente;"
+
+
+def launch_tracker_cross_platform():
+    null = subprocess.DEVNULL
+    system = platform.system()
+    if system == 'Windows':
+        subprocess.Popen(['start', 'cmd', '/k', 'python tracker.py'], shell=True)
+    elif system == 'Linux':
+        if shutil.which('gnome-terminal'):
+            subprocess.Popen(['gnome-terminal', '--', 'python3', 'tracker.py'], stderr=null)
+        elif shutil.which('xterm'):
+            subprocess.Popen(['xterm', '-hold', '-e', 'python3 tracker.py'], stderr=null)
+        elif shutil.which('konsole'):
+            subprocess.Popen(['konsole', '-e', 'python3 tracker.py'], stderr=null)
+        else:
+            subprocess.Popen(['python3', 'tracker.py'], stderr=null)
 
 def send_to_tracker(data):
     HOST = 'localhost'
@@ -285,15 +304,17 @@ while True:
     print('Gostaria de Iniciar o Tracker?\n 1- Sim, 0 - Não')
 
     ans = int(input())
-    if (ans==1):
+    if ans == 1:
         if is_tracker_running():
             print("Tracker já está rodando.")
-        subprocess.Popen(['start', 'cmd', '/k', f'python tracker.py'], shell=True)
-        #start_tracker()
-        print("Tracker Inicializado!")
+        else:
+            print("Não está rodando ainda")
+            launch_tracker_cross_platform()
+            print("Tracker Inicializado!")
+
         print("=====BEM VINDO======\nAO WHATSAPP#2")
         result = interactiveMenu_1()
-        if(result):
+        if result:
             print("Continue!")
             a = int(input())
         else:
