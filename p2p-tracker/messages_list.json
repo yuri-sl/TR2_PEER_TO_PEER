@@ -1,27 +1,27 @@
 [
-    {
-        "usuario_remetente": "A",
-        "usuario_destino": "A",
-        "mensagem": "ola"
-    },
-    {
-        "usuario_remetente": "B",
-        "usuario_destino": "B",
-        "mensagem": "Ola,eu sou o B, e estou mandando mensagem para mim mesmo!"
-    },
-    {
-        "usuario_remetente": "A",
-        "usuario_destino": "A",
-        "mensagem": "Adsafas"
-    },
-    {
-        "usuario_remetente": "A",
-        "usuario_destino": "A",
-        "mensagem": "dadsa"
-    },
-    {
-        "usuario_remetente": "B",
-        "usuario_destino": "B",
-        "mensagem": "TesteNovo"
-    }
+  {
+    "usuario_remetente": "A",
+    "usuario_destino": "A",
+    "mensagem": "ola"
+  },
+  {
+    "usuario_remetente": "B",
+    "usuario_destino": "B",
+    "mensagem": "Ola,eu sou o B, e estou mandando mensagem para mim mesmo!"
+  },
+  {
+    "usuario_remetente": "A",
+    "usuario_destino": "A",
+    "mensagem": "Adsafas"
+  },
+  {
+    "usuario_remetente": "A",
+    "usuario_destino": "A",
+    "mensagem": "dadsa"
+  },
+  {
+    "usuario_remetente": "B",
+    "usuario_destino": "B",
+    "mensagem": "TesteNovo"
+  }
 ]
