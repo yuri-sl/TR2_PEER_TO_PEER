@@ -216,7 +216,7 @@ def heartbeat(s):
     while True:
         time.sleep(1)
         for u in list(s.keys()):                                    # copia as chaves para evitar erro de modificação durante iteração
-            if s[u] >= 60:
+            if s[u] >= 600000:
                 print(f"Removendo {u} por inatividade")
                 s.pop(u, None)                                      # Remove usuário inativo
 

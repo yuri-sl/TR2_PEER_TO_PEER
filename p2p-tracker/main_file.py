@@ -44,7 +44,6 @@ def send_to_tracker(data):
                 break
             buffer += chunk
         s.close()
-        #response = s.recv(4096)
         return json.loads(buffer.decode())
     except ConnectionRefusedError:
         print("Não foi possível iniciar o Tracker. ele já está ativo?")
@@ -59,7 +58,7 @@ def start_heartbeat(username):
                 if resposta.get("status") != "ok":
                     print("⚠️ Você foi desconectado por inatividade. Faça login novamente.")
                     os._exit(1)
-                time.sleep(30)
+                time.sleep(600000)
             except:
                 print("⚠️ Erro de conexão no heartbeat. Encerrando cliente.")
                 os._exit(1)
@@ -114,9 +113,9 @@ def interactiveMenu_1():
     while True:
         os.system('cls||clear')
         print(menu_1)
-        operation = int(input("insira a sua operação desejada:\n"))
+        operation = input("insira a sua operação desejada:\n")
 
-        if operation == 1:
+        if operation == "1":
             usernameRegister = input("Defina seu nome de usuário: ")
             passwordRegister = input("Defina a sua senha: ")
             confirm_password = input("Confirme a sua senha: ")
@@ -138,7 +137,7 @@ def interactiveMenu_1():
             input("Pressione enter para continuar")
             os.system('cls||clear')
 
-        elif operation == 2:
+        elif operation == "2":
             username_login = input("Insira o seu nome de usuário: ")
             password = input("Insira sua senha: ")
             arquivos = [f for f in os.listdir('.') if os.path.isfile(f) and f.endswith('.py')]
@@ -164,7 +163,7 @@ def interactiveMenu_1():
             input("Pressione enter para continuar")
             os.system('cls||clear')
 
-        elif operation == 3:
+        elif operation == "3":
             print("Bye Bye!!")
             exit()
             return False
@@ -177,9 +176,9 @@ def interactiveMenu_1():
     while usuario_logado:
         os.system('cls||clear') #Limpar o diretório
         print(menu_2)
-        operation = int(input("insira a sua operação desejada:\n"))
+        operation = input("insira a sua operação desejada:\n")
 
-        if operation == 4:
+        if operation == "4":
             try:
                 dados = {
                     "action": "list_files",
@@ -195,7 +194,7 @@ def interactiveMenu_1():
                 print("Você provavavelmente foi desligado por inatividade")
                 input("Pressione Enter para continuar")
 
-        elif operation == 5:
+        elif operation == "5":
             try:
                 dados = {
                     "action": "list_clients",
@@ -213,7 +212,7 @@ def interactiveMenu_1():
             except:
                 print("Você provavavelmente foi desligado por inatividade")
                 input("Pressione Enter para continuar")
-        elif operation == 6:
+        elif operation == "6":
             try:
                 dados = {
                     "action": "list_clients",
@@ -221,20 +220,24 @@ def interactiveMenu_1():
                 }
                 resposta = send_to_tracker(dados)
                 print("Peers Ativos: ")
+                i = 0
                 for peer in resposta.get("mensagem", []):
+                    i += 1
                     if(peer == usuario_logado):
-                        print(f" - {peer} (Você)")
+                        print(f"[{i}] - {peer} (Você)")
                     else:
-                        print(f" - {peer}")
-                accept_chat = int(input(("Gostaria de comunicar com um Peer?\n1-Sim    0-Não\n")))
-                if accept_chat == 1:
-                    selected_user = (input("Digite o nome do usuário que deseja falar com\n"))
+                        print(f"[{i}] - {peer}")
+                accept_chat = input(("Gostaria de comunicar com um Peer?\n1-Sim    0-Não\n"))
+                if accept_chat == "1":
+                    selected_user = input("Digite o nome do usuário que deseja falar com\n")
+                    i = 0
                     for user in resposta.get("mensagem",[]):
-                        if selected_user == user:
+                        i += 1
+                        if selected_user == user or str(i) == selected_user:
                             print("Usuário Escolhido para conversar com sucesso!")
                             dados_start_chat = {
                                 "action":"get_peer_info",
-                                "username":selected_user
+                                "username": user
                             }
                             resposta_start_chat = send_to_tracker(dados_start_chat)
 
@@ -242,15 +245,15 @@ def interactiveMenu_1():
                                 peer_info = resposta_start_chat.get("mensagem",{})
                                 peer_ip = peer_info.get("ip")
                                 peer_port = peer_info.get("port")
-                                print(f"Iniciando a conversa com {selected_user} em {peer_ip}:{peer_port}")
-                                print(f"Digite a sua mensagem para falar com {selected_user}:")
+                                print(f"Iniciando a conversa com {user} em {peer_ip}:{peer_port}")
+                                print(f"Digite a sua mensagem para falar com {user}:")
                                 texto = input("Digite sua mensagem:")
-                                send_message_to_peer(peer_ip,peer_port,usuario_logado,selected_user,texto)
+                                send_message_to_peer(peer_ip, peer_port, usuario_logado, user, texto)
                                 #Escrevendo a mensagem em JSON
 
                                 registro_mensagem = {
                                     "usuario_remetente":usuario_logado,
-                                    "usuario_destino":selected_user,
+                                    "usuario_destino": user,
                                     "mensagem":texto
                                 }
                                 msgPath = "messages_list.json"
@@ -268,17 +271,14 @@ def interactiveMenu_1():
                             else:
                                 print("Erro ao obter infos do User")
                             break
-
-
-                        else:
-                            print("Este usuário não está online ou não existe!")
-
+                    print("Este usuário não está online ou não existe!")
+                
                 input("Pressione Enter para continuar")
                 os.system('cls||clear')
             except:
                 #print("Você provavavelmente foi desligado por inatividade")
                 input("Pressione Enter para continuar")
-        elif operation == 7:
+        elif operation == "7":
             dados = {
                 "action": "exit",
                 "username": usuario_logado
@@ -289,7 +289,7 @@ def interactiveMenu_1():
             input("Pressione Enter para continuar.")
             os.system('cls||clear')
             return False
-        elif operation == 8:
+        elif operation == "8":
             announce_files(usuario_logado)
             input("Pressione Enter para continuar")
             os.system('cls||clear')
