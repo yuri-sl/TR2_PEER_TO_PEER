@@ -18,6 +18,9 @@ client:				# rodar depois em um outro bash
 	python3 cliente_teste_files.py
 	python3 cliente_teste_exit.py
 
+start_main:
+	python3 main_file.py < entradas_testes.txt
+
 kill:					# finalizar o teste
 	pkill -f tracker.py
 	
