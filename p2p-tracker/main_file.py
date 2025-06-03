@@ -12,7 +12,7 @@ import shutil
 from peer import *
 
 menu_1 = "MENU PRINCIPAL \n1 - Registrar;\n2 - Login no Sistema;\n3 - Sair do sistema;"
-menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Sair do Sistema;\n8 - Anunciar arquivos manualmente;"
+menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Sair do Sistema;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;"
 
 
 def launch_tracker_cross_platform():
@@ -292,6 +292,12 @@ def interactiveMenu_1():
             return False
         elif operation == "8":
             announce_files(usuario_logado)
+            input("Pressione Enter para continuar")
+            os.system('cls||clear')
+        elif operation == "9":
+            #implementar ainda
+            register_chunks(usuario_logado)
+
             input("Pressione Enter para continuar")
             os.system('cls||clear')
         else:

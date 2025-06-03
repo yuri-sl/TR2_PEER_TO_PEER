@@ -37,3 +37,35 @@ def split_file(file_name):
             index += 1
     
     return chunks
+
+def register_chunks(usuario_logado):
+    """
+    Registra os chunks de um arquivo no tracker.
+    Cada chunk é uma tupla (chunk_id, chunk_name, checksum).
+    O checksum final do arquivo (se calculado) também é enviado.
+    """
+    dados = {
+        "action": "register_chunks",
+        "username": usuario_logado,
+        "chunk" : chunks
+    }
+    #egister_chunks(usuario_logado, file_name, chunks, file_checksum)
+    print(f"Chunks do arquivo '{file_name}' registrados no tracker (por {usuario_logado}).")
+
+def assemble_file(original_file_name, output_file=None):
+    """
+    Reconstroi o arquivo original a partir dos seus chunks.
+    Procura por arquivos no formato '{original_file_name}.chunkX' e os une na ordem.
+    """
+    if output_file is None:
+        output_file = f"{original_file_name}.assembled"
+    index = 0
+    with open(output_file, "wb") as outfile:
+        while True:
+            chunk_file = f"{original_file_name}.chunk{index}"
+            if not os.path.exists(chunk_file):
+                break
+            with open(chunk_file, "rb") as infile:
+                outfile.write(infile.read())
+            index += 1
+    print(f"Arquivo reassemblado como {output_file}.")
