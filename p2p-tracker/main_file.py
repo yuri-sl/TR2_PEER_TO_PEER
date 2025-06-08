@@ -295,10 +295,12 @@ def interactiveMenu_1():
             input("Pressione Enter para continuar")
             os.system('cls||clear')
         elif operation == "9":
-            arquivos = [f for f in os.listdir('.') if os.path.isfile(f) and f.endswith('.py')]
+            arquivos = [f for f in os.listdir('.') if os.path.isfile(f) and f.endswith('.txt')]
+            print(arquivos)
             try:
                 dados = register_chunks(arquivos,usuario_logado)
-                send_to_tracker(dados)
+                resposta = send_to_tracker(dados)
+                print(resposta["mensagem"])
             except:
                 print("não foi possivel registrar os chunks")
             input("Pressione Enter para continuar")

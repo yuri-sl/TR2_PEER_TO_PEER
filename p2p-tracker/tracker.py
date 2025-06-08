@@ -153,8 +153,13 @@ def protocolos_restritos(mensagem, client_socket):  # Apenas se tiver login
             resposta = {"status": "erro", "mensagem": "Usuário não está logado"}
         client_socket.sendall(json.dumps(resposta).encode())
     elif mensagem['action'] == 'register_chunks':
-        for i in mensagem['chunk']:
+        try:
             chunks[mensagem['username']] = mensagem['chunk']
+            resposta = {"status": "ok", "mensagem": f"chunk(s) anunciado(s) com sucesso!"}
+            client_socket.sendall(json.dumps(resposta).encode())
+        except:
+            resposta = {"status": "erro", "mensagem": f"Usuário não está logado"}
+            client_socket.sendall(json.dumps(resposta).encode())
 
 #       print("ação recebida!!!")
 #        asked_user = mensagem['username']

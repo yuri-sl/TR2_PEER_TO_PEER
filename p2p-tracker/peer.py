@@ -7,36 +7,33 @@ def calculate_checksum(data) -> str:
     """ Calcula o checksum SHA-256 de um bloco de dados """
     return hashlib.sha256(data).hexdigest()
 
-def compute_file_checksum(file_name) -> str:
+def compute_file_checksum(arquivo) -> str:
     """ Calcula o checksum SHA-256 de um arquivo inteiro """
-    with open(file_name, "rb") as f:
-        data = f.read()
+    with open(arquivo, "rb") as a:
+        data = a.read()
     return calculate_checksum(data)
 
-def split_file(file_name) -> [(int, str, str, str)]:
+def split_file(arquivo):
     """
     Divide um arquivo em chunks de 1MB, calcula seus checksums e atribui um identificador único para cada bloco.
     Cada chunk é identificado por um número sequencial (index) utilizado também no nome do arquivo do chunk.
     Retorna uma lista de tuplas: (chunk_id, chunk_name, checksum)
     """
     chunks = []
-    if not os.path.exists(file_name):
-        return chunks
-
-    with open(file_name, "rb") as f:
+    output_dir = "chunkscriados"
+    os.makedirs(output_dir, exist_ok=True)
+    with open(arquivo, "rb") as a:
         index = 0
         while True:
-            chunk = f.read(CHUNK_SIZE)
+            chunk = a.read(CHUNK_SIZE)
             if not chunk:
                 break
             checksum = calculate_checksum(chunk)
-            hash_chunk = hashlib.sha256(chunks.encode()).hexdigest()
-            chunk_name = f"{file_name}.chunk{index}"
+            chunk_name = os.path.join(output_dir, f"{arquivo}.chunk{index}")
             with open(chunk_name, "wb") as chunk_file:
                 chunk_file.write(chunk)
-            chunks.append((index, chunk_name, checksum, hash_chunk))
+            chunks.append((index, chunk_name, checksum))# não consegui colocar o hash
             index += 1
-    
     return chunks
 
 def register_chunks(arquivos,usuario_logado) -> dict:
@@ -45,9 +42,9 @@ def register_chunks(arquivos,usuario_logado) -> dict:
     Cada chunk é uma tupla (chunk_id, chunk_name, checksum, hash_chunk).
     O checksum final do arquivo (se calculado) também é enviado.
     """
+    chunks = []
     for a in arquivos:
-        chunks += split_file(a)
-
+        chunks.append(split_file(a))
     dados = {
         "action": "register_chunks",
         "username": usuario_logado,
