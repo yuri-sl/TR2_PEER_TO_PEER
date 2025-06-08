@@ -12,7 +12,7 @@ import shutil
 from peer import *
 
 menu_1 = "MENU PRINCIPAL \n1 - Registrar;\n2 - Login no Sistema;\n3 - Sair do sistema;"
-menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Sair do Sistema;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;"
+menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;"
 
 
 def launch_tracker_cross_platform():
@@ -280,16 +280,31 @@ def interactiveMenu_1():
                 #print("Você provavavelmente foi desligado por inatividade")
                 input("Pressione Enter para continuar")
         elif operation == "7":
-            dados = {
-                "action": "exit",
-                "username": usuario_logado
-            }
-            send_to_tracker(dados)
-            usuario_logado = None
-            print("sessão finalizada.")
-            input("Pressione Enter para continuar.")
+            # Caminho da pasta com os chunks
+            pasta_chunks = "chunkscriados"
+
+            # Lista para guardar nomes únicos dos arquivos originais
+            nomes_unicos = set()
+            if os.path.isdir(pasta_chunks):
+                # Percorre todos os arquivos da pasta
+                for nome_arquivo in os.listdir(pasta_chunks):
+                    if '.' in nome_arquivo:
+                        nome_base = nome_arquivo.split('.')[0]  # pega antes do .index
+                        nomes_unicos.add(nome_base)
+
+            # Converte para lista se quiser usar como menu
+            lista_arquivos = list(nomes_unicos)
+            print("Arquivos disponíveis:")
+            for i, nome in enumerate(lista_arquivos, start=1):
+                print(f"[{i}] - {nome}")
+
+            try:
+                arquivo = int(input("Qual arquivo você quer juntar? "))
+                assemble_file(lista_arquivos[arquivo-1])
+            except:
+                print("não foi possivel juntar este arquivo por não existir ou nao estar completo")
+            input("Pressione Enter para continuar")
             os.system('cls||clear')
-            return False
         elif operation == "8":
             announce_files(usuario_logado)
             input("Pressione Enter para continuar")
@@ -306,19 +321,21 @@ def interactiveMenu_1():
             input("Pressione Enter para continuar")
             os.system('cls||clear')
         elif operation == "10":
-            arquivos = [f for f in os.listdir('.') if os.path.isfile(f) and f.endswith('.py')]
-            try:
-                
-                dados = pedir_chunks(arquivos,usuario_logado)
-                send_to_tracker(dados)
-            except:
-                print("não foi possivel registrar os chunks")
-            input("Pressione Enter para continuar")
+            dados = {
+                "action": "exit",
+                "username": usuario_logado
+            }
+            send_to_tracker(dados)
+            usuario_logado = None
+            print("sessão finalizada.")
+            input("Pressione Enter para continuar.")
             os.system('cls||clear')
+            return False
         else:
             print("Opção inválida.")
             input("Pressione Enter para continuar")
             os.system('cls||clear')
+
 
 
 while True:

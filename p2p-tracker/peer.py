@@ -52,23 +52,31 @@ def register_chunks(arquivos,usuario_logado) -> dict:
     }
     return dados
 
-def assemble_file(original_file_name, output_file=None) -> None:
+def assemble_file(original_file_name, chunk_dir="chunkscriados/", output_file=None) -> None:
     """
-    Reconstroi o arquivo original a partir dos seus chunks.
-    Procura por arquivos no formato '{original_file_name}.chunkX' e os une na ordem.
+    Reconstrói o arquivo original a partir dos seus chunks.
+    Procura por arquivos no formato '{original_file_name}.chunkX' dentro da pasta especificada.
     """
     if output_file is None:
-        output_file = f"{original_file_name}.assembled"
+        output_file = f"{original_file_name}.txt.assembled"
+    print(output_file)
     index = 0
+    found_chunks = False
+
     with open(output_file, "wb") as outfile:
         while True:
-            chunk_file = f"{original_file_name}.chunk{index}"
-            if not os.path.exists(chunk_file):
+            chunk_path = os.path.join(chunk_dir, f"{original_file_name}.txt.chunk{index}")
+            if not os.path.exists(chunk_path):
                 break
-            with open(chunk_file, "rb") as infile:
+            with open(chunk_path, "rb") as infile:
                 outfile.write(infile.read())
+            found_chunks = True
             index += 1
-    print(f"Arquivo reassemblado como {output_file}.")
+
+    if found_chunks:
+        print(f"Arquivo reassemblado como '{output_file}'.")
+    else:
+        print(f"Nenhum chunk encontrado para '{original_file_name}' na pasta '{chunk_dir}'.")
 
 def pedir_chunks(chunk_desejado, usuario):
     pass
