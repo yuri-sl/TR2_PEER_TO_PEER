@@ -1,96 +1,82 @@
-import socket
-import json
 import hashlib
 import os
 
-TRACKER_HOST = 'localhost'
-TRACKER_PORT = 5000
+CHUNK_SIZE = 1024 * 1024  # 1MB modificar
 
-session_token = None
+def calculate_checksum(data) -> str:
+    """ Calcula o checksum SHA-256 de um bloco de dados """
+    return hashlib.sha256(data).hexdigest()
 
-def hash_file(path):
-    sha256 = hashlib.sha256()
-    with open(path, 'rb') as f:
-        while chunk := f.read(4096):
-            sha256.update(chunk)
-    return sha256.hexdigest()
+def compute_file_checksum(arquivo) -> str:
+    """ Calcula o checksum SHA-256 de um arquivo inteiro """
+    with open(arquivo, "rb") as a:
+        data = a.read()
+    return calculate_checksum(data)
 
-def send_request(data):
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.connect((TRACKER_HOST, TRACKER_PORT))
-        s.sendall(json.dumps(data).encode())
-        response = s.recv(4096)
-        return json.loads(response.decode())
+def split_file(arquivo):
+    """
+    Divide um arquivo em chunks de 1MB, calcula seus checksums e atribui um identificador único para cada bloco.
+    Cada chunk é identificado por um número sequencial (index) utilizado também no nome do arquivo do chunk.
+    Retorna uma lista de tuplas: (chunk_id, chunk_name, checksum)
+    """
+    chunks = []
+    output_dir = "chunkscriados"
+    os.makedirs(output_dir, exist_ok=True)
+    with open(arquivo, "rb") as a:
+        index = 0
+        while True:
+            chunk = a.read(CHUNK_SIZE)
+            if not chunk:
+                break
+            checksum = calculate_checksum(chunk)
+            chunk_name = os.path.join(output_dir, f"{arquivo}.chunk{index}")
+            with open(chunk_name, "wb") as chunk_file:
+                chunk_file.write(chunk)
+            chunks.append((index, chunk_name, checksum))# não consegui colocar o hash
+            index += 1
+    return chunks
 
-def register():
-    username = input("Usuário: ")
-    password = input("Senha: ")
-    response = send_request({
-        "action": "register",
-        "username": username,
-        "password": password
-    })
-    print(response.get("message"))
+def register_chunks(arquivos,usuario_logado) -> dict:
+    """
+    Registra os chunks de um arquivo no tracker.
+    Cada chunk é uma tupla (chunk_id, chunk_name, checksum, hash_chunk).
+    O checksum final do arquivo (se calculado) também é enviado.
+    """
+    chunks = []
+    for a in arquivos:
+        chunks.append(split_file(a))
+    dados = {
+        "action": "register_chunks",
+        "username": usuario_logado,
+        "chunk" : chunks
+    }
+    return dados
 
-def login():
-    global session_token
-    username = input("Usuário: ")
-    password = input("Senha: ")
-    response = send_request({
-        "action": "login",
-        "username": username,
-        "password": password
-    })
-    if response["status"] == "ok":
-        session_token = response["token"]
-        print("Login bem-sucedido!")
+def assemble_file(original_file_name, chunk_dir="chunkscriados/", output_file=None) -> None:
+    """
+    Reconstrói o arquivo original a partir dos seus chunks.
+    Procura por arquivos no formato '{original_file_name}.chunkX' dentro da pasta especificada.
+    """
+    if output_file is None:
+        output_file = f"{original_file_name}.txt.assembled"
+    print(output_file)
+    index = 0
+    found_chunks = False
+
+    with open(output_file, "wb") as outfile:
+        while True:
+            chunk_path = os.path.join(chunk_dir, f"{original_file_name}.txt.chunk{index}")
+            if not os.path.exists(chunk_path):
+                break
+            with open(chunk_path, "rb") as infile:
+                outfile.write(infile.read())
+            found_chunks = True
+            index += 1
+
+    if found_chunks:
+        print(f"Arquivo reassemblado como '{output_file}'.")
     else:
-        print("Erro:", response.get("message"))
+        print(f"Nenhum chunk encontrado para '{original_file_name}' na pasta '{chunk_dir}'.")
 
-def announce():
-    global session_token
-    if not session_token:
-        print("Você precisa fazer login antes.")
-        return
-    path = input("Digite o caminho do arquivo a anunciar: ").strip()
-    if not os.path.isfile(path):
-        print("Arquivo não encontrado.")
-        return
-
-    filename = os.path.basename(path)
-    size = os.path.getsize(path)
-    file_hash = hash_file(path)
-
-    response = send_request({
-        "action": "announce",
-        "token": session_token,
-        "files": [{
-            "filename": filename,
-            "size": size,
-            "hash": file_hash
-        }]
-    })
-    print(response.get("message"))
-
-def main():
-    while True:
-        print("\n--- Peer Menu ---")
-        print("1. Registrar")
-        print("2. Login")
-        print("3. Anunciar Arquivo")
-        print("4. Sair")
-        option = input("Escolha uma opção: ")
-        if option == "1":
-            register()
-        elif option == "2":
-            login()
-        elif option == "3":
-            announce()
-        elif option == "4":
-            print("Saindo...")
-            break
-        else:
-            print("Opção inválida.")
-
-if __name__ == "__main__":
-    main()
+def pedir_chunks(chunk_desejado, usuario):
+    pass
