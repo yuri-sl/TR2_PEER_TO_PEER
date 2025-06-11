@@ -18,6 +18,7 @@ def carregar_usuarios():
     if not os.path.exists(USER_LIST_PATH):
         f = open(USER_LIST_PATH,'w')
         json.dump({},f)
+        return {}
     else:
         f = open(USER_LIST_PATH,'r')
         print("O Arquivo existe!")
@@ -32,8 +33,8 @@ def registrar_usuario(username, password):
     if username in usarios_sistema:
         msg = "Usuário já existe cadastrado no sistema!"
         return False, msg
-    hash_senha = hashlib.sha256(password.encode()).hexdigest()
-    usarios_sistema[username] = {"password": hash_senha}
+    #hash_senha = hashlib.sha256(password.encode()).hexdigest()
+    usarios_sistema[username] = {"password": password}
     salvar_usuarios(usarios_sistema)
     msg = "Usuário registrado com sucesso!"
     return True,msg
@@ -42,9 +43,9 @@ def login(username,password):
     usuarios_sistema = carregar_usuarios()
     if (username not in usuarios_sistema):
         return False, "Usuário não encontrado no sistema!"
-    hash_senha = hashlib.sha256(password.encode()).hexdigest()
+    #hash_senha = hashlib.sha256(password.encode()).hexdigest()
     if(
-        usuarios_sistema[username]["password"] != hash_senha
+        usuarios_sistema[username]["password"] != password
     ):
         return False,"senha incorreta!"
     return True,"Login Efetuado com sucesso!"
@@ -56,7 +57,7 @@ def carregar_arquivos():
     return json.load(f)
 
 def salvar_arquivos(dados):
-    f = open(FILES_LIST_PATH,'r')
+    f = open(FILES_LIST_PATH,'w')
     json.dump(dados, f, indent=4)
 
 def list_clients():

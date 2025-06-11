@@ -1,0 +1,52 @@
+[
+    {
+        "nome": "bigfile.part0",
+        "indice": 0,
+        "hash": "f1cdbe3fb2046bced44ed88d32363d6cd4d3497515f0e99696362e279880d152"
+    },
+    {
+        "nome": "bigfile.part1",
+        "indice": 1,
+        "hash": "696324d57a652ec0e6b6f45df040d1fd613144c111affb303c6038595f6c4f9c"
+    },
+    {
+        "nome": "bigfile.part2",
+        "indice": 2,
+        "hash": "b81821116be55eb4657b1eaa6cf71b70fdea67101b03f2af2148de0d03a3ce1e"
+    },
+    {
+        "nome": "bigfile.part3",
+        "indice": 3,
+        "hash": "3d6cded59b8edc958086797f0b31c94c0c35868a428c117cd2c534bf0044e29a"
+    },
+    {
+        "nome": "bigfile.part4",
+        "indice": 4,
+        "hash": "4f88a839fb8dec0535048fd9bbc534e56a2e1b8c8fbe6ab0ced094600a931d91"
+    },
+    {
+        "nome": "bigfile.part5",
+        "indice": 5,
+        "hash": "fdfc680a6bf9b393f6e465815117e1c23b6c56a4552f92ffc79e8b24e4911ca5"
+    },
+    {
+        "nome": "bigfile.part6",
+        "indice": 6,
+        "hash": "63214f4fbf3f155de8cce2605226260c2b38944b4b7a6fead9934569e8411003"
+    },
+    {
+        "nome": "bigfile.part7",
+        "indice": 7,
+        "hash": "29b4e108aee49e03c0c158c79b2b10aa5a6ddde7c45176e9df93c911503e678b"
+    },
+    {
+        "nome": "bigfile.part8",
+        "indice": 8,
+        "hash": "e9c336ab32de3e5ed266848a7dfa4d22e34611be3bb2da16eb6dea8e2b1c8e62"
+    },
+    {
+        "nome": "bigfile.part9",
+        "indice": 9,
+        "hash": "c945b2d0ef0d6db979c9e9e3678f095d8073e6d3b281e88422ea3e5dd79651eb"
+    }
+]

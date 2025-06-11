@@ -54,7 +54,7 @@ def send_message_to_peer(ip, port, from_user, to_user, text):
 
 def announce_files (username):
     print("\n Escolha quais arquivos para anunciar (apenas arquivos.py são listados)")
-    all_files = [f for f in os.listdir('.') if os.path.isfile(f) and f.endswith('.py')]
+    all_files = [f for f in os.listdir('.') if os.path.isfile(f) and f.endswith('.txt')]
 
     if not all_files:
         print("Nenhum arquivo .py encontrado")

@@ -92,8 +92,8 @@ def salvar_mensagem(usuario_remetente,destinatario,mensagem,caminho_arquivo = "m
             print(f"Erro ao ler arquivo: {e}. Reiniciando arquivo.")
     mensagens_salvas.append(registro_mensagem)
 
-    f = open(caminho_arquivo,"w",encoding="utf-8")
-    json.dumps(mensagens_salvas,f,indent=4,ensure_ascii=False)
+    #f = open(caminho_arquivo,"w",encoding="utf-8")
+    #json.dumps(mensagens_salvas,f,indent=4,ensure_ascii=False)
 
         
 
@@ -124,11 +124,12 @@ def interactiveMenu_1():
                 print("Senhas não coincidiram!")
                 input("Aperte Enter para continuar")
                 continue
+            hash_password = hashlib.sha256(passwordRegister.encode()).hexdigest()
             print("Passou adiante!")
             dados = {
                 "action": "register",
                 "username": usernameRegister,
-                "password": passwordRegister
+                "password": hash_password
             }
             print("JSon gerado!")
             resposta = send_to_tracker(dados)
@@ -141,6 +142,7 @@ def interactiveMenu_1():
         elif operation == "2":
             username_login = input("Insira o seu nome de usuário: ")
             password = input("Insira sua senha: ")
+            password = hashlib.sha256(password.encode()).hexdigest()
             arquivos = [f for f in os.listdir('.') if os.path.isfile(f) and f.endswith('.py')]
             dados = {
                 "action": "login",
