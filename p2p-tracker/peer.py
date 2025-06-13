@@ -62,7 +62,7 @@ def register_chunks(arquivos,usuario_logado) -> dict:
     }
     return dados
 
-def assemble_file(original_file_name, chunk_dir="chunkscriados/", output_file=None) -> None:
+def assemble_file(original_file_name, chunk_dir="chunkscriados/", output_file=None) -> str:
     """
     Reconstrói o arquivo original a partir dos seus blocos (chunks).
     Busca na pasta especificada por arquivos nomeados no formato: '{original_file_name}.chunkX'.
@@ -85,8 +85,24 @@ def assemble_file(original_file_name, chunk_dir="chunkscriados/", output_file=No
 
     if found_chunks:
         print(f"Arquivo reassemblado como '{output_file}'.")
+        return compute_file_checksum(output_file)
     else:
         print(f"Nenhum chunk encontrado para '{original_file_name}' na pasta '{chunk_dir}'.")
+        return 0
+
+def register_arquivos(arquivos,usuario_logado) -> list[str]:
+    """
+    Calcula o checksum de todos os arquivos
+    """
+    checksunsarq = []
+    for a in arquivos:
+        checksunsarq.append((a,compute_file_checksum(a)))
+    dados = {
+        "action": "register_arq",
+        "username": usuario_logado,
+        "checksunsarq" : checksunsarq
+    }
+    return dados
 
 def pedir_chunks(chunk_desejado, usuario):
     pass

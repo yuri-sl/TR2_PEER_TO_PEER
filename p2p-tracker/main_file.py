@@ -377,7 +377,22 @@ def interactiveMenu_1() -> bool:
 
             try:
                 arquivo = int(input("Qual arquivo você quer juntar? "))
-                assemble_file(lista_arquivos[arquivo-1])
+                arquivo -=1
+                dados = {
+                    "action": "reassembly",
+                    "username": usuario_logado,
+                    "arquivo" : lista_arquivos[arquivo]
+                }
+                resposta = send_to_tracker(dados)
+                print(resposta)
+                cstracker = resposta["checksum"]
+                print(cstracker)
+                cs = assemble_file(lista_arquivos[arquivo])
+                print(cs)
+                if cstracker == cs:
+                    print(f"Arquivo reassemblado com sucesso")
+                else:
+                    raise Exception("Checksum não confere")
             except:
                 print("não foi possivel juntar este arquivo por não existir ou nao estar completo")
             input("Pressione Enter para continuar")
@@ -391,7 +406,10 @@ def interactiveMenu_1() -> bool:
             print(arquivos)
             try:
                 dados = register_chunks(arquivos,usuario_logado)
+                dadosarq = register_arquivos(arquivos,usuario_logado)
                 resposta = send_to_tracker(dados)
+                print(resposta["mensagem"])
+                resposta = send_to_tracker(dadosarq)
                 print(resposta["mensagem"])
             except:
                 print("não foi possivel registrar os chunks")
