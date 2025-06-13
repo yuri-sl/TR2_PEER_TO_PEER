@@ -15,7 +15,16 @@ menu_1 = "MENU PRINCIPAL \n1 - Registrar;\n2 - Login no Sistema;\n3 - Sair do si
 menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;"
 
 
-def launch_tracker_cross_platform():
+def launch_tracker_cross_platform() -> None:
+    """
+    Executa o script 'tracker.py' em um novo terminal, de forma compatível com múltiplos sistemas operacionais.
+
+    - No Windows: abre o 'cmd' com o script sendo executado via 'python'.
+    - No Linux: tenta abrir um novo terminal com o script usando 'gnome-terminal', 'xterm' ou 'konsole'. 
+      Caso nenhum desses terminais esteja disponível, executa o script diretamente em segundo plano.
+    
+    A saída de erro padrão é redirecionada para /dev/null (ignorada) em sistemas Linux.
+    """
     null = subprocess.DEVNULL
     system = platform.system()
     if system == 'Windows':
@@ -30,7 +39,23 @@ def launch_tracker_cross_platform():
         else:
             subprocess.Popen(['python3', 'tracker.py'], stderr=null)
 
-def send_to_tracker(data):
+def send_to_tracker(data) -> dict:
+    """
+    Envia dados codificados em JSON para o tracker via socket TCP e aguarda uma resposta.
+
+    Conecta-se ao tracker localizado em 'localhost' na porta 5000. Os dados enviados devem ser serializáveis em JSON.
+
+    Após o envio completo, a função aguarda a resposta do tracker, que também deve estar em formato JSON.
+
+    Retorna:
+        dict: A resposta decodificada do tracker, convertida de JSON para dicionário Python.
+
+    Em caso de falha de conexão (por exemplo, se o tracker não estiver em execução),
+    imprime uma mensagem de erro e retorna um dicionário indicando a falha.
+
+    Exemplo de retorno em caso de erro:
+        {"status": "erro", "mensagem": "Tracker não disponível."}
+    """
     HOST = 'localhost'
     PORT = 5000
     try:    
@@ -49,7 +74,22 @@ def send_to_tracker(data):
     except ConnectionRefusedError:
         print("Não foi possível iniciar o Tracker. ele já está ativo?")
         return {"status":"erro","mensagem":"Tracker não disponível."}
-def start_heartbeat(username):
+    
+def start_heartbeat(username) -> None:
+    """
+    Inicia uma thread em segundo plano que envia um sinal de "heartbeat" periódico ao tracker.
+
+    Após um breve atraso inicial (1 segundo), a thread envia continuamente uma requisição
+    contendo o nome de usuário ao tracker para indicar que o cliente ainda está ativo.
+
+    - Se o tracker responder com algo diferente de {"status": "ok"}, o cliente assume que foi desconectado por inatividade.
+    - Em caso de falha de conexão ou resposta inválida, o cliente é encerrado imediatamente.
+
+    O intervalo entre os heartbeats está configurado para 60 segundos.
+
+    Parâmetros:
+        username (str): Nome de usuário que será incluído nas mensagens de heartbeat.
+    """
     def loop():
         time.sleep(1)  # <- aqui: espera o login ser processado no Tracker
         while True:
@@ -65,7 +105,27 @@ def start_heartbeat(username):
                 os._exit(1)
     threading.Thread(target=loop, daemon=True).start()
 
-def salvar_mensagem(usuario_remetente,destinatario,mensagem,caminho_arquivo = "messages_list.json"):
+def salvar_mensagem(usuario_remetente,destinatario,mensagem,caminho_arquivo = "messages_list.json") -> None:
+    """
+    Salva uma mensagem em um arquivo JSON contendo uma lista de mensagens.
+
+    Cada mensagem é armazenada como um dicionário com os campos:
+    - "usuario_remetente": remetente da mensagem,
+    - "usuario_destinatario": destinatário da mensagem,
+    - "mensagem": o conteúdo da mensagem.
+
+    Caso o arquivo JSON já exista, a função carrega a lista atual de mensagens e adiciona a nova mensagem.
+    Se o arquivo não existir, estiver vazio ou apresentar erro de formato, cria uma nova lista.
+
+    Parâmetros:
+        usuario_remetente (str): Nome do usuário que envia a mensagem.
+        destinatario (str): Nome do usuário destinatário da mensagem.
+        mensagem (str): Conteúdo da mensagem a ser salva.
+        caminho_arquivo (str, opcional): Caminho do arquivo JSON onde as mensagens serão salvas. Padrão é "messages_list.json".
+
+    Observações:
+        - Se o arquivo apresentar conteúdo inválido, ele será sobrescrito com uma nova lista contendo a mensagem atual.
+    """
     registro_mensagem = {
         "usuario_remetente":usuario_remetente,
         "usuario_destinatario":destinatario,
@@ -97,7 +157,21 @@ def salvar_mensagem(usuario_remetente,destinatario,mensagem,caminho_arquivo = "m
 
         
 
-def is_tracker_running(host = 'localhost',port=5000):
+def is_tracker_running(host = 'localhost',port=5000) -> bool:
+    """
+    Verifica se o tracker está ativo e aceitando conexões na máquina e porta especificadas.
+
+    Tenta abrir uma conexão TCP com o host e porta indicados.
+    Se conseguir conectar, assume que o tracker está rodando e retorna True.
+    Se a conexão for recusada, retorna False.
+
+    Parâmetros:
+        host (str): Endereço do servidor tracker (padrão 'localhost').
+        port (int): Porta TCP do servidor tracker (padrão 5000).
+
+    Retorna:
+        bool: True se o tracker está rodando, False caso contrário.
+    """
     try:
         s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
         s.connect((host,port))
@@ -106,7 +180,10 @@ def is_tracker_running(host = 'localhost',port=5000):
     except ConnectionRefusedError:
         return False
 
-def interactiveMenu_1():
+def interactiveMenu_1() -> bool:
+    """
+    Menu para o usuário
+    """
     usuario_logado = None
     chat_port = 5000 + random.randint(1,1000)
     os.system('cls||clear')
@@ -337,40 +414,43 @@ def interactiveMenu_1():
             os.system('cls||clear')
 
 
+def init():
+    while True:
+        print('Bem vindo ao WhatsApp#2!')
+        print('Gostaria de Iniciar o Tracker?\n 1- Sim, 0 - Não')
 
-while True:
-    print('Bem vindo ao WhatsApp#2!')
-    print('Gostaria de Iniciar o Tracker?\n 1- Sim, 0 - Não')
+        ans = int(input())
+        if ans == 1:
+            if is_tracker_running():
+                print("Tracker já está rodando.")
+            else:
+                print("Não está rodando ainda")
+                launch_tracker_cross_platform()
+                print("Tracker Inicializado!")
 
-    ans = int(input())
-    if ans == 1:
-        if is_tracker_running():
-            print("Tracker já está rodando.")
-        else:
-            print("Não está rodando ainda")
-            launch_tracker_cross_platform()
-            print("Tracker Inicializado!")
-
-        print("=====BEM VINDO======\nAO WHATSAPP#2")
-        result = interactiveMenu_1()
-        if result:
-            print("Continue!")
-            a = int(input())
-        else:
-            print("End of Program")
-            break
-    else:
-        os.system('cls||clear')
-        print("Gostaria de se comportar como um cliente?\n")
-        ans2 = int(input(" 1- Sim, 0 - Não\n"))
-        if (ans2==1):
-            #print("Implementar verificação de existência de Tracker Aitvo!")
             print("=====BEM VINDO======\nAO WHATSAPP#2")
             result = interactiveMenu_1()
-            if(result):
+            if result:
                 print("Continue!")
                 a = int(input())
             else:
                 print("End of Program")
                 break
-        os.system('cls||clear')
+        else:
+            os.system('cls||clear')
+            print("Gostaria de se comportar como um cliente?\n")
+            ans2 = int(input(" 1- Sim, 0 - Não\n"))
+            if (ans2==1):
+                #print("Implementar verificação de existência de Tracker Aitvo!")
+                print("=====BEM VINDO======\nAO WHATSAPP#2")
+                result = interactiveMenu_1()
+                if(result):
+                    print("Continue!")
+                    a = int(input())
+                else:
+                    print("End of Program")
+                    break
+            os.system('cls||clear')
+
+if __name__ == "__main__":
+    init()
