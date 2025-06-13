@@ -4,7 +4,19 @@ import json
 from datetime import datetime
 import os
 
-def start_peer_server(chat_port, meu_username):
+def start_peer_server(chat_port, meu_username) -> None:
+    """
+    Inicia o servidor de um peer para receber mensagens diretas de outros peers.
+
+    - Escuta na porta especificada por `chat_port`.
+    - Para cada conexão recebida, uma nova thread é criada para tratar a mensagem.
+    - Exibe no terminal a mensagem recebida, junto do remetente e timestamp.
+
+    Args:
+        chat_port (int): Porta local na qual o peer escutará mensagens.
+        meu_username (str): Nome de usuário do peer atual (não usado diretamente aqui,
+                            mas pode ser útil para logs ou verificações futuras).
+    """
     def handle_connection(conn, addr):
         try:
             buffer = b""
@@ -35,7 +47,20 @@ def start_peer_server(chat_port, meu_username):
     threading.Thread(target=server_loop, daemon=True).start()
 
 
-def send_message_to_peer(ip, port, from_user, to_user, text):
+def send_message_to_peer(ip, port, from_user, to_user, text) -> None:
+    """
+    Envia uma mensagem para um peer específico via conexão TCP.
+
+    Args:
+        ip (str): Endereço IP do peer destinatário.
+        port (int): Porta TCP do peer destinatário.
+        from_user (str): Nome do usuário remetente.
+        to_user (str): Nome do usuário destinatário.
+        text (str): Conteúdo da mensagem a ser enviada.
+
+    O formato da mensagem enviada é um JSON contendo remetente, destinatário,
+    texto da mensagem e timestamp do envio.
+    """
     mensagem_json = {
         "from": from_user,
         "to": to_user,
@@ -52,7 +77,18 @@ def send_message_to_peer(ip, port, from_user, to_user, text):
     except Exception as e:
         print(f"Erro ao enviar mensagem: {e}")
 
-def announce_files (username):
+def announce_files (username) -> None:
+    """
+    Permite ao usuário selecionar arquivos .py locais para anunciar ao tracker.
+
+    - Lista todos os arquivos .py no diretório atual.
+    - Solicita ao usuário que escolha quais arquivos deseja anunciar, indicando índices.
+    - Envia a lista selecionada ao tracker na ação "update_files".
+    - Recebe e exibe a resposta do servidor.
+
+    Args:
+        username (str): Nome de usuário que está anunciando os arquivos.
+    """
     print("\n Escolha quais arquivos para anunciar (apenas arquivos.py são listados)")
     all_files = [f for f in os.listdir('.') if os.path.isfile(f) and f.endswith('.py')]
 

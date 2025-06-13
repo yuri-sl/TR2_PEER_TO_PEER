@@ -14,7 +14,16 @@ files = {}
 avaiableForChat = []
 chunks = {}
 
-def carregar_usuarios():
+def carregar_usuarios() -> dict:
+    """
+    Carrega a lista de usuários a partir de um arquivo JSON.
+
+    - Se o arquivo especificado por USER_LIST_PATH não existir, ele será criado com um dicionário vazio.
+    - Se o arquivo existir, seu conteúdo será carregado e retornado como um dicionário.
+
+    Returns:
+        dict: Dicionário contendo os usuários carregados do arquivo JSON.
+    """
     if not os.path.exists(USER_LIST_PATH):
         f = open(USER_LIST_PATH,'w')
         json.dump({},f)
@@ -23,11 +32,34 @@ def carregar_usuarios():
         print("O Arquivo existe!")
         return json.load(f)
 
-def salvar_usuarios(usuario_input):
+def salvar_usuarios(usuario_input) -> None:
+    """
+    Salva os dados dos usuários em um arquivo JSON.
+
+    Args:
+        usuario_input (dict): Dicionário contendo os dados dos usuários a serem salvos.
+
+    O conteúdo é escrito com indentação para melhor legibilidade.
+    """
     f = open(USER_LIST_PATH,'w')
     json.dump(usuario_input,f,indent=4)
 
-def registrar_usuario(username, password):
+def registrar_usuario(username, password) -> tuple[bool, str]:
+    """
+    Registra um novo usuário no sistema.
+
+    Verifica se o nome de usuário já existe. Caso não exista, salva o novo usuário
+    com a senha criptografada usando SHA-256.
+
+    Args:
+        username (str): Nome de usuário a ser registrado.
+        password (str): Senha correspondente ao usuário.
+
+    Returns:
+        tuple[bool, str]: Um par (sucesso, mensagem), onde:
+            - sucesso (bool): Indica se o registro foi bem-sucedido.
+            - mensagem (str): Mensagem explicando o resultado da operação.
+    """
     usarios_sistema = carregar_usuarios()
     if username in usarios_sistema:
         msg = "Usuário já existe cadastrado no sistema!"
@@ -38,7 +70,19 @@ def registrar_usuario(username, password):
     msg = "Usuário registrado com sucesso!"
     return True,msg
 
-def login(username,password):
+def login(username,password) -> tuple[bool, str]:
+    """
+    Realiza o login de um usuário verificando se as credenciais estão corretas.
+
+    Args:
+        username (str): Nome de usuário a ser autenticado.
+        password (str): Senha correspondente ao usuário.
+
+    Returns:
+        tuple[bool, str]: Um par (sucesso, mensagem), onde:
+            - sucesso (bool): Indica se o login foi bem-sucedido.
+            - mensagem (str): Mensagem explicando o resultado da tentativa de login.
+    """
     usuarios_sistema = carregar_usuarios()
     if (username not in usuarios_sistema):
         return False, "Usuário não encontrado no sistema!"
@@ -49,17 +93,44 @@ def login(username,password):
         return False,"senha incorreta!"
     return True,"Login Efetuado com sucesso!"
 
-def carregar_arquivos():
+def carregar_arquivos() -> dict:
+    """
+    Carrega os dados dos arquivos a partir de um arquivo JSON.
+
+    - Se o arquivo especificado por FILES_LIST_PATH não existir, retorna um dicionário vazio.
+    - Caso o arquivo exista, seu conteúdo JSON é carregado e retornado como um dicionário.
+
+    Returns:
+        dict: Dicionário contendo os dados carregados do arquivo JSON.
+    """
     if not os.path.exists(FILES_LIST_PATH):
         return {}
     f = open(FILES_LIST_PATH,'r')
     return json.load(f)
 
-def salvar_arquivos(dados):
+def salvar_arquivos(dados) -> None:
+    """
+    Salva os dados dos arquivos em um arquivo JSON.
+
+    Args:
+        dados (dict): Dicionário contendo os dados que devem ser persistidos.
+
+    O conteúdo é salvo com indentação para facilitar a leitura manual do arquivo.
+    """
     f = open(FILES_LIST_PATH,'r')
     json.dump(dados, f, indent=4)
 
-def list_clients():
+def list_clients() -> list[str]:
+    """
+    Lista os nomes dos usuários cadastrados no sistema.
+
+    Verifica se o arquivo de usuários existe e, em caso afirmativo,
+    exibe e retorna a lista de nomes de usuários.
+
+    Returns:
+        list[str]: Lista com os nomes dos usuários cadastrados.
+                   Retorna uma lista vazia caso o arquivo não exista.
+    """
     if not os.path.exists(USER_LIST_PATH):
         print("Arquivo de usuários não encontrado.")
         return {}
@@ -83,7 +154,10 @@ def map_files_to_peers(peers):
             arquivo_para_peers[arquivo].append(peer)
     return arquivo_para_peers
 """
-def protocolos_base(mensagem, client_socket):
+def protocolos_base(mensagem, client_socket) -> None:
+    """
+    Protocolos para clientes que não estão logados ou cadastrados
+    """
     if mensagem['action'] == 'register':    # Se registrar 
         username = mensagem["username"]
         password = mensagem["password"]
@@ -108,7 +182,10 @@ def protocolos_base(mensagem, client_socket):
         resposta = {"status": "erro", "mensagem": "Ação desconhecida."}
         client_socket.sendall(json.dumps(resposta).encode())            # Caso nenhuma das acoes tenha sido aceitas
 
-def protocolos_restritos(mensagem, client_socket):  # Apenas se tiver login
+def protocolos_restritos(mensagem, client_socket) -> None:  # Apenas se tiver login
+    """
+    Protocolos para clientes que estão logados
+    """
     if mensagem['action'] == 'list_clients':        # Saber quem sao os peers ativos
         #peers = list_clients()
         peers = list(session.keys())
@@ -191,7 +268,21 @@ def protocolos_restritos(mensagem, client_socket):  # Apenas se tiver login
     else:
         resposta = {"status": "erro", "mensagem": "Ação desconhecida ou não esta logado."}
         client_socket.sendall(json.dumps(resposta).encode())
-def handle_clients(client_socket, addr):
+def handle_clients(client_socket, addr) -> None:
+    """
+    Manipula a conexão de um cliente.
+
+    Essa função:
+    - Recebe uma mensagem completa do cliente via socket;
+    - Decodifica a mensagem como JSON;
+    - Identifica a ação desejada (login, registro, exit, etc);
+    - Encaminha o processamento para os protocolos apropriados;
+    - Fecha a conexão ao final da comunicação.
+
+    Args:
+        client_socket (socket.socket): O socket da conexão com o cliente.
+        addr (tuple): Endereço IP e porta do cliente (host, port).
+    """
     try:
         buffer = b""                        # Acumula a mensagem recebida
         while True:
@@ -221,7 +312,13 @@ def handle_clients(client_socket, addr):
     except Exception as e:                                          # Caso nao consiga conectar com o cliente
         print(f"Erro na conexão com {addr}: {e}")
 
-def heartbeat(s):
+def heartbeat(s) -> None:
+    """
+    Manipula o heartbeat de um cliente.
+
+    Args:
+        s : nome do cliente
+    """
     while True:
         time.sleep(1)
         for u in list(s.keys()):                                    # copia as chaves para evitar erro de modificação durante iteração
@@ -233,7 +330,16 @@ def heartbeat(s):
                 s[u] += 1                                           # Incrementa contador de tempo
                 print(f"{u,s[u]}")                                  # Retirar depois
 
-def start_tracker():                                                    # Inicia o server
+def start_tracker() -> None:                                        # Inicia o server
+    """
+    Inicia o servidor tracker responsável por coordenar os peers.
+
+    - Cria uma thread em segundo plano para monitoramento (heartbeat) das sessões ativas.
+    - Inicia um servidor TCP que escuta por conexões de clientes (peers).
+    - Para cada cliente que se conecta, uma nova thread é criada para lidar com a comunicação.
+
+    Essa função roda indefinidamente até que o processo seja interrompido.
+    """
     heartbeatpeers = threading.Thread(target=heartbeat, args=(session,), daemon = True) # Uma thread comeca a resolver 
     heartbeatpeers.start()                                              # Começa a thread
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)   # Conexão TCP

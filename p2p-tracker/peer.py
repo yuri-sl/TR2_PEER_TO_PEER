@@ -4,20 +4,23 @@ import os
 CHUNK_SIZE = 1024 * 1024  # 1MB modificar
 
 def calculate_checksum(data) -> str:
-    """ Calcula o checksum SHA-256 de um bloco de dados """
+    """ Calcula o checksum SHA-256 de uma chunk"""
     return hashlib.sha256(data).hexdigest()
 
 def compute_file_checksum(arquivo) -> str:
-    """ Calcula o checksum SHA-256 de um arquivo inteiro """
+    """ Calcula o checksum SHA-256 de um arquivo todo"""
     with open(arquivo, "rb") as a:
         data = a.read()
     return calculate_checksum(data)
 
 def split_file(arquivo):
     """
-    Divide um arquivo em chunks de 1MB, calcula seus checksums e atribui um identificador único para cada bloco.
-    Cada chunk é identificado por um número sequencial (index) utilizado também no nome do arquivo do chunk.
-    Retorna uma lista de tuplas: (chunk_id, chunk_name, checksum)
+    Fragmenta um arquivo em blocos de 1KB, calcula o checksum SHA-256 de cada bloco e atribui um identificador único a eles.
+    Cada bloco é numerado sequencialmente (index), o que também é usado para nomear o arquivo correspondente.
+    Retorna uma lista de tuplas no formato: (chunk_id, nome_do_chunk, checksum).
+
+    Retorna:
+        list of (int, str, str): Uma lista de tuplas contendo (index, nome_do_chunk, checksum)
     """
     chunks = []
     output_dir = "chunkscriados"
@@ -38,9 +41,16 @@ def split_file(arquivo):
 
 def register_chunks(arquivos,usuario_logado) -> dict:
     """
-    Registra os chunks de um arquivo no tracker.
-    Cada chunk é uma tupla (chunk_id, chunk_name, checksum, hash_chunk).
-    O checksum final do arquivo (se calculado) também é enviado.
+    Registra os blocos (chunks) de um arquivo no tracker.
+    Cada chunk é representado por uma tupla contendo: (chunk_id, nome_do_chunk, checksum, hash_chunk).
+    Se o checksum final do arquivo for calculado, ele também será incluído no envio.
+    
+    Retorna:
+        {
+        "action": "register_chunks",
+        "username": usuario_logado, -> str
+        "chunk" : chunks -> list of (int, str, str)
+        }
     """
     chunks = []
     for a in arquivos:
@@ -54,8 +64,8 @@ def register_chunks(arquivos,usuario_logado) -> dict:
 
 def assemble_file(original_file_name, chunk_dir="chunkscriados/", output_file=None) -> None:
     """
-    Reconstrói o arquivo original a partir dos seus chunks.
-    Procura por arquivos no formato '{original_file_name}.chunkX' dentro da pasta especificada.
+    Reconstrói o arquivo original a partir dos seus blocos (chunks).
+    Busca na pasta especificada por arquivos nomeados no formato: '{original_file_name}.chunkX'.
     """
     if output_file is None:
         output_file = f"{original_file_name}.txt.assembled"
