@@ -13,6 +13,7 @@ session = {}
 files = {}
 avaiableForChat = []
 chunks = {}
+checksunsarq = {}
 
 def carregar_usuarios() -> dict:
     """
@@ -231,8 +232,45 @@ def protocolos_restritos(mensagem, client_socket) -> None:  # Apenas se tiver lo
         client_socket.sendall(json.dumps(resposta).encode())
     elif mensagem['action'] == 'register_chunks':
         try:
+            global chunks
             chunks[mensagem['username']] = mensagem['chunk']
             resposta = {"status": "ok", "mensagem": f"chunk(s) anunciado(s) com sucesso!"}
+            client_socket.sendall(json.dumps(resposta).encode())
+        except:
+            resposta = {"status": "erro", "mensagem": f"Usuário não está logado"}
+            client_socket.sendall(json.dumps(resposta).encode())
+    elif mensagem['action'] == 'register_arq':
+        try:
+            global checksunsarq
+            print(mensagem['checksunsarq'])
+            if mensagem['username'] not in checksunsarq:
+                checksunsarq[mensagem['username']] = []
+            checksunsarq[mensagem['username']] = mensagem['checksunsarq']
+            resposta = {"status": "ok", "mensagem": f"arquivo registrado com sucesso!"}
+            client_socket.sendall(json.dumps(resposta).encode())
+            print(mensagem['checksunsarq'])
+        except:
+            resposta = {"status": "erro", "mensagem": f"Usuário não está logado"}
+            client_socket.sendall(json.dumps(resposta).encode())
+    elif mensagem['action'] == 'reassembly':
+        try:
+            lista = checksunsarq[mensagem['username']]
+            arquivo = mensagem['arquivo']
+            arquivo += ".txt"
+            for a in lista:
+                print(a,a[0],a[1])
+                print("\n")
+                print(arquivo,a[0])
+                print("\n")
+                if a[0] == arquivo:
+                    print("booooooooooooooooo")
+                    print
+                    checksum = a[1]
+                    resposta = {"status": "ok", "mensagem": f"chunk(s) anunciado(s) com sucesso!","checksum": checksum}
+                    client_socket.sendall(json.dumps(resposta).encode())
+                    return
+            resposta = {"status": "erro", "mensagem": f"arquivo nao existe"}
+            print(resposta)
             client_socket.sendall(json.dumps(resposta).encode())
         except:
             resposta = {"status": "erro", "mensagem": f"Usuário não está logado"}
