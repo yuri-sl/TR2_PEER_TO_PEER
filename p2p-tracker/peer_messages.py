@@ -3,7 +3,55 @@ import threading
 import json
 from datetime import datetime
 import os
-from main_file import *
+
+lista = []
+
+def send_to_tracker(data) -> dict:
+    """
+    Envia dados codificados em JSON para o tracker via socket TCP e aguarda uma resposta.
+
+    Conecta-se ao tracker localizado em 'localhost' na porta 5000. Os dados enviados devem ser serializáveis em JSON.
+
+    Após o envio completo, a função aguarda a resposta do tracker, que também deve estar em formato JSON.
+
+    Retorna:
+        dict: A resposta decodificada do tracker, convertida de JSON para dicionário Python.
+
+    Em caso de falha de conexão (por exemplo, se o tracker não estiver em execução),
+    imprime uma mensagem de erro e retorna um dicionário indicando a falha.
+
+    Exemplo de retorno em caso de erro:
+        {"status": "erro", "mensagem": "Tracker não disponível."}
+    """
+    HOST = 'localhost'
+    PORT = 5000
+    try:    
+        s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+        s.connect((HOST,PORT))
+        s.sendall(json.dumps(data).encode())
+        s.shutdown(socket.SHUT_WR)  # Indica que terminou de enviar dados
+        buffer = b""
+        while True:
+            chunk = s.recv(4096)
+            if not chunk:
+                break
+            buffer += chunk
+        s.close()
+        return json.loads(buffer.decode())
+    except ConnectionRefusedError:
+        print("Não foi possível iniciar o Tracker. ele já está ativo?")
+        return {"status":"erro","mensagem":"Tracker não disponível."}
+
+def listar_arquivos_em_pasta(pasta, extensao=None):
+    arquivos = []
+
+    for nome in os.listdir(pasta):
+        caminho_completo = os.path.join(pasta, nome)
+        if os.path.isfile(caminho_completo):
+            if extensao is None or nome.endswith(extensao):
+                arquivos.append(nome)
+    
+    return arquivos
 
 def start_peer_server(chat_port, meu_username) -> None:
     """
@@ -28,11 +76,14 @@ def start_peer_server(chat_port, meu_username) -> None:
                 buffer += chunk
 
             mensagem = json.loads(buffer.decode())
-            print(f"\n📩 Nova mensagem de {mensagem['from']}:")
-            print(f"   {mensagem['message']} ({mensagem['timestamp']})\n")
             want = mensagem["chunk"]
             if want:
                 entregar_chunk_desejado(mensagem)
+                print(f"\n📩 Nova mensagem de {mensagem['from']}:")
+                print(f"   {mensagem['message']} ({mensagem['timestamp']})\n")
+            else:
+                global lista
+                lista = mensagem['message']
         except Exception as e:
             print(f"Erro ao receber mensagem: {e}")
         finally:
@@ -58,7 +109,6 @@ def entregar_chunk_desejado(mensagem):
         "username": user
     }
     resposta_start_chat = send_to_tracker(dados_start_chat)
-    chunk_desejado = mensagem["message"]
     if resposta_start_chat.get("status")=="ok":
         peer_info = resposta_start_chat.get("mensagem",{})
         peer_ip = peer_info.get("ip")
@@ -66,8 +116,18 @@ def entregar_chunk_desejado(mensagem):
         wantchunk = False
         print(f"Iniciando a conversa com {user} em {peer_ip}:{peer_port}")
         print(f"Digite a sua mensagem para falar com {user}:")
-        texto = input("Digite sua mensagem:")
-        send_message_to_peer(peer_ip, peer_port, usuario_logado, user, texto, wantchunk)
+        #texto = input("Digite sua mensagem:")
+        chunk_desejado = mensagem["message"]
+        pasta = "chunkscriados"
+        all_files = listar_arquivos_em_pasta(pasta, extensao=None)
+        for f in all_files:
+            if f == chunk_desejado:
+                caminho_arquivo = os.path.join(pasta, f)
+                with open(caminho_arquivo, "r", encoding="utf-8") as arquivo:
+                    conteudo = arquivo.read()  # lê o conteúdo binário inteiro
+                break  # encontrou, não precisa continuar
+        send_message_to_peer(peer_ip, peer_port, usuario_logado, user, conteudo, wantchunk)
+
 def send_message_to_peer(ip, port, from_user, to_user, text, wantchunk) -> None:
     """
     Envia uma mensagem para um peer específico via conexão TCP.

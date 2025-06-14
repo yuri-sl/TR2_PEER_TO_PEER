@@ -273,16 +273,11 @@ def protocolos_restritos(mensagem, client_socket) -> None:  # Apenas se tiver lo
         peers_que_possuem = []
 
         for usuario, lista_chunks in chunks.items():
-            print(usuario,lista_chunks)
             for grupo_chunks in lista_chunks:  # pois você mandou como lista de listas
-                print(grupo_chunks)
                 for chunk_info in grupo_chunks:  # cada chunk_info é tipo [número, caminho, hash]
-                    print(chunk_info)
                     caminho = chunk_info[1]
-                    print(caminho)
                     if chunk_desejado in caminho:# como funciona?
                         # Se quiser retornar só o nome do usuário por enquanto:
-                        print("okakkkkkkkkkkkayyyyyy")
                         peers_que_possuem.append(usuario)
                         break  # já achou nesse usuário, pode parar
 

@@ -39,42 +39,6 @@ def launch_tracker_cross_platform() -> None:
         else:
             subprocess.Popen(['python3', 'tracker.py'], stderr=null)
 
-def send_to_tracker(data) -> dict:
-    """
-    Envia dados codificados em JSON para o tracker via socket TCP e aguarda uma resposta.
-
-    Conecta-se ao tracker localizado em 'localhost' na porta 5000. Os dados enviados devem ser serializáveis em JSON.
-
-    Após o envio completo, a função aguarda a resposta do tracker, que também deve estar em formato JSON.
-
-    Retorna:
-        dict: A resposta decodificada do tracker, convertida de JSON para dicionário Python.
-
-    Em caso de falha de conexão (por exemplo, se o tracker não estiver em execução),
-    imprime uma mensagem de erro e retorna um dicionário indicando a falha.
-
-    Exemplo de retorno em caso de erro:
-        {"status": "erro", "mensagem": "Tracker não disponível."}
-    """
-    HOST = 'localhost'
-    PORT = 5000
-    try:    
-        s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-        s.connect((HOST,PORT))
-        s.sendall(json.dumps(data).encode())
-        s.shutdown(socket.SHUT_WR)  # Indica que terminou de enviar dados
-        buffer = b""
-        while True:
-            chunk = s.recv(4096)
-            if not chunk:
-                break
-            buffer += chunk
-        s.close()
-        return json.loads(buffer.decode())
-    except ConnectionRefusedError:
-        print("Não foi possível iniciar o Tracker. ele já está ativo?")
-        return {"status":"erro","mensagem":"Tracker não disponível."}
-    
 def start_heartbeat(username) -> None:
     """
     Inicia uma thread em segundo plano que envia um sinal de "heartbeat" periódico ao tracker.
@@ -180,7 +144,7 @@ def is_tracker_running(host = 'localhost',port=5000) -> bool:
     except ConnectionRefusedError:
         return False
 
-def pedir_chunk_mensagem(user,usuario_logado):
+def pedir_chunk_mensagem(user,usuario_logado,chunk_desejado):
     dados_start_chat = {
         "action":"get_peer_info",
         "username": user
@@ -194,17 +158,16 @@ def pedir_chunk_mensagem(user,usuario_logado):
         wantchunk = True
         print(f"Iniciando a conversa com {user} em {peer_ip}:{peer_port}")
         print(f"Digite a sua mensagem para falar com {user}:")
-        texto = input("Digite sua mensagem:")
-        send_message_to_peer(peer_ip, peer_port, usuario_logado, user, texto, wantchunk)
+        #texto = input("Digite sua mensagem:")
+        send_message_to_peer(peer_ip, peer_port, usuario_logado, user, chunk_desejado, wantchunk)
         #Escrevendo a mensagem em JSON
 
         registro_mensagem = {
             "usuario_remetente":usuario_logado,
             "usuario_destino": user,
-            "mensagem":texto
+            "mensagem": chunk_desejado
         }
         msgPath = "messages_list.json"
-        print("okkkkk")
     else:
         print("peer não está ativo")
 
@@ -467,11 +430,15 @@ def interactiveMenu_1() -> bool:
                 if resposta["status"] != "ok" or not resposta.get("peers"):
                     print(f"Chunk '{chunk_desejado}' indisponível no momento.")
                 else:
+                    print(f"Peers que tem o chunk desejado:")
                     print(resposta["peers"])
                     peers = resposta["peers"]
                     for p in peers:
-                        pedir_chunk_mensagem(p,usuario_logado)
-                        print("okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
+                        pedir_chunk_mensagem(p,usuario_logado,chunk_desejado)
+                        #time.sleep(0.5)
+                        #arquivo_recebido = lista.pop()
+                        #verificar_arquivo(chunk_desejado, arquivo_recebido, checksum)
+                        print("arquivo recebido")
             except:
                 print("deu erro")
             input("Pressione Enter para continuar")

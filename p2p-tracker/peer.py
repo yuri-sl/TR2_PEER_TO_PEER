@@ -104,5 +104,17 @@ def register_arquivos(arquivos,usuario_logado) -> list[str]:
     }
     return dados
 
-def pedir_chunks(chunk_desejado, usuario_logado):
-    pass
+def verificar_arquivo(nomechunk, conteudo, cs):
+    checksum = calculate_checksum(conteudo)
+    if checksum == cs:
+        try:
+            with open(nomechunk, "wb") as f:
+                f.write(conteudo)
+            print(f"[✓] Arquivo '{nomechunk}' salvo com sucesso.")
+            return
+        except:
+            print("erro")
+    else:
+        print(f"[X] Checksum inválido para '{nomechunk}'. Esperado: {cs}, Obtido: {checksum}")
+
+
