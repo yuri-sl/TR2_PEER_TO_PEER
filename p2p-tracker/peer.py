@@ -104,5 +104,5 @@ def register_arquivos(arquivos,usuario_logado) -> list[str]:
     }
     return dados
 
-def pedir_chunks(chunk_desejado, usuario):
+def pedir_chunks(chunk_desejado, usuario_logado):
     pass

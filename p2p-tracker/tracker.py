@@ -258,23 +258,47 @@ def protocolos_restritos(mensagem, client_socket) -> None:  # Apenas se tiver lo
             arquivo = mensagem['arquivo']
             arquivo += ".txt"
             for a in lista:
-                print(a,a[0],a[1])
-                print("\n")
-                print(arquivo,a[0])
-                print("\n")
                 if a[0] == arquivo:
-                    print("booooooooooooooooo")
-                    print
                     checksum = a[1]
                     resposta = {"status": "ok", "mensagem": f"chunk(s) anunciado(s) com sucesso!","checksum": checksum}
                     client_socket.sendall(json.dumps(resposta).encode())
                     return
             resposta = {"status": "erro", "mensagem": f"arquivo nao existe"}
-            print(resposta)
             client_socket.sendall(json.dumps(resposta).encode())
         except:
             resposta = {"status": "erro", "mensagem": f"Usuário não está logado"}
             client_socket.sendall(json.dumps(resposta).encode())
+    elif mensagem["action"] == "quem_tem_chunk":
+        chunk_desejado = mensagem["chunk"]
+        peers_que_possuem = []
+
+        for usuario, lista_chunks in chunks.items():
+            print(usuario,lista_chunks)
+            for grupo_chunks in lista_chunks:  # pois você mandou como lista de listas
+                print(grupo_chunks)
+                for chunk_info in grupo_chunks:  # cada chunk_info é tipo [número, caminho, hash]
+                    print(chunk_info)
+                    caminho = chunk_info[1]
+                    print(caminho)
+                    if chunk_desejado in caminho:# como funciona?
+                        # Se quiser retornar só o nome do usuário por enquanto:
+                        print("okakkkkkkkkkkkayyyyyy")
+                        peers_que_possuem.append(usuario)
+                        break  # já achou nesse usuário, pode parar
+
+        if peers_que_possuem:
+            resposta = {
+                "status": "ok",
+                "peers": peers_que_possuem  # exemplo: ["usuario1", "usuario3"]
+            }
+        else:
+            resposta = {
+                "status": "erro",
+                "mensagem": f"Nenhum peer encontrado com o chunk '{chunk_desejado}'"
+            }
+
+        client_socket.sendall(json.dumps(resposta).encode())
+
 
 #       print("ação recebida!!!")
 #        asked_user = mensagem['username']

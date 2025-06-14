@@ -12,7 +12,7 @@ import shutil
 from peer import *
 
 menu_1 = "MENU PRINCIPAL \n1 - Registrar;\n2 - Login no Sistema;\n3 - Sair do sistema;"
-menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;"
+menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;\n11 - Pedir um chunk especifico;"
 
 
 def launch_tracker_cross_platform() -> None:
@@ -179,6 +179,34 @@ def is_tracker_running(host = 'localhost',port=5000) -> bool:
         return True
     except ConnectionRefusedError:
         return False
+
+def pedir_chunk_mensagem(user,usuario_logado):
+    dados_start_chat = {
+        "action":"get_peer_info",
+        "username": user
+    }
+    resposta_start_chat = send_to_tracker(dados_start_chat)
+
+    if resposta_start_chat.get("status")=="ok":
+        peer_info = resposta_start_chat.get("mensagem",{})
+        peer_ip = peer_info.get("ip")
+        peer_port = peer_info.get("port")
+        wantchunk = True
+        print(f"Iniciando a conversa com {user} em {peer_ip}:{peer_port}")
+        print(f"Digite a sua mensagem para falar com {user}:")
+        texto = input("Digite sua mensagem:")
+        send_message_to_peer(peer_ip, peer_port, usuario_logado, user, texto, wantchunk)
+        #Escrevendo a mensagem em JSON
+
+        registro_mensagem = {
+            "usuario_remetente":usuario_logado,
+            "usuario_destino": user,
+            "mensagem":texto
+        }
+        msgPath = "messages_list.json"
+        print("okkkkk")
+    else:
+        print("peer não está ativo")
 
 def interactiveMenu_1() -> bool:
     """
@@ -426,6 +454,28 @@ def interactiveMenu_1() -> bool:
             input("Pressione Enter para continuar.")
             os.system('cls||clear')
             return False
+        elif operation == "11":
+            chunk_desejado = input("QUal chunk você qier?")
+            dados = {
+                "action": "quem_tem_chunk",
+                "username": usuario_logado,
+                "chunk": chunk_desejado
+            }
+            try:
+                resposta = send_to_tracker(dados)
+                print(resposta)
+                if resposta["status"] != "ok" or not resposta.get("peers"):
+                    print(f"Chunk '{chunk_desejado}' indisponível no momento.")
+                else:
+                    print(resposta["peers"])
+                    peers = resposta["peers"]
+                    for p in peers:
+                        pedir_chunk_mensagem(p,usuario_logado)
+                        print("okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
+            except:
+                print("deu erro")
+            input("Pressione Enter para continuar")
+            os.system('cls||clear')
         else:
             print("Opção inválida.")
             input("Pressione Enter para continuar")
