@@ -2,12 +2,24 @@ import hashlib
 import os
 import json
 
-def dividir_em_chunks(nome_arquivo, tamanho_chunk_kb=1024):
+def calculate_checksum(data) -> str:
+    """ Calcula o checksum SHA-256 de uma chunk"""
+    return hashlib.sha256(data).hexdigest()
+
+def compute_file_checksum(arquivo) -> str:
+    """ Calcula o checksum SHA-256 de um arquivo todo"""
+    with open(arquivo, "rb") as a:
+        data = a.read()
+    return calculate_checksum(data)
+
+def dividir_em_chunks(nome_arquivo, tamanho_chunk_kb=1024,usuario_logado: str=""):
     tamanho_chunk = tamanho_chunk_kb * 1024
     chunks_info = []
+    detentores_chunk = []
+    detentores_chunk.append(usuario_logado)
     nome_pasta = os.path.splitext(nome_arquivo)[0]
     nome_arquivo_json = nome_pasta + '.json'
-    caminho_pasta = f'chunkscriados/{nome_pasta}'
+    caminho_pasta = f'arquivos_cadastrados/chunkscriados/{nome_pasta}'
 
     if os.path.exists(caminho_pasta):
         print("O arquivo já está dividido em chunks!")
@@ -28,11 +40,14 @@ def dividir_em_chunks(nome_arquivo, tamanho_chunk_kb=1024):
                     chunk_file.write(dados)
 
                 chunk_hash = hashlib.sha256(dados).hexdigest()
+                checksum = calculate_checksum(dados)
 
                 chunks_info.append({
                     "nome": chunk_nome,
                     "indice": i,
-                    "hash": chunk_hash
+                    "hash": chunk_hash,
+                    "checksum":checksum,
+                    "detentores_chunk":detentores_chunk
                 })
                 i += 1
 
@@ -47,7 +62,7 @@ def dividir_em_chunks(nome_arquivo, tamanho_chunk_kb=1024):
         return None
 
 # Exemplo de uso
-chunks = dividir_em_chunks("bigfile.txt", 1024)
+chunks = dividir_em_chunks("testingChunksUpdate50.txt", 1024,"A")
 
 
 #arquivo = 'documento.txt'

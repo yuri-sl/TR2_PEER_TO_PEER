@@ -3,6 +3,7 @@ import threading
 import json
 from datetime import datetime
 import os
+from chunks_modules import *
 
 def start_peer_server(chat_port, meu_username) -> None:
     """
@@ -79,9 +80,9 @@ def send_message_to_peer(ip, port, from_user, to_user, text) -> None:
 
 def announce_files (username) -> None:
     """
-    Permite ao usuário selecionar arquivos .py locais para anunciar ao tracker.
+    Permite ao usuário selecionar arquivos .txt locais para anunciar ao tracker.
 
-    - Lista todos os arquivos .py no diretório atual.
+    - Lista todos os arquivos .txt no diretório atual.
     - Solicita ao usuário que escolha quais arquivos deseja anunciar, indicando índices.
     - Envia a lista selecionada ao tracker na ação "update_files".
     - Recebe e exibe a resposta do servidor.
@@ -89,11 +90,11 @@ def announce_files (username) -> None:
     Args:
         username (str): Nome de usuário que está anunciando os arquivos.
     """
-    print("\n Escolha quais arquivos para anunciar (apenas arquivos.py são listados)")
-    all_files = [f for f in os.listdir('.') if os.path.isfile(f) and f.endswith('.py')]
+    print("\n Escolha quais arquivos para anunciar (apenas arquivos.txt são listados)")
+    all_files = [f for f in os.listdir('.') if os.path.isfile(f) and f.endswith('.txt')]
 
     if not all_files:
-        print("Nenhum arquivo .py encontrado")
+        print("Nenhum arquivo .txt encontrado")
         return
     for idx, f in enumerate(all_files):
         print(f"[{idx}] {f}")
@@ -124,3 +125,48 @@ def announce_files (username) -> None:
         print("\n=> Resultado do anúncio:", resposta.get("mensagem"))
     except Exception as e:
         print("Erro ao anunciar arquivos:", e)
+def announce_file_novo(username, nome_arquivo):
+    dividir_em_chunks(nome_arquivo, 1024,username)
+    print("O arquivo foi divido em chunks!")
+    nome_pasta = os.path.splitext(nome_arquivo)[0]
+    print(f"O nome_pasta é:{nome_pasta}")
+    caminho_chunks = f"arquivos_cadastrados/chunkscriados/{nome_pasta}"
+    json_path = os.path.join(caminho_chunks, nome_pasta + ".json")
+
+    with open(nome_arquivo, 'rb') as f:
+        conteudo = f.read()
+        checksum = hashlib.sha256(conteudo).hexdigest()
+
+    with open(json_path, 'r') as jf:
+        chunks_info = json.load(jf)
+
+    nomes_chunks = [chunk['nome'] for chunk in chunks_info]
+
+    dados = {
+        "action": "announce_file",
+        "username": username,
+        "arquivo": {
+            "nome": nome_arquivo,
+            "checksum": checksum,
+            "chunks_path": caminho_chunks,
+            "chunks": nomes_chunks
+        }
+    }
+
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect(('localhost', 5000))
+        s.sendall(json.dumps(dados).encode())
+        s.shutdown(socket.SHUT_WR)
+
+        buffer = b""
+        while True:
+            chunk = s.recv(4096)
+            if not chunk:
+                break
+            buffer += chunk
+
+        resposta = json.loads(buffer.decode())
+        print("\n=> Resultado do anúncio:", resposta.get("mensagem"))
+    except Exception as e:
+        print("Erro ao anunciar arquivo:", e)

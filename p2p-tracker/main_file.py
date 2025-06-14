@@ -152,8 +152,8 @@ def salvar_mensagem(usuario_remetente,destinatario,mensagem,caminho_arquivo = "m
             print(f"Erro ao ler arquivo: {e}. Reiniciando arquivo.")
     mensagens_salvas.append(registro_mensagem)
 
-    f = open(caminho_arquivo,"w",encoding="utf-8")
-    json.dumps(mensagens_salvas,f,indent=4,ensure_ascii=False)
+    #f = open(caminho_arquivo,"w",encoding="utf-8")
+    #json.dumps(mensagens_salvas,f,indent=4,ensure_ascii=False)
 
         
 
@@ -218,7 +218,7 @@ def interactiveMenu_1() -> bool:
         elif operation == "2":
             username_login = input("Insira o seu nome de usuário: ")
             password = input("Insira sua senha: ")
-            arquivos = [f for f in os.listdir('.') if os.path.isfile(f) and f.endswith('.py')]
+            arquivos = [f for f in os.listdir('.') if os.path.isfile(f) and f.endswith('.txt')]
             dados = {
                 "action": "login",
                 "username": username_login,
@@ -357,6 +357,7 @@ def interactiveMenu_1() -> bool:
                 #print("Você provavavelmente foi desligado por inatividade")
                 input("Pressione Enter para continuar")
         elif operation == "7":
+            #Montar Aquivo
             # Caminho da pasta com os chunks
             pasta_chunks = "chunkscriados"
 
@@ -398,10 +399,12 @@ def interactiveMenu_1() -> bool:
             input("Pressione Enter para continuar")
             os.system('cls||clear')
         elif operation == "8":
-            announce_files(usuario_logado)
+            #8 - Anunciar arquivos manualmente
+            announce_file_novo(usuario_logado,"testeAnuncio.txt")
             input("Pressione Enter para continuar")
             os.system('cls||clear')
         elif operation == "9":
+            #Anunciar todos os chunks
             arquivos = [f for f in os.listdir('.') if os.path.isfile(f) and f.endswith('.txt')]
             print(arquivos)
             try:
@@ -416,6 +419,7 @@ def interactiveMenu_1() -> bool:
             input("Pressione Enter para continuar")
             os.system('cls||clear')
         elif operation == "10":
+            #Sair do sistema
             dados = {
                 "action": "exit",
                 "username": usuario_logado
