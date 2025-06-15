@@ -13,8 +13,58 @@ from peer import *
 from criar_arquivos import create_big_text_file
 
 menu_1 = "MENU PRINCIPAL \n1 - Registrar;\n2 - Login no Sistema;\n3 - Sair do sistema;"
-menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;\n11 - Criar um novo arquivo .txt"
+menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;\n11 - Criar um novo arquivo .txt\n12 - Requisição de Chunk"
 
+def requisitar_chunk(host, port,from_user, to_user, nome_chunk):
+    """
+    Envia um pedido de chunk para um peer específico via conexão TCP.
+
+    Args:
+        host (str): Endereço IP do peer destinatário.
+        port (int): Porta TCP do peer destinatário.
+        from_user (str) : Remetente
+        to_user (str): Nome do usuário destinatário.
+        nome_chunk (str): Nome do usuário remetente.
+        text (str): Conteúdo da mensagem a ser enviada.
+
+    O formato da mensagem enviada é um JSON contendo remetente, destinatário,
+    texto da mensagem e timestamp do envio.
+    """
+
+    pedidos = {
+        "from":from_user,
+        "to":to_user,
+        "nome_chunk":nome_chunk
+    }
+    print("Json gerado!")
+    print(pedidos)
+    print(f"A porta do host é: {port}")
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect((host, port))
+        print("Conexão bem sucedida!")
+        s.sendall(json.dumps(pedidos).encode())
+        s.shutdown(socket.SHUT_WR)
+        # Garante que a pasta de destino exista
+        os.makedirs("chunks_recebidos", exist_ok=True)
+
+        # Caminho completo do arquivo que será salvo
+        caminho_arquivo = os.path.join("chunks_recebidos", nome_chunk)
+        print(f"\n Requisição enviada para {to_user} ({host}:{port})✅\n")
+        # Recebe os dados do chunk e grava no disco
+        with open(caminho_arquivo, 'wb') as f:
+            while True:
+                dados = s.recv(4096)
+                print(dados)
+                if not dados:
+                    break
+                f.write(dados)
+
+        print(f"\n📥 Chunk '{nome_chunk}' recebido de {to_user} e salvo em '{caminho_arquivo}'. ✅")
+
+        s.close()
+    except Exception as e:
+        print(f"❌ Erro ao requisitar chunk: {e}")
 
 def launch_tracker_cross_platform() -> None:
     """
@@ -187,6 +237,7 @@ def interactiveMenu_1() -> bool:
     """
     usuario_logado = None
     chat_port = 5000 + random.randint(1,1000)
+    chunk_port = 5000 + random.randint(1,1000)
     os.system('cls||clear')
 
     while True:
@@ -225,7 +276,8 @@ def interactiveMenu_1() -> bool:
                 "username": username_login,
                 "password": password,
                 "files"   : arquivos,
-                "chat_port": chat_port
+                "chat_port": chat_port,
+                "chunk_port": chunk_port
             }
             resposta = send_to_tracker(dados)
             print("Resposta recebida!")
@@ -234,8 +286,8 @@ def interactiveMenu_1() -> bool:
             if resposta.get("status") == "ok":
                 print(resposta["mensagem"])
                 usuario_logado = username_login
-                start_peer_server(chat_port,usuario_logado)
-                start_heartbeat(usuario_logado)
+                start_peer_server(chat_port,chunk_port,usuario_logado)
+                #start_heartbeat(usuario_logado)
                 break  # break the first menu loop and go to the second
             if resposta.get("status") == "erro":
                 print("Erro - ",resposta['mensagem'])
@@ -249,11 +301,11 @@ def interactiveMenu_1() -> bool:
         else:
             print("Operação inválida!")
             input("Pressione Enter para continuar")
-            os.system('cls||clear')
+            #os.system('cls||clear')
 
     # Now you're logged in (usuario_logado is set)
     while usuario_logado:
-        os.system('cls||clear') #Limpar o diretório
+        #os.system('cls||clear') #Limpar o diretório
         print(menu_2)
         operation = input("insira a sua operação desejada:\n")
 
@@ -266,7 +318,7 @@ def interactiveMenu_1() -> bool:
                 resposta = send_to_tracker(dados)
                 print("Arquivos dos Peers Ativos: ")
                 print(resposta["mensagem"])
-                print(files)
+                #print(files)
                 input("Pressione Enter para continuar")
                 os.system('cls||clear')
             except:
@@ -280,6 +332,7 @@ def interactiveMenu_1() -> bool:
                     "username": usuario_logado
                 }
                 resposta = send_to_tracker(dados)
+                print()
                 print("Peers Ativos: ")
                 for peer in resposta.get("mensagem", []):
                     if(peer == usuario_logado):
@@ -298,6 +351,7 @@ def interactiveMenu_1() -> bool:
                     "username": usuario_logado
                 }
                 resposta = send_to_tracker(dados)
+                print()
                 print("Peers Ativos: ")
                 i = 0
                 for peer in resposta.get("mensagem", []):
@@ -452,6 +506,46 @@ def interactiveMenu_1() -> bool:
             file_name = file_name + ".txt"
             file_size = int(input("Digite o tamanho do arquivo (MB): "))
             create_big_text_file(file_name,file_size)
+        elif operation == "12":
+            #Baixar chunk
+            dados = {
+                "action": "list_clients",
+                "username": usuario_logado
+            }
+            resposta = send_to_tracker(dados)
+            print()
+            print("Peers Ativos: ")
+            i = 0
+            for peer in resposta.get("mensagem", []):
+                i += 1
+                if(peer == usuario_logado):
+                    print(f"[{i}] - {peer} (Você)")
+                else:
+                    print(f"[{i}] - {peer}")
+            accept_chat = input(("Gostaria de comunicar com um Peer?\n1-Sim    0-Não\n"))
+            if accept_chat == "1":
+                selected_user = input("Digite o nome do usuário que deseja pedir o arquivo\n")
+                i = 0
+                for user in resposta.get("mensagem",[]):
+                    i += 1
+                    if selected_user == user or str(i) == selected_user:
+                        print("Usuário Escolhido para conversar com sucesso!")
+                        dados_start_chunk = {
+                            "action":"get_peer_info_chunk",
+                            "username": user
+                        }
+                        resposta_start_chunk = send_to_tracker(dados_start_chunk)
+
+                        if resposta_start_chunk.get("status")=="ok":
+                            peer_info = resposta_start_chunk.get("mensagem",{})
+                            peer_ip = peer_info.get("ip")
+                            peer_port = peer_info.get("port")
+                            print(f"Iniciando a operação com {user} em {peer_ip}:{peer_port}")
+                            print(f"Digite o nome do arquivo para puxar de {user}:")
+                            texto = input("Digite seu arquivo:")
+                            requisitar_chunk(peer_ip,peer_port,usuario_logado,user,texto)
+            input("Pressione Enter para continuar")
+            os.system('cls||clear')
 
         else:
             print("Opção inválida.")

@@ -5,7 +5,7 @@ from datetime import datetime
 import os
 from chunks_modules import *
 
-def start_peer_server(chat_port, meu_username) -> None:
+def start_peer_server(chat_port,chunk_port, meu_username) -> None:
     """
     Inicia o servidor de um peer para receber mensagens diretas de outros peers.
 
@@ -18,6 +18,25 @@ def start_peer_server(chat_port, meu_username) -> None:
         meu_username (str): Nome de usuário do peer atual (não usado diretamente aqui,
                             mas pode ser útil para logs ou verificações futuras).
     """
+    def carregar_peers_com_chunks(caminho_json, meu_username):
+        if not os.path.exists(caminho_json):
+            return []
+
+        with open(caminho_json, 'r', encoding='utf-8') as f:
+            dados = json.load(f)
+
+        chunks_do_usuario = []
+        for info_arquivo in dados.values():
+            donos = info_arquivo.get('donos', [])
+            if meu_username in donos:
+                chunks = info_arquivo.get('chunks', [])
+                chunks_do_usuario.extend(chunks)
+
+        return chunks_do_usuario
+
+    caminho_json_chunks = "arquivos_cadastrados/arquivos_tracker.json"
+    chunks_disponiveis = carregar_peers_com_chunks(caminho_json_chunks, meu_username)
+
     def handle_connection(conn, addr):
         try:
             buffer = b""
@@ -44,9 +63,86 @@ def start_peer_server(chat_port, meu_username) -> None:
         while True:
             conn, addr = s.accept()
             threading.Thread(target=handle_connection, args=(conn, addr), daemon=True).start()
+    def chunk_server_loop():
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.bind(('0.0.0.0', chunk_port))
+        s.listen()
+        print(f"[Servidor Chunks] Aguardando requisições de chunks em localhost:{chunk_port}...\n")
+
+        while True:
+            conn, addr = s.accept()
+            threading.Thread(target=handle_chunk_request, args=(conn,), daemon=True).start()
+
+    def handle_chunk_request(conn):
+        try:
+            print("Request chegou!",flush=True)
+            requisicao = conn.recv(1024).decode()
+            requisicao_json = json.loads(requisicao)
+            nome_chunk = requisicao_json.get("nome_chunk")
+            user_to = requisicao_json["to"]
+            print(requisicao,flush=True)
+            print("O JSON DE REQUISIÇÃO É: ")
+            print(requisicao_json,flush=True)
+            #portador = requisicao[""]
+            print(f"Os chunks disponiveis no sistema são: {chunks_disponiveis}")
+            print(f"O nome_chunk usado na busca é: {nome_chunk}")
+            caminho_arquivo = nome_chunk.split('.')[0]
+            if nome_chunk in chunks_disponiveis:
+                #caminho = os.path.join("arquivos_cadastrados",user_to)
+                caminho = "arquivos_cadastrados"+"/"+"chunkscriados"+"/"+user_to+"/"+caminho_arquivo+"/"+nome_chunk
+                #caminho = os.path.join(caminho, nome_chunk)
+                print(f"O caminho na busca é: {caminho}")
+                if os.path.exists(caminho):
+                    with open(caminho, 'rb') as f:
+                        conn.sendfile(f)
+                    print(f"[✓] Chunk '{nome_chunk}' enviado com sucesso.")
+                else:
+                    conn.send(b"ERRO: Chunk nao encontrado.")
+            else:
+                conn.send(b"ERRO: Chunk nao disponivel.")
+        except Exception as e:
+            print(f"[Erro Chunk] {e}")
+        finally:
+            conn.close()
 
     threading.Thread(target=server_loop, daemon=True).start()
+    print(f"Chunks disponíveis carregados para {meu_username}: {chunks_disponiveis}")
+    if chunks_disponiveis:
+        threading.Thread(target=chunk_server_loop, daemon=True).start()
+        print("Os seus chunks foram carregados com sucesso!")
 
+def send_chunk_to_peer(ip, port, nome_chunk, destino_arquivo):
+    """
+    Solicita um chunk a um peer remoto e salva o conteúdo em um arquivo local.
+
+    Args:
+        ip (str): IP do peer que possui o chunk.
+        port (int): Porta de chunks do peer remoto.
+        nome_chunk (str): Nome do chunk que será solicitado.
+        destino_arquivo (str): Caminho do arquivo onde o chunk será salvo localmente.
+    """
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect((ip, port))
+
+        # Envia a requisição de chunk como JSON
+        requisicao = json.dumps({"chunk": nome_chunk})
+        s.sendall(requisicao.encode())
+        s.shutdown(socket.SHUT_WR)
+
+        # Recebe os dados do chunk
+        with open(destino_arquivo, 'wb') as f:
+            while True:
+                dados = s.recv(4096)
+                if not dados:
+                    break
+                f.write(dados)
+
+        print(f"[✓] Chunk '{nome_chunk}' recebido e salvo como '{destino_arquivo}'.")
+        s.close()
+
+    except Exception as e:
+        print(f"[Erro ao solicitar chunk] {e}")
 
 def send_message_to_peer(ip, port, from_user, to_user, text) -> None:
     """
@@ -126,7 +222,7 @@ def announce_files (username) -> None:
     except Exception as e:
         print("Erro ao anunciar arquivos:", e)
 def announce_file_novo(username, nome_arquivo):
-    dividir_em_chunks(nome_arquivo, 1024,username)
+    dividir_em_chunks_user(nome_arquivo, 1024,username)
     print("O arquivo foi divido em chunks!")
     nome_pasta = os.path.splitext(nome_arquivo)[0]
     print(f"O nome_pasta é:{nome_pasta}")

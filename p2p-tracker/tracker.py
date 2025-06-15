@@ -12,6 +12,7 @@ FILES_LIST_PATH = 'files.json'
 session = {}
 files = {}
 avaiableForChat = []
+avaiableForSeed = []
 chunks = {}
 checksunsarq = {}
 arquivos = {}  # Novo dicionário global com info de arquivos
@@ -180,8 +181,10 @@ def protocolos_base(mensagem, client_socket) -> None:
             session[username] = 0                                       # Inicia o tempo de heartbeat deste cliente
             files[username] = mensagem['files']
             user_port = mensagem['chat_port']
+            user_chunk_port = mensagem['chunk_port']
             user_ip = client_socket.getpeername()[0]
             avaiableForChat.append((username,user_ip,user_port))
+            avaiableForSeed.append((username,user_ip,user_chunk_port))
         print(f"O login obteve sucesso?{sucesso}, a mensagem dada foi: {msg}")
         resposta = {"status": "ok" if sucesso else "erro", "mensagem": msg}
         client_socket.sendall(json.dumps(resposta).encode())
@@ -212,8 +215,22 @@ def protocolos_restritos(mensagem, client_socket) -> None:
         if peer_found:
             resposta = {"status": "ok", "mensagem": peer_found}
         else:
-            resposta = {"status": "erro", "mensagem": "Usuário não está online para chat."}
+            resposta = {"status": "erro", "mensagem": "Usuário não está online para operação."}
         client_socket.sendall(json.dumps(resposta).encode())
+
+    elif mensagem['action'] == "get_peer_info_chunk":
+        asked_user = mensagem['username']
+        peer_found = None
+        for user, ip, port in avaiableForSeed:
+            if asked_user == user:
+                peer_found = {"ip": ip, "port": port}
+                break
+        if peer_found:
+            resposta = {"status": "ok", "mensagem": peer_found}
+        else:
+            resposta = {"status": "erro", "mensagem": "Usuário não está online para operação."}
+        client_socket.sendall(json.dumps(resposta).encode())
+        
 
     elif mensagem['action'] == 'heartbeat':
         user = mensagem['username']
