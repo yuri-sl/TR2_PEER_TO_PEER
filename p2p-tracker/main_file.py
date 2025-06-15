@@ -10,9 +10,10 @@ import platform
 import platform
 import shutil
 from peer import *
+from criar_arquivos import create_big_text_file
 
 menu_1 = "MENU PRINCIPAL \n1 - Registrar;\n2 - Login no Sistema;\n3 - Sair do sistema;"
-menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;"
+menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;\n11 - Criar um novo arquivo .txt"
 
 
 def launch_tracker_cross_platform() -> None:
@@ -400,7 +401,22 @@ def interactiveMenu_1() -> bool:
             os.system('cls||clear')
         elif operation == "8":
             #8 - Anunciar arquivos manualmente
-            announce_file_novo(usuario_logado,"testeAnuncio.txt")
+            print("\n Escolha quais arquivos para anunciar (apenas arquivos.txt são listados)")
+            all_files = [f for f in os.listdir('.') if os.path.isfile(f) and f.endswith('.txt')]
+
+            if not all_files:
+                print("Nenhum arquivo .txt encontrado")
+                return
+            for idx, f in enumerate(all_files):
+                print(f"[{idx}] {f}")
+            indices = input("Insira os índices seprandos por espaços. Ex: 0 2 3\n").split()
+            selected_files = [all_files[int(i)] for i in indices if i.isdigit() and int(i)<len(all_files)]
+
+            print("\n arquivos selecionados:")
+            for f in selected_files:
+                print(f" - {f}")
+                print(f"Selected_files está assim: {selected_files}")
+                announce_file_novo(usuario_logado,f)
             input("Pressione Enter para continuar")
             os.system('cls||clear')
         elif operation == "9":
@@ -430,6 +446,13 @@ def interactiveMenu_1() -> bool:
             input("Pressione Enter para continuar.")
             os.system('cls||clear')
             return False
+        elif operation == "11":
+            #Criar um novo arquivo.txt
+            file_name = input("Digite o nome do arquivo a ser criado: ")
+            file_name = file_name + ".txt"
+            file_size = int(input("Digite o tamanho do arquivo (MB): "))
+            create_big_text_file(file_name,file_size)
+
         else:
             print("Opção inválida.")
             input("Pressione Enter para continuar")
