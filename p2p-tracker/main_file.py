@@ -11,6 +11,7 @@ import platform
 import shutil
 from peer import *
 from criar_arquivos import create_big_text_file
+from datetime import datetime
 
 menu_1 = "MENU PRINCIPAL \n1 - Registrar;\n2 - Login no Sistema;\n3 - Sair do sistema;"
 menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;\n11 - Criar um novo arquivo .txt\n12 - Requisição de Chunk"
@@ -52,19 +53,80 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk):
         caminho_arquivo = os.path.join("chunks_recebidos", nome_chunk)
         print(f"\n Requisição enviada para {to_user} ({host}:{port})✅\n")
         # Recebe os dados do chunk e grava no disco
-        with open(caminho_arquivo, 'wb') as f:
+        while True:
+            #Primeiro ler os 4 bytes que indicam o tamanho do JSON
+            tamanho_json = int.from_bytes(s.recv(4),byteorder='big')
+            json_bytes = b''
+            while len(json_bytes) < tamanho_json:
+                parte = s.recv(tamanho_json - len(json_bytes))
+                if not parte:
+                    break
+                json_bytes += parte
+            json_data = json.loads(json_bytes.decode())
+            print("JSON recebido decodificado:", json_bytes.decode())
+            print("json_data:", json_data)
+
+            json_info = json_data[0]
+            nome_chunk = json_info['nome']
+            checksum_esperado = json_info['checksum']
+
+            #Lê o chunk e armazena em memória temporariamente
+            dados_recebidos = b''
             while True:
                 dados = s.recv(4096)
-                print(dados)
                 if not dados:
                     break
-                f.write(dados)
+                dados_recebidos += dados
+                #print("Recebendo chunk...")
 
-        print(f"\n📥 Chunk '{nome_chunk}' recebido de {to_user} e salvo em '{caminho_arquivo}'. ✅")
+            #Calcula o Hash
+            checksum_recebido = hashlib.sha256(dados_recebidos).hexdigest()
+            nome_diretorio = nome_chunk.split('.')[0]
 
-        s.close()
+            if checksum_recebido == checksum_esperado:
+                caminho_arquivo = "chunks_recebidos/"+from_user+"/"+nome_diretorio+"/"+nome_chunk
+                os.makedirs(os.path.dirname(caminho_arquivo), exist_ok=True)  # <-- CRIA diretórios se não existirem
+                with open(caminho_arquivo,'wb') as f:
+                    f.write(dados_recebidos)
+                print(f"\n📥 Chunk '{nome_chunk}' recebido de {to_user} e salvo em '{caminho_arquivo}'. ✅")
+                print(f"Checksum confirmado: {checksum_recebido}")
+
+                os.makedirs("reports", exist_ok=True)
+                with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
+                    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    report_file.write(f"[{timestamp}]  Chunk '{nome_chunk}' recebido de {to_user}. Checksum OK. ✅\n")
+
+            else:
+                print(f"\n❌ Erro: Checksum inválido para o chunk '{nome_chunk}'!")
+                print(f"Esperado: {checksum_esperado}")
+                print(f"Recebido: {checksum_recebido}")
+
+                # Report de falha
+                os.makedirs("reports", exist_ok=True)
+                with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
+                    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    report_file.write(f"[{timestamp}] ❌ ERRO no chunk '{nome_chunk}' de {to_user}. Checksum inválido.\n")
+                
+                raise ValueError("Checksum não confere. Chunk corrompido.")
+            s.close()
     except Exception as e:
         print(f"❌ Erro ao requisitar chunk: {e}")
+
+#            with open(caminho_arquivo, 'wb') as f:
+#                while True:
+#                    dados = s.recv(4096)
+#                    #print(dados)
+#                    print("Recebimento acontecendo!!")
+#                    if not dados:
+#                        break
+#                    f.write(dados)
+#                    print("Chunk recebido!!")
+#
+#            print(f"\n📥 Chunk '{nome_chunk}' recebido de {to_user} e salvo em '{caminho_arquivo}'. ✅")
+#            print(f"Checksum RECEBIDO!!! {checksum_esperado}")
+#            s.close()
+#    except Exception as e:
+#        print(f"❌ Erro ao requisitar chunk: {e}")
 
 def launch_tracker_cross_platform() -> None:
     """

@@ -91,10 +91,22 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                 #caminho = os.path.join("arquivos_cadastrados",user_to)
                 caminho = "arquivos_cadastrados"+"/"+"chunkscriados"+"/"+user_to+"/"+caminho_arquivo+"/"+nome_chunk
                 #caminho = os.path.join(caminho, nome_chunk)
+                caminho_json = "arquivos_cadastrados"+"/"+"chunkscriados"+"/"+user_to+"/"+caminho_arquivo+"/"+caminho_arquivo+".json"
+                print(f"O caminho do json é:{caminho_json}")
                 print(f"O caminho na busca é: {caminho}")
                 if os.path.exists(caminho):
-                    with open(caminho, 'rb') as f:
-                        conn.sendfile(f)
+                    with open(caminho_json,'rb') as f_json:
+                        json_data = json.load(f_json)
+                        json_str = json.dumps(json_data)
+                        json_bytes =json_str.encode()
+
+                        tamanho_json = len(json_bytes)
+                        #Envie o tamanho do JSOn como 4 bytes fixo
+                        conn.send(tamanho_json.to_bytes(4,byteorder='big'))
+                        conn.send(json_bytes)
+                        with open(caminho, 'rb') as f:
+                            conn.sendfile(f)
+
                     print(f"[✓] Chunk '{nome_chunk}' enviado com sucesso.")
                 else:
                     conn.send(b"ERRO: Chunk nao encontrado.")
