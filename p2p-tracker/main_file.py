@@ -18,6 +18,17 @@ import re
 menu_1 = "MENU PRINCIPAL \n1 - Registrar;\n2 - Login no Sistema;\n3 - Sair do sistema;"
 menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;\n11 - Criar um novo arquivo .txt\n12 - Requisição de Chunk\n13 - Montar arquivo usando chunks"
 
+checksum_arquivos = {}
+
+def recolherChecksum(dados, nome_arquivo):
+    if nome_arquivo not in dados:
+        print(f"Arquivo {nome_arquivo} não encontrado nos dados.")
+        return [], None
+
+    info_arquivo = dados[nome_arquivo]
+    checksum = info_arquivo.get("checksum")
+
+    return checksum
 def montar_arquivo(caminho_pasta_chunks,usuarioLogado):
     def calcular_checksum_arquivo(caminho_arquivo, algoritmo='sha256'):
         h = hashlib.new(algoritmo)
