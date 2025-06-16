@@ -250,8 +250,9 @@ def announce_file_novo(username, nome_arquivo):
     print("O arquivo foi divido em chunks!")
     nome_pasta = os.path.splitext(nome_arquivo)[0]
     print(f"O nome_pasta é:{nome_pasta}")
-    caminho_chunks = f"arquivos_cadastrados/chunkscriados/{nome_pasta}"
-    json_path = os.path.join(caminho_chunks, nome_pasta + ".json")
+    caminho_chunks = f"arquivos_cadastrados/chunkscriados/{username}/{nome_pasta}"
+    json_path = caminho_chunks+"/"+nome_pasta+".json"
+    #json_path = os.path.join(caminho_chunks, nome_pasta + ".json")
 
     with open(nome_arquivo, 'rb') as f:
         conteudo = f.read()
