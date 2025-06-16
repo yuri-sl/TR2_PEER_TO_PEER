@@ -20,10 +20,12 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
     """
     def carregar_peers_com_chunks(caminho_json, meu_username):
         if not os.path.exists(caminho_json):
+            print("NÃO EXISTEM ARQUIVOS COM O MEU PEER!")
             return []
 
         with open(caminho_json, 'r', encoding='utf-8') as f:
             dados = json.load(f)
+            print("DADOS CARREGADOS DO JSON")
 
         chunks_do_usuario = []
         for info_arquivo in dados.values():
@@ -31,12 +33,8 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
             if meu_username in donos:
                 chunks = info_arquivo.get('chunks', [])
                 chunks_do_usuario.extend(chunks)
-
+        print(f"OS CHUNKS REGISTRADOS EM MEU USER SÃO:{chunks_do_usuario}")
         return chunks_do_usuario
-
-    caminho_json_chunks = "arquivos_cadastrados/arquivos_tracker.json"
-    chunks_disponiveis = carregar_peers_com_chunks(caminho_json_chunks, meu_username)
-
     def handle_connection(conn, addr):
         try:
             buffer = b""
@@ -75,48 +73,55 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
 
     def handle_chunk_request(conn):
         try:
-            print("Request chegou!",flush=True)
+            print("Request chegou!", flush=True)
             requisicao = conn.recv(1024).decode()
             requisicao_json = json.loads(requisicao)
             nome_chunk = requisicao_json.get("nome_chunk")
             user_to = requisicao_json["to"]
-            print(requisicao,flush=True)
-            print("O JSON DE REQUISIÇÃO É: ")
-            print(requisicao_json,flush=True)
-            #portador = requisicao[""]
-            print(f"Os chunks disponiveis no sistema são: {chunks_disponiveis}")
-            print(f"O nome_chunk usado na busca é: {nome_chunk}")
-            caminho_arquivo = nome_chunk.split('.')[0]
-            if nome_chunk in chunks_disponiveis:
-                #caminho = os.path.join("arquivos_cadastrados",user_to)
-                caminho = "arquivos_cadastrados"+"/"+"chunkscriados"+"/"+user_to+"/"+caminho_arquivo+"/"+nome_chunk
-                #caminho = os.path.join(caminho, nome_chunk)
-                caminho_json = "arquivos_cadastrados"+"/"+"chunkscriados"+"/"+user_to+"/"+caminho_arquivo+"/"+caminho_arquivo+".json"
-                print(f"O caminho do json é:{caminho_json}")
-                print(f"O caminho na busca é: {caminho}")
-                if os.path.exists(caminho):
-                    with open(caminho_json,'rb') as f_json:
-                        json_data = json.load(f_json)
-                        json_str = json.dumps(json_data)
-                        json_bytes =json_str.encode()
 
-                        tamanho_json = len(json_bytes)
-                        #Envie o tamanho do JSOn como 4 bytes fixo
-                        conn.send(tamanho_json.to_bytes(4,byteorder='big'))
-                        conn.send(json_bytes)
-                        with open(caminho, 'rb') as f:
-                            conn.sendfile(f)
+            print("O JSON DE REQUISIÇÃO É: ")
+            print(requisicao_json, flush=True)
+
+            caminho_arquivo = nome_chunk.split('.')[0]
+
+            if nome_chunk in chunks_disponiveis:
+                caminho = f"arquivos_cadastrados/chunkscriados/{user_to}/{caminho_arquivo}/{nome_chunk}"
+                print(f"O caminho na busca é: {caminho}")
+
+                if os.path.exists(caminho):
+                    # Calcula o checksum corretamente
+                    with open(caminho, 'rb') as f:
+                        dados_chunk = f.read()
+                    checksum = hashlib.sha256(dados_chunk).hexdigest()
+
+                    # Prepara JSON com nome e checksum
+                    json_data = [{
+                        "nome": nome_chunk,
+                        "checksum": checksum
+                    }]
+                    json_str = json.dumps(json_data)
+                    json_bytes = json_str.encode()
+
+                    # Envia o tamanho e o JSON
+                    conn.send(len(json_bytes).to_bytes(4, byteorder='big'))
+                    conn.send(json_bytes)
+
+                    # Envia o chunk
+                    conn.sendall(dados_chunk)
 
                     print(f"[✓] Chunk '{nome_chunk}' enviado com sucesso.")
                 else:
                     conn.send(b"ERRO: Chunk nao encontrado.")
             else:
                 conn.send(b"ERRO: Chunk nao disponivel.")
+
         except Exception as e:
             print(f"[Erro Chunk] {e}")
         finally:
             conn.close()
 
+    caminho_json_chunks = "arquivos_cadastrados/arquivos_tracker.json"
+    chunks_disponiveis = carregar_peers_com_chunks(caminho_json_chunks, meu_username)
     threading.Thread(target=server_loop, daemon=True).start()
     print(f"Chunks disponíveis carregados para {meu_username}: {chunks_disponiveis}")
     if chunks_disponiveis:

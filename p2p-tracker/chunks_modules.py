@@ -1,6 +1,14 @@
 import hashlib
 import os
 import json
+def listar_chunks_do_arquivo(dados, nome_arquivo):
+    if nome_arquivo not in dados:
+        print(f"Arquivo {nome_arquivo} não encontrado nos dados.")
+        return []
+
+    info_arquivo = dados[nome_arquivo]
+    chunks = info_arquivo.get('chunks', [])
+    return chunks
 
 def calculate_checksum(data) -> str:
     """ Calcula o checksum SHA-256 de uma chunk"""
