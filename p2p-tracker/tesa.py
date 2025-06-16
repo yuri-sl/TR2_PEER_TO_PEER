@@ -1,8 +1,19 @@
 import os
 import json
-
+import hashlib
+import re
 
 def carregar_peers_com_chunks(caminho_json, meu_username):
+    """
+    Carrega os chunks que pertencem ao usuário atual a partir de um JSON.
+
+    Args:
+        caminho_json (str): Caminho para o arquivo JSON contendo os dados dos arquivos.
+        meu_username (str): Nome do usuário atual.
+
+    Returns:
+        list: Lista dos nomes dos chunks pertencentes ao usuário.
+    """
     if not os.path.exists(caminho_json):
         return []
 
@@ -26,6 +37,12 @@ import os
 
 
 def montar_arquivo(caminho_pasta_chunks):
+    """
+    Reconstrói um arquivo original a partir de seus chunks localizados em uma pasta.
+
+    Args:
+        caminho_pasta_chunks (str): Caminho até a pasta contendo os chunks.
+    """
     def calcular_checksum_arquivo(caminho_arquivo, algoritmo='sha256'):
         h = hashlib.new(algoritmo)
         with open(caminho_arquivo, 'rb') as f:
@@ -89,7 +106,17 @@ def montar_arquivo(caminho_pasta_chunks):
             print(f"Chunk {nome_chunk} ({idx}) adicionado ao arquivo final.")
 
     print(f"Arquivo '{nome_arquivo_final}' montado com sucesso em '{caminho_arquivo_final}'!")
+
 def escolher_pasta_para_montar(caminho_base="chunks_recebidos"):
+    """
+    Permite ao usuário escolher interativamente uma subpasta para montar o arquivo.
+
+    Args:
+        caminho_base (str): Caminho base onde estão as subpastas com os chunks.
+
+    Returns:
+        str | None: Caminho completo da pasta escolhida ou None se houver erro.
+    """
     # Verifica se a pasta base existe
     if not os.path.exists(caminho_base):
         print(f"Pasta '{caminho_base}' não existe.")

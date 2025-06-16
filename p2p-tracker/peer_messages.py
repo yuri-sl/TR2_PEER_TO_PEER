@@ -239,6 +239,13 @@ def announce_files (username) -> None:
     except Exception as e:
         print("Erro ao anunciar arquivos:", e)
 def announce_file_novo(username, nome_arquivo):
+    """
+    Divide um arquivo em chunks, calcula seu checksum e o anuncia para o tracker via socket TCP.
+
+    Parâmetros:
+        username (str): Nome do usuário que está anunciando o arquivo.
+        nome_arquivo (str): Caminho do arquivo a ser dividido e anunciado.
+    """
     dividir_em_chunks_user(nome_arquivo, 1024,username)
     print("O arquivo foi divido em chunks!")
     nome_pasta = os.path.splitext(nome_arquivo)[0]

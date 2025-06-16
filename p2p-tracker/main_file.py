@@ -7,7 +7,6 @@ import json
 import random
 from peer_messages import *
 import platform
-import platform
 import shutil
 from peer import *
 from criar_arquivos import create_big_text_file
@@ -21,6 +20,16 @@ menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar
 checksum_arquivos = {}
 
 def recolherChecksum(dados, nome_arquivo):
+    """
+    Recupera o checksum de um arquivo a partir de um dicionário de dados.
+
+    Parâmetros:
+        dados (dict): Dicionário contendo os dados dos arquivos.
+        nome_arquivo (str): Nome do arquivo a ser verificado.
+
+    Retorna:
+        tuple: ([], None) se o arquivo não for encontrado, senão retorna apenas o checksum.
+    """
     if nome_arquivo not in dados:
         print(f"Arquivo {nome_arquivo} não encontrado nos dados.")
         return [], None
@@ -29,7 +38,16 @@ def recolherChecksum(dados, nome_arquivo):
     checksum = info_arquivo.get("checksum")
 
     return checksum
+
 def montar_arquivo(caminho_pasta_chunks,usuarioLogado):
+    """
+    Reconstrói um arquivo completo a partir dos seus chunks salvos em uma pasta.
+
+    Parâmetros:
+        caminho_pasta_chunks (str): Caminho da pasta onde estão os chunks.
+        usuarioLogado (str): Nome do usuário que irá receber o arquivo montado.
+    """
+
     def calcular_checksum_arquivo(caminho_arquivo, algoritmo='sha256'):
         h = hashlib.new(algoritmo)
         with open(caminho_arquivo, 'rb') as f:
@@ -99,7 +117,17 @@ def montar_arquivo(caminho_pasta_chunks,usuarioLogado):
             print(f"Chunk {nome_chunk} ({idx}) adicionado ao arquivo final.")
 
     print(f"✅ Arquivo '{nome_arquivo_final}' montado com sucesso em '{caminho_arquivo_final}'!")
+
 def escolher_pasta_para_montar(caminho_base="chunks_recebidos"):
+    """
+    Lista as subpastas de uma pasta base e permite ao usuário escolher uma para montagem.
+
+    Parâmetros:
+        caminho_base (str): Caminho onde estão as pastas de chunks.
+
+    Retorna:
+        str|None: Caminho da pasta escolhida ou None se não houver pastas válidas.
+    """
     # Verifica se a pasta base existe
     if not os.path.exists(caminho_base):
         print(f"Pasta '{caminho_base}' não existe.")
@@ -125,7 +153,16 @@ def escolher_pasta_para_montar(caminho_base="chunks_recebidos"):
                 print(f"Você escolheu: {pasta_escolhida}")
                 return os.path.join(caminho_base, pasta_escolhida)
         print("Opção inválida. Tente novamente.")
+
 def adicionar_dono_chunk(arquivo_json, nome_arquivo, novo_dono):
+    """
+    Adiciona um novo dono à lista de donos de um arquivo no arquivo JSON do tracker.
+
+    Parâmetros:
+        arquivo_json (str): Caminho do arquivo JSON contendo os dados dos arquivos.
+        nome_arquivo (str): Nome do arquivo a ser atualizado.
+        novo_dono (str): Nome do usuário a ser adicionado como dono.
+    """
     if not os.path.exists(arquivo_json):
         print("Arquivo JSON de tracker não encontrado.")
         return

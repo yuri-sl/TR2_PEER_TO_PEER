@@ -152,16 +152,7 @@ def list_clients() -> list[str]:
 
 def list_files(peers):
     return files
-"""
-def map_files_to_peers(peers):
-    arquivo_para_peers = {}
-    for peer, arquivos in peers.items():
-        for arquivo in arquivos:
-            if arquivo not in arquivo_para_peers:
-                arquivo_para_peers[arquivo] = []
-            arquivo_para_peers[arquivo].append(peer)
-    return arquivo_para_peers
-"""
+
 def protocolos_base(mensagem, client_socket) -> None:
     """
     Protocolos para clientes que não estão logados ou cadastrados
