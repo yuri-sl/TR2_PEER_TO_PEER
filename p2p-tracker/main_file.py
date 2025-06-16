@@ -18,7 +18,14 @@ menu_1 = "MENU PRINCIPAL \n1 - Registrar;\n2 - Login no Sistema;\n3 - Sair do si
 menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;\n11 - Criar um novo arquivo .txt\n12 - Requisição de Chunk\n13 - Montar arquivo usando chunks"
 
 checksum_arquivos = {}
-
+def obter_checksum(caminho_arquivo_json, nome_arquivo):
+    with open(caminho_arquivo_json, 'r', encoding='utf-8') as f:
+        dados = json.load(f)
+    
+    if nome_arquivo in dados and "checksum" in dados[nome_arquivo]:
+        return dados[nome_arquivo]["checksum"]
+    else:
+        return None
 def recolherChecksum(dados, nome_arquivo):
     """
     Recupera o checksum de um arquivo a partir de um dicionário de dados.
@@ -96,27 +103,50 @@ def montar_arquivo(caminho_pasta_chunks,usuarioLogado):
     caminho_arquivo_final = os.path.join("arquivos_montados", nome_arquivo_final)
 
     checksum_local = calcular_checksum_arquivo(caminho_arquivo_final)
-    #checksum_esperado = requisitar_checksum_arquivo(
-    #    host_do_tracker, porta_do_tracker, user, dono_original, nome_arquivo_final
-    #)
     # Garante que o nome final termine com .txt
     nome_arquivo_final += ".txt"
 
-    # Define o caminho com a extensão correta
-    caminho_arquivo_final = f"arquivos_montados/{usuarioLogado}/{nome_arquivo_final}"
+    caminho = "arquivos_cadastrados/arquivos_tracker.json"
+    #nome_arquivo = "testeAnuncio.txt"
 
-    os.makedirs(f"arquivos_montados/{usuarioLogado}", exist_ok=True)
+    checksumEsperado = obter_checksum(caminho, nome_arquivo_final)
 
-    # Abre o arquivo final com o nome correto (com .txt) para escrita em binário
-    with open(caminho_arquivo_final, "wb") as f_saida:
-        for idx, nome_chunk in chunks_ordenados:
-            caminho_chunk = os.path.join(caminho_pasta_chunks, nome_chunk)
-            with open(caminho_chunk, "rb") as f_chunk:
-                dados = f_chunk.read()
-                f_saida.write(dados)
-            print(f"Chunk {nome_chunk} ({idx}) adicionado ao arquivo final.")
+    if checksumEsperado:
+        print("Checksum encontrado:", checksumEsperado)
+    else:
+        print("Arquivo ou checksum não encontrado.")
+    #checksum_esperado = requisitar_checksum_arquivo(
+    #    host_do_tracker, porta_do_tracker, user, dono_original, nome_arquivo_final
+    #)
+    if checksumEsperado == checksum_local:
+        print("CheckSum é válido para aqui!✅ O arquivo vai ser construído!")
+        # Define o caminho com a extensão correta
+        caminho_arquivo_final = f"arquivos_montados/{usuarioLogado}/{nome_arquivo_final}"
 
-    print(f"✅ Arquivo '{nome_arquivo_final}' montado com sucesso em '{caminho_arquivo_final}'!")
+        os.makedirs(f"arquivos_montados/{usuarioLogado}", exist_ok=True)
+
+        # Abre o arquivo final com o nome correto (com .txt) para escrita em binário
+        with open(caminho_arquivo_final, "wb") as f_saida:
+            for idx, nome_chunk in chunks_ordenados:
+                caminho_chunk = os.path.join(caminho_pasta_chunks, nome_chunk)
+                with open(caminho_chunk, "rb") as f_chunk:
+                    dados = f_chunk.read()
+                    f_saida.write(dados)
+                print(f"Chunk {nome_chunk} ({idx}) adicionado ao arquivo final.")
+
+        print(f"✅ Arquivo '{nome_arquivo_final}' montado com sucesso em '{caminho_arquivo_final}'!")
+        os.makedirs("reports", exist_ok=True)
+        with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
+            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            report_file.write(f"{timestamp}✅ Arquivo '{nome_arquivo_final}' montado com sucesso em '{caminho_arquivo_final}'!")
+
+    else:
+        print("CHECKSUM INVÁLIDO!! ARQUIVO NÃO FOI CONSTRUÍDO!")
+        os.makedirs("reports", exist_ok=True)
+        with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
+            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            report_file.write(f"{timestamp}❌CHECKSUM INVÁLIDO!! ARQUIVO NÃO FOI CONSTRUÍDO!")
+
 
 def escolher_pasta_para_montar(caminho_base="chunks_recebidos"):
     """

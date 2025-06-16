@@ -45,6 +45,7 @@ def listar_chunks_do_arquivo(dados, nome_arquivo):
     return chunks
 
 
+
 caminho = "arquivos_cadastrados/arquivos_tracker.json"
 arquivos, dados = listarArquivos(caminho)
 
