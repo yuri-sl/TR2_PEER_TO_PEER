@@ -14,11 +14,11 @@ from criar_arquivos import create_big_text_file
 from datetime import datetime
 from acessarTrackerJson import listarArquivos,listar_chunks_do_arquivo
 import threading
-
+import re
 menu_1 = "MENU PRINCIPAL \n1 - Registrar;\n2 - Login no Sistema;\n3 - Sair do sistema;"
 menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;\n11 - Criar um novo arquivo .txt\n12 - Requisição de Chunk\n13 - Montar arquivo usando chunks"
 
-def montar_arquivo(caminho_pasta_chunks):
+def montar_arquivo(caminho_pasta_chunks,usuarioLogado):
     def calcular_checksum_arquivo(caminho_arquivo, algoritmo='sha256'):
         h = hashlib.new(algoritmo)
         with open(caminho_arquivo, 'rb') as f:
@@ -63,16 +63,22 @@ def montar_arquivo(caminho_pasta_chunks):
     chunks_ordenados.sort(key=lambda x: x[0])
 
     nome_arquivo_final = base_nome  # Usar o nome base sem extensão .partX
-    checksum_local = calcular_checksum_arquivo(caminho_arquivo_final)
-    checksum_esperado = requisitar_checksum_arquivo(
-        host_do_tracker, porta_do_tracker, user, dono_original, nome_arquivo_final
-    )
 
     caminho_arquivo_final = os.path.join("arquivos_montados", nome_arquivo_final)
 
-    os.makedirs("arquivos_montados", exist_ok=True)
+    checksum_local = calcular_checksum_arquivo(caminho_arquivo_final)
+    #checksum_esperado = requisitar_checksum_arquivo(
+    #    host_do_tracker, porta_do_tracker, user, dono_original, nome_arquivo_final
+    #)
+    # Garante que o nome final termine com .txt
+    nome_arquivo_final += ".txt"
 
-    # Abrir arquivo final para escrita em binário
+    # Define o caminho com a extensão correta
+    caminho_arquivo_final = f"arquivos_montados/{usuarioLogado}/{nome_arquivo_final}"
+
+    os.makedirs(f"arquivos_montados/{usuarioLogado}", exist_ok=True)
+
+    # Abre o arquivo final com o nome correto (com .txt) para escrita em binário
     with open(caminho_arquivo_final, "wb") as f_saida:
         for idx, nome_chunk in chunks_ordenados:
             caminho_chunk = os.path.join(caminho_pasta_chunks, nome_chunk)
@@ -81,7 +87,7 @@ def montar_arquivo(caminho_pasta_chunks):
                 f_saida.write(dados)
             print(f"Chunk {nome_chunk} ({idx}) adicionado ao arquivo final.")
 
-    print(f"Arquivo '{nome_arquivo_final}' montado com sucesso em '{caminho_arquivo_final}'!")
+    print(f"✅ Arquivo '{nome_arquivo_final}' montado com sucesso em '{caminho_arquivo_final}'!")
 def escolher_pasta_para_montar(caminho_base="chunks_recebidos"):
     # Verifica se a pasta base existe
     if not os.path.exists(caminho_base):
@@ -790,7 +796,7 @@ def interactiveMenu_1() -> bool:
             if caminho_pasta:
                 print(f"Preparando para montar os chunks da pasta: {caminho_pasta}")
                 # Aqui você chama a função que monta o arquivo a partir dos chunks nessa pasta
-                montar_arquivo(caminho_pasta)
+                montar_arquivo(caminho_pasta,usuario_logado)
 
             input("Pressione Enter para continuar")
             os.system('cls||clear')
