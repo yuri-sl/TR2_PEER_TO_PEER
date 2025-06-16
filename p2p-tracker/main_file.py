@@ -13,11 +13,35 @@ from peer import *
 from criar_arquivos import create_big_text_file
 from datetime import datetime
 from acessarTrackerJson import listarArquivos,listar_chunks_do_arquivo
+import threading
 
 
 menu_1 = "MENU PRINCIPAL \n1 - Registrar;\n2 - Login no Sistema;\n3 - Sair do sistema;"
 menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;\n11 - Criar um novo arquivo .txt\n12 - Requisição de Chunk"
+def adicionar_dono_chunk(arquivo_json, nome_arquivo, novo_dono):
+    if not os.path.exists(arquivo_json):
+        print("Arquivo JSON de tracker não encontrado.")
+        return
 
+    with open(arquivo_json, "r", encoding="utf-8") as f:
+        dados = json.load(f)
+
+    if nome_arquivo not in dados:
+        print(f"O arquivo {nome_arquivo} não está registrado no tracker.")
+        return
+
+    if "donos" not in dados[nome_arquivo]:
+        dados[nome_arquivo]["donos"] = []
+
+    if novo_dono not in dados[nome_arquivo]["donos"]:
+        dados[nome_arquivo]["donos"].append(novo_dono)
+
+        with open(arquivo_json, "w", encoding="utf-8") as f:
+            json.dump(dados, f, indent=4, ensure_ascii=False)
+
+        print(f"✅ Usuário '{novo_dono}' agora listado como dono de '{nome_arquivo}'.")
+    else:
+        print(f"ℹ️ Usuário '{novo_dono}' já é dono de '{nome_arquivo}'.")
 def requisitar_chunk(host, port,from_user, to_user, nome_chunk):
     """
     Envia um pedido de chunk para um peer específico via conexão TCP.
@@ -635,20 +659,35 @@ def interactiveMenu_1() -> bool:
                                             print("Chunks disponíveis para este arquivo:")
                                             # Se chunks forem strings:
                                             if isinstance(chunks[0], str):
+                                                threads = []
                                                 for idx, chunk_nome in enumerate(chunks):
                                                     print("É string")
                                                     print(f"[{idx}] - {chunk_nome}")
+                                                    #cria e inicia uma thread para baixar esse chunk
+                                                    thread = threading.Thread(target=requisitar_chunk,
+                                                                              args=(peer_ip,peer_port,usuario_logado,user,chunk_nome)
+                                                                              )
+                                                    thread.start()
+                                                    threads.append(thread)
+
+                                                #Espera todas as threads terminarem
+                                                for thread in threads:
+                                                    thread.join()
+                                                print("✅ Todos os chunks foram requisitados e baixados.")
+                                                adicionar_dono_chunk("arquivos_cadastrados/arquivos_tracker.json", nome_escolhido, usuario_logado)
+
+
                                                     #arquivo_chunk_buscado = {chunk['checksum']}
-                                                    requisitar_chunk(peer_ip,peer_port,usuario_logado,user,chunk_nome)
+                                                    #requisitar_chunk(peer_ip,peer_port,usuario_logado,user,chunk_nome)
                                             # Se chunks forem dicionários:
-                                            else:
-                                                for idx, chunk in enumerate(chunks):
-                                                    print("É Dictionary")
-                                                    print(f"[{idx}] - {chunk['nome']} (checksum: {chunk.get('checksum', 'N/A')})")
-                                                    print({chunk['nome']})
-                                                    print({chunk['checksum']})
-                                                    arquivo_chunk_buscado = {chunk['checksum']}
-                                                    requisitar_chunk(peer_ip,peer_port,usuario_logado,user,arquivo_chunk_buscado)
+                                            #else:
+                                            #    for idx, chunk in enumerate(chunks):
+                                            #        print("É Dictionary")
+                                            #        print(f"[{idx}] - {chunk['nome']} (checksum: {chunk.get('checksum', 'N/A')})")
+                                            #        print({chunk['nome']})
+                                            #        print({chunk['checksum']})
+                                            #        arquivo_chunk_buscado = {chunk['checksum']}
+                                            #        requisitar_chunk(peer_ip,peer_port,usuario_logado,user,arquivo_chunk_buscado)
                                 except ValueError:
                                     print("Entrada inválida. Digite um número.")
 
