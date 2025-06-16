@@ -2,6 +2,19 @@ import os
 import json
 
 def carregar_peers_com_chunks(caminho_json, meu_username):
+    """
+    Carrega a lista de chunks que pertencem ao usuário especificado.
+
+    Essa função lê um arquivo JSON contendo informações sobre os arquivos e seus donos.
+    Ela retorna os nomes dos chunks que estão associados ao usuário atual.
+
+    Args:
+        caminho_json (str): Caminho para o arquivo JSON com os dados dos arquivos.
+        meu_username (str): Nome do usuário atual, usado para filtrar os chunks.
+
+    Returns:
+        list: Lista com os nomes dos chunks pertencentes ao usuário.
+    """
     if not os.path.exists(caminho_json):
         return []
 

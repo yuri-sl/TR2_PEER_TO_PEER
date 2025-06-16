@@ -1,6 +1,16 @@
 import json
 
 def recolherChecksum(dados, nome_arquivo):
+    """
+    Recupera o valor do checksum associado a um arquivo, a partir de um dicionário carregado de um JSON.
+
+    Args:
+        dados (dict): Dicionário com os dados carregados do arquivo JSON do tracker.
+        nome_arquivo (str): Nome do arquivo cujo checksum se deseja obter.
+
+    Returns:
+        str | None: O valor do checksum se o arquivo existir nos dados, ou None caso contrário.
+    """
     if nome_arquivo not in dados:
         print(f"Arquivo {nome_arquivo} não encontrado nos dados.")
         return [], None

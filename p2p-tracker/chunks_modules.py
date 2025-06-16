@@ -2,6 +2,16 @@ import hashlib
 import os
 import json
 def listar_chunks_do_arquivo(dados, nome_arquivo):
+    """
+    Retorna os chunks associados a um determinado arquivo, se existirem.
+
+    Parâmetros:
+        dados (dict): Dicionário contendo os dados dos arquivos.
+        nome_arquivo (str): Nome do arquivo cujos chunks serão listados.
+
+    Retorna:
+        list: Lista de chunks ou lista vazia se não encontrado.
+    """
     if nome_arquivo not in dados:
         print(f"Arquivo {nome_arquivo} não encontrado nos dados.")
         return []
@@ -11,16 +21,44 @@ def listar_chunks_do_arquivo(dados, nome_arquivo):
     return chunks
 
 def calculate_checksum(data) -> str:
-    """ Calcula o checksum SHA-256 de uma chunk"""
+    """
+    Calcula o checksum (SHA-256) de um dado binário.
+
+    Parâmetros:
+        data (bytes): Conteúdo em binário para o qual será calculado o checksum.
+
+    Retorna:
+        str: Hash SHA-256 em hexadecimal.
+    """
     return hashlib.sha256(data).hexdigest()
 
 def compute_file_checksum(arquivo) -> str:
-    """ Calcula o checksum SHA-256 de um arquivo todo"""
+    """
+    Calcula o checksum (SHA-256) de um arquivo completo.
+
+    Parâmetros:
+        arquivo (str): Caminho do arquivo.
+
+    Retorna:
+        str: Hash SHA-256 do conteúdo do arquivo.
+    """
     with open(arquivo, "rb") as a:
         data = a.read()
     return calculate_checksum(data)
 
 def dividir_em_chunks(nome_arquivo, tamanho_chunk_kb=1024,usuario_logado: str=""):
+    """
+    Divide um arquivo em chunks e salva cada um deles em disco. 
+    Cria também um arquivo JSON com os metadados dos chunks.
+
+    Parâmetros:
+        nome_arquivo (str): Caminho do arquivo a ser dividido.
+        tamanho_chunk_kb (int): Tamanho de cada chunk em kilobytes (KB). Padrão: 1024.
+        usuario_logado (str): Nome do usuário que está dividindo o arquivo.
+
+    Retorna:
+        list|None: Lista com informações dos chunks ou None se houve erro.
+    """
     tamanho_chunk = tamanho_chunk_kb * 1024
     chunks_info = []
     detentores_chunk = []
@@ -73,6 +111,17 @@ def dividir_em_chunks(nome_arquivo, tamanho_chunk_kb=1024,usuario_logado: str=""
 chunks = dividir_em_chunks("testingChunksUpdate50.txt", 1024,"A")
 
 def dividir_em_chunks_user(nome_arquivo, tamanho_chunk_kb=1024,usuario_logado: str=""):
+    """
+    Variante de dividir_em_chunks que armazena os chunks em uma pasta por usuário.
+
+    Parâmetros:
+        nome_arquivo (str): Caminho do arquivo a ser dividido.
+        tamanho_chunk_kb (int): Tamanho de cada chunk em kilobytes (KB).
+        usuario_logado (str): Nome do usuário dono dos chunks.
+
+    Retorna:
+        list|None: Lista de dicionários com dados dos chunks ou None se erro.
+    """
     tamanho_chunk = tamanho_chunk_kb * 1024
     chunks_info = []
     detentores_chunk = []

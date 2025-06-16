@@ -2,6 +2,15 @@ import os
 import json
 
 def listarArquivos(caminho_json="arquivos_cadastrados/arquivos_tracker.json"):
+    """
+    Lê um arquivo JSON com os dados dos arquivos registrados no tracker.
+
+    Parâmetros:
+        caminho_json (str): Caminho do arquivo JSON contendo os registros.
+
+    Retorna:
+        tuple: (lista de nomes de arquivos .txt, dicionário completo dos dados)
+    """
     if not os.path.exists(caminho_json):
         print("Arquivo JSON não encontrado!")
         return [], []
@@ -17,6 +26,16 @@ def listarArquivos(caminho_json="arquivos_cadastrados/arquivos_tracker.json"):
     return arquivos_disponiveis, dados
 
 def listar_chunks_do_arquivo(dados, nome_arquivo):
+    """
+    Retorna a lista de chunks de um arquivo específico.
+
+    Parâmetros:
+        dados (dict): Dicionário contendo os dados dos arquivos.
+        nome_arquivo (str): Nome do arquivo a ser buscado.
+
+    Retorna:
+        list: Lista de chunks associados ao arquivo.
+    """
     if nome_arquivo not in dados:
         print(f"Arquivo {nome_arquivo} não encontrado nos dados.")
         return []
