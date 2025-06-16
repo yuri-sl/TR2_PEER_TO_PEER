@@ -1,0 +1,347 @@
+[2025-06-15 18:24:23]  Chunk 'Lsa.part0' recebido de A. Checksum OK. ✅
+[2025-06-15 18:42:30]  Chunk 'Lsa.part0' recebido de A. Checksum OK. ✅
+[2025-06-15 19:55:18]  Chunk 'Lsa.part0' recebido de A. Checksum OK. ✅
+[2025-06-15 20:06:52]  Chunk 'testeAnuncio.part0' recebido de F. Checksum OK. ✅
+[2025-06-15 20:06:52] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:52] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:52] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:52] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:52] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:52] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:52] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:52] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:52] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:52] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:52] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:52] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:52] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:52] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:52] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:52] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:53] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:54] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:54] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:54] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 20:06:54] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:12]  Chunk 'testeAnuncio.part0' recebido de F. Checksum OK. ✅
+[2025-06-15 21:11:12] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:12] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:12] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:12] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:12] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:12] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:13] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:13] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:13] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:13] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:13] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:13] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:13] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:13] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:13] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:13] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:13] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:13] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:13] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:13] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:13] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:13] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:13] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:14] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:14] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:14] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:14] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:14] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:14] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:14] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:14] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:14] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:14] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:14] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:14] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:14] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:14] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:14] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:14] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:15] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:15] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:15] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:15] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:15] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:15] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:15] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:15] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:11:15] ❌ ERRO no chunk 'testeAnuncio.part0' de F. Checksum inválido.
+[2025-06-15 21:18:09]  Chunk 'testeAnuncio.part0' recebido de F. Checksum OK. ✅
+[2025-06-15 21:18:09] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 03a2847496da4f79ccae278b528f310929d123bb652030d219d0c30ff0f9b62d Checksum inválido.
+[2025-06-15 21:18:09] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 4c0bdd71615a56e7d305e3ea0c2a1127f7189a7a7285ffd0d687066278aefff2 Checksum inválido.
+[2025-06-15 21:18:09] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: f92e29fb367e86a54ae2c3509a9e89cfea06d3f7191bcb943b75c0410b727123 Checksum inválido.
+[2025-06-15 21:18:09] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 6e55081b65b8461a3476ea1f91b3f0719aef5a8929f600f932ccb133d7fb3af6 Checksum inválido.
+[2025-06-15 21:18:09] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: b14bac97f1b81edc20a02e54ebb42c28513d9c700d0553189af9f09cfea4670a Checksum inválido.
+[2025-06-15 21:18:09] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 0f7b266d425262c03e5b8818d9a01c3b2859e16f4ddd7d9099520d14e42f2e77 Checksum inválido.
+[2025-06-15 21:18:09] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 95450edb46d64332e5c2935e09c356339abadc1d65709694293933b824cfa0b1 Checksum inválido.
+[2025-06-15 21:18:09] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: e74b76b184883337234add59d05aa6bac7e586dfe14da435f0169447716acd41 Checksum inválido.
+[2025-06-15 21:18:09] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: c264c543841a44c8e8ca35f3a8dafb676c0d9fc218dcaa78c77eb0551079a5c2 Checksum inválido.
+[2025-06-15 21:18:09] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: e324884db3d992f8de1f5ea23c355ed03a14b9d5c202047fed75cf7d880ecd67 Checksum inválido.
+[2025-06-15 21:18:09] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: daa2984e7ebc04f17118997e12e8d63bf8c6da775b24251b065e95a2c105cc54 Checksum inválido.
+[2025-06-15 21:18:09] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: c1a5567bbd12e2a9d8a690ec9e3ddf5251286b741925e2e29d002894e2ef07d0 Checksum inválido.
+[2025-06-15 21:18:09] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 3a2f0086888584e71bc600bedf13b4decbc8712ece552d6f75d53d9a3a373c4f Checksum inválido.
+[2025-06-15 21:18:09] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 8d5f0993d754a766f7f09582c87fb5ea380ef77b7e10e5937e854c9796a72fb2 Checksum inválido.
+[2025-06-15 21:18:10] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: c203db3072d3888d390aa327923b798d1a3dbe1e1aa874fe1aae50f68cc0d6f0 Checksum inválido.
+[2025-06-15 21:18:10] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: e18fe09102dab801c275cb128d4db05b7e2ba4e665ecb06794bec191370c2340 Checksum inválido.
+[2025-06-15 21:18:10] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: e9bc3e2067f43f7063e4046726d0920604f6fe1ab8e12fc68b45b68a89d9a9e1 Checksum inválido.
+[2025-06-15 21:18:10] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 22b64502a0d583ac47093264ec5005752832dd163cdc130813d91b6350caceb5 Checksum inválido.
+[2025-06-15 21:18:10] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 86c69147d58707300c82a2d34264a20920f5182e5d7827a33378c9a37c7beb32 Checksum inválido.
+[2025-06-15 21:18:10] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 65d125db005093212e960b03d8ab8f3cd945dfcd2cce5fe4503bbe2282da87f6 Checksum inválido.
+[2025-06-15 21:18:10] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 2133a6aa97d7f3f0c4d4673c741f6663111cdd2dbd6f49d94cf34b02ae8f7363 Checksum inválido.
+[2025-06-15 21:18:10] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 3f9138b7f397e708df37a98d0ffdb6427e3312281388775f79c7c90cd0f07b0a Checksum inválido.
+[2025-06-15 21:18:10] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 75235d810a587f837762752da1464a1684f7170e4e166be1745ce5e0b1591fc6 Checksum inválido.
+[2025-06-15 21:18:10] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: aff6cc25d43057d2980a4f7b1c131f85f741f44d9326516235559bb2c166c826 Checksum inválido.
+[2025-06-15 21:18:10] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 935f1480cf3c91eb36e93f2e4676673338d8f3f95dfbd4c113666af0a6837374 Checksum inválido.
+[2025-06-15 21:18:10] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 4708b6c3466d65da15948a50d8d58ae341eed715168bed3196c06e5aac056115 Checksum inválido.
+[2025-06-15 21:18:10] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: d45249a841257da040129c03d844c7f0de50c2531fe3c12f45317005cda0c085 Checksum inválido.
+[2025-06-15 21:18:10] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 068d9b99d0489abd30a6a3b39c3954ab59dddffdd2816cb7cc8e87508c5f0322 Checksum inválido.
+[2025-06-15 21:18:10] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: c9f42a5f86dfc2bbbc69a8405879095a4fb5fdce1e7dd307bf97307377fd37bf Checksum inválido.
+[2025-06-15 21:18:10] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 40dfa64bf6b2bb26a459a958809ff697e3423177795935866f80a56f2fbbc827 Checksum inválido.
+[2025-06-15 21:18:10] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 050d56a73418150fce213d32fb75e39e4bcb37ed284d2ed3250fdb3a270ce6d2 Checksum inválido.
+[2025-06-15 21:18:11] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: da1af1727d68af9cb9fd93b820d0b91c1550538931e6feea4698476de28c1c57 Checksum inválido.
+[2025-06-15 21:18:11] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 48d1f523aa008f69cd8c76ff4623bf6cc80fc02cb8071f5c5a37803ff8083280 Checksum inválido.
+[2025-06-15 21:18:11] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 1f642369d8829639184738433e6ad4ac08483bc58d80a7602bd7eba6b3c11167 Checksum inválido.
+[2025-06-15 21:18:11] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 648fc9289febe8133e8013668041a67f9351bcfdbe2a4833f738b2385e9fd6d0 Checksum inválido.
+[2025-06-15 21:18:11] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: c447795a926dc6bd7adb8082776b7b7cd80b6a745cf2686558c35f8f0050fd08 Checksum inválido.
+[2025-06-15 21:18:11] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 6c2ba9681636e223a165ef1d2e987f720eb7d28b014a38c5ba21f603f0ae26e5 Checksum inválido.
+[2025-06-15 21:18:11] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: a3f551d3877a1edfe5ed60c70c15f409e9dc2782220fecf35c2f73782991f83d Checksum inválido.
+[2025-06-15 21:18:11] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 4194c99adf08c7d889d34d41da77963c1516268dc1b57fe0d988e48cb1bb65b8 Checksum inválido.
+[2025-06-15 21:18:11] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: e7bf0106678c8bda40e47d399d80e1375171b4d89f634013d7173a0a52f20328 Checksum inválido.
+[2025-06-15 21:18:11] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 4fb03e9615b2d14b8129d58adc39c1dc52a72d4a1101b3e0f704cf9fade28d2b Checksum inválido.
+[2025-06-15 21:18:11] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 6a03e1b06e4ed6fac2059383fbe9961dd278b75639555c51d51b1629c62ca8db Checksum inválido.
+[2025-06-15 21:18:11] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: d8fd8758767a725e2609375eda08c40e2558df383498ecd83f921752413cf4d8 Checksum inválido.
+[2025-06-15 21:18:11] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 905191c08b2ce7b742fdee58ee55521af76b98c4bacf40b813ed533085d5ac80 Checksum inválido.
+[2025-06-15 21:18:11] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: ab3296a9321ebc502955bfc7e88a3823fb29df1fef989c948697baa804c6163d Checksum inválido.
+[2025-06-15 21:18:11] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 34accc63a0476661155672d5465dc2f47b8bdca7bcaeb1d16b7a27aad9ac82b7 Checksum inválido.
+[2025-06-15 21:18:11] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: f3766ffa293318b5999d4e36ed30f0b1e546a10437b3acbf93c7f3745409bc40 Checksum inválido.
+[2025-06-15 21:18:11] ❌ ERRO no chunk 'testeAnuncio.part0' de F.Esperado:02defb67daadfa182040f0ed99e7d45a5dfaafcf1f8d99eee9dcd7e9b55138a4. Recebido: 3714cb2cc5a28d2f9f7a0e10931fb08071e87099516c01ad4a9794e9fae73afe Checksum inválido.
+[2025-06-15 21:25:30]  Chunk 'testeAnuncio.part0' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:30]  Chunk 'testeAnuncio.part1' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:30]  Chunk 'testeAnuncio.part2' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:30]  Chunk 'testeAnuncio.part3' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:30]  Chunk 'testeAnuncio.part4' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:30]  Chunk 'testeAnuncio.part5' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:30]  Chunk 'testeAnuncio.part6' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:31]  Chunk 'testeAnuncio.part7' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:31]  Chunk 'testeAnuncio.part8' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:31]  Chunk 'testeAnuncio.part9' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:31]  Chunk 'testeAnuncio.part10' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:31]  Chunk 'testeAnuncio.part11' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:31]  Chunk 'testeAnuncio.part12' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:31]  Chunk 'testeAnuncio.part13' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:31]  Chunk 'testeAnuncio.part14' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:31]  Chunk 'testeAnuncio.part15' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:31]  Chunk 'testeAnuncio.part16' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:31]  Chunk 'testeAnuncio.part17' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:31]  Chunk 'testeAnuncio.part18' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:31]  Chunk 'testeAnuncio.part19' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:31]  Chunk 'testeAnuncio.part20' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:31]  Chunk 'testeAnuncio.part21' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:31]  Chunk 'testeAnuncio.part22' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:31]  Chunk 'testeAnuncio.part23' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:31]  Chunk 'testeAnuncio.part24' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:32]  Chunk 'testeAnuncio.part25' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:32]  Chunk 'testeAnuncio.part26' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:32]  Chunk 'testeAnuncio.part27' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:32]  Chunk 'testeAnuncio.part28' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:32]  Chunk 'testeAnuncio.part29' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:32]  Chunk 'testeAnuncio.part30' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:32]  Chunk 'testeAnuncio.part31' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:32]  Chunk 'testeAnuncio.part32' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:32]  Chunk 'testeAnuncio.part33' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:32]  Chunk 'testeAnuncio.part34' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:32]  Chunk 'testeAnuncio.part35' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:32]  Chunk 'testeAnuncio.part36' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:32]  Chunk 'testeAnuncio.part37' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:32]  Chunk 'testeAnuncio.part38' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:32]  Chunk 'testeAnuncio.part39' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:32]  Chunk 'testeAnuncio.part40' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:32]  Chunk 'testeAnuncio.part41' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:32]  Chunk 'testeAnuncio.part42' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:32]  Chunk 'testeAnuncio.part43' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:32]  Chunk 'testeAnuncio.part44' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:33]  Chunk 'testeAnuncio.part45' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:33]  Chunk 'testeAnuncio.part46' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:33]  Chunk 'testeAnuncio.part47' recebido de F. Checksum OK. ✅
+[2025-06-15 21:25:33]  Chunk 'testeAnuncio.part48' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:22]  Chunk 'testeAnuncio.part0' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part8' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part4' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part2' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part9' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part3' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part7' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part1' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part5' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part10' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part11' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part6' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part13' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part12' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part15' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part17' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part18' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part16' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part14' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part19' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part20' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part21' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part22' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part24' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part25' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part26' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part23' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part29' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part27' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part30' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part28' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part31' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part32' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part33' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part34' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part35' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part37' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part36' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part38' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part41' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part40' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part39' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part42' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part43' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part44' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part45' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part48' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part46' recebido de F. Checksum OK. ✅
+[2025-06-15 21:38:23]  Chunk 'testeAnuncio.part47' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:01]  Chunk 'testeAnuncio.part0' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:01]  Chunk 'testeAnuncio.part1' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:01]  Chunk 'testeAnuncio.part8' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:01]  Chunk 'testeAnuncio.part7' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:01]  Chunk 'testeAnuncio.part4' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:01]  Chunk 'testeAnuncio.part6' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:01]  Chunk 'testeAnuncio.part2' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:01]  Chunk 'testeAnuncio.part5' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:01]  Chunk 'testeAnuncio.part3' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:01]  Chunk 'testeAnuncio.part11' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:01]  Chunk 'testeAnuncio.part12' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:01]  Chunk 'testeAnuncio.part10' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:01]  Chunk 'testeAnuncio.part9' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:01]  Chunk 'testeAnuncio.part13' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:01]  Chunk 'testeAnuncio.part15' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part18' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part16' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part17' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part20' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part14' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part19' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part21' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part22' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part23' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part25' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part24' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part27' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part28' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part26' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part30' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part33' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part34' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part35' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part32' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part29' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part31' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part36' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part38' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part39' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part37' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part40' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part41' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part42' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part43' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part45' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part48' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part44' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part47' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:02]  Chunk 'testeAnuncio.part46' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part0' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part1' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part5' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part8' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part6' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part2' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part3' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part7' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part9' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part4' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part13' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part10' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part12' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part11' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part14' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part16' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part17' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part15' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part18' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part20' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part21' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part24' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part19' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part23' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part25' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part26' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part22' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part27' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part29' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part30' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:54]  Chunk 'testeAnuncio.part31' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:55]  Chunk 'testeAnuncio.part32' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:55]  Chunk 'testeAnuncio.part33' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:55]  Chunk 'testeAnuncio.part28' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:55]  Chunk 'testeAnuncio.part36' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:55]  Chunk 'testeAnuncio.part34' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:55]  Chunk 'testeAnuncio.part35' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:55]  Chunk 'testeAnuncio.part37' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:55]  Chunk 'testeAnuncio.part38' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:55]  Chunk 'testeAnuncio.part39' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:55]  Chunk 'testeAnuncio.part40' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:55]  Chunk 'testeAnuncio.part41' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:55]  Chunk 'testeAnuncio.part42' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:55]  Chunk 'testeAnuncio.part48' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:55]  Chunk 'testeAnuncio.part45' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:55]  Chunk 'testeAnuncio.part43' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:55]  Chunk 'testeAnuncio.part44' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:55]  Chunk 'testeAnuncio.part46' recebido de F. Checksum OK. ✅
+[2025-06-15 21:46:55]  Chunk 'testeAnuncio.part47' recebido de F. Checksum OK. ✅
+2025-06-16 20:23:49✅ Arquivo 'testeAnuncio.txt' montado com sucesso em 'arquivos_montados/A/testeAnuncio.txt'!
