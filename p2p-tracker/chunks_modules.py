@@ -108,7 +108,7 @@ def dividir_em_chunks(nome_arquivo, tamanho_chunk_kb=1024,usuario_logado: str=""
         return None
 
 # Exemplo de uso
-chunks = dividir_em_chunks("testingChunksUpdate50.txt", 1024,"A")
+#chunks = dividir_em_chunks("testingChunksUpdate50.txt", 1024,"A")
 
 def dividir_em_chunks_user(nome_arquivo, tamanho_chunk_kb=1024,usuario_logado: str=""):
     """
@@ -171,7 +171,7 @@ def dividir_em_chunks_user(nome_arquivo, tamanho_chunk_kb=1024,usuario_logado: s
         return None
 
 # Exemplo de uso
-chunks = dividir_em_chunks_user("testeAnuncio2.txt", 1024,"A")
+#chunks = dividir_em_chunks_user("testeAnuncio2.txt", 1024,"A")
 
 
 #arquivo = 'documento.txt'

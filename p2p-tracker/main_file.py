@@ -5,17 +5,20 @@ import os
 import socket
 import json
 import random
-from peer_messages import *
 import platform
 import shutil
-from peer import *
-from criar_arquivos import create_big_text_file
-from datetime import datetime
-from acessarTrackerJson import listarArquivos,listar_chunks_do_arquivo
-import threading
 import re
+from datetime import datetime
+from criar_arquivos import create_big_text_file
+from acessarTrackerJson import listarArquivos,listar_chunks_do_arquivo
+from peer_messages import *
+import threading
+from peer import *
 menu_1 = "MENU PRINCIPAL \n1 - Registrar;\n2 - Login no Sistema;\n3 - Sair do sistema;"
 menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;\n11 - Criar um novo arquivo .txt\n12 - Requisição de Chunk\n13 - Montar arquivo usando chunks"
+
+
+
 
 checksum_arquivos = {}
 def obter_checksum(caminho_arquivo_json, nome_arquivo):
@@ -67,6 +70,10 @@ def montar_arquivo(caminho_pasta_chunks,usuarioLogado):
     if not os.path.exists(caminho_pasta_chunks):
         print("Pasta dos chunks não existe!")
         return
+    def calcular_checksum_dados(dados_bytes, algoritmo='sha256'):
+        h = hashlib.new(algoritmo)
+        h.update(dados_bytes)
+        return h.hexdigest()
 
     # Listar todos os chunks (arquivos) na pasta
     arquivos_chunks = [f for f in os.listdir(caminho_pasta_chunks) if os.path.isfile(os.path.join(caminho_pasta_chunks, f))]
@@ -100,52 +107,76 @@ def montar_arquivo(caminho_pasta_chunks,usuarioLogado):
 
     nome_arquivo_final = base_nome  # Usar o nome base sem extensão .partX
 
-    caminho_arquivo_final = os.path.join("arquivos_montados", nome_arquivo_final)
+    #caminho_arquivo_final = os.path.join("arquivos_montados", nome_arquivo_final)
+    caminho_arquivo_final = "arquivos_motados/"+nome_arquivo_final
 
-    checksum_local = calcular_checksum_arquivo(caminho_arquivo_final)
-    # Garante que o nome final termine com .txt
+    print(f"o nome_arquivo_final é: {nome_arquivo_final}")
+
+    for i, chunk in enumerate(chunks_ordenados):
+        print(f"Chunk {i}: {chunk[0]}")
+
+
     nome_arquivo_final += ".txt"
+    caminho_arquivo_final = f"arquivos_montados/{usuarioLogado}/{nome_arquivo_final}"
+    os.makedirs(f"arquivos_montados/{usuarioLogado}", exist_ok=True)
+    #checksum_local = calcular_checksum_arquivo(caminho_arquivo_final)
 
-    caminho = "arquivos_cadastrados/arquivos_tracker.json"
+    #caminho = "arquivos_cadastrados/arquivos_tracker.json"
     #nome_arquivo = "testeAnuncio.txt"
 
-    checksumEsperado = obter_checksum(caminho, nome_arquivo_final)
+    #checksumEsperado = obter_checksum(caminho, nome_arquivo_final)
 
-    if checksumEsperado:
-        print("Checksum encontrado:", checksumEsperado)
-    else:
-        print("Arquivo ou checksum não encontrado.")
+    #if checksumEsperado:
+    #    print("Checksum local:",checksum_local)
+    #    print("Checksum encontrado:", checksumEsperado)
+    #else:
+    #    print("Arquivo ou checksum não encontrado.")
     #checksum_esperado = requisitar_checksum_arquivo(
     #    host_do_tracker, porta_do_tracker, user, dono_original, nome_arquivo_final
     #)
-    if checksumEsperado == checksum_local:
-        print("CheckSum é válido para aqui!✅ O arquivo vai ser construído!")
-        # Define o caminho com a extensão correta
-        caminho_arquivo_final = f"arquivos_montados/{usuarioLogado}/{nome_arquivo_final}"
+    #print(checksumEsperado == checksum_local)
+    #if checksumEsperado == checksum_local:
+        #print("CheckSum é válido para aqui!✅ O arquivo vai ser construído!")
+        #Define o caminho com a extensão correta
+        #caminho_arquivo_final = f"arquivos_montados/{usuarioLogado}/{nome_arquivo_final}"
 
-        os.makedirs(f"arquivos_montados/{usuarioLogado}", exist_ok=True)
+        #os.makedirs(f"arquivos_montados/{usuarioLogado}", exist_ok=True)
 
         # Abre o arquivo final com o nome correto (com .txt) para escrita em binário
-        with open(caminho_arquivo_final, "wb") as f_saida:
-            for idx, nome_chunk in chunks_ordenados:
-                caminho_chunk = os.path.join(caminho_pasta_chunks, nome_chunk)
-                with open(caminho_chunk, "rb") as f_chunk:
-                    dados = f_chunk.read()
-                    f_saida.write(dados)
-                print(f"Chunk {nome_chunk} ({idx}) adicionado ao arquivo final.")
+    with open(caminho_arquivo_final, "wb") as f_saida:
+        for idx, nome_chunk in chunks_ordenados:
+            caminho_chunk = os.path.join(caminho_pasta_chunks, nome_chunk)
+            with open(caminho_chunk, "rb") as f_chunk:
+                dados = f_chunk.read()
+                f_saida.write(dados)
+            print(f"Chunk {nome_chunk} ({idx}) adicionado ao arquivo final.")
+    print(f"✅ Arquivo '{nome_arquivo_final}' montado com sucesso em '{caminho_arquivo_final}'!")
+    # Só agora calcula o checksum real
+    checksum_local = calcular_checksum_arquivo(caminho_arquivo_final)
+    checksumEsperado = obter_checksum("arquivos_cadastrados/arquivos_tracker.json", nome_arquivo_final)
+    
+    print("Checksum local     :", checksum_local)
+    print("Checksum esperado  :", checksumEsperado)
 
-        print(f"✅ Arquivo '{nome_arquivo_final}' montado com sucesso em '{caminho_arquivo_final}'!")
+    if checksum_local == checksumEsperado:
+        print("✅ Checksum válido! Transferência concluída.")
         os.makedirs("reports", exist_ok=True)
         with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
             timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            report_file.write(f"{timestamp}✅ Arquivo '{nome_arquivo_final}' montado com sucesso em '{caminho_arquivo_final}'!")
-
+            report_file.write(f"[{timestamp}]✅ Arquivo '{nome_arquivo_final}' montado com sucesso em '{caminho_arquivo_final}'!")
     else:
-        print("CHECKSUM INVÁLIDO!! ARQUIVO NÃO FOI CONSTRUÍDO!")
+        print("❌ Checksum inválido! O arquivo pode estar corrompido.")
         os.makedirs("reports", exist_ok=True)
         with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
             timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             report_file.write(f"{timestamp}❌CHECKSUM INVÁLIDO!! ARQUIVO NÃO FOI CONSTRUÍDO!")
+
+    #else:
+    #    print("CHECKSUM INVÁLIDO!! ARQUIVO NÃO FOI CONSTRUÍDO!")
+    #    os.makedirs("reports", exist_ok=True)
+    #    with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
+    #        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    #        report_file.write(f"{timestamp}❌CHECKSUM INVÁLIDO!! ARQUIVO NÃO FOI CONSTRUÍDO!")
 
 
 def escolher_pasta_para_montar(caminho_base="chunks_recebidos"):
@@ -280,6 +311,7 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk):
                 #print("Recebendo chunk...")
 
             #Calcula o Hash
+            print(dados_recebidos)
             checksum_recebido = hashlib.sha256(dados_recebidos).hexdigest()
             nome_diretorio = nome_chunk.split('.')[0]
 
@@ -313,22 +345,6 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk):
             s.close()
     except Exception as e:
         print(f"❌ Erro ao requisitar chunk: {e}")
-
-#            with open(caminho_arquivo, 'wb') as f:
-#                while True:
-#                    dados = s.recv(4096)
-#                    #print(dados)
-#                    print("Recebimento acontecendo!!")
-#                    if not dados:
-#                        break
-#                    f.write(dados)
-#                    print("Chunk recebido!!")
-#
-#            print(f"\n📥 Chunk '{nome_chunk}' recebido de {to_user} e salvo em '{caminho_arquivo}'. ✅")
-#            print(f"Checksum RECEBIDO!!! {checksum_esperado}")
-#            s.close()
-#    except Exception as e:
-#        print(f"❌ Erro ao requisitar chunk: {e}")
 
 def launch_tracker_cross_platform() -> None:
     """
@@ -845,7 +861,7 @@ def interactiveMenu_1() -> bool:
                                                     threads.append(thread)
 
                                                 #Espera todas as threads terminarem
-                                                for thread in threads:
+                                                for thread in threads: 
                                                     thread.join()
                                                 print("✅ Todos os chunks foram requisitados e baixados.")
                                                 adicionar_dono_chunk("arquivos_cadastrados/arquivos_tracker.json", nome_escolhido, usuario_logado)

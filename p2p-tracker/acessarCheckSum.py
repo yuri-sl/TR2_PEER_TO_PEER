@@ -9,7 +9,7 @@ def obter_checksum(caminho_arquivo_json, nome_arquivo):
     else:
         return None
 caminho = "arquivos_cadastrados/arquivos_tracker.json"
-nome_arquivo = "testeAnuncio.txt"
+nome_arquivo = "Upload.txt"
 
 checksum = obter_checksum(caminho, nome_arquivo)
 
