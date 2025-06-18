@@ -46,41 +46,41 @@ def listar_chunks_do_arquivo(dados, nome_arquivo):
 
 
 
-caminho = "arquivos_cadastrados/arquivos_tracker.json"
-arquivos, dados = listarArquivos(caminho)
+#caminho = "arquivos_cadastrados/arquivos_tracker.json"
+#arquivos, dados = listarArquivos(caminho)
 
-if not arquivos:
-    print("Nenhum arquivo .txt disponível encontrado.")
-else:
-    print("Arquivos disponíveis:")
-    for i, nome in enumerate(arquivos):
-        print(f"[{i}] - {nome}")
-
-    try:
-        escolha = int(input("Digite o número do arquivo que deseja selecionar: "))
-        if 0 <= escolha < len(arquivos):
-            nome_escolhido = arquivos[escolha]
-            print(f"\nVocê escolheu o arquivo: {nome_escolhido}")
-
-            # Após escolha do arquivo...
-            chunks = listar_chunks_do_arquivo(dados, nome_escolhido)
-
-            if not chunks:
-                print("Nenhum chunk disponível para esse arquivo.")
-            else:
-                print("Chunks disponíveis para este arquivo:")
-                # Se chunks forem strings:
-                if isinstance(chunks[0], str):
-                    for idx, chunk_nome in enumerate(chunks):
-                        print(f"[{idx}] - {chunk_nome}")
-                # Se chunks forem dicionários:
-                else:
-                    for idx, chunk in enumerate(chunks):
-                        print(f"[{idx}] - {chunk['nome']} (checksum: {chunk.get('checksum', 'N/A')})")
-                        print({chunk['nome']})
-                        print({chunk['checksum']})
-    except ValueError:
-        print("Entrada inválida. Digite um número.")
+#if not arquivos:
+#    print("Nenhum arquivo .txt disponível encontrado.")
+#else:
+#    print("Arquivos disponíveis:")
+#    for i, nome in enumerate(arquivos):
+#        print(f"[{i}] - {nome}")
+#
+#    try:
+#        escolha = int(input("Digite o número do arquivo que deseja selecionar: "))
+#        if 0 <= escolha < len(arquivos):
+#            nome_escolhido = arquivos[escolha]
+#            print(f"\nVocê escolheu o arquivo: {nome_escolhido}")
+#
+#            # Após escolha do arquivo...
+#            chunks = listar_chunks_do_arquivo(dados, nome_escolhido)
+#
+#            if not chunks:
+#                print("Nenhum chunk disponível para esse arquivo.")
+#            else:
+#                print("Chunks disponíveis para este arquivo:")
+#                # Se chunks forem strings:
+##                if isinstance(chunks[0], str):
+#                    for idx, chunk_nome in enumerate(chunks):
+#                        print(f"[{idx}] - {chunk_nome}")
+##                # Se chunks forem dicionários:
+#                else:
+#                    for idx, chunk in enumerate(chunks):
+#                        print(f"[{idx}] - {chunk['nome']} (checksum: {chunk.get('checksum', 'N/A')})")
+#                        print({chunk['nome']})
+###                        print({chunk['checksum']})
+#    except ValueError:
+#        print("Entrada inválida. Digite um número.")
 
 
 

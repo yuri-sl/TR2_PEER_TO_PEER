@@ -344,4 +344,20 @@
 [2025-06-15 21:46:55]  Chunk 'testeAnuncio.part44' recebido de F. Checksum OK. ✅
 [2025-06-15 21:46:55]  Chunk 'testeAnuncio.part46' recebido de F. Checksum OK. ✅
 [2025-06-15 21:46:55]  Chunk 'testeAnuncio.part47' recebido de F. Checksum OK. ✅
-2025-06-16 20:23:49✅ Arquivo 'testeAnuncio.txt' montado com sucesso em 'arquivos_montados/A/testeAnuncio.txt'!
+2025-06-16 20:23:49✅ Arquivo 'testeAnuncio.txt' montado com sucesso em 'arquivos_montados/A/testeAnuncio.txt'!2025-06-16 20:37:06✅ Arquivo 'testeAnuncio.txt' montado com sucesso em 'arquivos_montados/A/testeAnuncio.txt'!2025-06-16 22:07:27❌CHECKSUM INVÁLIDO!! ARQUIVO NÃO FOI CONSTRUÍDO!2025-06-16 22:09:35❌CHECKSUM INVÁLIDO!! ARQUIVO NÃO FOI CONSTRUÍDO![2025-06-16 22:12:00]  Chunk 'TesteUpload.part0' recebido de F. Checksum OK. ✅
+[2025-06-16 22:12:00]  Chunk 'TesteUpload.part1' recebido de F. Checksum OK. ✅
+[2025-06-16 22:12:00]  Chunk 'TesteUpload.part2' recebido de F. Checksum OK. ✅
+[2025-06-16 22:12:00]  Chunk 'TesteUpload.part3' recebido de F. Checksum OK. ✅
+[2025-06-16 22:15:05]  Chunk 'TesteUpload.part3' recebido de F. Checksum OK. ✅
+[2025-06-16 22:15:05]  Chunk 'TesteUpload.part0' recebido de F. Checksum OK. ✅
+[2025-06-16 22:15:05]  Chunk 'TesteUpload.part2' recebido de F. Checksum OK. ✅
+[2025-06-16 22:15:05]  Chunk 'TesteUpload.part1' recebido de F. Checksum OK. ✅
+2025-06-16 22:24:13❌CHECKSUM INVÁLIDO!! ARQUIVO NÃO FOI CONSTRUÍDO!2025-06-16 22:27:34❌CHECKSUM INVÁLIDO!! ARQUIVO NÃO FOI CONSTRUÍDO!2025-06-16 22:34:33✅ Arquivo 'TesteUpload.txt' montado com sucesso em 'arquivos_montados/A/TesteUpload.txt'![2025-06-18 16:21:07]  Chunk 'Upload.part0' recebido de F. Checksum OK. ✅
+[2025-06-18 16:21:07]  Chunk 'Upload.part1' recebido de F. Checksum OK. ✅
+[2025-06-18 16:22:57]  Chunk 'Upload.part1' recebido de F. Checksum OK. ✅
+[2025-06-18 16:22:57]  Chunk 'Upload.part0' recebido de F. Checksum OK. ✅
+2025-06-18 16:23:25✅ Arquivo 'Upload.txt' montado com sucesso em 'arquivos_montados/A/Upload.txt'![2025-06-18 17:16:18]  Chunk 'teste.part0' recebido de F. Checksum OK. ✅
+[2025-06-18 17:16:34]  Chunk 'teste.part0' recebido de F. Checksum OK. ✅
+[2025-06-18 17:19:26]  Chunk 'teste.part0' recebido de F. Checksum OK. ✅
+[2025-06-18 17:19:40]  Chunk 'teste.part0' recebido de F. Checksum OK. ✅
+[2025-06-18 18:07:46]✅ Arquivo 'teste.txt' montado com sucesso em 'arquivos_montados/A/teste.txt'!

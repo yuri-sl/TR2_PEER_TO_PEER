@@ -78,9 +78,11 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
             requisicao_json = json.loads(requisicao)
             nome_chunk = requisicao_json.get("nome_chunk")
             user_to = requisicao_json["to"]
+            user_from = requisicao_json["from"]
 
             print("O JSON DE REQUISIÇÃO É: ")
             print(requisicao_json, flush=True)
+            print(f"from user: {user_from}\n to_user: {user_to}\n nome_chunk:{nome_chunk}")
 
             caminho_arquivo = nome_chunk.split('.')[0]
 
@@ -94,11 +96,14 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                         dados_chunk = f.read()
                     checksum = hashlib.sha256(dados_chunk).hexdigest()
 
+                    print(f"O nome do chunk é {nome_chunk}\n o checksum é {checksum}")
+
                     # Prepara JSON com nome e checksum
                     json_data = [{
                         "nome": nome_chunk,
                         "checksum": checksum
                     }]
+                    print("JSON de peer foi gerado! Agora só falta enviar")
                     json_str = json.dumps(json_data)
                     json_bytes = json_str.encode()
 
