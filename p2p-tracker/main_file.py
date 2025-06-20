@@ -430,7 +430,7 @@ def start_heartbeat(username) -> None:
                 if resposta.get("status") != "ok":
                     print("⚠️ Você foi desconectado por inatividade. Faça login novamente.")
                     os._exit(1)
-                time.sleep(600000)
+                time.sleep(300)
             except:
                 print("⚠️ Erro de conexão no heartbeat. Encerrando cliente.")
                 os._exit(1)
