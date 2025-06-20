@@ -14,6 +14,7 @@ from acessarTrackerJson import listarArquivos,listar_chunks_do_arquivo
 from peer_messages import *
 import threading
 from peer import *
+from scoring import update_score, get_score
 menu_1 = "MENU PRINCIPAL \n1 - Registrar;\n2 - Login no Sistema;\n3 - Sair do sistema;"
 menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;\n11 - Criar um novo arquivo .txt\n12 - Requisição de Chunk\n13 - Montar arquivo usando chunks"
 
@@ -272,11 +273,13 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk):
     print(pedidos)
     print(f"A porta do host é: {port}")
     try:
+        start_time = time.time()
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((host, port))
         print("Conexão bem sucedida!")
         s.sendall(json.dumps(pedidos).encode())
         s.shutdown(socket.SHUT_WR)
+        ttf = time.time() - start_time
         # Garante que a pasta de destino exista
         os.makedirs("chunks_recebidos", exist_ok=True)
 
@@ -294,6 +297,13 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk):
                     break
                 json_bytes += parte
             json_data = json.loads(json_bytes.decode())
+            bytes_recv = len(json_bytes)
+            peer_id = to_user
+            successful = 1
+            # atualiza a pontuação daquele peer:
+            new_score = update_score(peer_id, bytes_sent=0,
+                             time_connected=ttf,
+                             successful_responses=successful)
             print("JSON recebido decodificado:", json_bytes.decode())
             print("json_data:", json_data)
 
