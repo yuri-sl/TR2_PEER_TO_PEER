@@ -1,5 +1,25 @@
-# Scoreboard global em memória (pode ser persistido em DB se necessário)
+import json
+import os
+
+# Caminho para salvar o scoreboard
+SCOREBOARD_FILE = "scoreboard.json"
+
+# Scoreboard global em memória
 scoreboard = {}
+
+# Pesos configuráveis para cada métrica
+WEIGHTS = {
+    'bytes_sent': 0.5,
+    'time_connected': 0.3,
+    'successful_responses': 0.2
+}
+
+def load_scoreboard():
+    """Carrega o scoreboard do disco se existir."""
+    global scoreboard
+    if os.path.exists(SCOREBOARD_FILE):
+        with open(SCOREBOARD_FILE, "r", encoding="utf-8") as f:
+            scoreboard = json.load(f)
 
 # Pesos configuráveis para cada métrica
 WEIGHTS = {
