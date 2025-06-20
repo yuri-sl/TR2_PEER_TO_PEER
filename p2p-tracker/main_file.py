@@ -14,10 +14,12 @@ from acessarTrackerJson import listarArquivos,listar_chunks_do_arquivo
 from peer_messages import *
 import threading
 from peer import *
-menu_1 = "MENU PRINCIPAL \n1 - Registrar;\n2 - Login no Sistema;\n3 - Sair do sistema;"
-menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;\n11 - Criar um novo arquivo .txt\n12 - Requisição de Chunk\n13 - Montar arquivo usando chunks"
+menu_1 = "MENU PRINCIPAL \n#1 - Registrar;\n#2 - Login no Sistema;\n#3 - Sair do sistema;"
+menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;\n11 - Criar um novo arquivo .txt\n12 - Requisição de Chunk\n13 - Montar arquivo usando chunks\n 14 - Próxima página >>>>"
 
-
+menu_chats = "--Menu de interações de chats por usuários--(1/3)\n#5 - Listagem de peers Ativos\n#6 - Iniciar chat com um Peer\n\n#14 - Próxima página >>>>"
+menu_arquivos = "--Menu de Operações por arquivos--(2/3)\n#11 - Criar um arquivo .txt\n#8 - Anunciar um arquivo manualmente\n#12 - Requisição de Chunks\n13 - Montar um Arquivo\n\n#14 - Próxima página >>>>\n#15 - Página anterior <<<<<<"
+menu_opcoes = "--Menu de operações do Usuário--(3/3)\n#14 - Meu perfil\n#10 - Sair do sistema\n\n#15 - Página anterior <<<<<<"
 
 
 checksum_arquivos = {}
@@ -519,6 +521,7 @@ def interactiveMenu_1() -> bool:
     chat_port = 5000 + random.randint(1,1000)
     chunk_port = 5000 + random.randint(1,1000)
     os.system('cls||clear')
+    menu_index = 0
 
     while True:
         os.system('cls||clear')
@@ -585,8 +588,10 @@ def interactiveMenu_1() -> bool:
 
     # Now you're logged in (usuario_logado is set)
     while usuario_logado:
-        #os.system('cls||clear') #Limpar o diretório
-        print(menu_2)
+        os.system('cls||clear') #Limpar o diretório
+        avaiable_menus = [menu_chats,menu_arquivos,menu_opcoes]
+        active_menu = avaiable_menus[menu_index]
+        print(active_menu)
         operation = input("insira a sua operação desejada:\n")
 
         if operation == "4":
@@ -894,6 +899,14 @@ def interactiveMenu_1() -> bool:
 
             input("Pressione Enter para continuar")
             os.system('cls||clear')
+        elif operation == "14":
+            menu_index = menu_index + 1
+            if menu_index > 2:
+                menu_index = 2
+        elif operation == "15":
+            menu_index = menu_index - 1
+            if menu_index <0:
+                menu_index = 0
 
 
         else:
