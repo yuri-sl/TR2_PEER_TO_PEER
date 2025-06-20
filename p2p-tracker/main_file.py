@@ -829,7 +829,7 @@ def interactiveMenu_1() -> bool:
 
                             print(f"Digite o nome do arquivo para puxar de {user}:")
                             #texto = input("Digite seu arquivo:")
-                            caminho = "arquivos_cadastrados/arquivos_tracker.json"
+                            caminho = f"arquivos_cadastrados/arquivos_tracker.json"
                             arquivos, dados = listarArquivos(caminho)
 
                             if not arquivos:
