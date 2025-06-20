@@ -1,0 +1,8 @@
+{
+    "peerA": {
+        "bytes_sent": 2000,
+        "time_connected": 4.0,
+        "successful_responses": 2,
+        "score": 1001.6
+    }
+}
