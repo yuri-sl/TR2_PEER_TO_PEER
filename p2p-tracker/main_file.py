@@ -19,7 +19,7 @@ menu_1 = "MENU PRINCIPAL \n#1 - Registrar;\n#2 - Login no Sistema;\n#3 - Sair do
 menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;\n11 - Criar um novo arquivo .txt\n12 - Requisição de Chunk\n13 - Montar arquivo usando chunks\n 14 - Próxima página >>>>"
 
 menu_chats = "--Menu de interações de chats por usuários--(1/3)\n#5 - Listagem de peers Ativos\n#6 - Iniciar chat com um Peer\n\n#14 - Próxima página >>>>"
-menu_arquivos = "--Menu de Operações por arquivos--(2/3)\n#11 - Criar um arquivo .txt\n#8 - Anunciar um arquivo manualmente\n#12 - Requisição de Chunks\n13 - Montar um Arquivo\n\n#14 - Próxima página >>>>\n#15 - Página anterior <<<<<<"
+menu_arquivos = "--Menu de Operações por arquivos--(2/3)\n#11 - Criar um arquivo .txt\n#8 - Anunciar um arquivo manualmente\n#12 - Requisição de Chunks\n#13 - Montar um Arquivo\n\n#14 - Próxima página >>>>\n#15 - Página anterior <<<<<<"
 menu_opcoes = "--Menu de operações do Usuário--(3/3)\n#14 - Meu perfil\n#10 - Sair do sistema\n\n#15 - Página anterior <<<<<<"
 
 
@@ -303,9 +303,9 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk):
             peer_id = to_user
             successful = 1
             # atualiza a pontuação daquele peer:
-            new_score = update_score(peer_id, bytes_sent=0,
-                             time_connected=ttf,
-                             successful_responses=successful)
+            #new_score = update_score(peer_id, bytes_sent=0,
+            #                 time_connected=ttf,
+            #                 successful_responses=successful)
             print("JSON recebido decodificado:", json_bytes.decode())
             print("json_data:", json_data)
 
@@ -530,11 +530,11 @@ def interactiveMenu_1() -> bool:
     usuario_logado = None
     chat_port = 5000 + random.randint(1,1000)
     chunk_port = 5000 + random.randint(1,1000)
-    os.system('cls||clear')
+    #os.system('cls||clear')
     menu_index = 0
 
     while True:
-        os.system('cls||clear')
+        #os.system('cls||clear')
         print(menu_1)
         operation = input("insira a sua operação desejada:\n")
 
@@ -598,7 +598,7 @@ def interactiveMenu_1() -> bool:
 
     # Now you're logged in (usuario_logado is set)
     while usuario_logado:
-        os.system('cls||clear') #Limpar o diretório
+        #os.system('cls||clear') #Limpar o diretório
         avaiable_menus = [menu_chats,menu_arquivos,menu_opcoes]
         active_menu = avaiable_menus[menu_index]
         print(active_menu)
@@ -765,7 +765,7 @@ def interactiveMenu_1() -> bool:
             for f in selected_files:
                 print(f" - {f}")
                 print(f"Selected_files está assim: {selected_files}")
-                announce_file_novo(usuario_logado,f)
+                novos_chunks = announce_file_novo(usuario_logado,f)
             input("Pressione Enter para continuar")
             os.system('cls||clear')
         elif operation == "9":
@@ -820,85 +820,90 @@ def interactiveMenu_1() -> bool:
             accept_chat = input(("Gostaria de comunicar com um Peer?\n1-Sim    0-Não\n"))
             if accept_chat == "1":
                 selected_user = input("Digite o nome do usuário que deseja pedir o arquivo\n")
-                i = 0
-                for user in resposta.get("mensagem",[]):
-                    i += 1
-                    if selected_user == user or str(i) == selected_user:
-                        print("Usuário Escolhido para operação com sucesso!")
-                        dados_start_chunk = {
-                            "action":"get_peer_info_chunk",
-                            "username": user
-                        }
-                        resposta_start_chunk = send_to_tracker(dados_start_chunk)
+                if selected_user == usuario_logado:
+                        print("Não é possível realizar a operação consigo mesmo!")
+                else:
+                    #Continuação do processo de seleção
+                    i = 0
+                    for user in resposta.get("mensagem",[]):
+                        i += 1                      
+                        if selected_user == user or str(i) == selected_user:
+                            print("Usuário Escolhido para operação com sucesso!")
+                            dados_start_chunk = {
+                                "action":"get_peer_info_chunk",
+                                "username": user
+                            }
+                            resposta_start_chunk = send_to_tracker(dados_start_chunk)
 
-                        if resposta_start_chunk.get("status")=="ok":
-                            peer_info = resposta_start_chunk.get("mensagem",{})
-                            peer_ip = peer_info.get("ip")
-                            peer_port = peer_info.get("port")
-                            print(f"Iniciando a operação com {user} em {peer_ip}:{peer_port}")
+                            if resposta_start_chunk.get("status")=="ok":
+                                peer_info = resposta_start_chunk.get("mensagem",{})
+                                peer_ip = peer_info.get("ip")
+                                peer_port = peer_info.get("port")
+                                print(f"Iniciando a operação com {user} em {peer_ip}:{peer_port}")
 
-                            print(f"Digite o nome do arquivo para puxar de {user}:")
-                            #texto = input("Digite seu arquivo:")
-                            caminho = f"arquivos_cadastrados/arquivos_tracker.json"
-                            arquivos, dados = listarArquivos(caminho)
+                                print(f"Digite o nome do arquivo para puxar de {user}:")
+                                #texto = input("Digite seu arquivo:")
+                                caminho = f"arquivos_cadastrados/arquivos_tracker.json"
+                                arquivos, dados = listarArquivos(caminho)
 
-                            if not arquivos:
-                                print("Nenhum arquivo .txt disponível encontrado.")
-                            else:
-                                print("Arquivos disponíveis:")
-                                for i, nome in enumerate(arquivos):
-                                    print(f"[{i}] - {nome}")
+                                if not arquivos:
+                                    print("Nenhum arquivo .txt disponível encontrado.")
+                                else:
+                                    print("Arquivos disponíveis:")
+                                    for i, nome in enumerate(arquivos):
+                                        print(f"[{i}] - {nome}")
 
-                                try:
-                                    escolha = int(input("Digite o número do arquivo que deseja selecionar: "))
-                                    if 0 <= escolha < len(arquivos):
-                                        nome_escolhido = arquivos[escolha]
-                                        print(f"\nVocê escolheu o arquivo: {nome_escolhido}")
+                                    try:
+                                        escolha = int(input("Digite o número do arquivo que deseja selecionar: "))
+                                        if 0 <= escolha < len(arquivos):
+                                            nome_escolhido = arquivos[escolha]
+                                            print(f"\nVocê escolheu o arquivo: {nome_escolhido}")
 
-                                        # Após escolha do arquivo...
-                                        chunks = listar_chunks_do_arquivo(dados, nome_escolhido)
+                                            # Após escolha do arquivo...
+                                            chunks = listar_chunks_do_arquivo(dados, nome_escolhido)
 
-                                        if not chunks:
-                                            print("Nenhum chunk disponível para esse arquivo.")
-                                        else:
-                                            print("Chunks disponíveis para este arquivo:")
-                                            # Se chunks forem strings:
-                                            if isinstance(chunks[0], str):
-                                                threads = []
-                                                for idx, chunk_nome in enumerate(chunks):
-                                                    print("É string")
-                                                    print(f"[{idx}] - {chunk_nome}")
-                                                    #cria e inicia uma thread para baixar esse chunk
-                                                    thread = threading.Thread(target=requisitar_chunk,
-                                                                              args=(peer_ip,peer_port,usuario_logado,user,chunk_nome)
-                                                                              )
-                                                    thread.start()
-                                                    threads.append(thread)
+                                            if not chunks:
+                                                print("Nenhum chunk disponível para esse arquivo.")
+                                            else:
+                                                print("Chunks disponíveis para este arquivo:")
+                                                # Se chunks forem strings:
+                                                if isinstance(chunks[0], str):
+                                                    threads = []
+                                                    for idx, chunk_nome in enumerate(chunks):
+                                                        print("É string")
+                                                        print(f"[{idx}] - {chunk_nome}")
+                                                        #cria e inicia uma thread para baixar esse chunk
+                                                        thread = threading.Thread(target=requisitar_chunk,
+                                                                                args=(peer_ip,peer_port,usuario_logado,user,chunk_nome)
+                                                                                )
+                                                        thread.start()
+                                                        threads.append(thread)
 
-                                                #Espera todas as threads terminarem
-                                                for thread in threads: 
-                                                    thread.join()
-                                                print("✅ Todos os chunks foram requisitados e baixados.")
-                                                adicionar_dono_chunk("arquivos_cadastrados/arquivos_tracker.json", nome_escolhido, usuario_logado)
+                                                    #Espera todas as threads terminarem
+                                                    for thread in threads: 
+                                                        thread.join()
+                                                    print("✅ Todos os chunks foram requisitados e baixados.")
+                                                    adicionar_dono_chunk("arquivos_cadastrados/arquivos_tracker.json", nome_escolhido, usuario_logado)
 
 
-                                                    #arquivo_chunk_buscado = {chunk['checksum']}
-                                                    #requisitar_chunk(peer_ip,peer_port,usuario_logado,user,chunk_nome)
-                                            # Se chunks forem dicionários:
-                                            #else:
-                                            #    for idx, chunk in enumerate(chunks):
-                                            #        print("É Dictionary")
-                                            #        print(f"[{idx}] - {chunk['nome']} (checksum: {chunk.get('checksum', 'N/A')})")
-                                            #        print({chunk['nome']})
-                                            #        print({chunk['checksum']})
-                                            #        arquivo_chunk_buscado = {chunk['checksum']}
-                                            #        requisitar_chunk(peer_ip,peer_port,usuario_logado,user,arquivo_chunk_buscado)
-                                except ValueError:
-                                    print("Entrada inválida. Digite um número.")
+                                                        #arquivo_chunk_buscado = {chunk['checksum']}
+                                                        #requisitar_chunk(peer_ip,peer_port,usuario_logado,user,chunk_nome)
+                                                # Se chunks forem dicionários:
+                                                #else:
+                                                #    for idx, chunk in enumerate(chunks):
+                                                #        print("É Dictionary")
+                                                #        print(f"[{idx}] - {chunk['nome']} (checksum: {chunk.get('checksum', 'N/A')})")
+                                                #        print({chunk['nome']})
+                                                #        print({chunk['checksum']})
+                                                #        arquivo_chunk_buscado = {chunk['checksum']}
+                                                #        requisitar_chunk(peer_ip,peer_port,usuario_logado,user,arquivo_chunk_buscado)
+                                    except ValueError:
+                                        print("Entrada inválida. Digite um número.")
 
-                            #requisitar_chunk(peer_ip,peer_port,usuario_logado,user,texto)
-            input("Pressione Enter para continuar")
-            os.system('cls||clear')
+                                #requisitar_chunk(peer_ip,peer_port,usuario_logado,user,texto)
+                #chunks_disponiveis = carregar_peers_com_chunks(caminho_json_chunks, meu_username)
+                input("Pressione Enter para continuar")
+                os.system('cls||clear')
         elif operation == "13":
             #Montar arquivo com base em Chunks
             caminho_pasta = escolher_pasta_para_montar(f"chunks_recebidos/{usuario_logado}")
@@ -949,7 +954,7 @@ def init():
                 print("End of Program")
                 break
         else:
-            os.system('cls||clear')
+            #os.system('cls||clear')
             print("Gostaria de se comportar como um cliente?\n")
             ans2 = int(input(" 1- Sim, 0 - Não\n"))
             if (ans2==1):
@@ -962,7 +967,7 @@ def init():
                 else:
                     print("End of Program")
                     break
-            os.system('cls||clear')
+            #os.system('cls||clear')
 
 if __name__ == "__main__":
     init()
