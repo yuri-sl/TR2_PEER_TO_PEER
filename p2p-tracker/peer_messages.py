@@ -71,7 +71,7 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                 with open(ARQUIVO_JSON, "w", encoding="utf-8") as f:
                     json.dump(dados_existentes, f, indent=4, ensure_ascii=False)
 
-                print(f"[✓] Chunk '{mensagem['enviando']}' salvo/atualizado em '{ARQUIVO_JSON}'")
+                #print(f"[✓] Chunk '{mensagem['enviando']}' salvo/atualizado em '{ARQUIVO_JSON}'")
         except Exception as e:
             print(f"Erro ao receber mensagem: {e}")
             
@@ -237,7 +237,7 @@ def p2p(user):
                             #print(successful_responses)
                             bytes_sent = len(dados)
                             update_score(user,bytes_sent, time_connected, successful_responses)# atualiza o score
-                            print(user, bytes_sent, successful_responses)
+                            #print(user,"enviando para", users)
                     except:
                         print("não foi possivel enviar para este peer")
                 else:                               # mesmo qie nao tenha conseguido enviar vamos dar um incentivo a ele
@@ -255,7 +255,7 @@ def send_chunk(ip, port, nome_chunk, dados):
         enviado = json.dumps(mensagem)
         s.sendall(enviado.encode())
         s.shutdown(socket.SHUT_WR)
-        print(f"[✓] Chunk '{nome_chunk}' enviado com sucesso")
+        #print(f"[✓] Chunk '{nome_chunk}' enviado com sucesso")
         s.close()
         return True
     except Exception as e:
