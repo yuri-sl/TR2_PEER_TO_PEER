@@ -4,6 +4,7 @@ import json
 from datetime import datetime
 import os
 from chunks_modules import *
+from scoring import *
 
 def start_peer_server(chat_port,chunk_port, meu_username) -> None:
     """
@@ -132,6 +133,51 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
     if chunks_disponiveis:
         threading.Thread(target=chunk_server_loop, daemon=True).start()
         print("Os seus chunks foram carregados com sucesso!")
+    threading.Thread(target=p2p, args=(meu_username,), daemon=True).start()
+
+def p2p(user):
+    def send_to_tracker2(data, limite) -> dict:
+        """
+        Envia dados codificados em JSON para o tracker via socket TCP e aguarda uma resposta.
+
+        Conecta-se ao tracker localizado em 'localhost' na porta 5000. Os dados enviados devem ser serializáveis em JSON.
+
+        Após o envio completo, a função aguarda a resposta do tracker, que também deve estar em formato JSON.
+
+        Retorna:
+            dict: A resposta decodificada do tracker, convertida de JSON para dicionário Python.
+
+        Em caso de falha de conexão (por exemplo, se o tracker não estiver em execução),
+        imprime uma mensagem de erro e retorna um dicionário indicando a falha.
+
+        Exemplo de retorno em caso de erro:
+            {"status": "erro", "mensagem": "Tracker não disponível."}
+        """
+        HOST = 'localhost'
+        PORT = 5000
+        try:    
+            s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+            s.connect((HOST,PORT))
+            s.sendall(json.dumps(data).encode())
+            s.shutdown(socket.SHUT_WR)  # Indica que terminou de enviar dados
+            buffer = b""
+            while True:
+                chunk = s.recv(limite)
+                if not chunk:
+                    break
+                buffer += chunk
+            s.close()
+            return json.loads(buffer.decode())
+        except ConnectionRefusedError:
+            print("Não foi possível iniciar o Tracker. ele já está ativo?")
+            return {"status":"erro","mensagem":"Tracker não disponível."}
+    dados_start_chat = {
+        "action":"get_ip",
+        "username": user
+    }
+    peers_ip = send_to_tracker2(dados_start_chat)
+    for user, ip in peers_ip:
+        limite = get_score(user)
 
 def send_chunk_to_peer(ip, port, nome_chunk, destino_arquivo):
     """
