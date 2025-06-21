@@ -53,7 +53,7 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                 print(f"\n📩 Nova mensagem de {mensagem['from']}:")
                 print(f"   {mensagem['message']} ({mensagem['timestamp']})\n")
             except:
-                print(f"chunk recebido{mensagem['enviando']}:")
+                #print(f"chunk recebido {mensagem['enviando']}:")
                 dados = mensagem["dados"]
                 if os.path.exists(ARQUIVO_JSON):
                     with open(ARQUIVO_JSON, "r", encoding="utf-8") as f:
@@ -172,8 +172,8 @@ def p2p(user):
             time.sleep(1)
             resposta = send_to_tracker2(dados_start_chat)
             peers_ip = resposta["mensagem"]             # Pega os ips, ports e usarios correspondentes
-            for user, ip, port in peers_ip:
-                update_score(user,0, 1, 0)
+            for peer_user, ip, port in peers_ip:
+                update_score(peer_user,0, 1, 0)
     threading.Thread(target=timeconected, daemon=True).start()
 
     def send_to_tracker2(data) -> dict:
@@ -222,6 +222,7 @@ def p2p(user):
     while True:
         #print(bytes_sent)
         time.sleep(1)                                # A cada 1 segundo manda chunk pra todo mundo
+
         resposta = send_to_tracker2(dados_start_chat)# Pega todos os ips (Sempre renovando)
         peers_ip = resposta["mensagem"]             # Pega os ips, ports e usarios correspondentes
         for users, ip, port in peers_ip:            # envia para todos os peers
@@ -233,15 +234,18 @@ def p2p(user):
                         #print(f"[{users}] Enviando {os.path.basename(nome_do_chunk)} para {ip} : {port}")
                         enviado = send_chunk(ip, port, nome_do_chunk, dados)# Vai enviar para esse ip um chunk aleatorio que eu tiver e consiguir enviar
                         if enviado:                     # Se foi enviado com sucesso
-                            successful_responses+=1
-                            #print(successful_responses)
+                            successful_responses = 1
                             bytes_sent = len(dados)
+                            bytes_sent = bytes_sent/1000 # parametrizado
                             update_score(user,bytes_sent, time_connected, successful_responses)# atualiza o score
                             #print(user,"enviando para", users)
+                        else:
+                            successful_responses = 1
+                            update_score(user,bytes_sent, time_connected, successful_responses)
                     except:
                         print("não foi possivel enviar para este peer")
                 else:                               # mesmo qie nao tenha conseguido enviar vamos dar um incentivo a ele
-                    bytes_sent+= 100000                                         # novo score pra ajudar
+                    bytes_sent+= 100                                        # novo score pra ajudar
                     break                                                       # Pois ainda nao tem pontuação suficiente para enviar
 
 def send_chunk(ip, port, nome_chunk, dados):

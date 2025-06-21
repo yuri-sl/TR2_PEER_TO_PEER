@@ -9,9 +9,9 @@ scoreboard = {}
 
 # Pesos configuráveis para cada métrica
 WEIGHTS = {
-    'bytes_sent': 0.5,
-    'time_connected': 0.3,
-    'successful_responses': 0.2
+    'bytes_sent': 1000,
+    'time_connected': 50,
+    'successful_responses': 100
 }
 
 def load_scoreboard():
