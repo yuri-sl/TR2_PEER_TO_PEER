@@ -5,7 +5,10 @@ from datetime import datetime
 import os
 from chunks_modules import *
 from scoring import *
-
+import time
+import random
+from peer import calculate_checksum
+ARQUIVO_JSON = "chunks_trocados.json"
 def start_peer_server(chat_port,chunk_port, meu_username) -> None:
     """
     Inicia o servidor de um peer para receber mensagens diretas de outros peers.
@@ -46,10 +49,34 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                 buffer += chunk
 
             mensagem = json.loads(buffer.decode())
-            print(f"\n📩 Nova mensagem de {mensagem['from']}:")
-            print(f"   {mensagem['message']} ({mensagem['timestamp']})\n")
+            try:
+                print(f"\n📩 Nova mensagem de {mensagem['from']}:")
+                print(f"   {mensagem['message']} ({mensagem['timestamp']})\n")
+            except:
+                print(f"chunk recebido{mensagem['enviando']}:")
+                dados = mensagem["dados"]
+                if os.path.exists(ARQUIVO_JSON):
+                    with open(ARQUIVO_JSON, "r", encoding="utf-8") as f:
+                        try:
+                            dados_existentes = json.load(f)
+                        except json.JSONDecodeError:
+                            dados_existentes = {}
+                else:
+                    dados_existentes = {}
+                """
+                Otimiza isso aqui man?
+                """
+                # Atualiza ou adiciona o novo chunk
+                dados_existentes[mensagem["enviando"]] = mensagem["dados"]
+
+                # Salva de volta no JSON
+                with open(ARQUIVO_JSON, "w", encoding="utf-8") as f:
+                    json.dump(dados_existentes, f, indent=4, ensure_ascii=False)
+
+                print(f"[✓] Chunk '{mensagem['enviando']}' salvo/atualizado em '{ARQUIVO_JSON}'")
         except Exception as e:
             print(f"Erro ao receber mensagem: {e}")
+            
         finally:
             conn.close()
 
@@ -133,10 +160,18 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
     if chunks_disponiveis:
         threading.Thread(target=chunk_server_loop, daemon=True).start()
         print("Os seus chunks foram carregados com sucesso!")
+    load_scoreboard()
     threading.Thread(target=p2p, args=(meu_username,), daemon=True).start()
+    threading.Thread(target=timeconected, daemon=True).start()
 
+def timeconected():
+    i=0
+    while True:
+        time.sleep(1)
+        i+=1
+        print(i)
 def p2p(user):
-    def send_to_tracker2(data, limite) -> dict:
+    def send_to_tracker2(data) -> dict:
         """
         Envia dados codificados em JSON para o tracker via socket TCP e aguarda uma resposta.
 
@@ -162,7 +197,7 @@ def p2p(user):
             s.shutdown(socket.SHUT_WR)  # Indica que terminou de enviar dados
             buffer = b""
             while True:
-                chunk = s.recv(limite)
+                chunk = s.recv(4096)
                 if not chunk:
                     break
                 buffer += chunk
@@ -175,9 +210,76 @@ def p2p(user):
         "action":"get_ip",
         "username": user
     }
-    peers_ip = send_to_tracker2(dados_start_chat)
-    for user, ip in peers_ip:
-        limite = get_score(user)
+    bytes_sent = 0
+    time_connected = 0
+    successful_responses = 0
+    update_score(user,0, 0, 0)
+    while True:
+        print(bytes_sent)
+        time.sleep(1)                                # A cada 1 segundo manda chunk pra todo mundo
+        resposta = send_to_tracker2(dados_start_chat)# Pega todos os ips (Sempre renovando)
+        peers_ip = resposta["mensagem"]             # Pega os ips, ports e usarios correspondentes
+        for users, ip, port in peers_ip:            # envia para todos os peers
+            if users != user:                       # nao vai enviar para si mesmo
+                limite = get_score(users)           # Usa o score para definir um novo limite de envio
+                nome_do_chunk, dados = escolher_chunk_compatível(limite["score"]) # esolhe um chunk aleatorio
+                if nome_do_chunk:                   # Se eu for capaz de enviar
+                    try: 
+                        print(f"[{users}] Enviando {os.path.basename(nome_do_chunk)} para {ip} : {port}")
+                        enviado = send_chunk(ip, port, nome_do_chunk, dados)# Vai enviar para esse ip um chunk aleatorio que eu tiver e consiguir enviar
+                        if enviado:                     # Se foi enviado com sucesso
+                            successful_responses+=1
+                            print(successful_responses)
+                            bytes_sent+=len(dados)
+                            update_score(user,bytes_sent, time_connected, successful_responses)# atualiza o score
+                    except:
+                        print("não foi possivel enviar para este peer")
+                else:                               # mesmo qie nao tenha conseguido enviar vamos dar um incentivo a ele
+                    bytes_sent+= 500000                                         # novo score pra ajudar
+                    break                                                       # Pois ainda nao tem pontuação suficiente para enviar
+
+def send_chunk(ip, port, nome_chunk, dados):
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect((ip, port))
+        # Envia a requisição de chunk como JSON
+        mensagem = {"enviando": nome_chunk,
+                   "dados"   :  dados
+                   }
+        enviado = json.dumps(mensagem)
+        s.sendall(enviado.encode())
+        s.shutdown(socket.SHUT_WR)
+        # Recebe os dados do chunk
+        while True:
+            dados = s.recv(4096)
+            if not dados:
+                break
+            successful_responses+=1 # O envio foi correto
+
+        print(f"[✓] Chunk '{nome_chunk}' enviado com sucesso")
+        s.close()
+        return True
+    except Exception as e:
+        print(f"[Erro ao enviar pedaços] {e}")
+        return False
+
+
+CHUNKS_FOLDER = "arquivos_cadastrados/chunkscriados/bigfile/"
+
+def escolher_chunk_compatível(limite_bytes):    # Apenas para pegar um chunk aleatorio
+    """Seleciona aleatoriamente um arquivo que seja menor ou igual ao limite dado."""
+    chunk_files = [f for f in os.listdir(CHUNKS_FOLDER) if f.startswith("bigfile.part")]
+    random.shuffle(chunk_files)  # embaralha para tornar aleatório
+
+    for chunk in chunk_files:
+        caminho = os.path.join(CHUNKS_FOLDER, chunk)
+        tamanho = os.path.getsize(caminho)
+        if tamanho <= limite_bytes:             # tem score o suficiente para poder mandar algum arquivo?
+            with open(caminho, "r") as f:
+                dados = f.read()
+            return caminho, dados               # retorna todos os dados da chunk e o caminho dele
+
+    return None, None       # não consegue mandar nenhum arquivo com o score que tem
 
 def send_chunk_to_peer(ip, port, nome_chunk, destino_arquivo):
     """

@@ -223,7 +223,10 @@ def protocolos_restritos(mensagem, client_socket) -> None:
         client_socket.sendall(json.dumps(resposta).encode())
     elif mensagem['action'] == "get_ip":
         asked_user = mensagem['username']
-        peer_found = None
+        if not avaiableForChat:
+            peer_found = None
+        else:
+            peer_found = True
         if peer_found:
             resposta = {"status": "ok", "mensagem": avaiableForChat}
         else:

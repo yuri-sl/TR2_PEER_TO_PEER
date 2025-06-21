@@ -1,8 +1,14 @@
 {
-    "peerA": {
-        "bytes_sent": 2000,
-        "time_connected": 4.0,
-        "successful_responses": 2,
-        "score": 1001.6
+    "a": {
+        "bytes_sent": 722349712,
+        "time_connected": 0,
+        "successful_responses": 723,
+        "score": 361175000.6
+    },
+    "b": {
+        "bytes_sent": 1086166235,
+        "time_connected": 0,
+        "successful_responses": 66,
+        "score": 543083130.7
     }
 }

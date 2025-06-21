@@ -33,7 +33,7 @@ def save_scoreboard():
     except IOError as e:
         print(f"Erro ao salvar o scoreboard: {e}")
 
-def update_score(peer_id: str, bytes_sent: int, time_connected: float, successful_responses: int) -> float:
+def update_score(peer_id: str, bytes_sent: int, time_connected: int, successful_responses: int) -> float:
     """
     Atualiza a pontuação de um peer com base em métricas de envio.
 
@@ -49,7 +49,7 @@ def update_score(peer_id: str, bytes_sent: int, time_connected: float, successfu
     # Recupera métricas anteriores ou inicializa
     metrics = scoreboard.get(peer_id, {
         "bytes_sent": 0,
-        "time_connected": 0.0,
+        "time_connected": 0,
         "successful_responses": 0,
         "score": 0.0
     })
