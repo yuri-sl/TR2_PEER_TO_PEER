@@ -63,11 +63,9 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                             dados_existentes = {}
                 else:
                     dados_existentes = {}
-                """
-                Otimiza isso aqui man?
-                """
                 # Atualiza ou adiciona o novo chunk
-                dados_existentes[mensagem["enviando"]] = mensagem["dados"]
+                dados = mensagem["dados"].encode()
+                dados_existentes[mensagem["enviando"]] = calculate_checksum(dados)
 
                 # Salva de volta no JSON
                 with open(ARQUIVO_JSON, "w", encoding="utf-8") as f:
@@ -162,15 +160,22 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
         print("Os seus chunks foram carregados com sucesso!")
     load_scoreboard()
     threading.Thread(target=p2p, args=(meu_username,), daemon=True).start()
+    
+
+def p2p(user):
+    def timeconected():
+        dados_start_chat = {
+        "action":"get_ip",
+        "username": user
+        }
+        while True:
+            time.sleep(1)
+            resposta = send_to_tracker2(dados_start_chat)
+            peers_ip = resposta["mensagem"]             # Pega os ips, ports e usarios correspondentes
+            for user, ip, port in peers_ip:
+                update_score(user,0, 1, 0)
     threading.Thread(target=timeconected, daemon=True).start()
 
-def timeconected():
-    i=0
-    while True:
-        time.sleep(1)
-        i+=1
-        print(i)
-def p2p(user):
     def send_to_tracker2(data) -> dict:
         """
         Envia dados codificados em JSON para o tracker via socket TCP e aguarda uma resposta.
@@ -215,7 +220,7 @@ def p2p(user):
     successful_responses = 0
     update_score(user,0, 0, 0)
     while True:
-        print(bytes_sent)
+        #print(bytes_sent)
         time.sleep(1)                                # A cada 1 segundo manda chunk pra todo mundo
         resposta = send_to_tracker2(dados_start_chat)# Pega todos os ips (Sempre renovando)
         peers_ip = resposta["mensagem"]             # Pega os ips, ports e usarios correspondentes
@@ -225,17 +230,18 @@ def p2p(user):
                 nome_do_chunk, dados = escolher_chunk_compatível(limite["score"]) # esolhe um chunk aleatorio
                 if nome_do_chunk:                   # Se eu for capaz de enviar
                     try: 
-                        print(f"[{users}] Enviando {os.path.basename(nome_do_chunk)} para {ip} : {port}")
+                        #print(f"[{users}] Enviando {os.path.basename(nome_do_chunk)} para {ip} : {port}")
                         enviado = send_chunk(ip, port, nome_do_chunk, dados)# Vai enviar para esse ip um chunk aleatorio que eu tiver e consiguir enviar
                         if enviado:                     # Se foi enviado com sucesso
                             successful_responses+=1
-                            print(successful_responses)
-                            bytes_sent+=len(dados)
+                            #print(successful_responses)
+                            bytes_sent = len(dados)
                             update_score(user,bytes_sent, time_connected, successful_responses)# atualiza o score
+                            print(user, bytes_sent, successful_responses)
                     except:
                         print("não foi possivel enviar para este peer")
                 else:                               # mesmo qie nao tenha conseguido enviar vamos dar um incentivo a ele
-                    bytes_sent+= 500000                                         # novo score pra ajudar
+                    bytes_sent+= 100000                                         # novo score pra ajudar
                     break                                                       # Pois ainda nao tem pontuação suficiente para enviar
 
 def send_chunk(ip, port, nome_chunk, dados):
@@ -249,13 +255,6 @@ def send_chunk(ip, port, nome_chunk, dados):
         enviado = json.dumps(mensagem)
         s.sendall(enviado.encode())
         s.shutdown(socket.SHUT_WR)
-        # Recebe os dados do chunk
-        while True:
-            dados = s.recv(4096)
-            if not dados:
-                break
-            successful_responses+=1 # O envio foi correto
-
         print(f"[✓] Chunk '{nome_chunk}' enviado com sucesso")
         s.close()
         return True
