@@ -530,11 +530,11 @@ def interactiveMenu_1() -> bool:
     usuario_logado = None
     chat_port = 5000 + random.randint(1,1000)
     chunk_port = 5000 + random.randint(1,1000)
-    #os.system('cls||clear')
+    os.system('cls||clear')
     menu_index = 0
 
     while True:
-        #os.system('cls||clear')
+        os.system('cls||clear')
         print(menu_1)
         operation = input("insira a sua operação desejada:\n")
 
@@ -594,11 +594,11 @@ def interactiveMenu_1() -> bool:
         else:
             print("Operação inválida!")
             input("Pressione Enter para continuar")
-            #os.system('cls||clear')
+            os.system('cls||clear')
 
     # Now you're logged in (usuario_logado is set)
     while usuario_logado:
-        #os.system('cls||clear') #Limpar o diretório
+        os.system('cls||clear') #Limpar o diretório
         avaiable_menus = [menu_chats,menu_arquivos,menu_opcoes]
         active_menu = avaiable_menus[menu_index]
         print(active_menu)
@@ -796,11 +796,35 @@ def interactiveMenu_1() -> bool:
             os.system('cls||clear')
             return False
         elif operation == "11":
-            #Criar um novo arquivo.txt
-            file_name = input("Digite o nome do arquivo a ser criado: ")
-            file_name = file_name + ".txt"
+            # Criar um novo arquivo.txt
+            base_name = input("Digite o nome do arquivo a ser criado (sem .txt): ")
+            file_name = base_name + ".txt"
+
+            if os.path.exists(file_name):
+                print(f"⚠️ O arquivo '{file_name}' já existe.")
+                escolha = input("[1] Substituir o arquivo atual\n[2] Digitar outro nome\n[3] Adicionar contador ao nome\n[4] Cancelar\nEscolha: ")
+
+                if escolha == "1":
+                    pass  # Segue para sobrescrever
+                elif escolha == "2":
+                    base_name = input("Digite o novo nome do arquivo (sem .txt): ")
+                    file_name = base_name + ".txt"
+                elif escolha == "3":
+                    contador = 1
+                    while True:
+                        nome_contador = f"{base_name}_{contador}.txt"
+                        if not os.path.exists(nome_contador):
+                            file_name = nome_contador
+                            break
+                        contador += 1
+                else:
+                    print("❌ Operação cancelada.")
+                    continue
+
             file_size = int(input("Digite o tamanho do arquivo (MB): "))
-            create_big_text_file(file_name,file_size)
+            create_big_text_file(file_name, file_size)
+            print(f"✅ Arquivo '{file_name}' criado com sucesso.")
+
         elif operation == "12":
             #Baixar chunk
             dados = {
@@ -954,7 +978,7 @@ def init():
                 print("End of Program")
                 break
         else:
-            #os.system('cls||clear')
+            os.system('cls||clear')
             print("Gostaria de se comportar como um cliente?\n")
             ans2 = int(input(" 1- Sim, 0 - Não\n"))
             if (ans2==1):
@@ -967,7 +991,7 @@ def init():
                 else:
                     print("End of Program")
                     break
-            #os.system('cls||clear')
+            os.system('cls||clear')
 
 if __name__ == "__main__":
     init()
