@@ -1,12 +1,19 @@
 {
-    "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part1": "861d90e217376e2009fdf2ef983faa4213513954407a2435f55a86f91ff2b952",
-    "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part0": "7ccd7326e7bba1f719bda907c0cd0face67b87e9d504078a27572c01bbb0f485",
-    "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part9": "9b3fbbed2ced7d50e137f6620cc7ab3cb3873146ae55eed0500ac8ccac24e19b",
-    "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part6": "56b30f394f416496f2147b3704c7e8b1f8d24b553dc7bdfc1759eaf18a6a89e5",
-    "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part7": "8506917a8e09c49b9fcaa6c344fcac1c4b3ec359561bca1c4e156769ecd29391",
-    "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part3": "d99d81c46874e5b24160910da582b6e69456cd6b907c7b6df9e6053fd5d95a64",
-    "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part8": "634f5c5953d2cda0c6894823a0b841a58bf6311b3b12a6794cafe89bd21ae186",
-    "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part5": "159c63888b0b6be57336c1153955ae6c938404041eb2e07c593ec641ec0f4f36",
-    "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part2": "f94edca8394fc17d2afb047233b49604093fc3c01adef5a5fd43a135b8f30c7f",
-    "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part4": "f69c683ab21f1d0b1e341da42f09c0df61cbd7804ef1c1fbba753ade58ad4f6e"
+    "a": {
+        "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part8": "634f5c5953d2cda0c6894823a0b841a58bf6311b3b12a6794cafe89bd21ae186",
+        "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part1": "861d90e217376e2009fdf2ef983faa4213513954407a2435f55a86f91ff2b952",
+        "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part6": "56b30f394f416496f2147b3704c7e8b1f8d24b553dc7bdfc1759eaf18a6a89e5",
+        "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part9": "9b3fbbed2ced7d50e137f6620cc7ab3cb3873146ae55eed0500ac8ccac24e19b",
+        "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part2": "f94edca8394fc17d2afb047233b49604093fc3c01adef5a5fd43a135b8f30c7f",
+        "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part4": "f69c683ab21f1d0b1e341da42f09c0df61cbd7804ef1c1fbba753ade58ad4f6e",
+        "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part0": "7ccd7326e7bba1f719bda907c0cd0face67b87e9d504078a27572c01bbb0f485"
+    },
+    "b": {
+        "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part0": "7ccd7326e7bba1f719bda907c0cd0face67b87e9d504078a27572c01bbb0f485",
+        "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part3": "d99d81c46874e5b24160910da582b6e69456cd6b907c7b6df9e6053fd5d95a64",
+        "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part1": "861d90e217376e2009fdf2ef983faa4213513954407a2435f55a86f91ff2b952",
+        "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part9": "9b3fbbed2ced7d50e137f6620cc7ab3cb3873146ae55eed0500ac8ccac24e19b",
+        "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part8": "634f5c5953d2cda0c6894823a0b841a58bf6311b3b12a6794cafe89bd21ae186",
+        "arquivos_cadastrados/chunkscriados/bigfile/bigfile.part7": "8506917a8e09c49b9fcaa6c344fcac1c4b3ec359561bca1c4e156769ecd29391"
+    }
 }

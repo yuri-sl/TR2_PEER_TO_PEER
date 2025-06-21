@@ -9,7 +9,7 @@ scoreboard = {}
 
 # Pesos configuráveis para cada métrica
 WEIGHTS = {
-    'bytes_sent': 1000,
+    'bytes_sent': 100,
     'time_connected': 50,
     'successful_responses': 100
 }
@@ -33,25 +33,25 @@ def save_scoreboard():
     except IOError as e:
         print(f"Erro ao salvar o scoreboard: {e}")
 
-def update_score(peer_id: str, bytes_sent: int, time_connected: int, successful_responses: int) -> float:
+def update_score(peer_id: str, bytes_sent: int, time_connected: int, successful_responses: int) -> int:
     """
     Atualiza a pontuação de um peer com base em métricas de envio.
 
     Args:
         peer_id (str): Identificador único do peer.
         bytes_sent (int): Total de bytes enviados pelo peer desde último update.
-        time_connected (float): Tempo (em segundos) conectado.
+        time_connected (int): Tempo (em segundos) conectado.
         successful_responses (int): Número de respostas de chunk bem-sucedidas.
 
     Returns:
-        float: Nova pontuação calculada para o peer.
+        int: Nova pontuação calculada para o peer.
     """
     # Recupera métricas anteriores ou inicializa
     metrics = scoreboard.get(peer_id, {
         "bytes_sent": 0,
         "time_connected": 0,
         "successful_responses": 0,
-        "score": 0.0
+        "score": 0
     })
 
     # Atualiza métricas
@@ -66,7 +66,7 @@ def update_score(peer_id: str, bytes_sent: int, time_connected: int, successful_
         WEIGHTS["successful_responses"] * metrics["successful_responses"]
     )
 
-    metrics["score"] = round(score, 2)
+    metrics["score"] = score
     scoreboard[peer_id] = metrics
     save_scoreboard()
     return metrics["score"]
@@ -79,7 +79,7 @@ load_scoreboard()
 #save_scoreboard()
 #print(f"Nova pontuação de peerA: {score_example}")
 
-def get_score(peer_id: str) -> float:
+def get_score(peer_id: str) -> int:
     """
     Retorna a pontuação atual de um peer.
 
@@ -87,9 +87,11 @@ def get_score(peer_id: str) -> float:
         peer_id (str): Identificador do peer.
 
     Returns:
-        float: Pontuação armazenada, ou 0.0 se não existir.
+        int: Pontuação armazenada, ou 0 se não existir.
     """
-    return scoreboard.get(peer_id, 0.0)
+    score = scoreboard.get(peer_id, 0)
+    score = score["score"]
+    return score
 
 def get_leaderboard(top_n: int = None) -> list:
     """
