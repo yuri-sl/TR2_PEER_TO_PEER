@@ -15,9 +15,19 @@ avaiableForChat = []
 avaiableForSeed = []
 chunks = {}
 checksunsarq = {}
-arquivos = {}  # Novo dicionário global com info de arquivos
 import json
-
+def carregar_arquivos_em_json(caminho_arquivo="arquivos_cadastrados/arquivos_tracker.json"):
+    """Carrega e retorna o dicionário de arquivos registrados, ou retorna {} se não existir."""
+    if os.path.exists(caminho_arquivo) and os.path.getsize(caminho_arquivo) > 0:
+        with open(caminho_arquivo, "r", encoding="utf-8") as f:
+            try:
+                dados = json.load(f)
+                return dados
+            except json.JSONDecodeError:
+                # Arquivo existe mas está corrompido ou vazio
+                return {}
+    return {}
+arquivos = carregar_arquivos_em_json()  # Novo dicionário global com info de arquivos
 def salvar_arquivos_em_json():
     with open("arquivos_cadastrados/arquivos_tracker.json", "w", encoding="utf-8") as f:
         json.dump(arquivos, f, indent=4, ensure_ascii=False)

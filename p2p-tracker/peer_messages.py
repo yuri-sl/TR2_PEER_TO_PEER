@@ -116,16 +116,35 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
             user_to = requisicao_json["to"]
             user_from = requisicao_json["from"]
 
+            # ✅ Recarrega a cada request:
+            caminho_json_chunks = "arquivos_cadastrados/arquivos_tracker.json"
+            chunks_disponiveis = carregar_peers_com_chunks(caminho_json_chunks, meu_username)
+
+            #NOVO - Verificamos se existe umdiretório de chunks recebidos
+            caminho_arquivo = nome_chunk.split('.')[0]
+            caminho_recebidos = f"chunks_recebidos/{meu_username}/{caminho_arquivo}/{nome_chunk}"
+            tem_chunk_recebido = os.path.exists(caminho_recebidos)
+
+            print(f"Chunks disponiveis para {meu_username} transmitir são: {chunks_disponiveis}")
+            print(f"Existe no diretório de recebidos?: {'SIM' if tem_chunk_recebido else "NÃO"}")
+
+
+
             print("O JSON DE REQUISIÇÃO É: ")
             print(requisicao_json, flush=True)
             print(f"from user: {user_from}\n to_user: {user_to}\n nome_chunk:{nome_chunk}")
 
-            caminho_arquivo = nome_chunk.split('.')[0]
 
-            if nome_chunk in chunks_disponiveis:
-                caminho = f"arquivos_cadastrados/chunkscriados/{user_to}/{caminho_arquivo}/{nome_chunk}"
-                print(f"O caminho na busca é: {caminho}")
+            print(f"Chunks disponiveis para transmitir são: {chunks_disponiveis}")
 
+            # Verifica se o chunk está registrado NO JSON ou existe NO RECEBIDO
+            if nome_chunk in chunks_disponiveis or tem_chunk_recebido:
+                # Se existe no diretório de recebidos, atualiza o caminho para enviar
+                if tem_chunk_recebido:
+                    caminho = caminho_recebidos
+                else:
+                    caminho = f"arquivos_cadastrados/chunkscriados/{user_to}/{caminho_arquivo}/{nome_chunk}"
+                    print(f"O caminho na busca é: {caminho}")
                 if os.path.exists(caminho):
                     # Calcula o checksum corretamente
                     with open(caminho, 'rb') as f:
@@ -160,14 +179,13 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
             print(f"[Erro Chunk] {e}")
         finally:
             conn.close()
-
-    caminho_json_chunks = "arquivos_cadastrados/arquivos_tracker.json"
-    chunks_disponiveis = carregar_peers_com_chunks(caminho_json_chunks, meu_username)
+    #Inicia o servidor de chat
     threading.Thread(target=server_loop, daemon=True).start()
-    print(f"Chunks disponíveis carregados para {meu_username}: {chunks_disponiveis}")
-    if chunks_disponiveis:
-        threading.Thread(target=chunk_server_loop, daemon=True).start()
-        print("Os seus chunks foram carregados com sucesso!")
+    threading.Thread(target=chunk_server_loop, daemon=True).start()
+    #print(f"Chunks disponíveis carregados para {meu_username}: {chunks_disponiveis}")
+    #if chunks_disponiveis:
+    #    threading.Thread(target=chunk_server_loop, daemon=True).start()
+    #    print("Os seus chunks foram carregados com sucesso!")
     load_scoreboard()
     threading.Thread(target=p2p, args=(meu_username,), daemon=True).start()
     
@@ -465,5 +483,7 @@ def announce_file_novo(username, nome_arquivo):
 
         resposta = json.loads(buffer.decode())
         print("\n=> Resultado do anúncio:", resposta.get("mensagem"))
+        return nomes_chunks
+
     except Exception as e:
         print("Erro ao anunciar arquivo:", e)
