@@ -1,40 +1,85 @@
-# Scoreboard global em memória (pode ser persistido em DB se necessário)
+import json
+import os
+
+# Caminho para salvar o scoreboard
+SCOREBOARD_FILE = "scoreboard.json"
+
+# Scoreboard global em memória
 scoreboard = {}
 
 # Pesos configuráveis para cada métrica
 WEIGHTS = {
-    'bytes_sent': 0.5,
-    'time_connected': 0.3,
-    'successful_responses': 0.2
+    'bytes_sent': 100,
+    'time_connected': 50,
+    'successful_responses': 100
 }
 
+def load_scoreboard():
+    """Carrega o scoreboard do disco se existir."""
+    global scoreboard
+    if os.path.exists(SCOREBOARD_FILE):
+        try:
+            with open(SCOREBOARD_FILE, "r", encoding="utf-8") as f:
+                scoreboard = json.load(f)
+        except (json.JSONDecodeError, IOError):
+            print("Erro ao carregar o scoreboard. Inicializando vazio.")
+            scoreboard = {}
 
-def update_score(peer_id: str, bytes_sent: int, time_connected: float, successful_responses: int) -> float:
+def save_scoreboard():
+    """Salva o scoreboard atual no disco."""
+    try:
+        with open(SCOREBOARD_FILE, "w", encoding="utf-8") as f:
+            json.dump(scoreboard, f, indent=4, ensure_ascii=False)
+    except IOError as e:
+        print(f"Erro ao salvar o scoreboard: {e}")
+
+def update_score(peer_id: str, bytes_sent: int, time_connected: int, successful_responses: int) -> int:
     """
     Atualiza a pontuação de um peer com base em métricas de envio.
 
     Args:
         peer_id (str): Identificador único do peer.
         bytes_sent (int): Total de bytes enviados pelo peer desde último update.
-        time_connected (float): Tempo (em segundos) conectado.
+        time_connected (int): Tempo (em segundos) conectado.
         successful_responses (int): Número de respostas de chunk bem-sucedidas.
 
     Returns:
-        float: Nova pontuação calculada para o peer.
-
-    Side Effects:
-        - Atualiza `scoreboard[peer_id]` com a nova pontuação.
+        int: Nova pontuação calculada para o peer.
     """
-    # Normalização simples (pode ser aprimorada)
-    score = (
-        WEIGHTS['bytes_sent'] * bytes_sent +
-        WEIGHTS['time_connected'] * time_connected +
-        WEIGHTS['successful_responses'] * successful_responses
-    )
-    scoreboard[peer_id] = score
-    return score
+    # Recupera métricas anteriores ou inicializa
+    metrics = scoreboard.get(peer_id, {
+        "bytes_sent": 0,
+        "time_connected": 0,
+        "successful_responses": 0,
+        "score": 0
+    })
 
-def get_score(peer_id: str) -> float:
+    # Atualiza métricas
+    metrics["bytes_sent"] += bytes_sent
+    metrics["time_connected"] += time_connected
+    metrics["successful_responses"] += successful_responses
+
+    # Calcula nova pontuação
+    score = (
+        WEIGHTS["bytes_sent"] * metrics["bytes_sent"] +
+        WEIGHTS["time_connected"] * metrics["time_connected"] +
+        WEIGHTS["successful_responses"] * metrics["successful_responses"]
+    )
+
+    metrics["score"] = score
+    scoreboard[peer_id] = metrics
+    save_scoreboard()
+    return metrics["score"]
+
+# Carrega o scoreboard ao iniciar o programa
+load_scoreboard()
+
+
+#score_example = update_score("peerA", bytes_sent=1000, time_connected=2.0, successful_responses=1)
+#save_scoreboard()
+#print(f"Nova pontuação de peerA: {score_example}")
+
+def get_score(peer_id: str) -> int:
     """
     Retorna a pontuação atual de um peer.
 
@@ -42,9 +87,11 @@ def get_score(peer_id: str) -> float:
         peer_id (str): Identificador do peer.
 
     Returns:
-        float: Pontuação armazenada, ou 0.0 se não existir.
+        int: Pontuação armazenada, ou 0 se não existir.
     """
-    return scoreboard.get(peer_id, 0.0)
+    score = scoreboard.get(peer_id, 0)
+    score = score["score"]
+    return score
 
 def get_leaderboard(top_n: int = None) -> list:
     """

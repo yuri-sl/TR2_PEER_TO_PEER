@@ -1,0 +1,20 @@
+{
+    "a": {
+        "bytes_sent": 267965,
+        "time_connected": 853,
+        "successful_responses": 260,
+        "score": 26865150
+    },
+    "b": {
+        "bytes_sent": 68780,
+        "time_connected": 724,
+        "successful_responses": 67,
+        "score": 6920900
+    },
+    "c": {
+        "bytes_sent": 0,
+        "time_connected": 64,
+        "successful_responses": 0,
+        "score": 3200
+    }
+}

@@ -231,7 +231,17 @@ def protocolos_restritos(mensagem, client_socket) -> None:
         else:
             resposta = {"status": "erro", "mensagem": "Usuário não está online para operação."}
         client_socket.sendall(json.dumps(resposta).encode())
-        
+    elif mensagem['action'] == "get_ip":
+        asked_user = mensagem['username']
+        if not avaiableForChat:
+            peer_found = None
+        else:
+            peer_found = True
+        if peer_found:
+            resposta = {"status": "ok", "mensagem": avaiableForChat}
+        else:
+            resposta = {"status": "erro", "mensagem": "Usuário não está online para operação."}
+        client_socket.sendall(json.dumps(resposta).encode())
 
     elif mensagem['action'] == 'heartbeat':
         user = mensagem['username']
