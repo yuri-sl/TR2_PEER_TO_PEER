@@ -78,15 +78,15 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                 # Adiciona ou atualiza o arquivo recebido do sender
                 checksum = calculate_checksum(dados)
                 dados_existentes[sender][nome_arquivo] = checksum
-                print("chunk enviado com sucesso")
+                #print("chunk enviado com sucesso")
                 # Salva de volta no JSON
                 with open(ARQUIVO_JSON, "w", encoding="utf-8") as f:
                     json.dump(dados_existentes, f, indent=4, ensure_ascii=False)
 
                 #print(f"[✓] Chunk '{mensagem['enviando']}' salvo/atualizado em '{ARQUIVO_JSON}'")
         except Exception as e:
-            print(f"Erro ao receber mensagem: {e}")
-            
+            #print(f"Erro ao receber mensagem: {e}")
+            n = 0
         finally:
             conn.close()
 
@@ -112,7 +112,7 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
     def handle_chunk_request(conn):
         try:
             print("Request chegou!", flush=True)
-            requisicao = conn.recv(1024).decode()
+            requisicao = decodificar_hamming(conn.recv(1024)).decode('utf-8')
             requisicao_json = json.loads(requisicao)
             nome_chunk = requisicao_json.get("nome_chunk")
             user_to = requisicao_json["to"]
@@ -268,7 +268,6 @@ def p2p(user):
         for u, ip, port, score_peer in peers:       # escolho de forma ponderada quem posso enviar chunks
             if score_peer > random.uniform(0, teto):#Testo quem vai
                 peers_incentivo.append((u, ip, port))   # coloco na lista q vai ser avalida
-        print(peers_incentivo)
         for users, ip, port in peers_incentivo:            # envia para todos os peers
             nome_do_chunk, dados = escolher_chunk_compatível() # esolhe um chunk aleatorio
             if nome_do_chunk:                   # Se eu for capaz de enviar
@@ -280,12 +279,13 @@ def p2p(user):
                         bytes_sent = len(dados)
                         bytes_sent = bytes_sent//1000 # parametrizado
                         update_score(user,bytes_sent, time_connected, successful_responses)# atualiza o score
-                        print(user,"enviando para", users)
+                        #print(user,"enviando para", users)
                     else:
                         successful_responses = 1
                         update_score(user,bytes_sent, time_connected, successful_responses)
                 except:
-                    print("não foi possivel enviar para este peer")
+                    #print("não foi possivel enviar para este peer")
+                    a=0
             else:                               # mesmo qie nao tenha conseguido enviar vamos dar um incentivo a ele
                 bytes_sent = 10                                            # novo score pra ajudar
                 break                                                       # Pois ainda nao tem pontuação suficiente para enviar
@@ -308,7 +308,7 @@ def send_chunk(user, ip, port, nome_chunk, dados):
         s.close()
         return True
     except Exception as e:
-        print(f"[Erro ao enviar pedaços] {e}")
+        #print(f"[Erro ao enviar pedaços] {e}")
         return False
 
 
@@ -341,8 +341,11 @@ def send_chunk_to_peer(ip, port, nome_chunk, destino_arquivo):
         s.connect((ip, port))
 
         # Envia a requisição de chunk como JSON
-        requisicao = json.dumps({"chunk": nome_chunk})
-        s.sendall(requisicao.encode())
+        mensagem = {"chunk": nome_chunk}
+        mensagem_bytes = json.dumps(mensagem, ensure_ascii=False).encode('utf-8')
+        mensagem_codificada = codificar_hamming(mensagem_bytes)
+        mensagem_codificada = flipbits(mensagem_codificada)
+        s.sendall(mensagem_codificada)
         s.shutdown(socket.SHUT_WR)
 
         # Recebe os dados do chunk
@@ -382,7 +385,10 @@ def send_message_to_peer(ip, port, from_user, to_user, text) -> None:
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((ip, port))
-        s.sendall(json.dumps(mensagem_json).encode())
+        mensagem_bytes = json.dumps(mensagem_json, ensure_ascii=False).encode('utf-8')
+        mensagem_codificada = codificar_hamming(mensagem_bytes)
+        mensagem_codificada = flipbits(mensagem_codificada)
+        s.sendall(mensagem_codificada)
         s.shutdown(socket.SHUT_WR)
         s.close()
         print(f"\n Mensagem enviada para {to_user} ({ip}:{port})✅\n")
@@ -528,7 +534,7 @@ def decodificar_hamming(dados: bytes) -> bytes:
 
         if syndrome != 0:
             # alerta de correção
-            print("trocaram de bits e arrumei")
+            #print("trocaram de bits e arrumei")
             # corrige o bit em 'syndrome' (1-indexed)
             pos = syndrome
             mask = 1 << (7 - pos)
