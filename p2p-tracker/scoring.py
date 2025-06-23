@@ -11,8 +11,22 @@ scoreboard = {}
 WEIGHTS = {
     'bytes_sent': 100,
     'time_connected': 50,
-    'successful_responses': 100
+    'successful_responses': 100,
+    'active_connections':80
 }
+conexoes_ativas = {}  # Ex.: {"a": 1, "b": 2, ...}
+
+def threads_ativas_para(username):
+    """Retorna quantas threads estão ativadas para o peer especificado."""
+    return conexoes_ativas.get(username, 0)
+
+def adicionar_conexao(username):
+    """Incrementa contador de conexão para o peer."""
+    conexoes_ativas[username] = conexoes_ativas.get(username, 0) + 1
+
+def remover_conexao(username):
+    """Decrementa contador de conexão para o peer."""
+    conexoes_ativas[username] = max(conexoes_ativas.get(username, 1) - 1, 0)
 
 def load_scoreboard():
     """Carrega o scoreboard do disco se existir."""
@@ -24,6 +38,7 @@ def load_scoreboard():
         except (json.JSONDecodeError, IOError):
             print("Erro ao carregar o scoreboard. Inicializando vazio.")
             scoreboard = {}
+    return scoreboard
 
 def save_scoreboard():
     """Salva o scoreboard atual no disco."""
@@ -32,8 +47,19 @@ def save_scoreboard():
             json.dump(scoreboard, f, indent=4, ensure_ascii=False)
     except IOError as e:
         print(f"Erro ao salvar o scoreboard: {e}")
+def get_peer_priority(username, scoreboard):
+    """Retorna prioridade, max_conexões e largura de banda para um peer com base no seu score."""
+    dados = scoreboard.get(username, {})
+    score = dados.get("score", 0)
 
-def update_score(peer_id: str, bytes_sent: int, time_connected: int, successful_responses: int) -> int:
+    if score > 10000000:
+        return {"prioridade": "alta", "max_conexoes": 4, "largura_banda": 16384}
+    elif score > 5000000:
+        return {"prioridade": "media", "max_conexoes": 2, "largura_banda": 8192}
+    else:
+        return {"prioridade": "baixa", "max_conexoes": 1, "largura_banda": 4096}
+
+def update_score(peer_id: str, bytes_sent: int, time_connected: int, successful_responses: int,active_connections:int = 0) -> int:
     """
     Atualiza a pontuação de um peer com base em métricas de envio.
 
@@ -46,24 +72,33 @@ def update_score(peer_id: str, bytes_sent: int, time_connected: int, successful_
     Returns:
         int: Nova pontuação calculada para o peer.
     """
+    scoreboard = load_scoreboard()
     # Recupera métricas anteriores ou inicializa
     metrics = scoreboard.get(peer_id, {
         "bytes_sent": 0,
         "time_connected": 0,
         "successful_responses": 0,
+        "active_connections":0,
         "score": 0
     })
+    # Garantindo que todas as chaves são atualizadas
+    metrics.setdefault("bytes_sent", 0)
+    metrics.setdefault("time_connected", 0)
+    metrics.setdefault("successful_responses", 0)
+    metrics.setdefault("active_connections", 0)
 
     # Atualiza métricas
     metrics["bytes_sent"] += bytes_sent
     metrics["time_connected"] += time_connected
     metrics["successful_responses"] += successful_responses
+    metrics["active_connections"] = active_connections
 
     # Calcula nova pontuação
     score = (
         WEIGHTS["bytes_sent"] * metrics["bytes_sent"] +
         WEIGHTS["time_connected"] * metrics["time_connected"] +
-        WEIGHTS["successful_responses"] * metrics["successful_responses"]
+        WEIGHTS["successful_responses"] * metrics["successful_responses"]+
+        WEIGHTS["active_connections"] * metrics["active_connections"]
     )
 
     metrics["score"] = score

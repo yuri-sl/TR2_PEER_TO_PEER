@@ -108,13 +108,23 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
             threading.Thread(target=handle_chunk_request, args=(conn,), daemon=True).start()
 
     def handle_chunk_request(conn):
+        peer_user = None
         try:
             print("Request chegou!", flush=True)
             requisicao = conn.recv(1024).decode()
             requisicao_json = json.loads(requisicao)
+
             nome_chunk = requisicao_json.get("nome_chunk")
             user_to = requisicao_json["to"]
             user_from = requisicao_json["from"]
+
+            #Salva o nome do peer para atualização depois
+            peer_user = user_from
+
+            #Marca conexão ativa (+1)
+            update_score(peer_user,0,0,0,active_connections=1)
+            #input(f"[DEBUG] Verifique o JSON após AUMENTAR active_connections para {peer_user}. Pressione Enter para continuar...")
+            
 
             # ✅ Recarrega a cada request:
             caminho_json_chunks = "arquivos_cadastrados/arquivos_tracker.json"
@@ -178,6 +188,11 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
         except Exception as e:
             print(f"[Erro Chunk] {e}")
         finally:
+            #  Marca o final da conexão (-1) para o peer
+            if peer_user:
+                update_score(peer_user, 0, 0, 0, active_connections=-1)
+                #input(f"[DEBUG] Verifique o JSON após REDUZIR active_connections para {peer_user}. Pressione Enter para continuar...")
+
             conn.close()
     #Inicia o servidor de chat
     threading.Thread(target=server_loop, daemon=True).start()
@@ -201,7 +216,8 @@ def p2p(user):
             resposta = send_to_tracker2(dados_start_chat)
             peers_ip = resposta["mensagem"]             # Pega os ips, ports e usarios correspondentes
             for peer_user, ip, port in peers_ip:
-                update_score(peer_user,0, 1, 0)
+                update_score(peer_user, 0, 1, 0)
+                #print(f"[INFO] Score atualizado para {peer_user}. Verifique o arquivo JSON.")
     threading.Thread(target=timeconected, daemon=True).start()
 
     def send_to_tracker2(data) -> dict:
@@ -266,7 +282,7 @@ def p2p(user):
         for u, ip, port, score_peer in peers:       # escolho de forma ponderada quem posso enviar chunks
             if score_peer > random.uniform(0, teto):#Testo quem vai
                 peers_incentivo.append((u, ip, port))   # coloco na lista q vai ser avalida
-        print(peers_incentivo)
+        #print(peers_incentivo)
         for users, ip, port in peers_incentivo:            # envia para todos os peers
             nome_do_chunk, dados = escolher_chunk_compatível() # esolhe um chunk aleatorio
             if nome_do_chunk:                   # Se eu for capaz de enviar
@@ -278,7 +294,7 @@ def p2p(user):
                         bytes_sent = len(dados)
                         bytes_sent = bytes_sent//1000 # parametrizado
                         update_score(user,bytes_sent, time_connected, successful_responses)# atualiza o score
-                        print(user,"enviando para", users)
+                        #print(user,"enviando para", users)
                     else:
                         successful_responses = 1
                         update_score(user,bytes_sent, time_connected, successful_responses)
