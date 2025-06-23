@@ -279,7 +279,9 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((host, port))
         print("Conexão bem sucedida!")
-        s.sendall(json.dumps(pedidos).encode())
+        mensagem_bytes = json.dumps(pedidos, ensure_ascii=False).encode('utf-8')
+        mensagem_codificada = codificar_hamming(mensagem_bytes) # bytes → bytes (Hamming)
+        s.sendall(mensagem_codificada) 
         s.shutdown(socket.SHUT_WR)
         ttf = time.time() - start_time
         # Garante que a pasta de destino exista

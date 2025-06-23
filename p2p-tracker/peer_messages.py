@@ -47,8 +47,10 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                 if not chunk:
                     break
                 buffer += chunk
-
-            mensagem = json.loads(buffer.decode())
+            mensagem_codificada = buffer                                     # buffer recebido (bytes)
+            mensagem_decodificada = decodificar_hamming(mensagem_codificada) # bytes → bytes
+            mensagem_json = mensagem_decodificada.decode('utf-8')            # bytes → texto
+            mensagem = json.loads(mensagem_json)  
             try:
                 print(f"\n📩 Nova mensagem de {mensagem['from']}:")
                 print(f"   {mensagem['message']} ({mensagem['timestamp']})\n")
@@ -76,7 +78,7 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                 # Adiciona ou atualiza o arquivo recebido do sender
                 checksum = calculate_checksum(dados)
                 dados_existentes[sender][nome_arquivo] = checksum
-
+                print("chunk enviado com sucesso")
                 # Salva de volta no JSON
                 with open(ARQUIVO_JSON, "w", encoding="utf-8") as f:
                     json.dump(dados_existentes, f, indent=4, ensure_ascii=False)
@@ -126,7 +128,7 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
             tem_chunk_recebido = os.path.exists(caminho_recebidos)
 
             print(f"Chunks disponiveis para {meu_username} transmitir são: {chunks_disponiveis}")
-            print(f"Existe no diretório de recebidos?: {'SIM' if tem_chunk_recebido else "NÃO"}")
+            print(f"Existe no diretório de recebidos?: {'SIM' if tem_chunk_recebido else 'NÃO'}")
 
 
 
@@ -297,8 +299,10 @@ def send_chunk(user, ip, port, nome_chunk, dados):
                    "dados"   :  dados,
                    "sender"    : user
                    }
-        enviado = json.dumps(mensagem)
-        s.sendall(enviado.encode())
+        mensagem_bytes = json.dumps(mensagem, ensure_ascii=False).encode('utf-8')
+        mensagem_codificada = codificar_hamming(mensagem_bytes)
+        mensagem_codificada = flipbits(mensagem_codificada)
+        s.sendall(mensagem_codificada)
         s.shutdown(socket.SHUT_WR)
         #print(f"[✓] Chunk '{nome_chunk}' enviado com sucesso")
         s.close()
@@ -487,3 +491,81 @@ def announce_file_novo(username, nome_arquivo):
 
     except Exception as e:
         print("Erro ao anunciar arquivo:", e)
+
+def codificar_hamming(dados: bytes) -> bytes:
+    def hamming_7_4_encode(nibble: int) -> int:
+        # d1..d4 = bits de dados (do mais significativo para o menos)
+        d1 = (nibble >> 3) & 1
+        d2 = (nibble >> 2) & 1
+        d3 = (nibble >> 1) & 1
+        d4 = nibble & 1
+        # paridades
+        p1 = d1 ^ d2 ^ d4
+        p2 = d1 ^ d3 ^ d4
+        p3 = d2 ^ d3 ^ d4
+        # bit layout c1..c7 nos bits 6..0 do byte
+        return (p1 << 6) | (p2 << 5) | (d1 << 4) | (p3 << 3) | (d2 << 2) | (d3 << 1) | d4
+
+    out = bytearray()
+    for byte in dados:
+        high = (byte >> 4) & 0xF
+        low  = byte & 0xF
+        out.append(hamming_7_4_encode(high))
+        out.append(hamming_7_4_encode(low))
+    return bytes(out)
+
+def decodificar_hamming(dados: bytes) -> bytes:
+    def hamming_7_4_decode(code: int) -> int:
+        # extrai c1..c7 dos bits 6..0
+        c = [(code >> b) & 1 for b in (6,5,4,3,2,1,0)]
+        p1, p2, d1, p3, d2, d3, d4 = c
+        # recalcula paridades
+        s1 = p1 ^ (d1 ^ d2 ^ d4)
+        s2 = p2 ^ (d1 ^ d3 ^ d4)
+        s3 = p3 ^ (d2 ^ d3 ^ d4)
+        # síndrome (binário s1s2s3 → pos 1..7)
+        syndrome = (s1 << 2) | (s2 << 1) | s3
+
+        if syndrome != 0:
+            # alerta de correção
+            print("trocaram de bits e arrumei")
+            # corrige o bit em 'syndrome' (1-indexed)
+            pos = syndrome
+            mask = 1 << (7 - pos)
+            code ^= mask
+            # reextrai dados após correção
+            c = [(code >> b) & 1 for b in (6,5,4,3,2,1,0)]
+            _, _, d1, _, d2, d3, d4 = c
+
+        # recompoe nibble
+        return (d1 << 3) | (d2 << 2) | (d3 << 1) | d4
+
+    out = bytearray()
+    # itera de dois em dois bytes codificados
+    for i in range(0, len(dados), 2):
+        if i+1 >= len(dados):
+            break
+        high_nibble = hamming_7_4_decode(dados[i])
+        low_nibble  = hamming_7_4_decode(dados[i+1])
+        out.append((high_nibble << 4) | low_nibble)
+    return bytes(out)
+
+def flipbits(data: bytes) -> bytes:
+    """
+    Com 50% de chance, inverte 3 bits aleatórios em `data`.
+    Caso contrário, retorna `data` sem alterações.
+    """
+    # Converte para mutável
+    ba = bytearray(data)
+    total_bits = len(ba) * 8
+
+    # Decide se vai flipar ou não
+    if random.random() < 0.5:
+        # Escolhe 3 posições únicas de bit (de 0 a total_bits-1)
+        bit_positions = random.sample(range(total_bits), 3)
+        for bit_pos in bit_positions:
+            byte_index = bit_pos // 8
+            bit_in_byte = bit_pos % 8
+            # Inverte o bit
+            ba[byte_index] ^= (1 << (7 - bit_in_byte))
+    return bytes(ba)
