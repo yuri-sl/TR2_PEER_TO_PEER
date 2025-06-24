@@ -1,0 +1,60 @@
+{
+    "A": [
+        10.588237285614014,
+        {
+            "tempo": 10.65697693824768,
+            "volume": 10,
+            "integridade": true
+        },
+        {
+            "tempo": 10.716032981872559,
+            "volume": 9,
+            "integridade": true
+        },
+        {
+            "tempo": 10.727383136749268,
+            "volume": 9,
+            "integridade": true
+        },
+        {
+            "tempo": 1.594763994216919,
+            "volume": 9,
+            "integridade": true
+        },
+        {
+            "tempo": 1.5815861225128174,
+            "volume": 9,
+            "integridade": true
+        },
+        {
+            "tempo": 1.656104564666748,
+            "volume": 9,
+            "integridade": true
+        },
+        {
+            "tempo": 1.60465407371521,
+            "volume": 9,
+            "integridade": true
+        },
+        {
+            "tempo": 1.6288306713104248,
+            "volume": 9,
+            "integridade": true
+        },
+        {
+            "tempo": 1.6572046279907227,
+            "volume": 9,
+            "integridade": true
+        },
+        {
+            "tempo": 99.03771805763245,
+            "volume": 9,
+            "integridade": true
+        },
+        {
+            "tempo": 26.939693450927734,
+            "volume": 10,
+            "integridade": true
+        }
+    ]
+}

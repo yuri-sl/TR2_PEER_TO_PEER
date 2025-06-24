@@ -22,6 +22,41 @@ menu_chats = "--Menu de interações de chats por usuários--(1/3)\n#5 - Listage
 menu_arquivos = "--Menu de Operações por arquivos--(2/3)\n#11 - Criar um arquivo .txt\n#8 - Anunciar um arquivo manualmente\n#12 - Requisição de Chunks com uma conexão\n#16 - Requisição de chunks com múltiplas conexões\n#13 - Montar um Arquivo\n\n#14 - Próxima página >>>>\n#15 - Página anterior <<<<<<"
 menu_opcoes = "--Menu de operações do Usuário--(3/3)\n#14 - Meu perfil\n#10 - Sair do sistema\n\n#15 - Página anterior <<<<<<"
 
+SCOREBOARD_FILE = "/scoreboard.json"
+TRANSFER_METRICS_FILE = "transfer_metrics.json"
+
+def load_transfer_metrics():
+    if os.path.exists(TRANSFER_METRICS_FILE):
+        try:
+            with open(TRANSFER_METRICS_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except (json.JSONDecodeError, IOError):
+            print("[WARN] Não foi possível carregar 'transfer_metrics.json'. Inicializando vazio.")
+            return {}
+    return {}
+
+def save_transfer_metrics(data):
+    with open(TRANSFER_METRICS_FILE, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=4)
+
+def add_transfer_time(peer_id: str, transfer_time: float) -> None:
+    """Armazena o tempo de transferência para o peer específico."""
+    metrics = load_transfer_metrics()
+    metrics.setdefault(peer_id, []).append(transfer_time)
+    save_transfer_metrics(metrics)
+
+def add_transfer_record(peer_id: str, tempo: float, volume: int, integridade: bool):
+    """Adiciona um registro de transferência para o peer especificado."""
+    metrics = load_transfer_metrics()
+    if peer_id not in metrics:
+        metrics[peer_id] = []
+    metrics[peer_id].append({
+        "tempo": tempo,
+        "volume": volume,
+        "integridade": integridade
+    })
+    save_transfer_metrics(metrics)
+
 
 checksum_arquivos = {}
 def obter_checksum(caminho_arquivo_json, nome_arquivo):
@@ -166,13 +201,13 @@ def montar_arquivo(caminho_pasta_chunks,usuarioLogado):
         os.makedirs("reports", exist_ok=True)
         with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
             timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            report_file.write(f"[{timestamp}]✅ Arquivo '{nome_arquivo_final}' montado com sucesso em '{caminho_arquivo_final}'!")
+            report_file.write(f"[{timestamp}]✅ Arquivo '{nome_arquivo_final}' montado com sucesso em '{caminho_arquivo_final}'!\n")
     else:
         print("❌ Checksum inválido! O arquivo pode estar corrompido.")
         os.makedirs("reports", exist_ok=True)
         with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
             timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            report_file.write(f"{timestamp}❌CHECKSUM INVÁLIDO!! ARQUIVO NÃO FOI CONSTRUÍDO!")
+            report_file.write(f"{timestamp}❌CHECKSUM INVÁLIDO!! ARQUIVO NÃO FOI CONSTRUÍDO!\n")
 
     #else:
     #    print("CHECKSUM INVÁLIDO!! ARQUIVO NÃO FOI CONSTRUÍDO!")
@@ -346,7 +381,7 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk):
                 f.write(dados_recebidos)
             fim_download = time.time()
             tempo_total = fim_download - inicio_download
-            print(f"\n📥 Chunk '{nome_chunk}' recebido de {to_user} e salvo em '{caminho_arquivo}'. ✅")
+            print(f"\n📥 Chunk '{nome_chunk}' recebido de {to_user} e salvo em '{caminho_arquivo}'. ✅\n")
             print(f"Checksum confirmado: {checksum_recebido}")
             print(f"⏱ Tempo total de download: {tempo_total:.2f} segundos.")
 
@@ -354,7 +389,7 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk):
             with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
                 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 report_file.write(f"[{timestamp}]  Chunk '{nome_chunk}' recebido de {to_user}. Checksum OK. ✅\n")
-                report_file.write(f"⏱ Tempo total de download do chunk: {tempo_total:.2f} segundos.")
+                report_file.write(f"⏱ Tempo total de download do chunk: {tempo_total:.2f} segundos.\n")
 
         else:
             print(f"\n❌ Erro: Checksum inválido para o chunk '{nome_chunk}'!")
@@ -908,11 +943,13 @@ def interactiveMenu_1() -> bool:
                                             else:
                                                 print("Chunks disponíveis para este arquivo:")
                                                 # Se chunks forem strings:
+                                                total_chunks_sum = 0
                                                 if isinstance(chunks[0], str):
                                                     threads = []
                                                     for idx, chunk_nome in enumerate(chunks):
                                                         print("É string")
                                                         print(f"[{idx}] - {chunk_nome}")
+                                                        total_chunks_sum += len(chunk_nome)
                                                         #cria e inicia uma thread para baixar esse chunk
                                                         thread = threading.Thread(target=requisitar_chunk,
                                                                                 args=(peer_ip,peer_port,usuario_logado,user,chunk_nome)
@@ -924,11 +961,16 @@ def interactiveMenu_1() -> bool:
                                                     for thread in threads: 
                                                         thread.join()
                                                     print("✅ Todos os chunks foram requisitados e baixados.")
+                                                    integridade = True
                                                     adicionar_dono_chunk("arquivos_cadastrados/arquivos_tracker.json", nome_escolhido, usuario_logado)
                                                     with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
                                                         fim_download = time.time()
                                                         tempo_total = fim_download - inicio_download
-                                                        report_file.write(f"⏱ Tempo total de download de TODOS os chunks: {tempo_total:.2f} segundos.")
+                                                        report_file.write(f"⏱ Tempo total de download de TODOS os chunks: {tempo_total:.2f} segundos.\n")
+                                                        #add_transfer_time(user, tempo_total)
+                                                        add_transfer_record(user,tempo_total,total_chunks_sum,integridade)
+
+                                                        
 
 
 
@@ -970,7 +1012,7 @@ def interactiveMenu_1() -> bool:
             if menu_index <0:
                 menu_index = 0
         elif operation == "16":
-            #Baixar chunk
+            #Baixar chunk Multiplas Conexões
             dados = {
                 "action": "list_clients",
                 "username": usuario_logado

@@ -9,10 +9,10 @@ scoreboard = {}
 
 # Pesos configuráveis para cada métrica
 WEIGHTS = {
-    'bytes_sent': 100,
-    'time_connected': 50,
-    'successful_responses': 100,
-    'active_connections':80
+    'bytes_sent': 0.000001,
+    'time_connected': 1,
+    'successful_responses': 10,
+    'active_connections':20
 }
 conexoes_ativas = {}  # Ex.: {"a": 1, "b": 2, ...}
 
@@ -59,49 +59,45 @@ def get_peer_priority(username, scoreboard):
     else:
         return {"prioridade": "baixa", "max_conexoes": 1, "largura_banda": 4096}
 
-def update_score(peer_id: str, bytes_sent: int, time_connected: int, successful_responses: int,active_connections:int = 0) -> int:
-    """
-    Atualiza a pontuação de um peer com base em métricas de envio.
+def update_score(peer_id: str, bytes_sent: int = 0, time_connected: int = 0,
+                 successful_responses: int = 0, failed_transfers: int = 0,
+                 transfer_time: float = None, integrity_check: bool = None,
+                 active_connections: int = 0, log_history=False) -> int:
+    """Atualiza todas as métricas para o peer."""
 
-    Args:
-        peer_id (str): Identificador único do peer.
-        bytes_sent (int): Total de bytes enviados pelo peer desde último update.
-        time_connected (int): Tempo (em segundos) conectado.
-        successful_responses (int): Número de respostas de chunk bem-sucedidas.
-
-    Returns:
-        int: Nova pontuação calculada para o peer.
-    """
     scoreboard = load_scoreboard()
-    # Recupera métricas anteriores ou inicializa
     metrics = scoreboard.get(peer_id, {
         "bytes_sent": 0,
         "time_connected": 0,
         "successful_responses": 0,
-        "active_connections":0,
+        "failed_transfers": 0,
+        "transfer_times": [],
+        "integrity_checks": {},
+        "active_connections": 0,
         "score": 0
     })
-    # Garantindo que todas as chaves são atualizadas
-    metrics.setdefault("bytes_sent", 0)
-    metrics.setdefault("time_connected", 0)
-    metrics.setdefault("successful_responses", 0)
-    metrics.setdefault("active_connections", 0)
 
-    # Atualiza métricas
+    # Atualiza
     metrics["bytes_sent"] += bytes_sent
     metrics["time_connected"] += time_connected
     metrics["successful_responses"] += successful_responses
-    metrics["active_connections"] = active_connections
+    metrics["failed_transfers"] += failed_transfers
+    metrics["active_connections"] += active_connections
 
-    # Calcula nova pontuação
+
+    if integrity_check is not None:
+        chunk_name = f"chunk_{int(time.time())}"
+        metrics["integrity_checks"][chunk_name] = integrity_check
+
+    # Recalcula score
     score = (
-        WEIGHTS["bytes_sent"] * metrics["bytes_sent"] +
-        WEIGHTS["time_connected"] * metrics["time_connected"] +
-        WEIGHTS["successful_responses"] * metrics["successful_responses"]+
-        WEIGHTS["active_connections"] * metrics["active_connections"]
+        WEIGHTS.get("bytes_sent", 1) * metrics["bytes_sent"] +
+        WEIGHTS.get("time_connected", 1) * metrics["time_connected"] +
+        WEIGHTS.get("successful_responses", 1) * metrics["successful_responses"] +
+        WEIGHTS.get("active_connections", 1) * metrics["active_connections"]
     )
-
     metrics["score"] = score
+
     scoreboard[peer_id] = metrics
     save_scoreboard()
     return metrics["score"]
@@ -124,9 +120,11 @@ def get_score(peer_id: str) -> int:
     Returns:
         int: Pontuação armazenada, ou 0 se não existir.
     """
-    score = scoreboard.get(peer_id, 0)
-    score = score["score"]
-    return score
+    score = load_scoreboard()
+    metrics = score.get(peer_id)
+    if metrics and isinstance(metrics, dict):
+        return metrics.get("score", 0)
+    return 0
 
 def get_leaderboard(top_n: int = None) -> list:
     """

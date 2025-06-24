@@ -360,4 +360,72 @@
 [2025-06-18 17:16:34]  Chunk 'teste.part0' recebido de F. Checksum OK. ✅
 [2025-06-18 17:19:26]  Chunk 'teste.part0' recebido de F. Checksum OK. ✅
 [2025-06-18 17:19:40]  Chunk 'teste.part0' recebido de F. Checksum OK. ✅
-[2025-06-18 18:07:46]✅ Arquivo 'teste.txt' montado com sucesso em 'arquivos_montados/A/teste.txt'!
+[2025-06-18 18:07:46]✅ Arquivo 'teste.txt' montado com sucesso em 'arquivos_montados/A/teste.txt'![2025-06-22 12:43:34]  Chunk 'Kal.part0' recebido de F. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 0.50 segundos.⏱ Tempo total de download de TODOS os chunks: 0.50 segundos.⏱ Tempo total de download de TODOS os chunks: 0.00 segundos.⏱ Tempo total de download de TODOS os chunks: 0.01 segundos.[2025-06-22 13:47:13]  Chunk 'Asdf.part0' recebido de F. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 0.51 segundos.⏱ Tempo total de download de TODOS os chunks: 0.52 segundos.[2025-06-22 13:58:59]  Chunk 'Asdf.part0' recebido de F. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 0.45 segundos.⏱ Tempo total de download de TODOS os chunks: 0.45 segundos.[2025-06-22 13:59:37]  Chunk 'Asdf.part0' recebido de F. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 0.49 segundos.⏱ Tempo total de download de TODOS os chunks: 0.49 segundos.[2025-06-22 14:04:15]  Chunk 'Asdf.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 0.49 segundos.⏱ Tempo total de download de TODOS os chunks: 0.49 segundos.[2025-06-22 14:04:42]  Chunk 'Asdf.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 0.50 segundos.⏱ Tempo total de download de TODOS os chunks: 0.51 segundos.⏱ Tempo total de download de TODOS os chunks: 58.95 segundos.⏱ Tempo total de download de TODOS os chunks: 120.02 segundos.[2025-06-23 16:54:08]  Chunk 'Kal.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 25.39 segundos.⏱ Tempo total de download de TODOS os chunks: 25.39 segundos.[2025-06-23 16:54:58]  Chunk 'Kal.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 25.37 segundos.⏱ Tempo total de download de TODOS os chunks: 25.38 segundos.[2025-06-23 17:12:53]  Chunk 'Asdf.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 12.66 segundos.⏱ Tempo total de download de TODOS os chunks: 12.66 segundos.[2025-06-23 17:21:57]  Chunk 'Asdf.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 22.12 segundos.⏱ Tempo total de download de TODOS os chunks: 22.13 segundos.[2025-06-23 17:24:14]  Chunk 'Kal.part0' recebido de F. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 10.49 segundos.⏱ Tempo total de download de TODOS os chunks: 10.49 segundos.[2025-06-23 17:24:45]  Chunk 'Kal.part0' recebido de F. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 10.46 segundos.⏱ Tempo total de download de TODOS os chunks: 10.46 segundos.[2025-06-23 17:29:48]  Chunk 'Kal.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 10.53 segundos.
+⏱ Tempo total de download de TODOS os chunks: 10.53 segundos.
+[2025-06-23 17:31:21]  Chunk 'Asdf.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 10.50 segundos.
+⏱ Tempo total de download de TODOS os chunks: 10.50 segundos.
+[2025-06-23 19:05:00]  Chunk 'Kal.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 10.67 segundos.
+⏱ Tempo total de download de TODOS os chunks: 10.67 segundos.
+[2025-06-23 19:06:43]  Chunk 'Asdf.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 10.61 segundos.
+⏱ Tempo total de download de TODOS os chunks: 10.62 segundos.
+[2025-06-23 19:24:24]  Chunk 'Asdf.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 10.59 segundos.
+⏱ Tempo total de download de TODOS os chunks: 10.60 segundos.
+[2025-06-23 19:25:36]  Chunk 'Asdf.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 10.62 segundos.
+⏱ Tempo total de download de TODOS os chunks: 10.63 segundos.
+[2025-06-23 19:42:57]  Chunk 'Asdf.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 10.61 segundos.
+⏱ Tempo total de download de TODOS os chunks: 10.61 segundos.
+[2025-06-23 19:52:01]  Chunk 'Kal.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 10.58 segundos.
+⏱ Tempo total de download de TODOS os chunks: 10.59 segundos.
+[2025-06-23 21:18:43]  Chunk 'Asdf.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 10.65 segundos.
+⏱ Tempo total de download de TODOS os chunks: 10.66 segundos.
+[2025-06-23 21:45:08]  Chunk 'Kal.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 10.71 segundos.
+⏱ Tempo total de download de TODOS os chunks: 10.72 segundos.
+[2025-06-23 21:45:48]  Chunk 'Kal.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 10.72 segundos.
+⏱ Tempo total de download de TODOS os chunks: 10.73 segundos.
+[2025-06-23 22:28:12]  Chunk 'Kal.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 1.59 segundos.
+⏱ Tempo total de download de TODOS os chunks: 1.59 segundos.
+[2025-06-23 22:29:31]  Chunk 'Kal.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 1.58 segundos.
+⏱ Tempo total de download de TODOS os chunks: 1.58 segundos.
+[2025-06-23 23:08:33]  Chunk 'Kal.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 1.65 segundos.
+⏱ Tempo total de download de TODOS os chunks: 1.66 segundos.
+[2025-06-23 23:10:48]  Chunk 'Kal.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 1.60 segundos.
+⏱ Tempo total de download de TODOS os chunks: 1.60 segundos.
+[2025-06-23 23:12:17]  Chunk 'Kal.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 1.62 segundos.
+⏱ Tempo total de download de TODOS os chunks: 1.63 segundos.
+[2025-06-23 23:13:24]  Chunk 'Kal.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 1.65 segundos.
+⏱ Tempo total de download de TODOS os chunks: 1.66 segundos.
+[2025-06-23 23:19:23]  Chunk 'Kal.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 99.03 segundos.
+⏱ Tempo total de download de TODOS os chunks: 99.04 segundos.
+[2025-06-23 23:22:45]  Chunk 'Asdf.part0' recebido de A. Checksum OK. ✅
+⏱ Tempo total de download do chunk: 26.94 segundos.
+⏱ Tempo total de download de TODOS os chunks: 26.94 segundos.

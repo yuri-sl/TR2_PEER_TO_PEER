@@ -57,5 +57,27 @@
             "F",
             "A"
         ]
+    },
+    "Kal.txt": {
+        "checksum": "d3dc4d33b1bf7f929a91f0154166addbe704a39467e4aa7117a78b38d26c5bab",
+        "chunks_path": "arquivos_cadastrados/chunkscriados/F/Kal",
+        "chunks": [
+            "Kal.part0"
+        ],
+        "donos": [
+            "F",
+            "A"
+        ]
+    },
+    "Asdf.txt": {
+        "checksum": "bbe079495d2144ec74f4fcaa9e0140b3f5dd173319b54742c5359d84f3885608",
+        "chunks_path": "arquivos_cadastrados/chunkscriados/A/Asdf",
+        "chunks": [
+            "Asdf.part0"
+        ],
+        "donos": [
+            "A",
+            "F"
+        ]
     }
 }
