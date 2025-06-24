@@ -1,22 +1,22 @@
 {
     "F": {
         "bytes_sent": 244464115,
-        "time_connected": 77483,
+        "time_connected": 77721,
         "successful_responses": 240,
         "failed_transfers": 0,
         "transfer_times": [],
         "integrity_checks": {},
         "active_connections": 0,
-        "score": 80127.464115
+        "score": 80365.464115
     },
     "A": {
         "bytes_sent": 243000243,
-        "time_connected": 89807,
+        "time_connected": 130177,
         "successful_responses": 243,
-        "failed_transfers": 23,
+        "failed_transfers": 102,
         "transfer_times": [],
         "integrity_checks": {},
         "active_connections": 0,
-        "score": 92480.000243
+        "score": 132850.000243
     }
 }
