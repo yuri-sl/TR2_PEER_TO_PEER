@@ -161,12 +161,12 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                         "checksum": checksum
                     }]
                     print("JSON de peer foi gerado! Agora só falta enviar")
-                    json_str = json.dumps(json_data)
-                    json_bytes = json_str.encode()
 
+                    json_bytes = json.dumps(json_data, ensure_ascii=False).encode('utf-8')
+                    mensagem_codificada = flipbits(json_bytes)
                     # Envia o tamanho e o JSON
-                    conn.send(len(json_bytes).to_bytes(4, byteorder='big'))
-                    conn.send(json_bytes)
+                    conn.send(len(mensagem_codificada).to_bytes(4, byteorder='big'))
+                    conn.send(mensagem_codificada)
 
                     # Envia o chunk
                     conn.sendall(dados_chunk)
