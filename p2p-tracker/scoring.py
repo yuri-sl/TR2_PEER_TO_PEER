@@ -37,6 +37,7 @@ def load_scoreboard():
                 scoreboard = json.load(f)
         except (json.JSONDecodeError, IOError):
             print("Erro ao carregar o scoreboard. Inicializando vazio.")
+            print(f"O scoreboard é {scoreboard}")
             scoreboard = {}
     return scoreboard
 
@@ -52,9 +53,9 @@ def get_peer_priority(username, scoreboard):
     dados = scoreboard.get(username, {})
     score = dados.get("score", 0)
 
-    if score > 10000000:
+    if score > 100000:
         return {"prioridade": "alta", "max_conexoes": 4, "largura_banda": 16384}
-    elif score > 5000000:
+    elif score > 50000:
         return {"prioridade": "media", "max_conexoes": 2, "largura_banda": 8192}
     else:
         return {"prioridade": "baixa", "max_conexoes": 1, "largura_banda": 4096}

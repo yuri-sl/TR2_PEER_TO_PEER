@@ -429,3 +429,12 @@
 [2025-06-23 23:22:45]  Chunk 'Asdf.part0' recebido de A. Checksum OK. ✅
 ⏱ Tempo total de download do chunk: 26.94 segundos.
 ⏱ Tempo total de download de TODOS os chunks: 26.94 segundos.
+⏱ Tempo total de download de TODOS os chunks: 0.00 segundos.
+⏱ Tempo total de download de TODOS os chunks: 8.89 segundos.
+⏱ Tempo total de download de TODOS os chunks: 8.90 segundos.
+⏱ Tempo total de download de TODOS os chunks: 8.12 segundos.
+⏱ Tempo total de download de TODOS os chunks: 8.06 segundos.
+⏱ Tempo total de download de TODOS os chunks: 0.00 segundos.
+⏱ Tempo total de download de TODOS os chunks: 8.88 segundos.
+⏱ Tempo total de download de TODOS os chunks: 8.89 segundos.
+⏱ Tempo total de download de TODOS os chunks: 8.84 segundos.

@@ -119,7 +119,22 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
             threading.Thread(target=handle_chunk_request, args=(conn,), daemon=True).start()
 
     def handle_chunk_request(conn):
-        peer_user = None
+        def salvar_transmissao(peer_user, nome_chunk, tamanho, tempo):
+            registro = {
+                "peer_user": peer_user,
+                "chunk": nome_chunk,
+                "tamanho": tamanho,
+                "tempo": tempo
+            }
+            arquivo = "reports/transmissions.json"
+            registros = []
+            if os.path.exists(arquivo):
+                with open(arquivo, "r") as f:
+                    registros = json.load(f)
+            registros.append(registro)
+            with open(arquivo, "w") as f:
+                json.dump(registros, f, indent=4)
+            peer_user = None
         try:
             print("Request chegou!", flush=True)
             requisicao = conn.recv(1024).decode()
@@ -190,23 +205,30 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                     score_peer = get_score(peer_user)
                     bandwidth_limit = calcular_bandwidth(score_peer)
 
-                    chunk_size = 4096
-                    sleep_interval = chunk_size/bandwidth_limit
+                    chunk_size = min(128 * 1024, len(dados_chunk))
+                    sleep_interval = sleep_interval = min(chunk_size / bandwidth_limit, 1.0)
                     print(f"It sleeps for: {sleep_interval} seconds")
                     bytes_enviados = 0
                     inicio = time.time()
 
                     while bytes_enviados < len(dados_chunk):
+                        if conn.fileno() == -1:
+                            break
                         parte = dados_chunk[bytes_enviados:bytes_enviados+chunk_size]
+                        print(f"Parte é: {parte}\nbytes_enviados: {bytes_enviados}\nlen_dados_chunk: {len(dados_chunk)}")
                         conn.sendall(parte)
                         bytes_enviados += len(parte)
+                        print(f"It's sleeping for {sleep_interval}")
                         time.sleep(sleep_interval)
+                        print("It has just slept")
                     fim = time.time()
                     #tempo_transferencia = fim - inicio
                     update_score(peer_user,
                             bytes_sent=len(dados_chunk),
                             successful_responses=1)
                     print(f"[✓] Chunk '{nome_chunk}' enviado com throttling ({chunk_size} bytes por pacote, {bandwidth_limit} bytes/s).")
+                    salvar_transmissao(peer_user, nome_chunk, len(dados_chunk), time.time() - inicio)
+
                     # Envia o chunk
                     #conn.sendall(dados_chunk)
 
@@ -328,7 +350,7 @@ def p2p(user):
         try:    # tenta calcular o teto 
             teto = max(1, max(peer[3] for peer in peers))       # Defino um teto para calcular
         except:
-            teto = 1000000
+            teto = 1000000000
         for u, ip, port, score_peer in peers:       # escolho de forma ponderada quem posso enviar chunks
             if score_peer > random.uniform(0, teto):#Testo quem vai
                 peers_incentivo.append((u, ip, port))   # coloco na lista q vai ser avalida

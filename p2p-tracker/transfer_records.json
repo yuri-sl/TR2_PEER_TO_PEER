@@ -1,0 +1,119 @@
+[
+    {
+        "timestamp": "2025-06-24 15:47:05",
+        "from_user": "F",
+        "to_user": "A",
+        "chunk_name": "Kal.part0",
+        "transfer_time": 98.32487368583679,
+        "checksum_match": true,
+        "bytes_transferred": 1009902
+    },
+    {
+        "timestamp": "2025-06-24 16:10:45",
+        "from_user": "F",
+        "to_user": "A",
+        "chunk_name": "Kal.part0",
+        "transfer_time": 93.29587125778198,
+        "checksum_match": true,
+        "bytes_transferred": 1009902
+    },
+    {
+        "timestamp": "2025-06-24 16:13:36",
+        "from_user": "F",
+        "to_user": "A",
+        "chunk_name": "Kal.part0",
+        "transfer_time": 79.2507872581482,
+        "checksum_match": true,
+        "bytes_transferred": 1009902
+    },
+    {
+        "timestamp": "2025-06-24 16:16:15",
+        "from_user": "F",
+        "to_user": "A",
+        "chunk_name": "Kal.part0",
+        "transfer_time": 100.1989643573761,
+        "checksum_match": true,
+        "bytes_transferred": 1009902
+    },
+    {
+        "timestamp": "2025-06-24 16:27:07",
+        "from_user": "F",
+        "to_user": "A",
+        "chunk_name": "Kal.part0",
+        "transfer_time": 76.98020029067993,
+        "checksum_match": true,
+        "bytes_transferred": 1009902
+    },
+    {
+        "timestamp": "2025-06-24 16:38:50",
+        "from_user": "F",
+        "to_user": "A",
+        "chunk_name": "Kal.part0",
+        "transfer_time": 8.90257453918457,
+        "checksum_match": true,
+        "bytes_transferred": 1009902
+    },
+    {
+        "timestamp": "2025-06-24 16:42:53",
+        "from_user": "F",
+        "to_user": "A",
+        "chunk_name": "Kal.part0",
+        "transfer_time": 8.87753438949585,
+        "checksum_match": true,
+        "bytes_transferred": 1009902
+    },
+    {
+        "timestamp": "2025-06-24 16:49:59",
+        "from_user": "F",
+        "to_user": "A",
+        "chunk_name": "Kal.part0",
+        "transfer_time": 8.891974210739136,
+        "checksum_match": true,
+        "bytes_transferred": 1009902
+    },
+    {
+        "timestamp": "2025-06-24 16:54:07",
+        "from_user": "F",
+        "to_user": "A",
+        "chunk_name": "Kal.part0",
+        "transfer_time": 8.113941192626953,
+        "checksum_match": true,
+        "bytes_transferred": 1009902
+    },
+    {
+        "timestamp": "2025-06-24 16:54:38",
+        "from_user": "F",
+        "to_user": "A",
+        "chunk_name": "Kal.part0",
+        "transfer_time": 8.055720806121826,
+        "checksum_match": true,
+        "bytes_transferred": 1009902
+    },
+    {
+        "timestamp": "2025-06-24 17:02:58",
+        "from_user": "F",
+        "to_user": "A",
+        "chunk_name": "Kal.part0",
+        "transfer_time": 8.874493598937988,
+        "checksum_match": true,
+        "bytes_transferred": 1009902
+    },
+    {
+        "timestamp": "2025-06-24 17:10:04",
+        "from_user": "F",
+        "to_user": "A",
+        "chunk_name": "Kal.part0",
+        "transfer_time": 8.884092092514038,
+        "checksum_match": true,
+        "bytes_transferred": 1009902
+    },
+    {
+        "timestamp": "2025-06-24 17:45:09",
+        "from_user": "A",
+        "to_user": "F",
+        "chunk_name": "Kal.part0",
+        "transfer_time": 8.829374313354492,
+        "checksum_match": true,
+        "bytes_transferred": 1009902
+    }
+]

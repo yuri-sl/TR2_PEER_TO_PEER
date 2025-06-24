@@ -1,0 +1,88 @@
+{
+    "conexoes": [
+        {
+            "user": "A",
+            "port": 5972,
+            "chunk": "Asdf.part0",
+            "timestamp": "2025-06-24T00:15:29.946921"
+        },
+        {
+            "user": "A",
+            "port": 5328,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T00:20:55.431962"
+        },
+        {
+            "user": "A",
+            "port": 5853,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T15:45:27.139795"
+        },
+        {
+            "user": "A",
+            "port": 5224,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T16:09:12.379147"
+        },
+        {
+            "user": "A",
+            "port": 5591,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T16:12:17.608257"
+        },
+        {
+            "user": "A",
+            "port": 5663,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T16:14:35.228073"
+        },
+        {
+            "user": "A",
+            "port": 5192,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T16:24:16.520141"
+        },
+        {
+            "user": "A",
+            "port": 5380,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T16:25:50.895944"
+        },
+        {
+            "user": "A",
+            "port": 5224,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T16:36:08.304771"
+        },
+        {
+            "user": "A",
+            "port": 5072,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T16:38:41.506364"
+        },
+        {
+            "user": "A",
+            "port": 5275,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T17:01:33.594453"
+        },
+        {
+            "user": "A",
+            "port": 5066,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T17:02:49.606082"
+        },
+        {
+            "user": "A",
+            "port": 5283,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T17:09:55.827357"
+        },
+        {
+            "user": "F",
+            "port": 5337,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T17:45:00.788612"
+        }
+    ]
+}
