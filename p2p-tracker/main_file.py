@@ -713,7 +713,7 @@ def interactiveMenu_1() -> bool:
         elif operation == "7":
             #Montar Aquivo
             # Caminho da pasta com os chunks
-            pasta_lista = ["chunkscriados"]
+            pasta_lista = ["chunksrecebidos","chunkscriados"]
             for pasta_chunks in pasta_lista:
                 # Lista para guardar nomes únicos dos arquivos originais
                 nomes_unicos = set()
