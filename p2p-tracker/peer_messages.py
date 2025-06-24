@@ -93,7 +93,7 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                 with open(caminho_arquivo, "wb") as f:
                     f.write(dados)
 
-                print(f"[✓] Chunk '{mensagem['enviando']}' salvo/atualizado em '{ARQUIVO_JSON}'")
+                #print(f"[✓] Chunk '{mensagem['enviando']}' salvo/atualizado em '{ARQUIVO_JSON}'")
         except Exception as e:
             #print(f"Erro ao receber mensagem: {e}")
             n = 0

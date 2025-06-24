@@ -713,43 +713,43 @@ def interactiveMenu_1() -> bool:
         elif operation == "7":
             #Montar Aquivo
             # Caminho da pasta com os chunks
-            pasta_chunks = "chunkscriados"
+            pasta_lista = ["chunkscriados"]
+            for pasta_chunks in pasta_lista:
+                # Lista para guardar nomes únicos dos arquivos originais
+                nomes_unicos = set()
+                if os.path.isdir(pasta_chunks):
+                    # Percorre todos os arquivos da pasta
+                    for nome_arquivo in os.listdir(pasta_chunks):
+                        if '.' in nome_arquivo:
+                            nome_base = nome_arquivo.split('.')[0]  # pega antes do .index
+                            nomes_unicos.add(nome_base)
 
-            # Lista para guardar nomes únicos dos arquivos originais
-            nomes_unicos = set()
-            if os.path.isdir(pasta_chunks):
-                # Percorre todos os arquivos da pasta
-                for nome_arquivo in os.listdir(pasta_chunks):
-                    if '.' in nome_arquivo:
-                        nome_base = nome_arquivo.split('.')[0]  # pega antes do .index
-                        nomes_unicos.add(nome_base)
+                # Converte para lista se quiser usar como menu
+                lista_arquivos = list(nomes_unicos)
+                print("Arquivos disponíveis:")
+                for i, nome in enumerate(lista_arquivos, start=1):
+                    print(f"[{i}] - {nome}")
 
-            # Converte para lista se quiser usar como menu
-            lista_arquivos = list(nomes_unicos)
-            print("Arquivos disponíveis:")
-            for i, nome in enumerate(lista_arquivos, start=1):
-                print(f"[{i}] - {nome}")
-
-            try:
-                arquivo = int(input("Qual arquivo você quer juntar? "))
-                arquivo -=1
-                dados = {
-                    "action": "reassembly",
-                    "username": usuario_logado,
-                    "arquivo" : lista_arquivos[arquivo]
-                }
-                resposta = send_to_tracker(dados)
-                print(resposta)
-                cstracker = resposta["checksum"]
-                print(cstracker)
-                cs = assemble_file(lista_arquivos[arquivo])
-                print(cs)
-                if cstracker == cs:
-                    print(f"Arquivo reassemblado com sucesso")
-                else:
-                    raise Exception("Checksum não confere")
-            except:
-                print("não foi possivel juntar este arquivo por não existir ou nao estar completo")
+                try:
+                    arquivo = int(input("Qual arquivo você quer juntar? "))
+                    arquivo -=1
+                    dados = {
+                        "action": "reassembly",
+                        "username": usuario_logado,
+                        "arquivo" : lista_arquivos[arquivo]
+                    }
+                    resposta = send_to_tracker(dados)
+                    print(resposta)
+                    cstracker = resposta["checksum"]
+                    print(cstracker)
+                    cs = assemble_file(lista_arquivos[arquivo])
+                    print(cs)
+                    if cstracker == cs:
+                        print(f"Arquivo reassemblado com sucesso")
+                    else:
+                        raise Exception("Checksum não confere")
+                except:
+                    print("não foi possivel juntar este arquivo por não existir ou nao estar completo")
             input("Pressione Enter para continuar")
             os.system('cls||clear')
         elif operation == "8":
