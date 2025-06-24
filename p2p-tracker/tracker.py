@@ -359,6 +359,8 @@ def handle_clients(client_socket, addr) -> None:
                 if mensagem['action'] == 'exit' and user in session:# Sai da sessao caso esteja conectado
                     session.pop(user, None)                         # Nao e mais um peers ativo
                     files.pop(user, None)                         # Nao e mais um peers ativo
+                elif user in session and mensagem['action'] == 'get_ip':
+                    protocolos_restritos(mensagem, client_socket)
                 elif user in session:                               # Se estiver logado pode continuar
                     session[user] = 0                               # Renova o tempo do usuario
                     protocolos_restritos(mensagem, client_socket)
