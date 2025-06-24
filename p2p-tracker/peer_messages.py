@@ -82,8 +82,18 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                 # Salva de volta no JSON
                 with open(ARQUIVO_JSON, "w", encoding="utf-8") as f:
                     json.dump(dados_existentes, f, indent=4, ensure_ascii=False)
+                # Garante que a pasta 'chunksrecebidos' existe
+                os.makedirs("chunksrecebidos", exist_ok=True)
 
-                #print(f"[✓] Chunk '{mensagem['enviando']}' salvo/atualizado em '{ARQUIVO_JSON}'")
+                # Caminho completo do arquivo
+                nome_arquivo = os.path.basename(nome_arquivo)
+                caminho_arquivo = os.path.join("chunksrecebidos", nome_arquivo)
+
+                # Escreve os dados no arquivo
+                with open(caminho_arquivo, "wb") as f:
+                    f.write(dados)
+
+                print(f"[✓] Chunk '{mensagem['enviando']}' salvo/atualizado em '{ARQUIVO_JSON}'")
         except Exception as e:
             #print(f"Erro ao receber mensagem: {e}")
             n = 0
