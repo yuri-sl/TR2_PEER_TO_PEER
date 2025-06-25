@@ -79,5 +79,37 @@
             "A",
             "F"
         ]
+    },
+    "Eleven.txt": {
+        "checksum": "0e0ac2cd1422eb3f8a2a9d0b1f1825e973183c54b06612e8ca2cbef99b2808c3",
+        "chunks_path": "arquivos_cadastrados/chunkscriados/F/Eleven",
+        "chunks": [
+            "Eleven.part0",
+            "Eleven.part1",
+            "Eleven.part2",
+            "Eleven.part3",
+            "Eleven.part4",
+            "Eleven.part5",
+            "Eleven.part6",
+            "Eleven.part7",
+            "Eleven.part8",
+            "Eleven.part9",
+            "Eleven.part10"
+        ],
+        "donos": [
+            "F",
+            "A",
+            "c"
+        ]
+    },
+    "Kakarotto.txt": {
+        "checksum": "43dd6723888dcecde3aa32e26e104c5bdd2786150067429134dac4bdb427ce61",
+        "chunks_path": "arquivos_cadastrados/chunkscriados/A/Kakarotto",
+        "chunks": [
+            "Kakarotto.part0"
+        ],
+        "donos": [
+            "A"
+        ]
     }
 }

@@ -1,0 +1,65 @@
+[
+    {
+        "nome": "Kakarotto.part0",
+        "indice": 0,
+        "hash": "b36d92ecd33fb1e48b34c52b72f7adcb1800894759019169b2bf6a30f8fec955",
+        "checksum": "b36d92ecd33fb1e48b34c52b72f7adcb1800894759019169b2bf6a30f8fec955",
+        "detentores_chunk": [
+            "A"
+        ]
+    },
+    {
+        "nome": "Kakarotto.part1",
+        "indice": 1,
+        "hash": "7f14769a900b5393cc6eb58279aea01f101369b1c1ea05caec0a98bbe504ff80",
+        "checksum": "7f14769a900b5393cc6eb58279aea01f101369b1c1ea05caec0a98bbe504ff80",
+        "detentores_chunk": [
+            "A"
+        ]
+    },
+    {
+        "nome": "Kakarotto.part2",
+        "indice": 2,
+        "hash": "08edb1bb23db4c3073472d629c121d5a94fed92b4739900e9d9262338de411ac",
+        "checksum": "08edb1bb23db4c3073472d629c121d5a94fed92b4739900e9d9262338de411ac",
+        "detentores_chunk": [
+            "A"
+        ]
+    },
+    {
+        "nome": "Kakarotto.part3",
+        "indice": 3,
+        "hash": "d3d2eed35a29eccde58caa9dfea649eccc15737a6d73ce9ba2e4e032554cbd1c",
+        "checksum": "d3d2eed35a29eccde58caa9dfea649eccc15737a6d73ce9ba2e4e032554cbd1c",
+        "detentores_chunk": [
+            "A"
+        ]
+    },
+    {
+        "nome": "Kakarotto.part4",
+        "indice": 4,
+        "hash": "dfc6dbec1179ca32db324229548a857493c91b6c854a62d806c4e0a469db89cd",
+        "checksum": "dfc6dbec1179ca32db324229548a857493c91b6c854a62d806c4e0a469db89cd",
+        "detentores_chunk": [
+            "A"
+        ]
+    },
+    {
+        "nome": "Kakarotto.part5",
+        "indice": 5,
+        "hash": "de4923a437409b7a47dc34223e516e828d3ac8d94b5a2eb2e69ca0e199ce8b0f",
+        "checksum": "de4923a437409b7a47dc34223e516e828d3ac8d94b5a2eb2e69ca0e199ce8b0f",
+        "detentores_chunk": [
+            "A"
+        ]
+    },
+    {
+        "nome": "Kakarotto.part6",
+        "indice": 6,
+        "hash": "0a271015dc1b6ea495a410204803d3e7e0f1875bcbed71506de5255fe1cb1260",
+        "checksum": "0a271015dc1b6ea495a410204803d3e7e0f1875bcbed71506de5255fe1cb1260",
+        "detentores_chunk": [
+            "A"
+        ]
+    }
+]

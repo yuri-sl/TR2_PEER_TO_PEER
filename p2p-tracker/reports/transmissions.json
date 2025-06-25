@@ -46,5 +46,365 @@
         "chunk": "Kal.part0",
         "tamanho": 1009902,
         "tempo": 8.424499750137329
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part0",
+        "tamanho": 1048576,
+        "tempo": 7.860049486160278
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part1",
+        "tamanho": 1048576,
+        "tempo": 7.860028028488159
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part0",
+        "tamanho": 1048576,
+        "tempo": 8.467697858810425
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Eleven.part0",
+        "tamanho": 1048576,
+        "tempo": 8.474181413650513
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part0",
+        "tamanho": 1048576,
+        "tempo": 8.491294860839844
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part0",
+        "tamanho": 1048576,
+        "tempo": 8.469976425170898
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part1",
+        "tamanho": 1048576,
+        "tempo": 8.453341484069824
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part2",
+        "tamanho": 1048576,
+        "tempo": 8.511847972869873
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part3",
+        "tamanho": 1048576,
+        "tempo": 8.424216032028198
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part4",
+        "tamanho": 1048576,
+        "tempo": 8.465136289596558
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part5",
+        "tamanho": 1048576,
+        "tempo": 8.484904527664185
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part6",
+        "tamanho": 1048576,
+        "tempo": 8.446086406707764
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part7",
+        "tamanho": 1048576,
+        "tempo": 8.456393003463745
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part8",
+        "tamanho": 1048576,
+        "tempo": 8.50595760345459
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part9",
+        "tamanho": 1048576,
+        "tempo": 8.474373579025269
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part10",
+        "tamanho": 623162,
+        "tempo": 5.262439966201782
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part0",
+        "tamanho": 1048576,
+        "tempo": 8.467443466186523
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part1",
+        "tamanho": 1048576,
+        "tempo": 8.44966745376587
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part2",
+        "tamanho": 1048576,
+        "tempo": 8.492089986801147
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part3",
+        "tamanho": 1048576,
+        "tempo": 8.404751539230347
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part4",
+        "tamanho": 1048576,
+        "tempo": 8.433075428009033
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part5",
+        "tamanho": 1048576,
+        "tempo": 8.585259199142456
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part6",
+        "tamanho": 1048576,
+        "tempo": 8.466704607009888
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part7",
+        "tamanho": 1048576,
+        "tempo": 8.458354473114014
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part8",
+        "tamanho": 1048576,
+        "tempo": 8.434526205062866
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part9",
+        "tamanho": 1048576,
+        "tempo": 8.445203065872192
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part10",
+        "tamanho": 623162,
+        "tempo": 5.300895690917969
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part0",
+        "tamanho": 1048576,
+        "tempo": 8.505383729934692
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part1",
+        "tamanho": 1048576,
+        "tempo": 8.505612850189209
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part2",
+        "tamanho": 1048576,
+        "tempo": 8.457404375076294
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part3",
+        "tamanho": 1048576,
+        "tempo": 8.4537935256958
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part4",
+        "tamanho": 1048576,
+        "tempo": 8.468549966812134
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part5",
+        "tamanho": 1048576,
+        "tempo": 8.407064199447632
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part6",
+        "tamanho": 1048576,
+        "tempo": 8.446738004684448
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part7",
+        "tamanho": 1048576,
+        "tempo": 8.464329481124878
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part8",
+        "tamanho": 1048576,
+        "tempo": 8.486233472824097
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part9",
+        "tamanho": 1048576,
+        "tempo": 8.463774681091309
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part10",
+        "tamanho": 623162,
+        "tempo": 5.264158725738525
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part0",
+        "tamanho": 1048576,
+        "tempo": 8.459314823150635
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part1",
+        "tamanho": 1048576,
+        "tempo": 8.501970529556274
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part2",
+        "tamanho": 1048576,
+        "tempo": 8.455690622329712
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part0",
+        "tamanho": 1048576,
+        "tempo": 8.485136985778809
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part3",
+        "tamanho": 1048576,
+        "tempo": 8.455836296081543
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part1",
+        "tamanho": 1048576,
+        "tempo": 8.418699741363525
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part4",
+        "tamanho": 1048576,
+        "tempo": 8.462573051452637
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part2",
+        "tamanho": 1048576,
+        "tempo": 8.468767404556274
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part5",
+        "tamanho": 1048576,
+        "tempo": 8.457129716873169
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part3",
+        "tamanho": 1048576,
+        "tempo": 8.429864645004272
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part6",
+        "tamanho": 1048576,
+        "tempo": 8.450968742370605
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part4",
+        "tamanho": 1048576,
+        "tempo": 8.448196172714233
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part7",
+        "tamanho": 1048576,
+        "tempo": 8.458899974822998
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part5",
+        "tamanho": 1048576,
+        "tempo": 8.527360677719116
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part8",
+        "tamanho": 1048576,
+        "tempo": 8.420894622802734
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part6",
+        "tamanho": 1048576,
+        "tempo": 8.492091178894043
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part9",
+        "tamanho": 1048576,
+        "tempo": 8.508287906646729
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part10",
+        "tamanho": 623162,
+        "tempo": 5.269530773162842
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part7",
+        "tamanho": 1048576,
+        "tempo": 8.459615230560303
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part8",
+        "tamanho": 1048576,
+        "tempo": 8.44962191581726
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part9",
+        "tamanho": 1048576,
+        "tempo": 8.443409442901611
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part10",
+        "tamanho": 623162,
+        "tempo": 5.263607025146484
     }
 ]

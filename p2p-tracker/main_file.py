@@ -354,7 +354,7 @@ def salvar_transfer_record(data):
     with open(arquivo, "w", encoding="utf-8") as f:
         json.dump(registros, f, indent=4, ensure_ascii=False)
 
-def requisitar_chunk(host, port,from_user, to_user, nome_chunk, on_finish=None):
+def requisitar_chunk(host, port,from_user, to_user, nome_chunk, inicio_download=0):
     """
     Envia um pedido de chunk para um peer específico via conexão TCP.
 
@@ -387,7 +387,7 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk, on_finish=None):
     print(pedidos)
     print(f"A porta do host é: {port}")
     try:
-        inicio_download = time.time()
+        #inicio_download = time.time()
         start_time = time.time()
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((host, port))
@@ -437,11 +437,11 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk, on_finish=None):
             #print("Recebendo chunk...")
 
         #Calcula o Hash e verifica o checksum
-        print(dados_recebidos)
+        #print(dados_recebidos)
         checksum_recebido = hashlib.sha256(dados_recebidos).hexdigest()
         nome_diretorio = nome_chunk.split('.')[0]
 
-        print("O CHECKSUM RECEBIDO É:")
+        #print("O CHECKSUM RECEBIDO É:")
 
         if checksum_recebido == checksum_esperado:
             caminho_arquivo = "chunks_recebidos/"+from_user+"/"+nome_diretorio+"/"+nome_chunk
@@ -452,7 +452,7 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk, on_finish=None):
             tempo_total = fim_download - inicio_download
             print(f"\n📥 Chunk '{nome_chunk}' recebido de {to_user} e salvo em '{caminho_arquivo}'. ✅\n")
             print(f"Checksum confirmado: {checksum_recebido}")
-            print(f"⏱ Tempo total de download: {tempo_total:.2f} segundos.")
+            print(f"O Tempo total de download: {tempo_total:.2f} segundos.")
 
             nome_diretorio = nome_chunk.split('.')[0]
             caminho_arquivo = os.path.join("chunks_recebidos", from_user, nome_diretorio, nome_chunk)
@@ -994,15 +994,21 @@ def interactiveMenu_1() -> bool:
             print()
             print("Peers Ativos: ")
             i = 0
+            portAssociation = []
+
             for peer in resposta.get("mensagem", []):
                 i += 1
                 if(peer == usuario_logado):
                     print(f"[{i}] - {peer} (Você)")
                 else:
                     print(f"[{i}] - {peer}")
+                    portAssociation.append(peer)
+            print(f"PortAssociation: {portAssociation}")
             accept_chat = input(("Gostaria de comunicar com um Peer?\n1-Sim    0-Não\n"))
             if accept_chat == "1":
-                selected_user = input("Digite o nome do usuário que deseja pedir o arquivo\n")
+                #selected_user = input("Digite o nome do usuário que deseja pedir o arquivo\n")
+
+                selected_user = random.choice(portAssociation)
                 if selected_user == usuario_logado:
                         print("Não é possível realizar a operação consigo mesmo!")
                 else:
@@ -1057,13 +1063,16 @@ def interactiveMenu_1() -> bool:
                                                     for idx, chunk_nome in enumerate(chunks):
                                                         print("É string")
                                                         print(f"[{idx}] - {chunk_nome}")
+                                                        print(f"OS CHUNKS SÃO {chunks}")
                                                         total_chunks_sum += len(chunk_nome)
+                                                        print(f"Baixando chunk [{idx}]: {chunk_nome}")
+                                                        requisitar_chunk(peer_ip,peer_port,usuario_logado,user,chunk_nome,inicio_download)
                                                         #cria e inicia uma thread para baixar esse chunk
-                                                        thread = threading.Thread(target=requisitar_chunk,
-                                                                                args=(peer_ip,peer_port,usuario_logado,user,chunk_nome)
-                                                                                )
-                                                        thread.start()
-                                                        threads.append(thread)
+                                                        #thread = threading.Thread(target=requisitar_chunk,
+                                                        #                        args=(peer_ip,peer_port,usuario_logado,user,chunk_nome)
+                                                        #                        )
+                                                        #threads.append(thread)
+                                                        #thread.start()
 
                                                     #Espera todas as threads terminarem
                                                     for thread in threads: 
@@ -1128,13 +1137,21 @@ def interactiveMenu_1() -> bool:
             resposta = send_to_tracker(dados)
 
             print("\nPeers Ativos: ")
+            portAssociationCon = []
             for i, peer in enumerate(resposta.get("mensagem", [])):
-                marcado = " (Você)" if peer == usuario_logado else ""
-                print(f"[{i}] - {peer}{marcado}")
+                if peer == usuario_logado:
+                    marcado = " (Você) "
+                else:
+                    marcado = ""
+                    portAssociationCon.append(peer)
+                print(f"[{i} - {peer}{marcado}]")
+                #marcado = " (Você)" if peer == usuario_logado else ""
+                #print(f"[{i}] - {peer}{marcado}")
 
             accept_chat = input("Gostaria de comunicar com um Peer?\n1-Sim    0-Não\n")
             if accept_chat == "1":
-                selected_user = input("Digite o nome do usuário que deseja pedir o arquivo\n")
+                #selected_user = input("Digite o nome do usuário que deseja pedir o arquivo\n")
+                selected_user = random.choice(portAssociationCon)
                 if selected_user == usuario_logado:
                     print("Não é possível realizar a operação consigo mesmo!")
                 else:

@@ -1,24 +1,6 @@
 import hashlib
 import os
 import json
-def listar_chunks_do_arquivo(dados, nome_arquivo):
-    """
-    Retorna os chunks associados a um determinado arquivo, se existirem.
-
-    Parâmetros:
-        dados (dict): Dicionário contendo os dados dos arquivos.
-        nome_arquivo (str): Nome do arquivo cujos chunks serão listados.
-
-    Retorna:
-        list: Lista de chunks ou lista vazia se não encontrado.
-    """
-    if nome_arquivo not in dados:
-        print(f"Arquivo {nome_arquivo} não encontrado nos dados.")
-        return []
-
-    info_arquivo = dados[nome_arquivo]
-    chunks = info_arquivo.get('chunks', [])
-    return chunks
 
 def calculate_checksum(data) -> str:
     """
@@ -110,7 +92,7 @@ def dividir_em_chunks(nome_arquivo, tamanho_chunk_kb=1024,usuario_logado: str=""
 # Exemplo de uso
 #chunks = dividir_em_chunks("testingChunksUpdate50.txt", 1024,"A")
 
-def dividir_em_chunks_user(nome_arquivo, tamanho_chunk_kb=1024,usuario_logado: str=""):
+def dividir_em_chunks_user(nome_arquivo, tamanho_chunk_spec,usuario_logado: str=""):
     """
     Variante de dividir_em_chunks que armazena os chunks em uma pasta por usuário.
 
@@ -122,7 +104,6 @@ def dividir_em_chunks_user(nome_arquivo, tamanho_chunk_kb=1024,usuario_logado: s
     Retorna:
         list|None: Lista de dicionários com dados dos chunks ou None se erro.
     """
-    tamanho_chunk = tamanho_chunk_kb * 1024
     chunks_info = []
     detentores_chunk = []
     detentores_chunk.append(usuario_logado)
@@ -139,6 +120,13 @@ def dividir_em_chunks_user(nome_arquivo, tamanho_chunk_kb=1024,usuario_logado: s
         with open(nome_arquivo, 'rb') as f:
             i = 0
             while True:
+                if isinstance(tamanho_chunk_spec,list):
+                    if i>= len(tamanho_chunk_spec):
+                        break
+                    tamanho_chunk = tamanho_chunk_spec[i]
+                else:
+                    #Int, todos os chunks com mesmo tamanho
+                    tamanho_chunk = tamanho_chunk_spec * 1024
                 dados = f.read(tamanho_chunk)
                 if not dados:
                     break

@@ -323,6 +323,7 @@ def protocolos_restritos(mensagem, client_socket) -> None:
             resposta = {"status": "erro", "mensagem": f"Erro ao anunciar arquivo: {str(e)}"}
         client_socket.sendall(json.dumps(resposta).encode())
 
+
     else:
         resposta = {"status": "erro", "mensagem": "Ação desconhecida ou não está logado."}
         client_socket.sendall(json.dumps(resposta).encode())

@@ -9,6 +9,8 @@ import time
 import random
 from peer import calculate_checksum
 import sys
+from typing import List
+
 ARQUIVO_JSON = "chunks_trocados.json"
 
 def mostrar_progresso(recebidos, total):
@@ -529,6 +531,68 @@ def announce_files (username) -> None:
         print("\n=> Resultado do anúncio:", resposta.get("mensagem"))
     except Exception as e:
         print("Erro ao anunciar arquivos:", e)
+
+def construir_tamanhos_chunks_fixos(nome_arquivo: str, tamanho_max_chunk_bytes: int = 2 * 1024 * 1024) -> List[int]:
+    """
+    Gera uma lista de tamanhos (em bytes) para dividir um arquivo em chunks de tamanho fixo máximo,
+    onde o último chunk pode ser menor.
+
+    Parâmetros:
+        nome_arquivo (str): Caminho do arquivo.
+        tamanho_max_chunk_bytes (int): Tamanho máximo de cada chunk em bytes.
+
+    Retorna:
+        List[int]: Lista de tamanhos dos chunks em bytes.
+    """
+    tamanho_arquivo_bytes = os.path.getsize(nome_arquivo)
+    num_chunks = (tamanho_arquivo_bytes + tamanho_max_chunk_bytes - 1) // tamanho_max_chunk_bytes  # teto da divisão
+
+    tamanho_chunk = tamanho_arquivo_bytes // num_chunks
+    tamanhos_chunks = [tamanho_chunk] * (num_chunks - 1)
+
+    ultimo_chunk = tamanho_arquivo_bytes - tamanho_chunk * (num_chunks - 1)
+    tamanhos_chunks.append(ultimo_chunk)
+
+    return tamanhos_chunks
+
+def construir_tamanhos_chunks_aleatorios(nome_arquivo, min_chunks=3, max_chunks=50):
+    """
+    Gera uma lista de tamanhos (em bytes) para dividir um arquivo em chunks aleatórios,
+    garantindo que o número de chunks fique entre min_chunks e max_chunks e que
+    a soma dos tamanhos seja igual ao tamanho real do arquivo.
+
+    Parâmetros:
+        nome_arquivo (str): Caminho do arquivo.
+        min_chunks (int): Número mínimo de chunks desejado.
+        max_chunks (int): Número máximo de chunks desejado.
+
+    Retorna:
+        List[int]: Lista de tamanhos dos chunks em bytes.
+    """
+
+    tamanho_arquivo_bytes = os.path.getsize(nome_arquivo)
+
+    # Define a quantidade de chunks, respeitando os limites e tamanho do arquivo
+    max_chunks = min(max_chunks, tamanho_arquivo_bytes)  # Não faz sentido chunks maiores que 1 byte
+    num_chunks = random.randint(min_chunks, max_chunks)
+
+    tamanho_medio_chunk = tamanho_arquivo_bytes // num_chunks
+    tamanhos_chunks = []
+
+    # Gera chunks variando entre 80% e 120% do tamanho médio, menos o último
+    soma_chunks = 0
+    for i in range(num_chunks - 1):
+        chunk_size = int(random.uniform(0.8, 1.2) * tamanho_medio_chunk)
+        # Garante que o chunk não seja menor que 1 byte e que não ultrapasse o tamanho restante
+        chunk_size = max(1, min(chunk_size, tamanho_arquivo_bytes - soma_chunks - (num_chunks - i - 1)))
+        tamanhos_chunks.append(chunk_size)
+        soma_chunks += chunk_size
+
+    # Último chunk: o que sobra para completar o arquivo
+    tamanhos_chunks.append(tamanho_arquivo_bytes - soma_chunks)
+
+    return tamanhos_chunks
+
 def announce_file_novo(username, nome_arquivo):
     """
     Divide um arquivo em chunks, calcula seu checksum e o anuncia para o tracker via socket TCP.
@@ -537,7 +601,25 @@ def announce_file_novo(username, nome_arquivo):
         username (str): Nome do usuário que está anunciando o arquivo.
         nome_arquivo (str): Caminho do arquivo a ser dividido e anunciado.
     """
-    dividir_em_chunks_user(nome_arquivo, 1024,username)
+    #Divisão do arquivo em chunks de tamanhos aleatórios
+    print(f"O nome_arquivo é: {nome_arquivo}")
+    tamanho_arquivo_bytes = os.path.getsize(nome_arquivo)
+    print(tamanho_arquivo_bytes)
+    #tamanho_arquivo_mb = tamanho_arquivo_bytes / (1024 * 1024)
+    tamanhos_chunks = construir_tamanhos_chunks_aleatorios(nome_arquivo)
+
+    print(f"Os tamanhos aleatórios são {tamanhos_chunks}")
+
+    chunks_info = dividir_em_chunks_user(nome_arquivo, tamanhos_chunks,username)
+    if not chunks_info:
+        print("Erro ao dividir o arquivo.")
+        return
+    
+    #Calculo do checksum
+    with open(nome_arquivo, 'rb') as f:
+        conteudo = f.read()
+        checksum = hashlib.sha256(conteudo).hexdigest()
+
     print("O arquivo foi divido em chunks!")
     nome_pasta = os.path.splitext(nome_arquivo)[0]
     print(f"O nome_pasta é:{nome_pasta}")
@@ -545,9 +627,6 @@ def announce_file_novo(username, nome_arquivo):
     json_path = caminho_chunks+"/"+nome_pasta+".json"
     #json_path = os.path.join(caminho_chunks, nome_pasta + ".json")
 
-    with open(nome_arquivo, 'rb') as f:
-        conteudo = f.read()
-        checksum = hashlib.sha256(conteudo).hexdigest()
 
     with open(json_path, 'r') as jf:
         chunks_info = json.load(jf)
