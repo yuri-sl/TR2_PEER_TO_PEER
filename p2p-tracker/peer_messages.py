@@ -164,7 +164,7 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
             tem_chunk_recebido = os.path.exists(caminho_recebidos)
 
             print(f"Chunks disponiveis para {meu_username} transmitir são: {chunks_disponiveis}")
-            print(f"Existe no diretório de recebidos?: {'SIM' if tem_chunk_recebido else "NÃO"}")
+            print(f"Existe no diretório de recebidos?: {'SIM' if tem_chunk_recebido else 'NÃO'}")
 
 
 
@@ -223,7 +223,7 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                         print(f"It's sleeping for {sleep_interval}")
                         time.sleep(sleep_interval)
                         print("It has just slept")
-                    fim = time.time()
+                    #fim = time.time()
                     #tempo_transferencia = fim - inicio
                     update_score(peer_user,
                             bytes_sent=len(dados_chunk),

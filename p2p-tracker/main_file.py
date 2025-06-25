@@ -23,7 +23,8 @@ menu_arquivos = "--Menu de Operações por arquivos--(2/3)\n#11 - Criar um arqui
 menu_opcoes = "--Menu de operações do Usuário--(3/3)\n#14 - Meu perfil\n#10 - Sair do sistema\n\n#15 - Página anterior <<<<<<"
 
 SCOREBOARD_FILE = "/scoreboard.json"
-TRANSFER_METRICS_FILE = "transfer_metrics.json"
+TRANSFER_METRICS_FILE = "transfer_metrics_single.json"
+TRANSFER_METRICS_FILE_CONNECTIONS = "transfer_metrics_connections.json"
 def baixar_chunks_em_paralelo(peer_ip, peer_port, usuario_logado, peer_user, chunks):
     """
     Inicia threads para baixar múltiplos chunks do mesmo peer em paralelo.
@@ -45,7 +46,7 @@ def load_transfer_metrics():
             with open(TRANSFER_METRICS_FILE, "r", encoding="utf-8") as f:
                 return json.load(f)
         except (json.JSONDecodeError, IOError):
-            print("[WARN] Não foi possível carregar 'transfer_metrics.json'. Inicializando vazio.")
+            print("[WARN] Não foi possível carregar 'transfer_metrics_single.json'. Inicializando vazio.")
             return {}
     return {}
 
@@ -71,6 +72,38 @@ def add_transfer_record(peer_id: str, tempo: float, volume: int, integridade: bo
     })
     save_transfer_metrics(metrics)
 
+
+def load_transfer_metrics_Connections():
+    if os.path.exists(TRANSFER_METRICS_FILE_CONNECTIONS):
+        try:
+            with open(TRANSFER_METRICS_FILE_CONNECTIONS, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except (json.JSONDecodeError, IOError):
+            print("[WARN] Não foi possível carregar 'transfer_metrics_single.json'. Inicializando vazio.")
+            return {}
+    return {}
+
+def save_transfer_metrics_Connections(data):
+    with open(TRANSFER_METRICS_FILE_CONNECTIONS, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=4)
+
+def add_transfer_time_Connections(peer_id: str, transfer_time: float) -> None:
+    """Armazena o tempo de transferência para o peer específico."""
+    metrics = load_transfer_metrics_Connections()
+    metrics.setdefault(peer_id, []).append(transfer_time)
+    save_transfer_metrics_Connections(metrics)
+
+def add_transfer_record_Connections(peer_id: str, tempo: float, volume: int, integridade: bool):
+    """Adiciona um registro de transferência para o peer especificado."""
+    metrics = load_transfer_metrics()
+    if peer_id not in metrics:
+        metrics[peer_id] = []
+    metrics[peer_id].append({
+        "tempo": tempo,
+        "volume": volume,
+        "integridade": integridade
+    })
+    save_transfer_metrics_Connections(metrics)
 
 checksum_arquivos = {}
 
@@ -1073,10 +1106,6 @@ def interactiveMenu_1() -> bool:
                                                         #                        )
                                                         #threads.append(thread)
                                                         #thread.start()
-
-                                                    #Espera todas as threads terminarem
-                                                    for thread in threads: 
-                                                        thread.join()
                                                     print("✅ Todos os chunks foram requisitados e baixados.")
                                                     integridade = True
                                                     adicionar_dono_chunk("arquivos_cadastrados/arquivos_tracker.json", nome_escolhido, usuario_logado)
@@ -1218,7 +1247,7 @@ def interactiveMenu_1() -> bool:
                                             fim_download = time.time()
                                             tempo_total = fim_download - inicio_download
                                             report_file.write(f"⏱ Tempo total de download de TODOS os chunks: {tempo_total:.2f} segundos.\n")
-                                            add_transfer_record(selected_user, tempo_total, total_chunks_sum, integridade)
+                                            add_transfer_record_Connections(selected_user, tempo_total, total_chunks_sum, integridade)
 
                                         atual_abertas = quantas_conexoes_abertas()
                                         print(f"[INFO] Conexões abertas restantes após operação: {atual_abertas}")

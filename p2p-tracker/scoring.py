@@ -9,10 +9,10 @@ scoreboard = {}
 
 # Pesos configuráveis para cada métrica
 WEIGHTS = {
-    'bytes_sent': 0.000001,
+    'bytes_sent': 0.00000000001,
     'time_connected': 1,
     'successful_responses': 10,
-    'active_connections':20
+    'active_connections':2
 }
 conexoes_ativas = {}  # Ex.: {"a": 1, "b": 2, ...}
 
