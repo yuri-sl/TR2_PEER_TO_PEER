@@ -611,6 +611,8 @@ def announce_file_novo(username, nome_arquivo):
     print(f"Os tamanhos aleatórios são {tamanhos_chunks}")
 
     chunks_info = dividir_em_chunks_user(nome_arquivo, tamanhos_chunks,username)
+
+    print(f"chunks_info é:")
     if not chunks_info:
         print("Erro ao dividir o arquivo.")
         return
@@ -630,8 +632,10 @@ def announce_file_novo(username, nome_arquivo):
 
     with open(json_path, 'r') as jf:
         chunks_info = json.load(jf)
+    #print(f"O conteúdo de chunks_info é: {chunks_info}")
 
     nomes_chunks = [chunk['nome'] for chunk in chunks_info]
+    print(nomes_chunks)
 
     dados = {
         "action": "announce_file",
