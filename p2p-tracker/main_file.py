@@ -1199,13 +1199,12 @@ def interactiveMenu_1() -> bool:
 
                                             t = threading.Thread(
                                                 target=requisitar_chunk,
-                                                args=(peer_ip, peer_port, usuario_logado, selected_user, chunk_nome),
-                                                kwargs={'on_finish': lambda: finalizar_conexao(selected_user, peer_port, chunk_nome)}
+                                                args=(peer_ip, peer_port, usuario_logado, selected_user, chunk_nome, inicio_download)
                                             )
                                             t.start()
                                             threads.append(t)
                                             # Finaliza todas as conexões abertas para este peer
-                                            #finalizar_conexao(selected_user, peer_port, chunk_nome)
+                                            finalizar_conexao(selected_user, peer_port, chunk_nome)
 
                                         # Espera todas as threads terminarem
                                         for t in threads:
