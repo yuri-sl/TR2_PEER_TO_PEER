@@ -94,7 +94,7 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                 with open(ARQUIVO_JSON, "w", encoding="utf-8") as f:
                     json.dump(dados_existentes, f, indent=4, ensure_ascii=False)
 
-                print(f"[✓] Chunk '{mensagem['enviando']}' salvo/atualizado em '{ARQUIVO_JSON}'")
+                #print(f"[✓] Chunk '{mensagem['enviando']}' salvo/atualizado em '{ARQUIVO_JSON}'")
         except Exception as e:
             print(f"Erro ao receber mensagem: {e}")
             
@@ -386,7 +386,7 @@ def pedir_chunks(user,files_peer, peers_ip):
                         nome_do_chunk, dados = escolher_chunk_compatível(user) # escolhe um chunk aleatorio que eu preciso
                         if nome_do_chunk:                   # Se eu for capaz de enviar
                             try: 
-                                print(f"[{users}] Enviando o pedido do chunk {os.path.basename(nome_do_chunk)} para {ip} : {port}")
+                                #print(f"[{users}] Enviando o pedido do chunk {os.path.basename(nome_do_chunk)} para {ip} : {port}")
                                 enviado = send_chunk(user, ip, port, nome_do_chunk, dados)# Vai enviar para esse ip pedindo um chunk aleatorio que eu preciso
                                 if enviado:                     # Se foi enviado o pedido com sucesso
                                     successful_responses = 1
@@ -427,7 +427,7 @@ def send_chunk(user, ip, port, nome_chunk, dados):
         s.close()
         return True
     except Exception as e:
-        print(f"[Erro ao enviar pedir pedaços] {e}")
+        #print(f"[Erro ao enviar pedir pedaços] {e}")
         return False
 
 

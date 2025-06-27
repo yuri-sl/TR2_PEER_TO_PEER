@@ -1,0 +1,74 @@
+[
+    {
+        "nome": "UploadOne.part0",
+        "indice": 0,
+        "hash": "955ba9a621d0628ba0c81d8fad4d689c6445d504b8023aae5c450d0d67bccd09",
+        "checksum": "955ba9a621d0628ba0c81d8fad4d689c6445d504b8023aae5c450d0d67bccd09",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "UploadOne.part1",
+        "indice": 1,
+        "hash": "c7dae8eb4451feeb42b133b292da44cf0065aa0832db4e64065f362fbb2a9d83",
+        "checksum": "c7dae8eb4451feeb42b133b292da44cf0065aa0832db4e64065f362fbb2a9d83",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "UploadOne.part2",
+        "indice": 2,
+        "hash": "3bc3674195a159aef184b45e4bf6df2cdceec981df412845cc503f7e297fe055",
+        "checksum": "3bc3674195a159aef184b45e4bf6df2cdceec981df412845cc503f7e297fe055",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "UploadOne.part3",
+        "indice": 3,
+        "hash": "a113847f66385c936c6b08d41f0541c468dc45bf4053cd9af5513697807bdae6",
+        "checksum": "a113847f66385c936c6b08d41f0541c468dc45bf4053cd9af5513697807bdae6",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "UploadOne.part4",
+        "indice": 4,
+        "hash": "5d7cafe6c592cd35bb656d5f0ddf2c1deca4a9db0debe87c110900afb07ce58c",
+        "checksum": "5d7cafe6c592cd35bb656d5f0ddf2c1deca4a9db0debe87c110900afb07ce58c",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "UploadOne.part5",
+        "indice": 5,
+        "hash": "98cdbfe09854ecf2f9741a64b50b1d5bf214c2512c953e8bd964fb36a1141abf",
+        "checksum": "98cdbfe09854ecf2f9741a64b50b1d5bf214c2512c953e8bd964fb36a1141abf",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "UploadOne.part6",
+        "indice": 6,
+        "hash": "bf830ec2c1a7b7aa950b7dbda511661c6586d50dbde1226c0aeb824eb4baa9ba",
+        "checksum": "bf830ec2c1a7b7aa950b7dbda511661c6586d50dbde1226c0aeb824eb4baa9ba",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "UploadOne.part7",
+        "indice": 7,
+        "hash": "5eadfad0417311fceaa29b5fa963c093e2f197d1828ed1e07a572d50d097d57e",
+        "checksum": "5eadfad0417311fceaa29b5fa963c093e2f197d1828ed1e07a572d50d097d57e",
+        "detentores_chunk": [
+            "F"
+        ]
+    }
+]

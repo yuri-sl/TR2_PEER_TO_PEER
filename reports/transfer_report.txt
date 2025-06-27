@@ -479,3 +479,6 @@
 [2025-06-26 15:07:55]✅ Arquivo 'Eleven.txt' montado com sucesso em 'arquivos_montados/A/Eleven.txt'!
 ⏱ Tempo total de download de TODOS os chunks: 164.96 segundos.
 ⏱ Tempo total de download de TODOS os chunks: 122.98 segundos.
+⏱ Tempo total de download de TODOS os chunks: 25.51 segundos.
+⏱ Tempo total de download de TODOS os chunks: 16.36 segundos.
+⏱ Tempo total de download de TODOS os chunks: 16.34 segundos.

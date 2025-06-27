@@ -1,173 +1,51 @@
 {
-    "testeAnuncio.txt": {
-        "checksum": "c909e9c8449d3ae42d630f76bbc28a4d7ad43129b7ce56dec75b9dbf3d4faf8c",
-        "chunks_path": "arquivos_cadastrados/chunkscriados/testeAnuncio",
+    "A": [
+        "as.txt",
+        "Asdf.txt",
+        "Eleven.txt",
+        "entradas_testes.txt",
+        "Kakarotto.txt",
+        "Kal.txt",
+        "Lsa.txt",
+        "teste.txt",
+        "TransferData.txt",
+        "TransferOne.txt",
+        "UploadHundred.txt",
+        "UploadOne.txt",
+        "UploadTen.txt",
+        "UploadThousand.txt"
+    ],
+    "F": [
+        "as.txt",
+        "Asdf.txt",
+        "Eleven.txt",
+        "entradas_testes.txt",
+        "Kakarotto.txt",
+        "Kal.txt",
+        "Lsa.txt",
+        "teste.txt",
+        "TransferData.txt",
+        "TransferOne.txt",
+        "UploadHundred.txt",
+        "UploadOne.txt",
+        "UploadTen.txt",
+        "UploadThousand.txt"
+    ],
+    "UploadOne.txt": {
+        "checksum": "e15941d6151681e4a91c41bb18b8956eb529f049461cf2cd265f805942822473",
+        "chunks_path": "arquivos_cadastrados/chunkscriados/F/UploadOne",
         "chunks": [
-            "testeAnuncio.part0",
-            "testeAnuncio.part1",
-            "testeAnuncio.part2",
-            "testeAnuncio.part3",
-            "testeAnuncio.part4",
-            "testeAnuncio.part5",
-            "testeAnuncio.part6",
-            "testeAnuncio.part7",
-            "testeAnuncio.part8",
-            "testeAnuncio.part9",
-            "testeAnuncio.part10",
-            "testeAnuncio.part11",
-            "testeAnuncio.part12",
-            "testeAnuncio.part13",
-            "testeAnuncio.part14",
-            "testeAnuncio.part15",
-            "testeAnuncio.part16",
-            "testeAnuncio.part17",
-            "testeAnuncio.part18",
-            "testeAnuncio.part19",
-            "testeAnuncio.part20",
-            "testeAnuncio.part21",
-            "testeAnuncio.part22",
-            "testeAnuncio.part23",
-            "testeAnuncio.part24",
-            "testeAnuncio.part25",
-            "testeAnuncio.part26",
-            "testeAnuncio.part27",
-            "testeAnuncio.part28",
-            "testeAnuncio.part29",
-            "testeAnuncio.part30",
-            "testeAnuncio.part31",
-            "testeAnuncio.part32",
-            "testeAnuncio.part33",
-            "testeAnuncio.part34",
-            "testeAnuncio.part35",
-            "testeAnuncio.part36",
-            "testeAnuncio.part37",
-            "testeAnuncio.part38",
-            "testeAnuncio.part39",
-            "testeAnuncio.part40",
-            "testeAnuncio.part41",
-            "testeAnuncio.part42",
-            "testeAnuncio.part43",
-            "testeAnuncio.part44",
-            "testeAnuncio.part45",
-            "testeAnuncio.part46",
-            "testeAnuncio.part47",
-            "testeAnuncio.part48"
+            "UploadOne.part0",
+            "UploadOne.part1",
+            "UploadOne.part2",
+            "UploadOne.part3",
+            "UploadOne.part4",
+            "UploadOne.part5",
+            "UploadOne.part6",
+            "UploadOne.part7"
         ],
         "donos": [
-            "F",
-            "A"
-        ]
-    },
-    "Kal.txt": {
-        "checksum": "d3dc4d33b1bf7f929a91f0154166addbe704a39467e4aa7117a78b38d26c5bab",
-        "chunks_path": "arquivos_cadastrados/chunkscriados/F/Kal",
-        "chunks": [
-            "Kal.part0"
-        ],
-        "donos": [
-            "F",
-            "A"
-        ]
-    },
-    "Asdf.txt": {
-        "checksum": "bbe079495d2144ec74f4fcaa9e0140b3f5dd173319b54742c5359d84f3885608",
-        "chunks_path": "arquivos_cadastrados/chunkscriados/A/Asdf",
-        "chunks": [
-            "Asdf.part0"
-        ],
-        "donos": [
-            "A",
             "F"
-        ]
-    },
-    "TransferDataBig.txt": {
-        "checksum": "1e311d795713afcb335f93d735bf9748af5d41a5f4dc52e0bfb92dee8366b01c",
-        "chunks_path": "arquivos_cadastrados/chunkscriados/A/TransferDataBig",
-        "chunks": [
-            "TransferDataBig.part0",
-            "TransferDataBig.part1",
-            "TransferDataBig.part2",
-            "TransferDataBig.part3",
-            "TransferDataBig.part4",
-            "TransferDataBig.part5"
-        ],
-        "donos": [
-            "A"
-        ]
-    },
-    "Eleven.txt": {
-        "checksum": "0e0ac2cd1422eb3f8a2a9d0b1f1825e973183c54b06612e8ca2cbef99b2808c3",
-        "chunks_path": "arquivos_cadastrados/chunkscriados/F/Eleven",
-        "chunks": [
-            "Eleven.part0",
-            "Eleven.part1",
-            "Eleven.part2",
-            "Eleven.part3",
-            "Eleven.part4",
-            "Eleven.part5",
-            "Eleven.part6",
-            "Eleven.part7",
-            "Eleven.part8",
-            "Eleven.part9",
-            "Eleven.part10",
-            "Eleven.part11",
-            "Eleven.part12",
-            "Eleven.part13",
-            "Eleven.part14",
-            "Eleven.part15",
-            "Eleven.part16",
-            "Eleven.part17",
-            "Eleven.part18",
-            "Eleven.part19",
-            "Eleven.part20",
-            "Eleven.part21",
-            "Eleven.part22",
-            "Eleven.part23",
-            "Eleven.part24",
-            "Eleven.part25",
-            "Eleven.part26",
-            "Eleven.part27",
-            "Eleven.part28",
-            "Eleven.part29",
-            "Eleven.part30",
-            "Eleven.part31",
-            "Eleven.part32",
-            "Eleven.part33",
-            "Eleven.part34",
-            "Eleven.part35",
-            "Eleven.part36",
-            "Eleven.part37",
-            "Eleven.part38",
-            "Eleven.part39",
-            "Eleven.part40",
-            "Eleven.part41",
-            "Eleven.part42",
-            "Eleven.part43",
-            "Eleven.part44",
-            "Eleven.part45",
-            "Eleven.part46"
-        ],
-        "donos": [
-            "F",
-            "A",
-            "c"
-        ]
-    },
-    "TransferOne.txt": {
-        "checksum": "bc6c5dfb4d87b14461abd9414acd6e0ad4da2bfa20d5c7cb76390051d774ce92",
-        "chunks_path": "arquivos_cadastrados/chunkscriados/a/TransferOne",
-        "chunks": [
-            "TransferOne.part0",
-            "TransferOne.part1",
-            "TransferOne.part2",
-            "TransferOne.part3",
-            "TransferOne.part4",
-            "TransferOne.part5",
-            "TransferOne.part6",
-            "TransferOne.part7"
-        ],
-        "donos": [
-            "a"
         ]
     }
 }

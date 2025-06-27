@@ -58,7 +58,7 @@ def load_scoreboard():
             with open(SCOREBOARD_FILE, "r", encoding="utf-8") as f:
                 scoreboard = json.load(f)
         except (json.JSONDecodeError, IOError) as e:
-            #print(f"Erro ao carregar o scoreboard ({e}). Inicializando vazio.")
+            print(f"Erro ao carregar o scoreboard ({e}). Inicializando vazio.")
             scoreboard = {}  # Nesse caso, só resetamos quando não dá pra ler.
     else:
         scoreboard = {}

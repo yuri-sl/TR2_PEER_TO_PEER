@@ -21,7 +21,7 @@ menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar
 
 menu_chats = "--Menu de interações de chats por usuários--(1/3)\n#5 - Listagem de peers Ativos\n#6 - Iniciar chat com um Peer\n\n#14 - Próxima página >>>>"
 menu_arquivos = "--Menu de Operações por arquivos--(2/3)\n#11 - Criar um arquivo .txt\n#8 - Anunciar um arquivo manualmente\n#12 - Requisição de Chunks com uma conexão\n#16 - Requisição de chunks com múltiplas conexões\n#13 - Montar um Arquivo\n#17 - Plotar Gráfico Transmissão única\n#18 - Plotar Gráfico Transmissão Múltiplas Conexões\n#1 - Pedir arquivos\n\n#14 - Próxima página >>>>\n#15 - Página anterior <<<<<<"
-menu_opcoes = "--Menu de operações do Usuário--(3/3)\n#14 - Meu perfil\n#10 - Sair do sistema\n\n#15 - Página anterior <<<<<<"
+menu_opcoes = "--Menu de operações do Usuário--(3/3)\n#19 - Realizar Testes de Conexão Singular\n#20 - Realizar Testes de múltiplas conexões\n#10 - Sair do sistema\n\n#15 - Página anterior <<<<<<"
 
 SCOREBOARD_FILE = "/scoreboard.json"
 TRANSFER_METRICS_FILE = "transfer_metrics_single.json"
@@ -413,7 +413,7 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk, inicio_download=
     config = get_peer_priority(to_user, scoreboard)
     
     while threads_ativas_para(to_user) >= config["max_conexoes"]:
-        #print(f"Limite de conexões atingido para {to_user}. Aguardando...")
+        print(f"Limite de conexões atingido para {to_user}. Aguardando...")
         time.sleep(1.5)
 
     adicionar_conexao(to_user)
@@ -1091,7 +1091,6 @@ def interactiveMenu_1() -> bool:
                                                 # Se chunks forem strings:
                                                 total_chunks_sum = 0
                                                 if isinstance(chunks[0], str):
-                                                    threads = []
                                                     for idx, chunk_nome in enumerate(chunks):
                                                         print("É string")
                                                         print(f"[{idx}] - {chunk_nome}")
@@ -1112,7 +1111,6 @@ def interactiveMenu_1() -> bool:
                                                         fim_download = time.time()
                                                         tempo_total = fim_download - inicio_download
                                                         report_file.write(f"⏱ Tempo total de download de TODOS os chunks: {tempo_total:.2f} segundos.\n")
-                                                        #add_transfer_time(user, tempo_total)
                                                         add_transfer_record(usuario_logado,tempo_total,total_chunks_sum,integridade)
 
                                                         
@@ -1174,7 +1172,7 @@ def interactiveMenu_1() -> bool:
                     portAssociationCon.append(peer)
                 print(f"[{i} - {peer}{marcado}]")
                 #marcado = " (Você)" if peer == usuario_logado else ""
-                #print(f"[{i}] - {peer}{marcado}")
+                print(f"[{i}] - {peer}{marcado}")
 
             accept_chat = input("Gostaria de comunicar com um Peer?\n1-Sim    0-Não\n")
             if accept_chat == "1":
@@ -1263,10 +1261,96 @@ def interactiveMenu_1() -> bool:
             plotarGraficoMultiplas()
             input("Pressione Enter para continuar")
             os.system('cls||clear')
+        elif operation == "19":
+            ##Falta Imeplementar a escolha do Peer
+            tempos_cada_teste = []
+            #Baixar chunk
+            dados = {
+                "action": "list_clients",
+                "username": usuario_logado
+            }
+            resposta = send_to_tracker(dados)
+            print()
+            print("Peers Ativos: ")
+            i = 0
+            portAssociation = []
+
+            for peer in resposta.get("mensagem", []):
+                i += 1
+                if(peer == usuario_logado):
+                    print(f"[{i}] - {peer} (Você)")
+                else:
+                    print(f"[{i}] - {peer}")
+                    portAssociation.append(peer)
+            print(f"PortAssociation: {portAssociation}")
+            accept_chat = input(("Gostaria de comunicar com um Peer?\n1-Sim    0-Não\n"))
+            if accept_chat == "1":
+                #selected_user = input("Digite o nome do usuário que deseja pedir o arquivo\n")
+
+                selected_user = random.choice(portAssociation)
+                if selected_user == usuario_logado:
+                        print("Não é possível realizar a operação consigo mesmo!")
+                else:
+                    #Continuação do processo de seleção
+                    i = 0
+                    for user in resposta.get("mensagem",[]):
+                        i += 1                      
+                        if selected_user == user or str(i) == selected_user:
+                            print("Usuário Escolhido para operação com sucesso!")
+                            dados_start_chunk = {
+                                "action":"get_peer_info_chunk",
+                                "username": user
+                            }
+                            resposta_start_chunk = send_to_tracker(dados_start_chunk)
+
+                            if resposta_start_chunk.get("status")=="ok":
+                                peer_info = resposta_start_chunk.get("mensagem",{})
+                                peer_ip = peer_info.get("ip")
+                                peer_port = peer_info.get("port")
+                                print(f"Iniciando a operação com {user} em {peer_ip}:{peer_port}")
+                                for i in range(0,10):
+                                    inicio_download = time.time()
+                                    nome_escolhido = "UploadOne.txt"
+                                    print(nome_escolhido)
+                                    caminho = "arquivos_cadastrados/arquivos_tracker.json"
+                                    arquivos, dados_tracker_arquivo = listarArquivos(caminho)
+                                    print(f"os arquivos:{arquivos} em dados: {dados_tracker_arquivo}")
+                                    if nome_escolhido not in dados_tracker_arquivo:
+                                        print("Arquivo não foi anunciado!")
+                                        return False
+                                    chunks = listar_chunks_do_arquivo(dados_tracker_arquivo,nome_escolhido)
+                                    if not chunks:
+                                        print("Nenhum chunk disponível para o arquivo")
+                                        return False
+                                    total_chunks_sum = 0
+                                    if isinstance(chunks[0],str):
+                                        for idx, chunk_nome in enumerate(chunks):
+                                            print("É string")
+                                            print(f"[{idx}] - {chunk_nome}")
+                                            print(f"OS CHUNKS SÃO {chunks}")
+                                            total_chunks_sum += len(chunk_nome)
+                                            print(f"Baixando chunk [{idx}]: {chunk_nome}")
+                                            requisitar_chunk(peer_ip,peer_port,usuario_logado,user,chunk_nome,inicio_download)
+                                        print("✅ Todos os chunks foram requisitados e baixados.")
+                                        integridade = True
+                                        adicionar_dono_chunk("arquivos_cadastrados/arquivos_tracker.json", nome_escolhido, usuario_logado)
+                                        with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
+                                            fim_download = time.time()
+                                            tempo_total = fim_download - inicio_download
+                                            report_file.write(f"⏱ Tempo total de download de TODOS os chunks: {tempo_total:.2f} segundos.\n")
+                                            add_transfer_record(usuario_logado,tempo_total,total_chunks_sum,integridade)
+            input("Pressione Enter para continuar")
+            os.system('cls||clear')
+        elif operation == "20":
+            print("Voce escolheu o 20")
+
+            input("Pressione Enter para continuar")
+            os.system('cls||clear')
+
         elif operation == "1":
             pedido = {"action" : "list_files",  "username": usuario_logado}
             resposta = send_to_tracker(pedido)
-            arquivos = arquivos_desejado(resposta) # O cliente pode escolher qual arquivo ele quer baixar
+            arquivos_desejado(resposta) # O cliente pode escolher qual arquivo ele quer baixar
             input("Pressione Enter para continuar")
             os.system('cls||clear')
 
