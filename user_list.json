@@ -1,0 +1,38 @@
+{
+    "joao": {
+        "password": "<hash_da_senha>"
+    },
+    "ana": {
+        "password": "<outro_hash_senha"
+    },
+    "akla": {
+        "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"
+    },
+    "shinigami": {
+        "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"
+    },
+    "shinigami3": {
+        "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"
+    },
+    "A": {
+        "password": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+    },
+    "B": {
+        "password": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+    },
+    "H": {
+        "password": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+    },
+    "F": {
+        "password": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+    },
+    "a": {
+        "password": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb"
+    },
+    "b": {
+        "password": "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"
+    },
+    "c": {
+        "password": "2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6"
+    }
+}

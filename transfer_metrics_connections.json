@@ -1,0 +1,63 @@
+{
+    "F": [
+        {
+            "tempo": 77.88301467895508,
+            "volume": 332,
+            "integridade": true
+        },
+        {
+            "tempo": 35.72811675071716,
+            "volume": 332,
+            "integridade": true
+        },
+        {
+            "tempo": 22.387556314468384,
+            "volume": 332,
+            "integridade": true
+        }
+    ],
+    "c": [
+        {
+            "tempo": 79.65531945228577,
+            "volume": 332,
+            "integridade": true
+        },
+        {
+            "tempo": 39.19768404960632,
+            "volume": 332,
+            "integridade": true
+        },
+        {
+            "tempo": 79.68418741226196,
+            "volume": 332,
+            "integridade": true
+        },
+        {
+            "tempo": 79.653892993927,
+            "volume": 332,
+            "integridade": true
+        }
+    ],
+    "A": [
+        {
+            "tempo": 26.645407915115356,
+            "volume": 332,
+            "integridade": true
+        },
+        {
+            "tempo": 45.18688607215881,
+            "volume": 332,
+            "integridade": true
+        },
+        {
+            "tempo": 43.14448881149292,
+            "volume": 332,
+            "integridade": true
+        },
+        {
+            "tempo": 122.13823938369751,
+            "volume": 601,
+            "integridade": true
+        }
+    ]
+}

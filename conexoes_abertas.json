@@ -1,0 +1,154 @@
+{
+    "conexoes": [
+        {
+            "user": "A",
+            "port": 5972,
+            "chunk": "Asdf.part0",
+            "timestamp": "2025-06-24T00:15:29.946921"
+        },
+        {
+            "user": "A",
+            "port": 5328,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T00:20:55.431962"
+        },
+        {
+            "user": "A",
+            "port": 5853,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T15:45:27.139795"
+        },
+        {
+            "user": "A",
+            "port": 5224,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T16:09:12.379147"
+        },
+        {
+            "user": "A",
+            "port": 5591,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T16:12:17.608257"
+        },
+        {
+            "user": "A",
+            "port": 5663,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T16:14:35.228073"
+        },
+        {
+            "user": "A",
+            "port": 5192,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T16:24:16.520141"
+        },
+        {
+            "user": "A",
+            "port": 5380,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T16:25:50.895944"
+        },
+        {
+            "user": "A",
+            "port": 5224,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T16:36:08.304771"
+        },
+        {
+            "user": "A",
+            "port": 5072,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T16:38:41.506364"
+        },
+        {
+            "user": "A",
+            "port": 5275,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T17:01:33.594453"
+        },
+        {
+            "user": "A",
+            "port": 5066,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T17:02:49.606082"
+        },
+        {
+            "user": "A",
+            "port": 5283,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T17:09:55.827357"
+        },
+        {
+            "user": "F",
+            "port": 5337,
+            "chunk": "Kal.part0",
+            "timestamp": "2025-06-24T17:45:00.788612"
+        },
+        {
+            "user": "A",
+            "port": 5804,
+            "chunk": "Eleven.part0",
+            "timestamp": "2025-06-24T22:24:52.023357"
+        },
+        {
+            "user": "A",
+            "port": 5804,
+            "chunk": "Eleven.part1",
+            "timestamp": "2025-06-24T22:24:52.024355"
+        },
+        {
+            "user": "A",
+            "port": 5804,
+            "chunk": "Eleven.part2",
+            "timestamp": "2025-06-24T22:24:52.027359"
+        },
+        {
+            "user": "A",
+            "port": 5804,
+            "chunk": "Eleven.part3",
+            "timestamp": "2025-06-24T22:24:52.028356"
+        },
+        {
+            "user": "A",
+            "port": 5804,
+            "chunk": "Eleven.part4",
+            "timestamp": "2025-06-24T22:24:52.029358"
+        },
+        {
+            "user": "A",
+            "port": 5804,
+            "chunk": "Eleven.part5",
+            "timestamp": "2025-06-24T22:24:52.031357"
+        },
+        {
+            "user": "A",
+            "port": 5804,
+            "chunk": "Eleven.part6",
+            "timestamp": "2025-06-24T22:24:52.032358"
+        },
+        {
+            "user": "A",
+            "port": 5804,
+            "chunk": "Eleven.part7",
+            "timestamp": "2025-06-24T22:24:52.034356"
+        },
+        {
+            "user": "A",
+            "port": 5804,
+            "chunk": "Eleven.part8",
+            "timestamp": "2025-06-24T22:24:52.035359"
+        },
+        {
+            "user": "A",
+            "port": 5804,
+            "chunk": "Eleven.part9",
+            "timestamp": "2025-06-24T22:24:52.037364"
+        },
+        {
+            "user": "A",
+            "port": 5804,
+            "chunk": "Eleven.part10",
+            "timestamp": "2025-06-24T22:24:52.039356"
+        }
+    ]
+}

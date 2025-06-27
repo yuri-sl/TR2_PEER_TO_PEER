@@ -1,0 +1,12 @@
+{
+    "b": {
+        "bytes_sent": 0,
+        "time_connected": 1,
+        "successful_responses": 0,
+        "failed_transfers": 0,
+        "transfer_times": [],
+        "integrity_checks": {},
+        "active_connections": 0,
+        "score": 1.0
+    }
+}

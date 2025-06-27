@@ -1,0 +1,5522 @@
+[
+    {
+        "peer_user": "F",
+        "chunk": "Kal.part0",
+        "tamanho": 1009902,
+        "tempo": 8.468610286712646
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kal.part0",
+        "tamanho": 1009902,
+        "tempo": 8.446537733078003
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kal.part0",
+        "tamanho": 1009902,
+        "tempo": 8.452029705047607
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kal.part0",
+        "tamanho": 1009902,
+        "tempo": 7.727969646453857
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kal.part0",
+        "tamanho": 1009902,
+        "tempo": 7.661802530288696
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kal.part0",
+        "tamanho": 1009902,
+        "tempo": 8.446523427963257
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kal.part0",
+        "tamanho": 1009902,
+        "tempo": 8.495049238204956
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Kal.part0",
+        "tamanho": 1009902,
+        "tempo": 8.424499750137329
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part0",
+        "tamanho": 1048576,
+        "tempo": 7.860049486160278
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part1",
+        "tamanho": 1048576,
+        "tempo": 7.860028028488159
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part0",
+        "tamanho": 1048576,
+        "tempo": 8.467697858810425
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Eleven.part0",
+        "tamanho": 1048576,
+        "tempo": 8.474181413650513
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part0",
+        "tamanho": 1048576,
+        "tempo": 8.491294860839844
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part0",
+        "tamanho": 1048576,
+        "tempo": 8.469976425170898
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part1",
+        "tamanho": 1048576,
+        "tempo": 8.453341484069824
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part2",
+        "tamanho": 1048576,
+        "tempo": 8.511847972869873
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part3",
+        "tamanho": 1048576,
+        "tempo": 8.424216032028198
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part4",
+        "tamanho": 1048576,
+        "tempo": 8.465136289596558
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part5",
+        "tamanho": 1048576,
+        "tempo": 8.484904527664185
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part6",
+        "tamanho": 1048576,
+        "tempo": 8.446086406707764
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part7",
+        "tamanho": 1048576,
+        "tempo": 8.456393003463745
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part8",
+        "tamanho": 1048576,
+        "tempo": 8.50595760345459
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part9",
+        "tamanho": 1048576,
+        "tempo": 8.474373579025269
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part10",
+        "tamanho": 623162,
+        "tempo": 5.262439966201782
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part0",
+        "tamanho": 1048576,
+        "tempo": 8.467443466186523
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part1",
+        "tamanho": 1048576,
+        "tempo": 8.44966745376587
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part2",
+        "tamanho": 1048576,
+        "tempo": 8.492089986801147
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part3",
+        "tamanho": 1048576,
+        "tempo": 8.404751539230347
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part4",
+        "tamanho": 1048576,
+        "tempo": 8.433075428009033
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part5",
+        "tamanho": 1048576,
+        "tempo": 8.585259199142456
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part6",
+        "tamanho": 1048576,
+        "tempo": 8.466704607009888
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part7",
+        "tamanho": 1048576,
+        "tempo": 8.458354473114014
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part8",
+        "tamanho": 1048576,
+        "tempo": 8.434526205062866
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part9",
+        "tamanho": 1048576,
+        "tempo": 8.445203065872192
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part10",
+        "tamanho": 623162,
+        "tempo": 5.300895690917969
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part0",
+        "tamanho": 1048576,
+        "tempo": 8.505383729934692
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part1",
+        "tamanho": 1048576,
+        "tempo": 8.505612850189209
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part2",
+        "tamanho": 1048576,
+        "tempo": 8.457404375076294
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part3",
+        "tamanho": 1048576,
+        "tempo": 8.4537935256958
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part4",
+        "tamanho": 1048576,
+        "tempo": 8.468549966812134
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part5",
+        "tamanho": 1048576,
+        "tempo": 8.407064199447632
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part6",
+        "tamanho": 1048576,
+        "tempo": 8.446738004684448
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part7",
+        "tamanho": 1048576,
+        "tempo": 8.464329481124878
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part8",
+        "tamanho": 1048576,
+        "tempo": 8.486233472824097
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part9",
+        "tamanho": 1048576,
+        "tempo": 8.463774681091309
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part10",
+        "tamanho": 623162,
+        "tempo": 5.264158725738525
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part0",
+        "tamanho": 1048576,
+        "tempo": 8.459314823150635
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part1",
+        "tamanho": 1048576,
+        "tempo": 8.501970529556274
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part2",
+        "tamanho": 1048576,
+        "tempo": 8.455690622329712
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part0",
+        "tamanho": 1048576,
+        "tempo": 8.485136985778809
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part3",
+        "tamanho": 1048576,
+        "tempo": 8.455836296081543
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part1",
+        "tamanho": 1048576,
+        "tempo": 8.418699741363525
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part4",
+        "tamanho": 1048576,
+        "tempo": 8.462573051452637
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part2",
+        "tamanho": 1048576,
+        "tempo": 8.468767404556274
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part5",
+        "tamanho": 1048576,
+        "tempo": 8.457129716873169
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part3",
+        "tamanho": 1048576,
+        "tempo": 8.429864645004272
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part6",
+        "tamanho": 1048576,
+        "tempo": 8.450968742370605
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part4",
+        "tamanho": 1048576,
+        "tempo": 8.448196172714233
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part7",
+        "tamanho": 1048576,
+        "tempo": 8.458899974822998
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part5",
+        "tamanho": 1048576,
+        "tempo": 8.527360677719116
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part8",
+        "tamanho": 1048576,
+        "tempo": 8.420894622802734
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part6",
+        "tamanho": 1048576,
+        "tempo": 8.492091178894043
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part9",
+        "tamanho": 1048576,
+        "tempo": 8.508287906646729
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part10",
+        "tamanho": 623162,
+        "tempo": 5.269530773162842
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part7",
+        "tamanho": 1048576,
+        "tempo": 8.459615230560303
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part8",
+        "tamanho": 1048576,
+        "tempo": 8.44962191581726
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part9",
+        "tamanho": 1048576,
+        "tempo": 8.443409442901611
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part10",
+        "tamanho": 623162,
+        "tempo": 5.263607025146484
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Kakarotto.part0",
+        "tamanho": 108856,
+        "tempo": 1.0467686653137207
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Kakarotto.part0",
+        "tamanho": 108856,
+        "tempo": 1.0466742515563965
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part0",
+        "tamanho": 108856,
+        "tempo": 1.054389238357544
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part0",
+        "tamanho": 108856,
+        "tempo": 1.046515941619873
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part1",
+        "tamanho": 99782,
+        "tempo": 1.0445585250854492
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part2",
+        "tamanho": 100586,
+        "tempo": 1.0455639362335205
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part3",
+        "tamanho": 120824,
+        "tempo": 1.0507683753967285
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part4",
+        "tamanho": 121129,
+        "tempo": 1.0492868423461914
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part5",
+        "tamanho": 89731,
+        "tempo": 1.0366413593292236
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part6",
+        "tamanho": 112433,
+        "tempo": 1.046154499053955
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part7",
+        "tamanho": 94123,
+        "tempo": 1.038039207458496
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part8",
+        "tamanho": 88905,
+        "tempo": 1.0406458377838135
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part9",
+        "tamanho": 121936,
+        "tempo": 1.0502955913543701
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part10",
+        "tamanho": 118165,
+        "tempo": 1.0494544506072998
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part11",
+        "tamanho": 86506,
+        "tempo": 1.035489559173584
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part12",
+        "tamanho": 109879,
+        "tempo": 1.0451583862304688
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part13",
+        "tamanho": 112326,
+        "tempo": 1.047407865524292
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part14",
+        "tamanho": 98252,
+        "tempo": 1.039485216140747
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part15",
+        "tamanho": 85688,
+        "tempo": 1.0980780124664307
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part16",
+        "tamanho": 94723,
+        "tempo": 1.0701770782470703
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part17",
+        "tamanho": 85888,
+        "tempo": 1.0407969951629639
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part18",
+        "tamanho": 97660,
+        "tempo": 1.0445222854614258
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part19",
+        "tamanho": 108854,
+        "tempo": 1.0475959777832031
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part20",
+        "tamanho": 95206,
+        "tempo": 1.041473150253296
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part21",
+        "tamanho": 118067,
+        "tempo": 1.051384687423706
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part22",
+        "tamanho": 119953,
+        "tempo": 1.0510942935943604
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part23",
+        "tamanho": 84211,
+        "tempo": 1.0387804508209229
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part24",
+        "tamanho": 111776,
+        "tempo": 1.0487232208251953
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part25",
+        "tamanho": 97168,
+        "tempo": 1.0420386791229248
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part26",
+        "tamanho": 88949,
+        "tempo": 1.0381851196289062
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part27",
+        "tamanho": 94630,
+        "tempo": 1.0401434898376465
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part28",
+        "tamanho": 116901,
+        "tempo": 1.0472862720489502
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part29",
+        "tamanho": 84159,
+        "tempo": 1.0373647212982178
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part30",
+        "tamanho": 101660,
+        "tempo": 1.0441651344299316
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part31",
+        "tamanho": 105242,
+        "tempo": 1.0433366298675537
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part32",
+        "tamanho": 117267,
+        "tempo": 1.050323486328125
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part33",
+        "tamanho": 98473,
+        "tempo": 1.045367956161499
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part34",
+        "tamanho": 90400,
+        "tempo": 1.0382757186889648
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part35",
+        "tamanho": 106501,
+        "tempo": 1.049025297164917
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part36",
+        "tamanho": 84939,
+        "tempo": 1.036876916885376
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part37",
+        "tamanho": 117891,
+        "tempo": 1.0498712062835693
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Kakarotto.part38",
+        "tamanho": 142903,
+        "tempo": 2.060417413711548
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part0",
+        "tamanho": 18902,
+        "tempo": 1.0103323459625244
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part1",
+        "tamanho": 28010,
+        "tempo": 1.0145156383514404
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part2",
+        "tamanho": 24596,
+        "tempo": 1.0145704746246338
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part3",
+        "tamanho": 27038,
+        "tempo": 1.0121488571166992
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part4",
+        "tamanho": 22381,
+        "tempo": 1.011824369430542
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part5",
+        "tamanho": 21424,
+        "tempo": 1.0113215446472168
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part6",
+        "tamanho": 25662,
+        "tempo": 1.012300729751587
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part7",
+        "tamanho": 22044,
+        "tempo": 1.0109498500823975
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part8",
+        "tamanho": 20976,
+        "tempo": 1.0102598667144775
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part9",
+        "tamanho": 23825,
+        "tempo": 1.015070915222168
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part10",
+        "tamanho": 19442,
+        "tempo": 1.0105223655700684
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part11",
+        "tamanho": 26740,
+        "tempo": 1.011932373046875
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part12",
+        "tamanho": 22559,
+        "tempo": 1.010680913925171
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part13",
+        "tamanho": 20598,
+        "tempo": 1.0135259628295898
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part14",
+        "tamanho": 23737,
+        "tempo": 1.0125348567962646
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part15",
+        "tamanho": 26522,
+        "tempo": 1.0119030475616455
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part16",
+        "tamanho": 19786,
+        "tempo": 1.009423017501831
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part17",
+        "tamanho": 21640,
+        "tempo": 1.0107033252716064
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part18",
+        "tamanho": 26361,
+        "tempo": 1.0123274326324463
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part19",
+        "tamanho": 26534,
+        "tempo": 1.0186991691589355
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part20",
+        "tamanho": 27763,
+        "tempo": 1.014007568359375
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part21",
+        "tamanho": 27263,
+        "tempo": 1.0219297409057617
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part22",
+        "tamanho": 24787,
+        "tempo": 1.01369309425354
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part23",
+        "tamanho": 27102,
+        "tempo": 1.01762056350708
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part24",
+        "tamanho": 22954,
+        "tempo": 1.010533094406128
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part25",
+        "tamanho": 24277,
+        "tempo": 1.0114789009094238
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part26",
+        "tamanho": 24325,
+        "tempo": 1.012382984161377
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part27",
+        "tamanho": 20738,
+        "tempo": 1.010953426361084
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part28",
+        "tamanho": 22481,
+        "tempo": 1.012955665588379
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part29",
+        "tamanho": 26172,
+        "tempo": 1.012362003326416
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part30",
+        "tamanho": 23302,
+        "tempo": 1.0124361515045166
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part31",
+        "tamanho": 23558,
+        "tempo": 1.0138506889343262
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part32",
+        "tamanho": 25033,
+        "tempo": 1.0124030113220215
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part33",
+        "tamanho": 24649,
+        "tempo": 1.0127136707305908
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part34",
+        "tamanho": 23755,
+        "tempo": 1.013688564300537
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part35",
+        "tamanho": 26057,
+        "tempo": 1.0121362209320068
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part36",
+        "tamanho": 24765,
+        "tempo": 1.011408805847168
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part37",
+        "tamanho": 22741,
+        "tempo": 1.0178484916687012
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part38",
+        "tamanho": 22381,
+        "tempo": 1.0114552974700928
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part39",
+        "tamanho": 21708,
+        "tempo": 1.0088458061218262
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part40",
+        "tamanho": 21437,
+        "tempo": 1.013824224472046
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part41",
+        "tamanho": 21546,
+        "tempo": 1.0108921527862549
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part42",
+        "tamanho": 12331,
+        "tempo": 1.0078647136688232
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part0",
+        "tamanho": 108856,
+        "tempo": 2.0458426475524902
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part1",
+        "tamanho": 99782,
+        "tempo": 2.045168399810791
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part2",
+        "tamanho": 100586,
+        "tempo": 2.0418615341186523
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part3",
+        "tamanho": 120824,
+        "tempo": 2.052103281021118
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part4",
+        "tamanho": 121129,
+        "tempo": 2.0534517765045166
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part5",
+        "tamanho": 89731,
+        "tempo": 2.0367071628570557
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part6",
+        "tamanho": 112433,
+        "tempo": 2.0479838848114014
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part7",
+        "tamanho": 94123,
+        "tempo": 2.0383434295654297
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part8",
+        "tamanho": 88905,
+        "tempo": 2.0371241569519043
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part9",
+        "tamanho": 121936,
+        "tempo": 2.0481929779052734
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part10",
+        "tamanho": 118165,
+        "tempo": 2.0455446243286133
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part11",
+        "tamanho": 86506,
+        "tempo": 2.037808418273926
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part12",
+        "tamanho": 109879,
+        "tempo": 2.070080518722534
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part13",
+        "tamanho": 112326,
+        "tempo": 2.0436794757843018
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part14",
+        "tamanho": 98252,
+        "tempo": 2.0409858226776123
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part15",
+        "tamanho": 85688,
+        "tempo": 2.037989377975464
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part16",
+        "tamanho": 94723,
+        "tempo": 2.039090156555176
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part17",
+        "tamanho": 85888,
+        "tempo": 2.0387470722198486
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part18",
+        "tamanho": 97660,
+        "tempo": 2.039236545562744
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part19",
+        "tamanho": 108854,
+        "tempo": 2.043792247772217
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part20",
+        "tamanho": 95206,
+        "tempo": 2.038623809814453
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part21",
+        "tamanho": 118067,
+        "tempo": 2.052067995071411
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part22",
+        "tamanho": 119953,
+        "tempo": 2.0497994422912598
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part23",
+        "tamanho": 84211,
+        "tempo": 2.036715507507324
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part24",
+        "tamanho": 111776,
+        "tempo": 2.045469045639038
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part25",
+        "tamanho": 97168,
+        "tempo": 2.040875196456909
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part26",
+        "tamanho": 88949,
+        "tempo": 2.0389504432678223
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part27",
+        "tamanho": 94630,
+        "tempo": 2.041210174560547
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part28",
+        "tamanho": 116901,
+        "tempo": 2.051516056060791
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part29",
+        "tamanho": 84159,
+        "tempo": 2.0362167358398438
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part30",
+        "tamanho": 101660,
+        "tempo": 2.043281078338623
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part31",
+        "tamanho": 105242,
+        "tempo": 2.0634188652038574
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part32",
+        "tamanho": 117267,
+        "tempo": 2.048779249191284
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part33",
+        "tamanho": 98473,
+        "tempo": 2.0423858165740967
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part34",
+        "tamanho": 90400,
+        "tempo": 2.0371599197387695
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part35",
+        "tamanho": 106501,
+        "tempo": 2.042719602584839
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part36",
+        "tamanho": 84939,
+        "tempo": 2.0369536876678467
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part37",
+        "tamanho": 117891,
+        "tempo": 2.048006057739258
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Kakarotto.part38",
+        "tamanho": 142903,
+        "tempo": 4.096511602401733
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part0",
+        "tamanho": 18902,
+        "tempo": 2.0124659538269043
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part1",
+        "tamanho": 28010,
+        "tempo": 2.0163450241088867
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part2",
+        "tamanho": 24596,
+        "tempo": 2.0150046348571777
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part3",
+        "tamanho": 27038,
+        "tempo": 2.015958070755005
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part4",
+        "tamanho": 22381,
+        "tempo": 2.013090133666992
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part5",
+        "tamanho": 21424,
+        "tempo": 2.0100886821746826
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part6",
+        "tamanho": 25662,
+        "tempo": 2.0131914615631104
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part7",
+        "tamanho": 22044,
+        "tempo": 2.0147173404693604
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part8",
+        "tamanho": 20976,
+        "tempo": 2.010725736618042
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part9",
+        "tamanho": 23825,
+        "tempo": 2.0124499797821045
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part10",
+        "tamanho": 19442,
+        "tempo": 2.0107345581054688
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part11",
+        "tamanho": 26740,
+        "tempo": 2.0131313800811768
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part12",
+        "tamanho": 22559,
+        "tempo": 2.012230157852173
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part13",
+        "tamanho": 20598,
+        "tempo": 2.0120747089385986
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part14",
+        "tamanho": 23737,
+        "tempo": 2.0118935108184814
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part15",
+        "tamanho": 26522,
+        "tempo": 2.016576051712036
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part16",
+        "tamanho": 19786,
+        "tempo": 2.0143182277679443
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part17",
+        "tamanho": 21640,
+        "tempo": 2.0111122131347656
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part18",
+        "tamanho": 26361,
+        "tempo": 2.012317657470703
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part19",
+        "tamanho": 26534,
+        "tempo": 2.0160703659057617
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part20",
+        "tamanho": 27763,
+        "tempo": 2.01310658454895
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part21",
+        "tamanho": 27263,
+        "tempo": 2.0153074264526367
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part22",
+        "tamanho": 24787,
+        "tempo": 2.0125393867492676
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part23",
+        "tamanho": 27102,
+        "tempo": 2.0164577960968018
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part24",
+        "tamanho": 22954,
+        "tempo": 2.0112030506134033
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part25",
+        "tamanho": 24277,
+        "tempo": 2.012979507446289
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part26",
+        "tamanho": 24325,
+        "tempo": 2.0153567790985107
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part27",
+        "tamanho": 20738,
+        "tempo": 2.0099282264709473
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part28",
+        "tamanho": 22481,
+        "tempo": 2.01115345954895
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part29",
+        "tamanho": 26172,
+        "tempo": 2.0163869857788086
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part30",
+        "tamanho": 23302,
+        "tempo": 2.0113492012023926
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part31",
+        "tamanho": 23558,
+        "tempo": 2.0156819820404053
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part32",
+        "tamanho": 25033,
+        "tempo": 2.0133094787597656
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part33",
+        "tamanho": 24649,
+        "tempo": 2.0158965587615967
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part34",
+        "tamanho": 23755,
+        "tempo": 2.013901472091675
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part35",
+        "tamanho": 26057,
+        "tempo": 2.0165247917175293
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part36",
+        "tamanho": 24765,
+        "tempo": 2.0105369091033936
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part37",
+        "tamanho": 22741,
+        "tempo": 2.0117928981781006
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part38",
+        "tamanho": 22381,
+        "tempo": 2.0141358375549316
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part39",
+        "tamanho": 21708,
+        "tempo": 2.0115227699279785
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part40",
+        "tamanho": 21437,
+        "tempo": 2.011286735534668
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part41",
+        "tamanho": 21546,
+        "tempo": 2.01070499420166
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part42",
+        "tamanho": 12331,
+        "tempo": 2.006737232208252
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part0",
+        "tamanho": 18902,
+        "tempo": 2.0126876831054688
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part1",
+        "tamanho": 28010,
+        "tempo": 2.0136892795562744
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part2",
+        "tamanho": 24596,
+        "tempo": 2.011293649673462
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part3",
+        "tamanho": 27038,
+        "tempo": 2.0170223712921143
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part4",
+        "tamanho": 22381,
+        "tempo": 2.0139479637145996
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part5",
+        "tamanho": 21424,
+        "tempo": 2.0143883228302
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part6",
+        "tamanho": 25662,
+        "tempo": 2.0121207237243652
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part7",
+        "tamanho": 22044,
+        "tempo": 2.0112767219543457
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part8",
+        "tamanho": 20976,
+        "tempo": 2.015291929244995
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part9",
+        "tamanho": 23825,
+        "tempo": 2.0155136585235596
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part10",
+        "tamanho": 19442,
+        "tempo": 2.010376453399658
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part11",
+        "tamanho": 26740,
+        "tempo": 2.0182406902313232
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part12",
+        "tamanho": 22559,
+        "tempo": 2.0142579078674316
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part13",
+        "tamanho": 20598,
+        "tempo": 2.010897159576416
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part14",
+        "tamanho": 23737,
+        "tempo": 2.0150349140167236
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part15",
+        "tamanho": 26522,
+        "tempo": 2.0168654918670654
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part16",
+        "tamanho": 19786,
+        "tempo": 2.014662504196167
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part17",
+        "tamanho": 21640,
+        "tempo": 2.011258363723755
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part18",
+        "tamanho": 26361,
+        "tempo": 2.017117977142334
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part19",
+        "tamanho": 26534,
+        "tempo": 2.016587495803833
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part20",
+        "tamanho": 27763,
+        "tempo": 2.0144879817962646
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part21",
+        "tamanho": 27263,
+        "tempo": 2.0155012607574463
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part22",
+        "tamanho": 24787,
+        "tempo": 2.0175087451934814
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part23",
+        "tamanho": 27102,
+        "tempo": 2.023033618927002
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part24",
+        "tamanho": 22954,
+        "tempo": 2.0245277881622314
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part25",
+        "tamanho": 24277,
+        "tempo": 2.0129761695861816
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part26",
+        "tamanho": 24325,
+        "tempo": 2.0120668411254883
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part27",
+        "tamanho": 20738,
+        "tempo": 2.0105817317962646
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part28",
+        "tamanho": 22481,
+        "tempo": 2.011011838912964
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part29",
+        "tamanho": 26172,
+        "tempo": 2.0144248008728027
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part30",
+        "tamanho": 23302,
+        "tempo": 2.0123462677001953
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part31",
+        "tamanho": 23558,
+        "tempo": 2.0161120891571045
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part32",
+        "tamanho": 25033,
+        "tempo": 2.013655185699463
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part33",
+        "tamanho": 24649,
+        "tempo": 2.015687942504883
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part34",
+        "tamanho": 23755,
+        "tempo": 2.013915538787842
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part35",
+        "tamanho": 26057,
+        "tempo": 2.0150227546691895
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part36",
+        "tamanho": 24765,
+        "tempo": 2.0134947299957275
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part37",
+        "tamanho": 22741,
+        "tempo": 2.012204647064209
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part38",
+        "tamanho": 22381,
+        "tempo": 2.0132668018341064
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part39",
+        "tamanho": 21708,
+        "tempo": 2.01554536819458
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part40",
+        "tamanho": 21437,
+        "tempo": 2.0158629417419434
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part41",
+        "tamanho": 21546,
+        "tempo": 2.0102174282073975
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part42",
+        "tamanho": 12331,
+        "tempo": 2.0073859691619873
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part0",
+        "tamanho": 18902,
+        "tempo": 2.0142242908477783
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part1",
+        "tamanho": 28010,
+        "tempo": 2.0164999961853027
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part2",
+        "tamanho": 24596,
+        "tempo": 2.011577844619751
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part3",
+        "tamanho": 27038,
+        "tempo": 2.016667127609253
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part4",
+        "tamanho": 22381,
+        "tempo": 2.0149588584899902
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part5",
+        "tamanho": 21424,
+        "tempo": 2.0149307250976562
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part6",
+        "tamanho": 25662,
+        "tempo": 2.012800693511963
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part7",
+        "tamanho": 22044,
+        "tempo": 2.015211582183838
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part8",
+        "tamanho": 20976,
+        "tempo": 2.01010799407959
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part9",
+        "tamanho": 23825,
+        "tempo": 2.0165092945098877
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part10",
+        "tamanho": 19442,
+        "tempo": 2.013787031173706
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part11",
+        "tamanho": 26740,
+        "tempo": 2.0168535709381104
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part12",
+        "tamanho": 22559,
+        "tempo": 2.0145349502563477
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part13",
+        "tamanho": 20598,
+        "tempo": 2.011958122253418
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part14",
+        "tamanho": 23737,
+        "tempo": 2.0120246410369873
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part15",
+        "tamanho": 26522,
+        "tempo": 2.0121889114379883
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part16",
+        "tamanho": 19786,
+        "tempo": 2.0108888149261475
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part17",
+        "tamanho": 21640,
+        "tempo": 2.0116167068481445
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part18",
+        "tamanho": 26361,
+        "tempo": 2.015167236328125
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part19",
+        "tamanho": 26534,
+        "tempo": 2.0126090049743652
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part20",
+        "tamanho": 27763,
+        "tempo": 2.014063835144043
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part21",
+        "tamanho": 27263,
+        "tempo": 2.01643443107605
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part22",
+        "tamanho": 24787,
+        "tempo": 2.012442111968994
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part23",
+        "tamanho": 27102,
+        "tempo": 2.012643814086914
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part24",
+        "tamanho": 22954,
+        "tempo": 2.0117602348327637
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part25",
+        "tamanho": 24277,
+        "tempo": 2.0141897201538086
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part26",
+        "tamanho": 24325,
+        "tempo": 2.020052194595337
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part27",
+        "tamanho": 20738,
+        "tempo": 2.0126354694366455
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part28",
+        "tamanho": 22481,
+        "tempo": 2.01094388961792
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part29",
+        "tamanho": 26172,
+        "tempo": 2.0137994289398193
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part30",
+        "tamanho": 23302,
+        "tempo": 2.0148348808288574
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part31",
+        "tamanho": 23558,
+        "tempo": 2.013758897781372
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part32",
+        "tamanho": 25033,
+        "tempo": 2.016322135925293
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part33",
+        "tamanho": 24649,
+        "tempo": 2.014094591140747
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part34",
+        "tamanho": 23755,
+        "tempo": 2.0150489807128906
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part35",
+        "tamanho": 26057,
+        "tempo": 2.0122644901275635
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part36",
+        "tamanho": 24765,
+        "tempo": 2.0138447284698486
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part37",
+        "tamanho": 22741,
+        "tempo": 2.0102927684783936
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part38",
+        "tamanho": 22381,
+        "tempo": 2.011845827102661
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part39",
+        "tamanho": 21708,
+        "tempo": 2.015073776245117
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part40",
+        "tamanho": 21437,
+        "tempo": 2.0109822750091553
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part41",
+        "tamanho": 21546,
+        "tempo": 2.010770797729492
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferOne.part42",
+        "tamanho": 12331,
+        "tempo": 2.009526491165161
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part0",
+        "tamanho": 18902,
+        "tempo": 1.0112128257751465
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part1",
+        "tamanho": 28010,
+        "tempo": 1.0168097019195557
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part2",
+        "tamanho": 24596,
+        "tempo": 1.0160701274871826
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part3",
+        "tamanho": 27038,
+        "tempo": 1.0158071517944336
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part4",
+        "tamanho": 22381,
+        "tempo": 1.0113036632537842
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part5",
+        "tamanho": 21424,
+        "tempo": 1.010690689086914
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part6",
+        "tamanho": 25662,
+        "tempo": 1.0117874145507812
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part7",
+        "tamanho": 22044,
+        "tempo": 1.011321783065796
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part8",
+        "tamanho": 20976,
+        "tempo": 1.0111212730407715
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part9",
+        "tamanho": 23825,
+        "tempo": 1.0130317211151123
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part10",
+        "tamanho": 19442,
+        "tempo": 1.0132441520690918
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part11",
+        "tamanho": 26740,
+        "tempo": 1.0134010314941406
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part12",
+        "tamanho": 22559,
+        "tempo": 1.0121345520019531
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part13",
+        "tamanho": 20598,
+        "tempo": 1.011711597442627
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part14",
+        "tamanho": 23737,
+        "tempo": 1.0117762088775635
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part15",
+        "tamanho": 26522,
+        "tempo": 1.0136761665344238
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part16",
+        "tamanho": 19786,
+        "tempo": 1.0146112442016602
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part17",
+        "tamanho": 21640,
+        "tempo": 1.011397123336792
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part18",
+        "tamanho": 26361,
+        "tempo": 1.017460584640503
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part19",
+        "tamanho": 26534,
+        "tempo": 1.0115587711334229
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part20",
+        "tamanho": 27763,
+        "tempo": 1.016157865524292
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part21",
+        "tamanho": 27263,
+        "tempo": 1.019174575805664
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part22",
+        "tamanho": 24787,
+        "tempo": 1.0132126808166504
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part23",
+        "tamanho": 27102,
+        "tempo": 1.0135009288787842
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part24",
+        "tamanho": 22954,
+        "tempo": 1.012058973312378
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part25",
+        "tamanho": 24277,
+        "tempo": 1.01161789894104
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part26",
+        "tamanho": 24325,
+        "tempo": 1.0118117332458496
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part27",
+        "tamanho": 20738,
+        "tempo": 1.0147266387939453
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part28",
+        "tamanho": 22481,
+        "tempo": 1.0129148960113525
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part29",
+        "tamanho": 26172,
+        "tempo": 1.0121839046478271
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part30",
+        "tamanho": 23302,
+        "tempo": 1.0128939151763916
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part31",
+        "tamanho": 23558,
+        "tempo": 1.0123474597930908
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part32",
+        "tamanho": 25033,
+        "tempo": 1.014003038406372
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part33",
+        "tamanho": 24649,
+        "tempo": 1.0176804065704346
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part34",
+        "tamanho": 23755,
+        "tempo": 1.0170602798461914
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part35",
+        "tamanho": 26057,
+        "tempo": 1.0139780044555664
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part36",
+        "tamanho": 24765,
+        "tempo": 1.015000820159912
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part37",
+        "tamanho": 22741,
+        "tempo": 1.0121161937713623
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part38",
+        "tamanho": 22381,
+        "tempo": 1.0111336708068848
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part39",
+        "tamanho": 21708,
+        "tempo": 1.0122168064117432
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part40",
+        "tamanho": 21437,
+        "tempo": 1.011549949645996
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part41",
+        "tamanho": 21546,
+        "tempo": 1.010793924331665
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferOne.part42",
+        "tamanho": 12331,
+        "tempo": 1.0100963115692139
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 51.278847217559814
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 7.834064483642578
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 7.619919061660767
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 7.3332061767578125
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 7.062371015548706
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 6.746428489685059
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 6.422709703445435
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 6.179013013839722
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 5.887807369232178
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 5.592203855514526
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 5.3159708976745605
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 5.106262683868408
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 4.879473447799683
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 4.688589572906494
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part13",
+        "tamanho": 142236,
+        "tempo": 4.501019716262817
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 4.33838963508606
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part15",
+        "tamanho": 154993,
+        "tempo": 4.165930986404419
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 4.020249605178833
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 3.897989273071289
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 50.22280812263489
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 50.692161321640015
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 50.60952138900757
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 46.18410563468933
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 46.29250621795654
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 50.69471335411072
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 47.943477392196655
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 39.42605900764465
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 17.489753246307373
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 16.77921152114868
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 16.150420904159546
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 15.590498685836792
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 15.051100730895996
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 24.45246434211731
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 25.088069438934326
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 25.409377098083496
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 24.477226972579956
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 22.655985593795776
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 24.745686054229736
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 22.873295545578003
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 21.406418323516846
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 6.083061456680298
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 6.074422359466553
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 6.074298143386841
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 6.071812152862549
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 6.084117650985718
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 6.073936939239502
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 6.085036754608154
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 6.085134983062744
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 6.083735942840576
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 6.087892055511475
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 6.082653999328613
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 6.061410188674927
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 6.082942485809326
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part13",
+        "tamanho": 142236,
+        "tempo": 6.069000244140625
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 6.07269549369812
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part15",
+        "tamanho": 154993,
+        "tempo": 6.0630433559417725
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 6.0714943408966064
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 6.081073760986328
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 3.122035026550293
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 3.071105480194092
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 3.082808017730713
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 3.0915749073028564
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 3.0624852180480957
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 3.080793857574463
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 3.0879018306732178
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 3.1010475158691406
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 3.0702526569366455
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 3.065847873687744
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 3.0788707733154297
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 3.0789787769317627
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 3.090203285217285
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part13",
+        "tamanho": 142236,
+        "tempo": 3.0648794174194336
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 3.085768699645996
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part15",
+        "tamanho": 154993,
+        "tempo": 2.889052629470825
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 2.746002435684204
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 2.566866874694824
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 1.103928804397583
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 1.0752408504486084
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 1.077967643737793
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 1.074486494064331
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 1.0910677909851074
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 1.076859712600708
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 1.0723624229431152
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 1.0692644119262695
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 1.0648810863494873
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 1.065410852432251
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 1.0792789459228516
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 1.0660314559936523
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 1.0921885967254639
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part13",
+        "tamanho": 142236,
+        "tempo": 1.0610082149505615
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 1.0705485343933105
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part15",
+        "tamanho": 154993,
+        "tempo": 1.061424970626831
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 1.0658750534057617
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 1.070833444595337
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 1.105485200881958
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 1.0730726718902588
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 1.0672199726104736
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 1.0707910060882568
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 1.0836925506591797
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 1.060312032699585
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 1.0813615322113037
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 1.0740692615509033
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 1.072380781173706
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 1.0656428337097168
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 1.0933115482330322
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 1.0659961700439453
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 1.0756373405456543
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part13",
+        "tamanho": 142236,
+        "tempo": 1.074632167816162
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 1.0904128551483154
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part15",
+        "tamanho": 154993,
+        "tempo": 1.0644664764404297
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 1.0699043273925781
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 1.072822093963623
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 3.0744645595550537
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 3.0781784057617188
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 3.0658276081085205
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 3.0719964504241943
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 3.0640361309051514
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 3.0568737983703613
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 3.0814905166625977
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 3.081026554107666
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 3.0872364044189453
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 3.061079978942871
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 2.7199132442474365
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 2.4034883975982666
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 2.1555492877960205
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part13",
+        "tamanho": 142236,
+        "tempo": 1.9725699424743652
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 1.854616641998291
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part15",
+        "tamanho": 154993,
+        "tempo": 1.7364799976348877
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 1.6417875289916992
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 1.5536901950836182
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 1.113100290298462
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 1.076338768005371
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 1.07692551612854
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 1.0854511260986328
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 1.1171019077301025
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 1.0800626277923584
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 1.0825743675231934
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 1.0740101337432861
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 1.1843321323394775
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 1.0641305446624756
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 1.0778937339782715
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 1.0676867961883545
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 1.1726841926574707
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part13",
+        "tamanho": 142236,
+        "tempo": 1.0589876174926758
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 1.1111364364624023
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part15",
+        "tamanho": 154993,
+        "tempo": 1.0625097751617432
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 1.0823719501495361
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 1.0697882175445557
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 3.083890199661255
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 3.0681710243225098
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 3.0760297775268555
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 3.073561191558838
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 3.079592227935791
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 3.068669319152832
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 3.0799736976623535
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 3.0768940448760986
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 3.068798303604126
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 3.0655972957611084
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 3.071672201156616
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 3.097059488296509
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 3.063847064971924
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 3.0640978813171387
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 3.0556180477142334
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 3.089871883392334
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 3.090085506439209
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 3.0790650844573975
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 3.073530673980713
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 3.0633435249328613
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 3.0637903213500977
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 3.126783609390259
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 3.090423107147217
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part13",
+        "tamanho": 142236,
+        "tempo": 3.063995361328125
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 3.0820820331573486
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 3.072753429412842
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 3.0636024475097656
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part15",
+        "tamanho": 154993,
+        "tempo": 3.059802770614624
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 3.084547281265259
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 3.066805124282837
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part13",
+        "tamanho": 142236,
+        "tempo": 3.0630457401275635
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 3.075171947479248
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 3.0744218826293945
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part15",
+        "tamanho": 154993,
+        "tempo": 3.0888240337371826
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 3.093527317047119
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 3.070754051208496
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 3.094585418701172
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 3.072779417037964
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 3.0771963596343994
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 3.0782086849212646
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 3.0635955333709717
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 3.058124542236328
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 3.0839016437530518
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 3.097269058227539
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 3.070929765701294
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 3.0644800662994385
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 3.0843493938446045
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 3.0664851665496826
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 3.099449872970581
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part13",
+        "tamanho": 142236,
+        "tempo": 3.0848469734191895
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 3.0740654468536377
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part15",
+        "tamanho": 154993,
+        "tempo": 3.060589075088501
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 3.0788471698760986
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 3.0784363746643066
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 3.081176280975342
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 1.0934810638427734
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 1.0725739002227783
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 1.0670249462127686
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 1.077019214630127
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 1.0668506622314453
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 1.060457706451416
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 1.0704314708709717
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 1.0659403800964355
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 1.0757718086242676
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 1.0833709239959717
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part13",
+        "tamanho": 142236,
+        "tempo": 1.0699124336242676
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 1.0847012996673584
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 1.064028024673462
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 1.0663840770721436
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 1.1033122539520264
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part15",
+        "tamanho": 154993,
+        "tempo": 1.0663368701934814
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 1.0751571655273438
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 1.0913987159729004
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 1.0951592922210693
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 1.1526241302490234
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 1.0713987350463867
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 1.0737261772155762
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 1.0734527111053467
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 1.1281743049621582
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 1.1337058544158936
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 1.065441608428955
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 1.078364372253418
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 3.141213893890381
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 3.141214609146118
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 3.075059413909912
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 3.067272663116455
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part15",
+        "tamanho": 154993,
+        "tempo": 3.0910792350769043
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 3.1472463607788086
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 2.0949161052703857
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part13",
+        "tamanho": 142236,
+        "tempo": 2.071686267852783
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 3.0891315937042236
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 3.0813159942626953
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 3.075711250305176
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 3.0732686519622803
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 3.05568528175354
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 3.075087785720825
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 3.0643787384033203
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 3.071074962615967
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part13",
+        "tamanho": 142236,
+        "tempo": 3.0643160343170166
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 3.0762107372283936
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 3.0794363021850586
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 3.072190284729004
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 3.0716421604156494
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part15",
+        "tamanho": 154993,
+        "tempo": 3.0661656856536865
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 3.0631825923919678
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 3.0667600631713867
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 2.9392383098602295
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 2.6925299167633057
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 2.740710735321045
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 2.3252947330474854
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 2.0982067584991455
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 1.9706556797027588
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 1.7363152503967285
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 1.5885469913482666
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 1.4530508518218994
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 1.438441276550293
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 1.3756282329559326
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 1.345099925994873
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 1.2761754989624023
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part15",
+        "tamanho": 154993,
+        "tempo": 1.2257966995239258
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 1.2137784957885742
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 1.1641995906829834
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 1.1261355876922607
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part13",
+        "tamanho": 142236,
+        "tempo": 1.0805294513702393
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 1.074225664138794
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 1.0959563255310059
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 1.0975000858306885
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 1.1565182209014893
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 1.0688810348510742
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 1.0707709789276123
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 1.1215908527374268
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 1.0757176876068115
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 3.0730371475219727
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 3.0771937370300293
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part15",
+        "tamanho": 154993,
+        "tempo": 3.074404001235962
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 3.081047534942627
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 2.180652379989624
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 2.181236505508423
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 1.6375319957733154
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 1.6279795169830322
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 1.3657989501953125
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 1.1615197658538818
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 1.2295215129852295
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 3.0778212547302246
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 3.0796351432800293
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 3.0934393405914307
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 3.097646474838257
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 3.0697476863861084
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 3.0782501697540283
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 3.0725977420806885
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 3.0791430473327637
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 3.0956130027770996
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 3.125671148300171
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 3.1008529663085938
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 3.062532901763916
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 3.0811572074890137
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 3.1034188270568848
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part13",
+        "tamanho": 142236,
+        "tempo": 3.088205337524414
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part15",
+        "tamanho": 154993,
+        "tempo": 3.062843084335327
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 3.0803892612457275
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 3.06711745262146
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 3.093141794204712
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 3.1511688232421875
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 3.0646936893463135
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 3.071593999862671
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 3.073641777038574
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 3.058077335357666
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 3.1436331272125244
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 3.1476476192474365
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 3.155601739883423
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 3.0780117511749268
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 3.0675442218780518
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part13",
+        "tamanho": 142236,
+        "tempo": 3.08479642868042
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 3.1397976875305176
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 3.171099901199341
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 3.080221652984619
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 3.0714032649993896
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 3.115701675415039
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 3.0798754692077637
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 3.091594934463501
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 3.0865542888641357
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 3.073909282684326
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 3.0638630390167236
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 3.081857442855835
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 3.07588791847229
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 3.070364236831665
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 3.067540168762207
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 3.093613862991333
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 3.0646839141845703
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 3.0807480812072754
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part13",
+        "tamanho": 142236,
+        "tempo": 3.0593438148498535
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 3.0700273513793945
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 3.087266683578491
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part15",
+        "tamanho": 154993,
+        "tempo": 3.070197343826294
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 3.0810742378234863
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 1.0935890674591064
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 1.0756094455718994
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 1.0743257999420166
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 1.0744457244873047
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 1.0671463012695312
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 1.0594687461853027
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 1.068235158920288
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 1.0740959644317627
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 1.0693962574005127
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 1.0682775974273682
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 1.1028499603271484
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 1.1117348670959473
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 1.0800368785858154
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part13",
+        "tamanho": 142236,
+        "tempo": 1.0585942268371582
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 1.0797960758209229
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part15",
+        "tamanho": 154993,
+        "tempo": 1.0930137634277344
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 1.1001639366149902
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 1.0737500190734863
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 3.178044557571411
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 3.122222423553467
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 3.0467417240142822
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 2.2727596759796143
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 1.9217219352722168
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 1.6252727508544922
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 1.4529573917388916
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 1.3202996253967285
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 1.272505283355713
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 1.1734375953674316
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 1.134460210800171
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 1.1223247051239014
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 1.0876054763793945
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part13",
+        "tamanho": 142236,
+        "tempo": 1.0568311214447021
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 1.096907138824463
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 1.1392407417297363
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part15",
+        "tamanho": 154993,
+        "tempo": 3.0819437503814697
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 3.082767963409424
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 3.0788650512695312
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 3.076439380645752
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 3.0671772956848145
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 3.0715279579162598
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 3.079821825027466
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 3.0595147609710693
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 3.0674736499786377
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 3.094212293624878
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 3.0643234252929688
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 3.0709002017974854
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 3.064800500869751
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 3.0793259143829346
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 3.075045585632324
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 3.0689258575439453
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part15",
+        "tamanho": 154993,
+        "tempo": 3.078446626663208
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part13",
+        "tamanho": 142236,
+        "tempo": 3.065291404724121
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 3.0968258380889893
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 3.070117950439453
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part0",
+        "tamanho": 189312,
+        "tempo": 1.1373624801635742
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part1",
+        "tamanho": 173236,
+        "tempo": 1.075695276260376
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part2",
+        "tamanho": 162774,
+        "tempo": 3.0732574462890625
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part3",
+        "tamanho": 179030,
+        "tempo": 3.072988510131836
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part4",
+        "tamanho": 159776,
+        "tempo": 1.8276162147521973
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part5",
+        "tamanho": 140532,
+        "tempo": 1.3997817039489746
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part6",
+        "tamanho": 169381,
+        "tempo": 1.1622321605682373
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part7",
+        "tamanho": 175625,
+        "tempo": 1.0880379676818848
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part8",
+        "tamanho": 162536,
+        "tempo": 1.0859723091125488
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part9",
+        "tamanho": 154827,
+        "tempo": 1.08463716506958
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part10",
+        "tamanho": 197686,
+        "tempo": 1.2192823886871338
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part13",
+        "tamanho": 142236,
+        "tempo": 3.060755729675293
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part12",
+        "tamanho": 188854,
+        "tempo": 3.082298517227173
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part11",
+        "tamanho": 160496,
+        "tempo": 1.7671895027160645
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part14",
+        "tamanho": 174970,
+        "tempo": 1.36094331741333
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part15",
+        "tamanho": 154993,
+        "tempo": 1.2563717365264893
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part16",
+        "tamanho": 164137,
+        "tempo": 1.1028649806976318
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TransferData.part17",
+        "tamanho": 179305,
+        "tempo": 1.0687124729156494
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part0",
+        "tamanho": 226089,
+        "tempo": 1.4624378681182861
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part1",
+        "tamanho": 242728,
+        "tempo": 1.28336763381958
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part2",
+        "tamanho": 205545,
+        "tempo": 1.0868134498596191
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part3",
+        "tamanho": 274864,
+        "tempo": 1.5946869850158691
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part37",
+        "tamanho": 258910,
+        "tempo": 1.2002675533294678
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part4",
+        "tamanho": 245683,
+        "tempo": 1.3479559421539307
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part5",
+        "tamanho": 260745,
+        "tempo": 1.9876987934112549
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part6",
+        "tamanho": 226399,
+        "tempo": 1.1704392433166504
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part7",
+        "tamanho": 238643,
+        "tempo": 1.0832159519195557
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part8",
+        "tamanho": 219437,
+        "tempo": 1.083954095840454
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part9",
+        "tamanho": 259456,
+        "tempo": 1.086972713470459
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part10",
+        "tamanho": 266978,
+        "tempo": 1.6616582870483398
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part11",
+        "tamanho": 274285,
+        "tempo": 1.8360116481781006
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part12",
+        "tamanho": 222534,
+        "tempo": 1.107194185256958
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part13",
+        "tamanho": 200788,
+        "tempo": 1.070249080657959
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part14",
+        "tamanho": 213277,
+        "tempo": 1.0908727645874023
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part15",
+        "tamanho": 228385,
+        "tempo": 1.1149075031280518
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part16",
+        "tamanho": 248784,
+        "tempo": 3.148439407348633
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part17",
+        "tamanho": 226698,
+        "tempo": 3.1909167766571045
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part18",
+        "tamanho": 216702,
+        "tempo": 3.2109341621398926
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part20",
+        "tamanho": 198589,
+        "tempo": 3.19260311126709
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part19",
+        "tamanho": 239239,
+        "tempo": 3.149336814880371
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part21",
+        "tamanho": 197981,
+        "tempo": 2.558082342147827
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part24",
+        "tamanho": 218580,
+        "tempo": 1.9158952236175537
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part25",
+        "tamanho": 259294,
+        "tempo": 2.050999164581299
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part26",
+        "tamanho": 204689,
+        "tempo": 1.4904959201812744
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part36",
+        "tamanho": 267829,
+        "tempo": 2.0256338119506836
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part22",
+        "tamanho": 242273,
+        "tempo": 1.279503345489502
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part23",
+        "tamanho": 234333,
+        "tempo": 1.1468071937561035
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part28",
+        "tamanho": 279859,
+        "tempo": 1.651970624923706
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part0",
+        "tamanho": 226089,
+        "tempo": 3.128777027130127
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part29",
+        "tamanho": 217044,
+        "tempo": 1.152522325515747
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part27",
+        "tamanho": 225855,
+        "tempo": 1.0753240585327148
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part1",
+        "tamanho": 242728,
+        "tempo": 3.1096487045288086
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part30",
+        "tamanho": 245606,
+        "tempo": 1.2090685367584229
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part33",
+        "tamanho": 204538,
+        "tempo": 1.0679881572723389
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part2",
+        "tamanho": 205545,
+        "tempo": 3.1313469409942627
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part31",
+        "tamanho": 260337,
+        "tempo": 1.3973288536071777
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part32",
+        "tamanho": 203910,
+        "tempo": 1.1889784336090088
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part34",
+        "tamanho": 257134,
+        "tempo": 1.205840826034546
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part3",
+        "tamanho": 274864,
+        "tempo": 5.144855737686157
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part35",
+        "tamanho": 280290,
+        "tempo": 1.68430757522583
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part4",
+        "tamanho": 245683,
+        "tempo": 3.1352782249450684
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part38",
+        "tamanho": 253014,
+        "tempo": 3.192377805709839
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part5",
+        "tamanho": 260745,
+        "tempo": 3.5241284370422363
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part39",
+        "tamanho": 223363,
+        "tempo": 3.3453972339630127
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part6",
+        "tamanho": 226399,
+        "tempo": 3.281935691833496
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part42",
+        "tamanho": 230401,
+        "tempo": 2.280787706375122
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part7",
+        "tamanho": 238643,
+        "tempo": 3.1385722160339355
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part44",
+        "tamanho": 216323,
+        "tempo": 1.6872341632843018
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part8",
+        "tamanho": 219437,
+        "tempo": 3.369316577911377
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part9",
+        "tamanho": 259456,
+        "tempo": 3.3308541774749756
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part40",
+        "tamanho": 202091,
+        "tempo": 3.3680155277252197
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part10",
+        "tamanho": 266978,
+        "tempo": 4.8384246826171875
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part43",
+        "tamanho": 264947,
+        "tempo": 4.826117753982544
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part11",
+        "tamanho": 274285,
+        "tempo": 4.704484224319458
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part41",
+        "tamanho": 265586,
+        "tempo": 4.683939695358276
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part12",
+        "tamanho": 222534,
+        "tempo": 3.236274003982544
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part45",
+        "tamanho": 229447,
+        "tempo": 2.03910493850708
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part13",
+        "tamanho": 200788,
+        "tempo": 3.2545173168182373
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part46",
+        "tamanho": 229440,
+        "tempo": 1.792898416519165
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part14",
+        "tamanho": 213277,
+        "tempo": 3.189478874206543
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part15",
+        "tamanho": 228385,
+        "tempo": 3.059067487716675
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part16",
+        "tamanho": 248784,
+        "tempo": 3.2437257766723633
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part17",
+        "tamanho": 226698,
+        "tempo": 3.1763405799865723
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part18",
+        "tamanho": 216702,
+        "tempo": 3.026557445526123
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part19",
+        "tamanho": 239239,
+        "tempo": 3.052417278289795
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part20",
+        "tamanho": 198589,
+        "tempo": 3.1035923957824707
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part21",
+        "tamanho": 197981,
+        "tempo": 3.102041721343994
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part22",
+        "tamanho": 242273,
+        "tempo": 3.2556893825531006
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part23",
+        "tamanho": 234333,
+        "tempo": 3.177384853363037
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part24",
+        "tamanho": 218580,
+        "tempo": 3.140148401260376
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part25",
+        "tamanho": 259294,
+        "tempo": 3.2903616428375244
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part26",
+        "tamanho": 204689,
+        "tempo": 3.1536483764648438
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part27",
+        "tamanho": 225855,
+        "tempo": 3.13118577003479
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part28",
+        "tamanho": 279859,
+        "tempo": 4.756991863250732
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part29",
+        "tamanho": 217044,
+        "tempo": 3.163778066635132
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part30",
+        "tamanho": 245606,
+        "tempo": 3.127228021621704
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part31",
+        "tamanho": 260337,
+        "tempo": 3.2930262088775635
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part32",
+        "tamanho": 203910,
+        "tempo": 3.367076873779297
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part33",
+        "tamanho": 204538,
+        "tempo": 3.24367356300354
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part34",
+        "tamanho": 257134,
+        "tempo": 3.301664113998413
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part35",
+        "tamanho": 280290,
+        "tempo": 4.817984342575073
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part36",
+        "tamanho": 267829,
+        "tempo": 4.801536321640015
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part37",
+        "tamanho": 258910,
+        "tempo": 3.1553797721862793
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part38",
+        "tamanho": 253014,
+        "tempo": 3.245257616043091
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part39",
+        "tamanho": 223363,
+        "tempo": 3.177889823913574
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part40",
+        "tamanho": 202091,
+        "tempo": 3.1664512157440186
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part41",
+        "tamanho": 265586,
+        "tempo": 4.616245985031128
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part42",
+        "tamanho": 230401,
+        "tempo": 3.1487152576446533
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part43",
+        "tamanho": 264947,
+        "tempo": 5.226437091827393
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part44",
+        "tamanho": 216323,
+        "tempo": 3.1711080074310303
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part45",
+        "tamanho": 229447,
+        "tempo": 3.0339195728302
+    },
+    {
+        "peer_user": "c",
+        "chunk": "Eleven.part46",
+        "tamanho": 229440,
+        "tempo": 3.033785104751587
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part0",
+        "tamanho": 226089,
+        "tempo": 3.1497457027435303
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part1",
+        "tamanho": 242728,
+        "tempo": 3.138746976852417
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part2",
+        "tamanho": 205545,
+        "tempo": 3.042630910873413
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part3",
+        "tamanho": 274864,
+        "tempo": 4.62645411491394
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part4",
+        "tamanho": 245683,
+        "tempo": 3.023132562637329
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part5",
+        "tamanho": 260745,
+        "tempo": 3.210909843444824
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part6",
+        "tamanho": 226399,
+        "tempo": 3.1558032035827637
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part7",
+        "tamanho": 238643,
+        "tempo": 3.1116764545440674
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part8",
+        "tamanho": 219437,
+        "tempo": 3.10829496383667
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part9",
+        "tamanho": 259456,
+        "tempo": 3.2817347049713135
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part10",
+        "tamanho": 266978,
+        "tempo": 4.6517415046691895
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part11",
+        "tamanho": 274285,
+        "tempo": 4.697535991668701
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part12",
+        "tamanho": 222534,
+        "tempo": 3.21010160446167
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part13",
+        "tamanho": 200788,
+        "tempo": 3.1913986206054688
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part14",
+        "tamanho": 213277,
+        "tempo": 3.117480516433716
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part15",
+        "tamanho": 228385,
+        "tempo": 3.1577157974243164
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part16",
+        "tamanho": 248784,
+        "tempo": 3.156421184539795
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part17",
+        "tamanho": 226698,
+        "tempo": 3.0226049423217773
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part18",
+        "tamanho": 216702,
+        "tempo": 3.1459407806396484
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part19",
+        "tamanho": 239239,
+        "tempo": 3.1524405479431152
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part20",
+        "tamanho": 198589,
+        "tempo": 3.174098253250122
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part21",
+        "tamanho": 197981,
+        "tempo": 3.1132893562316895
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part22",
+        "tamanho": 242273,
+        "tempo": 3.0407371520996094
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part23",
+        "tamanho": 234333,
+        "tempo": 3.1868255138397217
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part24",
+        "tamanho": 218580,
+        "tempo": 3.0943307876586914
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part25",
+        "tamanho": 259294,
+        "tempo": 2.918482542037964
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part26",
+        "tamanho": 204689,
+        "tempo": 2.4518284797668457
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part27",
+        "tamanho": 225855,
+        "tempo": 2.2458653450012207
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part28",
+        "tamanho": 279859,
+        "tempo": 3.1432976722717285
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part29",
+        "tamanho": 217044,
+        "tempo": 1.9531102180480957
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part30",
+        "tamanho": 245606,
+        "tempo": 1.854750156402588
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part31",
+        "tamanho": 260337,
+        "tempo": 1.7506775856018066
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part32",
+        "tamanho": 203910,
+        "tempo": 1.6681978702545166
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part33",
+        "tamanho": 204538,
+        "tempo": 1.6268582344055176
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part34",
+        "tamanho": 257134,
+        "tempo": 1.4282829761505127
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part35",
+        "tamanho": 280290,
+        "tempo": 2.181061029434204
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part36",
+        "tamanho": 267829,
+        "tempo": 2.0985541343688965
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part37",
+        "tamanho": 258910,
+        "tempo": 1.3813271522521973
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part38",
+        "tamanho": 253014,
+        "tempo": 1.2760324478149414
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part39",
+        "tamanho": 223363,
+        "tempo": 1.208181381225586
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part40",
+        "tamanho": 202091,
+        "tempo": 1.1059324741363525
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part41",
+        "tamanho": 265586,
+        "tempo": 1.859626293182373
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part42",
+        "tamanho": 230401,
+        "tempo": 1.120007038116455
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part43",
+        "tamanho": 264947,
+        "tempo": 1.616539716720581
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part44",
+        "tamanho": 216323,
+        "tempo": 1.1013813018798828
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part45",
+        "tamanho": 229447,
+        "tempo": 1.093163013458252
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Eleven.part46",
+        "tamanho": 229440,
+        "tempo": 1.0886342525482178
+    }
+]

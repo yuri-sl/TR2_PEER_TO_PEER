@@ -1,0 +1,425 @@
+[
+    {
+        "nome": "Eleven.part0",
+        "indice": 0,
+        "hash": "ff6ea49ea4f939aff209f38790a70cfaf08182510d2a7d3d4a6870ca5d31c9ae",
+        "checksum": "ff6ea49ea4f939aff209f38790a70cfaf08182510d2a7d3d4a6870ca5d31c9ae",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part1",
+        "indice": 1,
+        "hash": "092441cd020007e5d6065ab9de2cdd182e1f7adb9826930d85bbdd007fc59b80",
+        "checksum": "092441cd020007e5d6065ab9de2cdd182e1f7adb9826930d85bbdd007fc59b80",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part2",
+        "indice": 2,
+        "hash": "04205b614c3727e7bb2cce44ac0d706ae5700760bcf4c2626af5cc4f3360e9bf",
+        "checksum": "04205b614c3727e7bb2cce44ac0d706ae5700760bcf4c2626af5cc4f3360e9bf",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part3",
+        "indice": 3,
+        "hash": "7044d221a3ff0d13be5a003f97fe9ece8b8b5c9de6569b41da13988c27129dcc",
+        "checksum": "7044d221a3ff0d13be5a003f97fe9ece8b8b5c9de6569b41da13988c27129dcc",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part4",
+        "indice": 4,
+        "hash": "3c3d42b0f52ebca3a5e4092c86df8af0901c662a395687346ba530e3e439560b",
+        "checksum": "3c3d42b0f52ebca3a5e4092c86df8af0901c662a395687346ba530e3e439560b",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part5",
+        "indice": 5,
+        "hash": "7d280e95ad41e0dea28910db242c75f45d5aed54440688c9858d7abffb8c65e9",
+        "checksum": "7d280e95ad41e0dea28910db242c75f45d5aed54440688c9858d7abffb8c65e9",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part6",
+        "indice": 6,
+        "hash": "871f32dddcec0ded6677520004130617de7b5024d9ef14c802684d06b0fd4bcf",
+        "checksum": "871f32dddcec0ded6677520004130617de7b5024d9ef14c802684d06b0fd4bcf",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part7",
+        "indice": 7,
+        "hash": "3b52ca754a0a22126b303f2597fb1090a1b1f65dd26a470ba6ebd1150ede1447",
+        "checksum": "3b52ca754a0a22126b303f2597fb1090a1b1f65dd26a470ba6ebd1150ede1447",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part8",
+        "indice": 8,
+        "hash": "7666e9929b068dc66f1b3cd723c2e0f38ed15cfb23848fcc7400dcc1b7817cbf",
+        "checksum": "7666e9929b068dc66f1b3cd723c2e0f38ed15cfb23848fcc7400dcc1b7817cbf",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part9",
+        "indice": 9,
+        "hash": "d5bc65c1e3b93a2ea166795ec5fb6d17e45a84674cf42c916aacf40af1c0beb2",
+        "checksum": "d5bc65c1e3b93a2ea166795ec5fb6d17e45a84674cf42c916aacf40af1c0beb2",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part10",
+        "indice": 10,
+        "hash": "218ec1d2d981b4308167b777d7fff68caa3037c3972bfb029ee76635d2073caa",
+        "checksum": "218ec1d2d981b4308167b777d7fff68caa3037c3972bfb029ee76635d2073caa",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part11",
+        "indice": 11,
+        "hash": "518cf6548b54b2d9bffaac256e5d48bbac659d57fb01bd3cfcd10921ebfee565",
+        "checksum": "518cf6548b54b2d9bffaac256e5d48bbac659d57fb01bd3cfcd10921ebfee565",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part12",
+        "indice": 12,
+        "hash": "c66db0440af3ffce4c70df3a9cb9b7e3eab57b845c8078a021f14b41544a6313",
+        "checksum": "c66db0440af3ffce4c70df3a9cb9b7e3eab57b845c8078a021f14b41544a6313",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part13",
+        "indice": 13,
+        "hash": "dd982e4f600390d601a25736d365ebde06f1fc140d5fe374629e7cdb0a99929e",
+        "checksum": "dd982e4f600390d601a25736d365ebde06f1fc140d5fe374629e7cdb0a99929e",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part14",
+        "indice": 14,
+        "hash": "de93085f641cf2ca661330b4bc348349820e34f84a8d6b967701cc4efe524e6b",
+        "checksum": "de93085f641cf2ca661330b4bc348349820e34f84a8d6b967701cc4efe524e6b",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part15",
+        "indice": 15,
+        "hash": "3d01a4116510efb9c82005c8b2425a3758828faddaaa5aa2a1db147c1413973d",
+        "checksum": "3d01a4116510efb9c82005c8b2425a3758828faddaaa5aa2a1db147c1413973d",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part16",
+        "indice": 16,
+        "hash": "02cfe442a279d448dd93a954e729bb8aa87d56d9aadac23d8b91280ac28b699c",
+        "checksum": "02cfe442a279d448dd93a954e729bb8aa87d56d9aadac23d8b91280ac28b699c",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part17",
+        "indice": 17,
+        "hash": "a37330642d633361bdadcc9f5786716f5fd0c25bb9305350ef5b64563b3ce7be",
+        "checksum": "a37330642d633361bdadcc9f5786716f5fd0c25bb9305350ef5b64563b3ce7be",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part18",
+        "indice": 18,
+        "hash": "d802b53f03427cf92bf7bce07149dca6d82d62a5395dc4fefb23ac51d40a9a2d",
+        "checksum": "d802b53f03427cf92bf7bce07149dca6d82d62a5395dc4fefb23ac51d40a9a2d",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part19",
+        "indice": 19,
+        "hash": "b82be67ed17af64bcb7c1b25f907a939d6c9a2be144c47eeeefece66b4cd488d",
+        "checksum": "b82be67ed17af64bcb7c1b25f907a939d6c9a2be144c47eeeefece66b4cd488d",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part20",
+        "indice": 20,
+        "hash": "b637098301af035fb9be96d09985a2232e973be1e163f019e7ed284a6400d13b",
+        "checksum": "b637098301af035fb9be96d09985a2232e973be1e163f019e7ed284a6400d13b",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part21",
+        "indice": 21,
+        "hash": "d131923bcce8cc429b6c0c064823ebb8353c501693a876b59f1711f198bacebc",
+        "checksum": "d131923bcce8cc429b6c0c064823ebb8353c501693a876b59f1711f198bacebc",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part22",
+        "indice": 22,
+        "hash": "ea6019a67706d934c4dc880f45eff8394aa7871300974d62509e37210b06e503",
+        "checksum": "ea6019a67706d934c4dc880f45eff8394aa7871300974d62509e37210b06e503",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part23",
+        "indice": 23,
+        "hash": "1ba89adc26df9d16bfcde3d7eea02727275a77d9587ffe8d7f066039a9e3e9d1",
+        "checksum": "1ba89adc26df9d16bfcde3d7eea02727275a77d9587ffe8d7f066039a9e3e9d1",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part24",
+        "indice": 24,
+        "hash": "36bdb688bf5e94f593a67a02c23081bd3d9d727a9b2b0d67a9ee33459e84e5ca",
+        "checksum": "36bdb688bf5e94f593a67a02c23081bd3d9d727a9b2b0d67a9ee33459e84e5ca",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part25",
+        "indice": 25,
+        "hash": "8d8a39113b16bff78aec1762ecb009cdde8c01eacde77f0e15add84be33fd212",
+        "checksum": "8d8a39113b16bff78aec1762ecb009cdde8c01eacde77f0e15add84be33fd212",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part26",
+        "indice": 26,
+        "hash": "f2e558e27960f1fdab018ed985e14dcb839f70ed4ca708655966d5a5ff6479c4",
+        "checksum": "f2e558e27960f1fdab018ed985e14dcb839f70ed4ca708655966d5a5ff6479c4",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part27",
+        "indice": 27,
+        "hash": "bb08e720b4f73012134891ecd09c41e7e9880d7bc909b0ed02ce9b4b22da634b",
+        "checksum": "bb08e720b4f73012134891ecd09c41e7e9880d7bc909b0ed02ce9b4b22da634b",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part28",
+        "indice": 28,
+        "hash": "fbb8c077a9715820402ec03c1005e6f23db83e8ed3a935de06951069fcffab78",
+        "checksum": "fbb8c077a9715820402ec03c1005e6f23db83e8ed3a935de06951069fcffab78",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part29",
+        "indice": 29,
+        "hash": "30f7aca5c028a842ac66e7c79d60e24a49e409992aa7c9e3ee000b0ad7197514",
+        "checksum": "30f7aca5c028a842ac66e7c79d60e24a49e409992aa7c9e3ee000b0ad7197514",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part30",
+        "indice": 30,
+        "hash": "d43e7daf1098fb9699105dcf6a772be3f7a11046adb1fa82bb5661f869b3ae89",
+        "checksum": "d43e7daf1098fb9699105dcf6a772be3f7a11046adb1fa82bb5661f869b3ae89",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part31",
+        "indice": 31,
+        "hash": "e11dcfa45f343e56090499b2dc6dea502b887fcf44f598d1193a50f596aa9d7e",
+        "checksum": "e11dcfa45f343e56090499b2dc6dea502b887fcf44f598d1193a50f596aa9d7e",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part32",
+        "indice": 32,
+        "hash": "d77627ab68d8612025c0fb32b53f8eb2fd24f380ade4f5f3a715a9370f86c4a2",
+        "checksum": "d77627ab68d8612025c0fb32b53f8eb2fd24f380ade4f5f3a715a9370f86c4a2",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part33",
+        "indice": 33,
+        "hash": "7ca30b44b5fd78d0638ea24da4ff459da08301adced8578a31e3ce8ecb68f8ad",
+        "checksum": "7ca30b44b5fd78d0638ea24da4ff459da08301adced8578a31e3ce8ecb68f8ad",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part34",
+        "indice": 34,
+        "hash": "fb20e063e672506f9405180525472a8699e55cff06614f94d8d9ae1ece06359d",
+        "checksum": "fb20e063e672506f9405180525472a8699e55cff06614f94d8d9ae1ece06359d",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part35",
+        "indice": 35,
+        "hash": "821542f0904612ac8941d881b70d2e799db85b5def995c7c2e0514d29650d3d6",
+        "checksum": "821542f0904612ac8941d881b70d2e799db85b5def995c7c2e0514d29650d3d6",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part36",
+        "indice": 36,
+        "hash": "ce7a937a955cd61e09a69cfdd8efefb569d703b6cb34dad1489229f47a3f2dfc",
+        "checksum": "ce7a937a955cd61e09a69cfdd8efefb569d703b6cb34dad1489229f47a3f2dfc",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part37",
+        "indice": 37,
+        "hash": "86ee1bb034743af2c92fdcec10e4fa431f88af69b7fea468f63af73182c8b311",
+        "checksum": "86ee1bb034743af2c92fdcec10e4fa431f88af69b7fea468f63af73182c8b311",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part38",
+        "indice": 38,
+        "hash": "dd33909318dd2bcf3247fcd9812747ff970158fa479696fc363654fa65635da4",
+        "checksum": "dd33909318dd2bcf3247fcd9812747ff970158fa479696fc363654fa65635da4",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part39",
+        "indice": 39,
+        "hash": "4c73c76eb499da8f1c41f43bf1887b1091469af9ca98fff8d041fc4b986e2e3c",
+        "checksum": "4c73c76eb499da8f1c41f43bf1887b1091469af9ca98fff8d041fc4b986e2e3c",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part40",
+        "indice": 40,
+        "hash": "6db5857a689adba7e9de759ed207b28bfb71d945280202ae2979152dbf581639",
+        "checksum": "6db5857a689adba7e9de759ed207b28bfb71d945280202ae2979152dbf581639",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part41",
+        "indice": 41,
+        "hash": "6d0c11b03c845359f168decd718db1fa46a8fce68e9bb731e3c743e59501bd25",
+        "checksum": "6d0c11b03c845359f168decd718db1fa46a8fce68e9bb731e3c743e59501bd25",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part42",
+        "indice": 42,
+        "hash": "05da4aaac36c17d1da24f60347a84ae3fda872ec96da7bec97a1e29934d6ede3",
+        "checksum": "05da4aaac36c17d1da24f60347a84ae3fda872ec96da7bec97a1e29934d6ede3",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part43",
+        "indice": 43,
+        "hash": "e0ea49775d2ecaed68c3961e4d4928d4db784fef1f1dbac744f626731fe79b6a",
+        "checksum": "e0ea49775d2ecaed68c3961e4d4928d4db784fef1f1dbac744f626731fe79b6a",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part44",
+        "indice": 44,
+        "hash": "0e95fad427b29aebcb5df5330e308f32ef8de994402147f88afbc2b8d36a1691",
+        "checksum": "0e95fad427b29aebcb5df5330e308f32ef8de994402147f88afbc2b8d36a1691",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part45",
+        "indice": 45,
+        "hash": "75b83af869d9b01af9a7562ff92395b63e1f6e3c4921a3c71fdaf69d867b765b",
+        "checksum": "75b83af869d9b01af9a7562ff92395b63e1f6e3c4921a3c71fdaf69d867b765b",
+        "detentores_chunk": [
+            "F"
+        ]
+    },
+    {
+        "nome": "Eleven.part46",
+        "indice": 46,
+        "hash": "d5e65b319e2dc18eb7bd38e48dc25d047fbcefc66bd1ec8abac56e20df8de06a",
+        "checksum": "d5e65b319e2dc18eb7bd38e48dc25d047fbcefc66bd1ec8abac56e20df8de06a",
+        "detentores_chunk": [
+            "F"
+        ]
+    }
+]
