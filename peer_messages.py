@@ -66,7 +66,7 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                 print(f"\n📩 Nova mensagem de {mensagem['from']}:")
                 print(f"   {mensagem['message']} ({mensagem['timestamp']})\n")
             except:
-                print(f"chunk recebido {mensagem['enviando']}:")
+                #print(f"chunk recebido {mensagem['enviando']}:")
                 ARQUIVO_JSON = "chunks_trocados.json"
                 sender = mensagem["sender"]
                 nome_arquivo = mensagem["enviando"]
@@ -151,13 +151,14 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
 
             #Marca conexão ativa (+1)
             update_score(peer_user,0,0,0,active_connections=1)
-            #input(f"[DEBUG] Verifique o JSON após AUMENTAR active_connections para {peer_user}. Pressione Enter para continuar...")
+            input(f"[DEBUG] Verifique o JSON após AUMENTAR active_connections para {peer_user}. Pressione Enter para continuar...")
             
 
             # ✅ Recarrega a cada request:
             caminho_json_chunks = "arquivos_cadastrados/arquivos_tracker.json"
             chunks_disponiveis = carregar_peers_com_chunks(caminho_json_chunks, meu_username)
-
+            print(chunks_disponiveis)
+            print(nome_chunk)
             #NOVO - Verificamos se existe umdiretório de chunks recebidos
             caminho_arquivo = nome_chunk.split('.')[0]
             caminho_recebidos = f"chunks_recebidos/{meu_username}/{caminho_arquivo}/{nome_chunk}"
@@ -248,11 +249,13 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                         update_score(peer_user,
                                     failed_transfers=1,
                                     integrity_check=False)
+                        print("flame")
             else:
                 conn.send(b"ERRO: Chunk nao disponivel.")
                 update_score(peer_user,
                     failed_transfers=1,
                     integrity_check=False)
+                print("flame")
 
         except Exception as e:
             print(f"[Erro Chunk] {e}")
@@ -260,7 +263,7 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
             #  Marca o final da conexão (-1) para o peer
             if peer_user:
                 update_score(peer_user, 0, 0, 0, active_connections=-1)
-                #input(f"[DEBUG] Verifique o JSON após REDUZIR active_connections para {peer_user}. Pressione Enter para continuar...")
+                input(f"[DEBUG] Verifique o JSON após REDUZIR active_connections para {peer_user}. Pressione Enter para continuar...")
             conn.close()
     #Inicia o servidor de chat
     threading.Thread(target=server_loop, daemon=True).start()
@@ -295,8 +298,8 @@ def p2p(user):
             resposta = send_to_tracker2(dados_start_chat)
             peers_ip = resposta["mensagem"]             # Pega os ips, ports e usarios correspondentes
             for peer_user, ip, port in peers_ip:
-                update_score(peer_user, 0, 1, 0)
-                print(f"[INFO] Score atualizado para {peer_user}. Verifique o arquivo JSON.")
+                update_score(peer_user, 0, 1)
+                #print(f"[INFO] Score atualizado para {peer_user}. Verifique o arquivo JSON.")
     threading.Thread(target=timeconected, daemon=True).start()
 
     def send_to_tracker2(data) -> dict:
@@ -334,56 +337,69 @@ def p2p(user):
         except ConnectionRefusedError:
             print("Não foi possível iniciar o Tracker. ele já está ativo?")
             return {"status":"erro","mensagem":"Tracker não disponível."}
-    dados_start_chat = {
+    getip = {
         "action":"get_ip",
         "username": user
     }
-    time_connected = 0
-    update_score(user,0, 0, 0)
+    getfile = {
+        "action":"list_files",
+        "username": user
+    }
+    global arquivosdesejados
+    resposta = send_to_tracker2(getip)# Pega todos os ips (Sempre renovando)
+    peers_ip = resposta["mensagem"]             # Pega os ips, ports e usarios correspondentes
+    resposta = send_to_tracker2(getfile)
+    files_peer = resposta["mensagem"]
+    #print(files_peer)
+    #print(get_score(user))
     while True:
-        #print(bytes_sent)
-        time.sleep(1)                                # A cada 1 segundo manda chunk pra todo mundo
-        successful_responses = 0
-        bytes_sent = 0
+        score = get_score(user)
+        if score < 30:
+            for i in range(1):
+                threading.Thread(target=pedir_chunks, args=(user, files_peer, peers_ip,), daemon=True).start()
+        elif score < 80:
+            for i in range(4):
+                threading.Thread(target=pedir_chunks, args=(user, files_peer, peers_ip,), daemon=True).start()
+        else:
+            for i in range(8):
+                threading.Thread(target=pedir_chunks, args=(user, files_peer, peers_ip,), daemon=True).start()
 
-        resposta = send_to_tracker2(dados_start_chat)# Pega todos os ips (Sempre renovando)
-        peers_ip = resposta["mensagem"]             # Pega os ips, ports e usarios correspondentes
-        peers = []
-        peers_incentivo = []
-        for u, ip, port in peers_ip:                # Coloco os scores junto as infos
-            if u != user:
-                score_do_peer = get_score(u)
-                peers.append((u, ip, port, score_do_peer))
-        try:    # tenta calcular o teto 
-            teto = max(1, max(peer[3] for peer in peers))       # Defino um teto para calcular
-        except:
-            teto = 1000000000
-        for u, ip, port, score_peer in peers:       # escolho de forma ponderada quem posso enviar chunks
-            if score_peer > random.uniform(0, teto):#Testo quem vai
-                peers_incentivo.append((u, ip, port))   # coloco na lista q vai ser avalida
-        #print(peers_incentivo)
-        for users, ip, port in peers_incentivo:            # envia para todos os peers
-            nome_do_chunk, dados = escolher_chunk_compatível(user) # esolhe um chunk aleatorio
-            if nome_do_chunk:                   # Se eu for capaz de enviar
-                try: 
-                    #print(f"[{users}] Enviando {os.path.basename(nome_do_chunk)} para {ip} : {port}")
-                    enviado = send_chunk(user, ip, port, nome_do_chunk, dados)# Vai enviar para esse ip um chunk aleatorio que eu tiver e consiguir enviar
-                    if enviado:                     # Se foi enviado com sucesso
-                        successful_responses = 1
-                        bytes_sent = len(dados)
-                        time_connected += 1
-                        #bytes_sent = bytes_sent//1000 # parametrizado
-                        update_score(user, bytes_sent, time_connected, successful_responses)
-                        #print(user,"enviando para", users)
-                    else:
-                        successful_responses = 0
-                        time_connected += 1
-                        update_score(user, 0, time_connected, successful_responses, failed_transfers=1)
-                except Exception as e:
-                    print(f"Não foi possível enviar para o peer {users}: {e}")
-            else:                               # mesmo qie nao tenha conseguido enviar vamos dar um incentivo a ele
-                bytes_sent = 10                                            # novo score pra ajudar
-                break                                                       # Pois ainda nao tem pontuação suficiente para enviar
+        time.sleep(5)
+        time.sleep(5)
+
+def pedir_chunks(user,files_peer, peers_ip):
+    for file in arquivosdesejados:
+        #print(f"\n🔎 Procurando peers com o arquivo: {file}")
+        # Verifica quem tem esse arquivo entre os peers listados em files_peer
+        for peer_id, arquivos_que_tem in files_peer.items():
+            if file in arquivos_que_tem and peer_id != user:
+                
+                # Descobre IP e porta do peer atual
+                peer_info = next((p for p in peers_ip if p[0] == peer_id), None)
+                #print(peer_info)
+                if peer_info is None:
+                    continue  # IP e porta não encontrados no peers_ip
+                users, ip, port = peer_info
+                
+                for users, ip, port in peers_ip:            # envia para todos os peers
+                    if users != user:
+                        nome_do_chunk, dados = escolher_chunk_compatível(user) # escolhe um chunk aleatorio que eu preciso
+                        if nome_do_chunk:                   # Se eu for capaz de enviar
+                            try: 
+                                print(f"[{users}] Enviando o pedido do chunk {os.path.basename(nome_do_chunk)} para {ip} : {port}")
+                                enviado = send_chunk(user, ip, port, nome_do_chunk, dados)# Vai enviar para esse ip pedindo um chunk aleatorio que eu preciso
+                                if enviado:                     # Se foi enviado o pedido com sucesso
+                                    successful_responses = 1
+                                    bytes_sent = 1
+                                    update_score(user, bytes_sent, 0, successful_responses)
+                                    print(user,"enviando para", users)
+                                else:
+                                    bytes_sent = -5
+                                    update_score(user, 0, 0, 0, failed_transfers=1)
+                            except Exception as e:
+                                print(f"Não foi possível enviar o pedido para o peer {users}: {e}")
+                        else:                               # mesmo qie nao tenha conseguido enviar vamos dar um incentivo a ele
+                            break
 
 def send_chunk(user, ip, port, nome_chunk, dados):
     try:
@@ -398,10 +414,20 @@ def send_chunk(user, ip, port, nome_chunk, dados):
         s.sendall(enviado.encode())
         s.shutdown(socket.SHUT_WR)
         #print(f"[✓] Chunk '{nome_chunk}' enviado com sucesso")
+        # Recebe os dados do chunk
+        buffer = b""
+        while True:
+            chunk = s.recv(4096)
+            if not chunk:
+                break
+            buffer += chunk
+
+        mensagem = json.loads(buffer.decode())
+
         s.close()
         return True
     except Exception as e:
-        print(f"[Erro ao enviar pedaços] {e}")
+        print(f"[Erro ao enviar pedir pedaços] {e}")
         return False
 
 
@@ -681,3 +707,42 @@ def announce_file_novo(username, nome_arquivo):
 
     except Exception as e:
         print("Erro ao anunciar arquivo:", e)
+
+arquivosdesejados = ['TransferData.txt', 'TransferOne.txt', 'Lsa.txt', 'teste.txt', 'as.txt', 'Kal.txt', 'entradas_testes.txt', 'Eleven.txt', 'Kakarotto.txt', 'Asdf.txt'] # o peer pode escolher qual arquivo ele quer baixar
+
+def arquivos_desejado(resposta):
+    global arquivosdesejados
+    arquivosdesejados = []
+
+    # Extrai todos os arquivos únicos da mensagem
+    arquivos_por_peer = resposta["mensagem"]
+    todos_arquivos = set()
+    for arquivos in arquivos_por_peer.values():
+        todos_arquivos.update(arquivos)
+    lista_arquivos = sorted(todos_arquivos)
+
+    # Exibe lista com índice
+    print(f"\n🌐 Arquivos disponíveis para escolher:")
+    print(f"[0] - Todos os arquivos")
+    for i, nome in enumerate(lista_arquivos, 1):
+        print(f"[{i}] - {nome}")
+
+    # Escolha do usuário
+    while True:
+        try:
+            escolha = int(input("\n📥 Digite o número do arquivo que deseja baixar: "))
+            if 1 <= escolha <= len(lista_arquivos):
+                arquivo_escolhido = lista_arquivos[escolha - 1]
+                print(f"\n✅ Você escolheu: {arquivo_escolhido}\n")
+                arquivosdesejados.append(arquivo_escolhido)
+                break
+            elif escolha == 0:
+                arquivosdesejados.extend(lista_arquivos)
+                print("\n✅ Você escolheu TODOS os arquivos!")
+                for a in lista_arquivos:
+                    print(f"  - {a}")
+                break
+            else:
+                print("Número inválido. Tente novamente.")
+        except ValueError:
+            print("Entrada inválida. Digite apenas o número.")

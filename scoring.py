@@ -8,12 +8,33 @@ SCOREBOARD_FILE = "scoreboard.json"
 # Scoreboard global em memória
 scoreboard = {}
 
+
+def map_score_to_range(score: float) -> int:
+    """
+    Mapeia um score qualquer para o intervalo fixo de 0 a 100 em incrementos de 10.
+    Arredonda para o múltiplo de 10 mais próximo, sem ultrapassar 100.
+
+    Args:
+        score (float): Score bruto calculado.
+
+    Returns:
+        int: Score normalizado de 0 a 100 em passos de 10.
+    """
+    if score <= 0:
+        return 0
+    elif score >= 100:
+        return 100
+    else:
+        return min(100, round(score / 10) * 10)
+
 # Pesos configuráveis para cada métrica
 WEIGHTS = {
     'bytes_sent': 5,
     'time_connected': 1,
-    'successful_responses': 2,
-    'active_connections':2
+    'successful_responses': 1,
+    'active_connections':1,
+    "failed_transfers" : -1
+
 }
 conexoes_ativas = {}  # Ex.: {"a": 1, "b": 2, ...}
 
@@ -55,9 +76,9 @@ def get_peer_priority(username, scoreboard):
     dados = scoreboard.get(username, {})
     score = dados.get("score", 0)
 
-    if score > 100000:
+    if score >= 80:
         return {"prioridade": "alta", "max_conexoes": 4, "largura_banda": 16384}
-    elif score > 50000:
+    elif score > 30:
         return {"prioridade": "media", "max_conexoes": 2, "largura_banda": 8192}
     else:
         return {"prioridade": "baixa", "max_conexoes": 1, "largura_banda": 4096}
@@ -85,7 +106,7 @@ def update_score(peer_id: str, bytes_sent: int = 0, time_connected: int = 0,
     metrics["time_connected"] += time_connected
     metrics["successful_responses"] += successful_responses
     metrics["failed_transfers"] += failed_transfers
-    metrics["active_connections"] += active_connections
+    metrics["active_connections"] = active_connections
 
 
     if integrity_check is not None:
@@ -93,14 +114,24 @@ def update_score(peer_id: str, bytes_sent: int = 0, time_connected: int = 0,
         metrics["integrity_checks"][chunk_name] = integrity_check
 
     # Recalcula score
-    score = (
-        WEIGHTS.get("bytes_sent", 1) * metrics["bytes_sent"] +
-        WEIGHTS.get("time_connected", 1) * metrics["time_connected"] +
-        WEIGHTS.get("successful_responses", 1) * metrics["successful_responses"] +
-        WEIGHTS.get("active_connections", 1) * metrics["active_connections"]
-    )
+    if metrics["time_connected"] <= 60:
+        score = (
+            WEIGHTS.get("bytes_sent", 1) * metrics["bytes_sent"] +
+            WEIGHTS.get("time_connected", 1) * metrics["time_connected"] +
+            WEIGHTS.get("successful_responses", 1) * metrics["successful_responses"] +
+            WEIGHTS.get("failed_transfers", -1) * metrics["failed_transfers"] +
+            WEIGHTS.get("active_connections", 1) * metrics["active_connections"]
+        )
+    else:
+        score = (
+            WEIGHTS.get("bytes_sent", 1) * metrics["bytes_sent"] +
+            30 + # sempre vale 30 pontos caso tenha mais que 60 segundos no serivdor
+            WEIGHTS.get("successful_responses", 1) * metrics["successful_responses"] + 
+            WEIGHTS.get("failed_transfers", -1) * metrics["failed_transfers"] +
+            WEIGHTS.get("active_connections", 1) * metrics["active_connections"]
+        )
+    #metrics["score"] = map_score_to_range(score)
     metrics["score"] = score
-
     scoreboard[peer_id] = metrics
     save_scoreboard()
     return metrics["score"]

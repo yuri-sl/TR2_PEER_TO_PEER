@@ -20,7 +20,7 @@ menu_1 = "MENU PRINCIPAL \n#1 - Registrar;\n#2 - Login no Sistema;\n#3 - Sair do
 menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;\n11 - Criar um novo arquivo .txt\n12 - Requisição de Chunk\n13 - Montar arquivo usando chunks\n 14 - Próxima página >>>>"
 
 menu_chats = "--Menu de interações de chats por usuários--(1/3)\n#5 - Listagem de peers Ativos\n#6 - Iniciar chat com um Peer\n\n#14 - Próxima página >>>>"
-menu_arquivos = "--Menu de Operações por arquivos--(2/3)\n#11 - Criar um arquivo .txt\n#8 - Anunciar um arquivo manualmente\n#12 - Requisição de Chunks com uma conexão\n#16 - Requisição de chunks com múltiplas conexões\n#13 - Montar um Arquivo\n#17 - Plotar Gráfico Transmissão única\n#18 - Plotar Gráfico Transmissão Múltiplas Conexões\n\n#14 - Próxima página >>>>\n#15 - Página anterior <<<<<<"
+menu_arquivos = "--Menu de Operações por arquivos--(2/3)\n#11 - Criar um arquivo .txt\n#8 - Anunciar um arquivo manualmente\n#12 - Requisição de Chunks com uma conexão\n#16 - Requisição de chunks com múltiplas conexões\n#13 - Montar um Arquivo\n#17 - Plotar Gráfico Transmissão única\n#18 - Plotar Gráfico Transmissão Múltiplas Conexões\n#1 - Pedir arquivos\n\n#14 - Próxima página >>>>\n#15 - Página anterior <<<<<<"
 menu_opcoes = "--Menu de operações do Usuário--(3/3)\n#14 - Meu perfil\n#10 - Sair do sistema\n\n#15 - Página anterior <<<<<<"
 
 SCOREBOARD_FILE = "/scoreboard.json"
@@ -548,6 +548,7 @@ ignore = '''
         remover_conexao(to_user)
         s.close()
 '''
+
 def launch_tracker_cross_platform() -> None:
     """
     Executa o script 'tracker.py' em um novo terminal, de forma compatível com múltiplos sistemas operacionais.
@@ -1260,6 +1261,12 @@ def interactiveMenu_1() -> bool:
             os.system('cls||clear')
         elif operation == "18":
             plotarGraficoMultiplas()
+            input("Pressione Enter para continuar")
+            os.system('cls||clear')
+        elif operation == "1":
+            pedido = {"action" : "list_files",  "username": usuario_logado}
+            resposta = send_to_tracker(pedido)
+            arquivos = arquivos_desejado(resposta) # O cliente pode escolher qual arquivo ele quer baixar
             input("Pressione Enter para continuar")
             os.system('cls||clear')
 
