@@ -35,6 +35,21 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
         meu_username (str): Nome de usuário do peer atual (não usado diretamente aqui,
                             mas pode ser útil para logs ou verificações futuras).
     """
+    def carregar_chunks(caminho_json, meu_username):
+        if not os.path.exists(caminho_json):
+            print("NÃO EXISTEM ARQUIVOS COM O MEU PEER!")
+            return []
+
+        with open(caminho_json, 'r', encoding='utf-8') as f:
+            dados = json.load(f)
+            print("DADOS CARREGADOS DO JSON")
+
+        chunks_do_usuario = []
+        for peer, chunks in dados.items():
+            if peer == meu_username:
+                chunks_do_usuario.extend(chunks)
+        print(f"OS CHUNKS REGISTRADOS EM MEU USER SÃO:{chunks_do_usuario}")
+        return chunks_do_usuario
     def carregar_peers_com_chunks(caminho_json, meu_username):
         if not os.path.exists(caminho_json):
             print("NÃO EXISTEM ARQUIVOS COM O MEU PEER!")
@@ -131,7 +146,7 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
 
             # ✅ Recarrega a cada request:
             caminho_json_chunks = "arquivos_cadastrados/arquivos_tracker.json"
-            chunks_disponiveis = carregar_peers_com_chunks(caminho_json_chunks, meu_username)
+            chunks_disponiveis = carregar_chunks(caminho_json_chunks, meu_username)
             #NOVO - Verificamos se existe umdiretório de chunks recebidos
             caminho_arquivo = os.path.basename(os.path.dirname(nome_chunk))
             caminho_recebidos = f"chunks_recebidos/{meu_username}/{caminho_arquivo}/{nome_chunk}"
