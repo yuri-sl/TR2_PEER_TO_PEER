@@ -53,7 +53,7 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
         print(f"OS CHUNKS REGISTRADOS EM MEU USER SÃO:{chunks_do_usuario}")
         return chunks_do_usuario
     def handle_connection(conn, addr):
-        try:
+        """try:
             buffer = b""
             while True:
                 chunk = conn.recv(4096)
@@ -94,11 +94,149 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                 with open(ARQUIVO_JSON, "w", encoding="utf-8") as f:
                     json.dump(dados_existentes, f, indent=4, ensure_ascii=False)
 
-                print(f"[✓] Chunk '{mensagem['enviando']}' salvo/atualizado em '{ARQUIVO_JSON}'")
-        except Exception as e:
-            print(f"Erro ao receber mensagem: {e}")
+                print(f"[✓] Chunk '{mensagem['enviando']}' salvo/atualizado em '{ARQUIVO_JSON}'")"""
+        def salvar_transmissao(peer_user, nome_chunk, tamanho, tempo):
+            registro = {
+                "peer_user": peer_user,
+                "chunk": nome_chunk,
+                "tamanho": tamanho,
+                "tempo": tempo
+            }
+            arquivo = "reports/transmissions.json"
+            registros = []
+            if os.path.exists(arquivo):
+                with open(arquivo, "r") as f:
+                    registros = json.load(f)
+            registros.append(registro)
+            with open(arquivo, "w") as f:
+                json.dump(registros, f, indent=4)
+            peer_user = None
+
+        try:
+            print("Request chegou!", flush=True)
+            requisicao = conn.recv(1024).decode()
+            requisicao_json = json.loads(requisicao)
+            print(requisicao)
+            nome_chunk = requisicao_json.get("nome_chunk", "ahhh")
+            user_to = requisicao_json.get("to", "bhhhhhh")
+            user_from = requisicao_json.get("from", "chhhh")
+            print(nome_chunk)
+            #Salva o nome do peer para atualização depois
+            peer_user = user_from
+
+            #Marca conexão ativa (+1)
+            update_score(peer_user,0,0,0,active_connections=1)
+            #input(f"[DEBUG] Verifique o JSON após AUMENTAR active_connections para {peer_user}. Pressione Enter para continuar...")
             
+
+            # ✅ Recarrega a cada request:
+            caminho_json_chunks = "arquivos_cadastrados/arquivos_tracker.json"
+            chunks_disponiveis = carregar_peers_com_chunks(caminho_json_chunks, meu_username)
+            #NOVO - Verificamos se existe umdiretório de chunks recebidos
+            caminho_arquivo = os.path.basename(os.path.dirname(nome_chunk))
+            caminho_recebidos = f"chunks_recebidos/{meu_username}/{caminho_arquivo}/{nome_chunk}"
+            tem_chunk_recebido = os.path.exists(caminho_recebidos)
+
+            print(f"Chunks disponiveis para {meu_username} transmitir são: {chunks_disponiveis}")
+            print(f"Existe no diretório de recebidos?: {'SIM' if tem_chunk_recebido else 'NÃO'}")
+
+            print("O JSON DE REQUISIÇÃO É: ")
+            print(requisicao_json, flush=True)
+            print(f"from user: {user_from}\n to_user: {user_to}\n nome_chunk:{nome_chunk}")
+
+
+            print(f"Chunks disponiveis para transmitir são: {chunks_disponiveis}")
+            print(f"Existe no diretório de recebidos?: {'SIM' if tem_chunk_recebido else 'NÃO'}")
+
+            # Verifica se o chunk está registrado NO JSON ou existe NO RECEBIDO
+            if nome_chunk in chunks_disponiveis or tem_chunk_recebido:
+                # Se existe no diretório de recebidos, atualiza o caminho para enviar
+                if tem_chunk_recebido:
+                    caminho = caminho_recebidos
+                else:
+                    caminho = f"arquivos_cadastrados/chunkscriados/{user_to}/{caminho_arquivo}/{nome_chunk}"
+                    print(f"O caminho na busca é: {caminho}")
+                if os.path.exists(caminho):
+                    # Calcula o checksum corretamente
+                    with open(caminho, 'rb') as f:
+                        dados_chunk = f.read()
+                    checksum = hashlib.sha256(dados_chunk).hexdigest()
+
+                    print(f"O nome do chunk é {nome_chunk}\n o checksum é {checksum}")
+
+                    # Prepara JSON com nome e checksum
+                    json_data = [{
+                        "nome": nome_chunk,
+                        "checksum": checksum
+                    }]
+                    print("JSON de peer foi gerado! Agora só falta enviar")
+                    json_str = json.dumps(json_data)
+                    json_bytes = json_str.encode()
+
+                    # Envia o tamanho e o JSON
+                    conn.send(len(json_bytes).to_bytes(4, byteorder='big'))
+                    conn.send(json_bytes)
+                    score_peer = get_score(peer_user)
+                    bandwidth_limit = calcular_bandwidth(score_peer)
+
+                    chunk_size = min(128 * 1024, len(dados_chunk))
+                    sleep_interval  = (chunk_size / bandwidth_limit)
+                    sleep_interval = max(0.5, min(sleep_interval, 1.5))
+                    print(f"It sleeps for: {sleep_interval} seconds")
+                    bytes_enviados = 0
+                    inicio = time.time()
+
+                    while bytes_enviados < len(dados_chunk):
+                        if conn.fileno() == -1:
+                            break
+                        parte = dados_chunk[bytes_enviados:bytes_enviados+chunk_size]
+                        print(f"Parte é: {parte}\n Enviando chunk a partir do offset: {bytes_enviados}\nlen_dados_chunk: {len(dados_chunk)}")
+                        conn.sendall(parte)
+                        bytes_enviados += len(parte)
+                        porcentagem = (bytes_enviados / len(dados_chunk)) * 100
+                        print(f"Bytes enviados atualizados: {bytes_enviados}/{len(dados_chunk)} ({porcentagem:.2f}%)")
+                        #print(f"It's sleeping for {sleep_interval:.2f} seconds...")
+                        time.sleep(sleep_interval)
+                        #print(f"It's sleeping for {sleep_interval}")
+                        #time.sleep(sleep_interval)
+                        #print("It has just slept")
+                    #fim = time.time()
+                    #tempo_transferencia = fim - inicio
+                    update_score(peer_user,
+                            bytes_sent=len(dados_chunk),
+                            successful_responses=1)
+                    print(f"[✓] Chunk '{nome_chunk}' enviado com throttling ({chunk_size} bytes por pacote, {bandwidth_limit} bytes/s).")
+                    salvar_transmissao(peer_user, nome_chunk, len(dados_chunk), time.time() - inicio)
+
+                    # Envia o chunk
+                    #conn.sendall(dados_chunk)
+
+                    print(f"[✓] Chunk '{nome_chunk}' enviado com sucesso.")
+
+                else:
+                    # Caso de erro:
+                    if not os.path.exists(caminho):
+                        conn.send(b"ERRO: Chunk nao encontrado.")
+                        conn.shutdown(socket.SHUT_WR)
+                        update_score(peer_user,
+                                    failed_transfers=1,
+                                    integrity_check=False)
+                        print("flamegoo")
+            else:
+                conn.send(b"ERRO: Chunk nao disponivel.")
+                conn.shutdown(socket.SHUT_WR)
+                update_score(peer_user,
+                    failed_transfers=1,
+                    integrity_check=False)
+                print("flame")
+
+        except Exception as e:
+            print(f"[Erro Chunk] {e}")
         finally:
+            #  Marca o final da conexão (-1) para o peer
+            if peer_user:
+                update_score(peer_user, 0, 0, 0, active_connections=-1)
+                #input(f"[DEBUG] Verifique o JSON após REDUZIR active_connections para {peer_user}. Pressione Enter para continuar...")
             conn.close()
 
     def server_loop():
@@ -119,7 +257,6 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
         while True:
             conn, addr = s.accept()
             threading.Thread(target=handle_chunk_request, args=(conn,), daemon=True).start()
-
     def handle_chunk_request(conn):
         def salvar_transmissao(peer_user, nome_chunk, tamanho, tempo):
             registro = {
@@ -142,23 +279,21 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
             requisicao = conn.recv(1024).decode()
             requisicao_json = json.loads(requisicao)
 
-            nome_chunk = requisicao_json.get("nome_chunk")
-            user_to = requisicao_json["to"]
-            user_from = requisicao_json["from"]
+            nome_chunk = requisicao_json.get("nome_chunk", "ahhh")
+            user_to = requisicao_json.get("nome_chunk", "bhhhhhh")
+            user_from = requisicao_json.get("nome_chunk", "chhhh")
 
             #Salva o nome do peer para atualização depois
             peer_user = user_from
 
             #Marca conexão ativa (+1)
             update_score(peer_user,0,0,0,active_connections=1)
-            input(f"[DEBUG] Verifique o JSON após AUMENTAR active_connections para {peer_user}. Pressione Enter para continuar...")
+            #input(f"[DEBUG] Verifique o JSON após AUMENTAR active_connections para {peer_user}. Pressione Enter para continuar...")
             
 
             # ✅ Recarrega a cada request:
             caminho_json_chunks = "arquivos_cadastrados/arquivos_tracker.json"
             chunks_disponiveis = carregar_peers_com_chunks(caminho_json_chunks, meu_username)
-            print(chunks_disponiveis)
-            print(nome_chunk)
             #NOVO - Verificamos se existe umdiretório de chunks recebidos
             caminho_arquivo = nome_chunk.split('.')[0]
             caminho_recebidos = f"chunks_recebidos/{meu_username}/{caminho_arquivo}/{nome_chunk}"
@@ -246,12 +381,14 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                     # Caso de erro:
                     if not os.path.exists(caminho):
                         conn.send(b"ERRO: Chunk nao encontrado.")
+                        conn.shutdown(socket.SHUT_WR)
                         update_score(peer_user,
                                     failed_transfers=1,
                                     integrity_check=False)
-                        print("flame")
+                        print("flamegoo")
             else:
                 conn.send(b"ERRO: Chunk nao disponivel.")
+                conn.shutdown(socket.SHUT_WR)
                 update_score(peer_user,
                     failed_transfers=1,
                     integrity_check=False)
@@ -263,7 +400,7 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
             #  Marca o final da conexão (-1) para o peer
             if peer_user:
                 update_score(peer_user, 0, 0, 0, active_connections=-1)
-                input(f"[DEBUG] Verifique o JSON após REDUZIR active_connections para {peer_user}. Pressione Enter para continuar...")
+                #input(f"[DEBUG] Verifique o JSON após REDUZIR active_connections para {peer_user}. Pressione Enter para continuar...")
             conn.close()
     #Inicia o servidor de chat
     threading.Thread(target=server_loop, daemon=True).start()
@@ -287,22 +424,7 @@ def calcular_bandwidth(score_peer, min_rate=10240 , max_rate=3*1024*1024, max_sc
     print(f"normalized: {normalized}\n bandwidth: {bandwidth}")
     return int(bandwidth)
 
-def p2p(user):
-    def timeconected():
-        dados_start_chat = {
-        "action":"get_ip",
-        "username": user
-        }
-        while True:
-            time.sleep(1)
-            resposta = send_to_tracker2(dados_start_chat)
-            peers_ip = resposta["mensagem"]             # Pega os ips, ports e usarios correspondentes
-            for peer_user, ip, port in peers_ip:
-                update_score(peer_user, 0, 1)
-                #print(f"[INFO] Score atualizado para {peer_user}. Verifique o arquivo JSON.")
-    threading.Thread(target=timeconected, daemon=True).start()
-
-    def send_to_tracker2(data) -> dict:
+def send_to_tracker2(data) -> dict:
         """
         Envia dados codificados em JSON para o tracker via socket TCP e aguarda uma resposta.
 
@@ -337,6 +459,36 @@ def p2p(user):
         except ConnectionRefusedError:
             print("Não foi possível iniciar o Tracker. ele já está ativo?")
             return {"status":"erro","mensagem":"Tracker não disponível."}
+
+def p2p(user):
+    def timeconected():
+        dados_start_chat = {
+        "action":"get_ip",
+        "username": user
+        }
+        while True:
+            time.sleep(1)
+            resposta = send_to_tracker2(dados_start_chat)
+            peers_ip = resposta["mensagem"]             # Pega os ips, ports e usarios correspondentes
+            for peer_user, ip, port in peers_ip:
+                update_score(peer_user, 0, 1)
+                #print(f"[INFO] Score atualizado para {peer_user}. Verifique o arquivo JSON.")
+    threading.Thread(target=timeconected, daemon=True).start()
+    while True:
+        score = get_score(user)
+        if score <= 30:
+            for i in range(1):
+                threading.Thread(target=pedir_chunks, args=(user,), daemon=True).start()
+        elif score < 80:
+            for i in range(4):
+                threading.Thread(target=pedir_chunks, args=(user,), daemon=True).start()
+        else:
+            for i in range(8):
+                threading.Thread(target=pedir_chunks, args=(user,), daemon=True).start()
+
+        time.sleep(1)
+
+def pedir_chunks(user):
     getip = {
         "action":"get_ip",
         "username": user
@@ -350,24 +502,6 @@ def p2p(user):
     peers_ip = resposta["mensagem"]             # Pega os ips, ports e usarios correspondentes
     resposta = send_to_tracker2(getfile)
     files_peer = resposta["mensagem"]
-    #print(files_peer)
-    #print(get_score(user))
-    while True:
-        score = get_score(user)
-        if score < 30:
-            for i in range(1):
-                threading.Thread(target=pedir_chunks, args=(user, files_peer, peers_ip,), daemon=True).start()
-        elif score < 80:
-            for i in range(4):
-                threading.Thread(target=pedir_chunks, args=(user, files_peer, peers_ip,), daemon=True).start()
-        else:
-            for i in range(8):
-                threading.Thread(target=pedir_chunks, args=(user, files_peer, peers_ip,), daemon=True).start()
-
-        time.sleep(5)
-        time.sleep(5)
-
-def pedir_chunks(user,files_peer, peers_ip):
     for file in arquivosdesejados:
         #print(f"\n🔎 Procurando peers com o arquivo: {file}")
         # Verifica quem tem esse arquivo entre os peers listados em files_peer
@@ -386,8 +520,8 @@ def pedir_chunks(user,files_peer, peers_ip):
                         nome_do_chunk, dados = escolher_chunk_compatível(user) # escolhe um chunk aleatorio que eu preciso
                         if nome_do_chunk:                   # Se eu for capaz de enviar
                             try: 
-                                print(f"[{users}] Enviando o pedido do chunk {os.path.basename(nome_do_chunk)} para {ip} : {port}")
-                                enviado = send_chunk(user, ip, port, nome_do_chunk, dados)# Vai enviar para esse ip pedindo um chunk aleatorio que eu preciso
+                                print(f"[{user}] Enviando o pedido do chunk {os.path.basename(nome_do_chunk)} para {ip} : {port}")
+                                enviado = send_chunk(user,users, ip, port, nome_do_chunk, dados)# Vai enviar para esse ip pedindo um chunk aleatorio que eu preciso
                                 if enviado:                     # Se foi enviado o pedido com sucesso
                                     successful_responses = 1
                                     bytes_sent = 1
@@ -395,20 +529,24 @@ def pedir_chunks(user,files_peer, peers_ip):
                                     print(user,"enviando para", users)
                                 else:
                                     bytes_sent = -5
+                                    print("nao deu kk")
                                     update_score(user, 0, 0, 0, failed_transfers=1)
                             except Exception as e:
                                 print(f"Não foi possível enviar o pedido para o peer {users}: {e}")
                         else:                               # mesmo qie nao tenha conseguido enviar vamos dar um incentivo a ele
                             break
 
-def send_chunk(user, ip, port, nome_chunk, dados):
+def send_chunk(user,users, ip, port, nome_chunk, dados):
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((ip, port))
         # Envia a requisição de chunk como JSON
         mensagem = {"enviando": nome_chunk,
-                   "dados"   :  dados,
-                   "sender"    : user
+                   #"dados"   :  dados,
+                   "sender"    : user,
+                   "to": users,
+                   "from": user,
+                   "nome_chunk": nome_chunk
                    }
         enviado = json.dumps(mensagem)
         s.sendall(enviado.encode())
@@ -421,8 +559,23 @@ def send_chunk(user, ip, port, nome_chunk, dados):
             if not chunk:
                 break
             buffer += chunk
-
+        print(buffer)
         mensagem = json.loads(buffer.decode())
+
+        #Primeiro ler os 4 bytes que indicam o tamanho do JSON
+        tamanho_json = int.from_bytes(s.recv(4),byteorder='big')
+        json_bytes = b''
+        while len(json_bytes) < tamanho_json:
+            parte = s.recv(tamanho_json - len(json_bytes))
+            if not parte:
+                break
+            json_bytes += parte
+        json_data = json.loads(json_bytes.decode())
+        # atualiza a pontuação daquele peer:
+        #new_score = update_score(peer_id, bytes_sent=0,
+        #                 time_connected=ttf,
+        #                 successful_responses=successful)
+        print("JSON recebido decodificado:", json_bytes.decode())
 
         s.close()
         return True
