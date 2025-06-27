@@ -136,14 +136,12 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
             caminho_arquivo = os.path.basename(os.path.dirname(nome_chunk))
             caminho_recebidos = f"chunks_recebidos/{meu_username}/{caminho_arquivo}/{nome_chunk}"
             tem_chunk_recebido = os.path.exists(caminho_recebidos)
-
+            print("oooooooo",tem_chunk_recebido)
             print(f"Chunks disponiveis para {meu_username} transmitir são: {chunks_disponiveis}")
             print(f"Existe no diretório de recebidos?: {'SIM' if tem_chunk_recebido else 'NÃO'}")
-
             print("O JSON DE REQUISIÇÃO É: ")
             print(requisicao_json, flush=True)
             print(f"from user: {user_from}\n to_user: {user_to}\n nome_chunk:{nome_chunk}")
-
 
             print(f"Chunks disponiveis para transmitir são: {chunks_disponiveis}")
             print(f"Existe no diretório de recebidos?: {'SIM' if tem_chunk_recebido else 'NÃO'}")
@@ -228,8 +226,6 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                 update_score(peer_user,
                     failed_transfers=1,
                     integrity_check=False)
-                print("flame")
-
         except Exception as e:
             print(f"[Erro Chunk] {e}")
         finally:
