@@ -160,9 +160,12 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
 
             print(f"Chunks disponiveis para transmitir são: {chunks_disponiveis}")
             print(f"Existe no diretório de recebidos?: {'SIM' if tem_chunk_recebido else 'NÃO'}")
-
+            temmesmo = False
             # Verifica se o chunk está registrado NO JSON ou existe NO RECEBIDO
-            if nome_chunk in chunks_disponiveis or tem_chunk_recebido:
+            for chunk in chunks_disponiveis:
+                if chunk in nome_chunk:
+                    temmesmo = True
+            if temmesmo or tem_chunk_recebido:
                 # Se existe no diretório de recebidos, atualiza o caminho para enviar
                 if tem_chunk_recebido:
                     caminho = caminho_recebidos
