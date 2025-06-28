@@ -152,7 +152,6 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
             ultima_parte = os.path.basename(nome_chunk)
             caminho_recebidos = f"chunks_recebidos/{meu_username}/{caminho_arquivo}/{ultima_parte}"
             tem_chunk_recebido = os.path.exists(caminho_recebidos)
-            print("oooooooo",tem_chunk_recebido)
             print(f"Chunks disponiveis para {meu_username} transmitir são: {chunks_disponiveis}")
             print(f"Existe no diretório de recebidos?: {'SIM' if tem_chunk_recebido else 'NÃO'}")
             print("O JSON DE REQUISIÇÃO É: ")
@@ -174,8 +173,6 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                     print(f"Match encontrado: {chunk} → {nome_base} dentro de {nome_chunk}")
                     temmesmo = True
 
-            print(temmesmo)
-
             if temmesmo or tem_chunk_recebido:
                 # Se existe no diretório de recebidos, atualiza o caminho para enviar
                 if tem_chunk_recebido:
@@ -184,62 +181,76 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                     caminho = f"arquivos_cadastrados/chunkscriados/{user_to}/{caminho_arquivo}/{ultima_parte}"
                     print(f"O caminho na busca é: {caminho}")
                 if os.path.exists(caminho):
-                    # Calcula o checksum corretamente
-                    with open(caminho, 'rb') as f:
-                        dados_chunk = f.read()
-                    checksum = hashlib.sha256(dados_chunk).hexdigest()
+                    score = get_score(user_from)
+                    if score <= 30:
+                        #não envia pq tem pouco score
+                        print("pobreeeeeeeeeeeeeeeeeeee")
+                        mensagem = {"recebido": nome_chunk,
+                                    "score": False
+                                }
+                        enviado = json.dumps(mensagem)
+                        conn.sendall(enviado.encode())
+                        conn.shutdown(socket.SHUT_WR)
+                    elif score > 30:    # envia com uma thread so # arrumar dps pra ser entre 31 e 80
+                        # Calcula o checksum corretamente
+                        print("RICOOOOOOOOOOOOOO")
+                        with open(caminho, 'rb') as f:
+                            dados_chunk = f.read()
+                        checksum = hashlib.sha256(dados_chunk).hexdigest()
 
-                    print(f"O nome do chunk é {nome_chunk}\n o checksum é {checksum}")
+                        print(f"O nome do chunk é {nome_chunk}\n o checksum é {checksum}")
 
-                    # Prepara JSON com nome e checksum
-                    json_data = [{
-                        "nome": nome_chunk,
-                        "checksum": checksum
-                    }]
-                    print("JSON de peer foi gerado! Agora só falta enviar")
-                    json_str = json.dumps(json_data)
-                    json_bytes = json_str.encode()
+                        # Prepara JSON com nome e checksum
+                        json_data = [{
+                            "nome": nome_chunk,
+                            "checksum": checksum
+                        }]
+                        print("JSON de peer foi gerado! Agora só falta enviar")
+                        json_str = json.dumps(json_data)
+                        json_bytes = json_str.encode()
 
-                    # Envia o tamanho e o JSON
-                    conn.send(len(json_bytes).to_bytes(4, byteorder='big'))
-                    conn.send(json_bytes)
-                    score_peer = get_score(peer_user)
-                    bandwidth_limit = calcular_bandwidth(score_peer)
+                        # Envia o tamanho e o JSON
+                        conn.send(len(json_bytes).to_bytes(4, byteorder='big'))
+                        conn.send(json_bytes)
+                        score_peer = get_score(peer_user)
+                        bandwidth_limit = calcular_bandwidth(score_peer)
 
-                    chunk_size = min(128 * 1024, len(dados_chunk))
-                    sleep_interval  = (chunk_size / bandwidth_limit)
-                    sleep_interval = max(0.5, min(sleep_interval, 1.5))
-                    print(f"It sleeps for: {sleep_interval} seconds")
-                    bytes_enviados = 0
-                    inicio = time.time()
+                        chunk_size = min(128 * 1024, len(dados_chunk))
+                        sleep_interval  = (chunk_size / bandwidth_limit)
+                        sleep_interval = max(0.5, min(sleep_interval, 1.5))
+                        print(f"It sleeps for: {sleep_interval} seconds")
+                        bytes_enviados = 0
+                        inicio = time.time()
 
-                    while bytes_enviados < len(dados_chunk):
-                        if conn.fileno() == -1:
-                            break
-                        parte = dados_chunk[bytes_enviados:bytes_enviados+chunk_size]
-                        print(f"Parte é: {parte}\n Enviando chunk a partir do offset: {bytes_enviados}\nlen_dados_chunk: {len(dados_chunk)}")
-                        conn.sendall(parte)
-                        bytes_enviados += len(parte)
-                        porcentagem = (bytes_enviados / len(dados_chunk)) * 100
-                        print(f"Bytes enviados atualizados: {bytes_enviados}/{len(dados_chunk)} ({porcentagem:.2f}%)")
-                        #print(f"It's sleeping for {sleep_interval:.2f} seconds...")
-                        time.sleep(sleep_interval)
-                        #print(f"It's sleeping for {sleep_interval}")
-                        #time.sleep(sleep_interval)
-                        #print("It has just slept")
-                    #fim = time.time()
-                    #tempo_transferencia = fim - inicio
-                    update_score(peer_user,
-                            bytes_sent=len(dados_chunk),
-                            successful_responses=1)
-                    print(f"[✓] Chunk '{nome_chunk}' enviado com throttling ({chunk_size} bytes por pacote, {bandwidth_limit} bytes/s).")
-                    salvar_transmissao(peer_user, nome_chunk, len(dados_chunk), time.time() - inicio)
+                        while bytes_enviados < len(dados_chunk):
+                            if conn.fileno() == -1:
+                                break
+                            parte = dados_chunk[bytes_enviados:bytes_enviados+chunk_size]
+                            print(f"Parte é: {parte}\n Enviando chunk a partir do offset: {bytes_enviados}\nlen_dados_chunk: {len(dados_chunk)}")
+                            conn.sendall(parte)
+                            bytes_enviados += len(parte)
+                            porcentagem = (bytes_enviados / len(dados_chunk)) * 100
+                            print(f"Bytes enviados atualizados: {bytes_enviados}/{len(dados_chunk)} ({porcentagem:.2f}%)")
+                            #print(f"It's sleeping for {sleep_interval:.2f} seconds...")
+                            time.sleep(sleep_interval)
+                            #print(f"It's sleeping for {sleep_interval}")
+                            #time.sleep(sleep_interval)
+                            #print("It has just slept")
+                        #fim = time.time()
+                        #tempo_transferencia = fim - inicio
+                        update_score(peer_user,
+                                bytes_sent=len(dados_chunk),
+                                successful_responses=1)
+                        print(f"[✓] Chunk '{nome_chunk}' enviado com throttling ({chunk_size} bytes por pacote, {bandwidth_limit} bytes/s).")
+                        salvar_transmissao(peer_user, nome_chunk, len(dados_chunk), time.time() - inicio)
 
-                    # Envia o chunk
-                    #conn.sendall(dados_chunk)
+                        # Envia o chunk
+                        #conn.sendall(dados_chunk)
 
-                    print(f"[✓] Chunk '{nome_chunk}' enviado com sucesso.")
-
+                        print(f"[✓] Chunk '{nome_chunk}' enviado com sucesso.")
+                    else:
+                        print("TRALALELRO TARLALALA")
+                        pass    # abre 4 threads pra devolver
                 else:
                     # Caso de erro:
                     if not os.path.exists(caminho):
@@ -601,7 +612,25 @@ def send_chunk(user,users, ip, port, nome_chunk, dados):
         #                 time_connected=ttf,
         #                 successful_responses=successful)
         print("nNNNNNNNIIIIIIICEEEEEEEE")
+        json_info = json_data[0]
+        nome_chunk = json_info['nome']
+        checksum_esperado = json_info['checksum']
 
+        #Lê o chunk e armazena em memória temporariamente
+        dados_recebidos = b''
+        #Lendo o Chunk
+        config = get_peer_priority(users, scoreboard)
+        while True:
+            dados = s.recv(config["largura_banda"])
+            if not dados:
+                break
+            dados_recebidos += dados
+            #print("Recebendo chunk...")
+
+        #Calcula o Hash e verifica o checksum
+        #print(dados_recebidos)
+        checksum_recebido = hashlib.sha256(dados_recebidos).hexdigest()
+        nome_diretorio = nome_chunk.split('.')[0]
         s.close()
         return True
     except Exception as e:
