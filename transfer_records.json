@@ -2149,5 +2149,23 @@
         "transfer_time": 122.96994161605835,
         "checksum_match": true,
         "bytes_transferred": 229440
+    },
+    {
+        "timestamp": "2025-06-28 15:13:22",
+        "from_user": "A",
+        "to_user": "F",
+        "chunk_name": "TransferOne.part0",
+        "transfer_time": 6.276509046554565,
+        "checksum_match": true,
+        "bytes_transferred": 497222
+    },
+    {
+        "timestamp": "2025-06-28 15:13:24",
+        "from_user": "A",
+        "to_user": "F",
+        "chunk_name": "TransferOne.part1",
+        "transfer_time": 8.534845113754272,
+        "checksum_match": true,
+        "bytes_transferred": 512680
     }
 ]

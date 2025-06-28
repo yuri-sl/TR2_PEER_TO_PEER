@@ -76,12 +76,6 @@ def calcularPeersOnline(usuario_logado):
     resposta = send_to_tracker(dados)
     print(resposta)
 
-def requisitar_atualizacao_detentores_online():
-    dados = {
-        "action":update_online_owners
-    }
-
-
 
 
 def baixar_chunks_em_paralelo(peer_ip, peer_port, usuario_logado, peer_user, chunks):
@@ -495,15 +489,29 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk, inicio_download=
         print(f"\n Requisição enviada para {to_user} ({host}:{port})✅\n")
         # Recebe os dados do chunk e grava no disco
 
-        #Primeiro ler os 4 bytes que indicam o tamanho do JSON
-        tamanho_json = int.from_bytes(s.recv(4),byteorder='big')
+        # Lê os primeiros 4 bytes que indicam o tamanho do JSON
+        tamanho_bytes = s.recv(4)
+        if len(tamanho_bytes) < 4:
+            print("[ERRO] Não foi possível ler os 4 bytes do tamanho do JSON.")
+            return False
+
+        tamanho_json = int.from_bytes(tamanho_bytes, byteorder='big')
+        print(f"📦 Esperado tamanho do JSON: {tamanho_json} bytes")
+
         json_bytes = b''
         while len(json_bytes) < tamanho_json:
             parte = s.recv(tamanho_json - len(json_bytes))
             if not parte:
-                break
+                print("[ERRO] Conexão encerrada antes de receber o JSON completo.")
+                return False
             json_bytes += parte
-        json_data = json.loads(json_bytes.decode())
+
+        try:
+            json_data = json.loads(json_bytes.decode())
+        except json.JSONDecodeError as e:
+            print(f"[ERRO] Erro ao decodificar JSON recebido: {e}")
+            print(f"Conteúdo bruto recebido: {json_bytes}")
+            return False
         # atualiza a pontuação daquele peer:
         #new_score = update_score(peer_id, bytes_sent=0,
         #                 time_connected=ttf,
@@ -580,32 +588,6 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk, inicio_download=
     finally:
         remover_conexao(to_user)
         s.close()                
-
-ignore = '''
-            os.makedirs("reports", exist_ok=True)
-            with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
-                timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                report_file.write(f"[{timestamp}]  Chunk '{nome_chunk}' recebido de {to_user}. Checksum OK. ✅\n")
-                report_file.write(f"⏱ Tempo total de download do chunk: {tempo_total:.2f} segundos.\n")
-
-        else:
-            print(f"\n❌ Erro: Checksum inválido para o chunk '{nome_chunk}'!")
-            print(f"Esperado: {checksum_esperado}")
-            print(f"Recebido: {checksum_recebido}")
-
-            # Report de falha
-            os.makedirs("reports", exist_ok=True)
-            with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
-                timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                report_file.write(f"[{timestamp}] ❌ ERRO no chunk '{nome_chunk}' de {to_user}.Esperado:{checksum_esperado}. Recebido: {checksum_recebido} Checksum inválido.\n")
-            
-            raise ValueError("Checksum não confere. Chunk corrompido.")
-    except Exception as e:
-        print(f"❌ Erro ao requisitar chunk: {e}")
-    finally:
-        remover_conexao(to_user)
-        s.close()
-'''
 
 def launch_tracker_cross_platform() -> None:
     """
@@ -1126,63 +1108,67 @@ def interactiveMenu_1() -> bool:
                                         escolha = int(input("Digite o número do arquivo que deseja selecionar: "))
                                         if 0 <= escolha < len(arquivos):
                                             nome_escolhido = arquivos[escolha]
-                                            print(f"\nVocê escolheu o arquivo: {nome_escolhido}")
+                                            nome_arquivo_sem_extensao = os.path.splitext(nome_escolhido)[0]
+                                            print(f"\nVocê escolheu o arquivo: {nome_arquivo_sem_extensao}")
                                             inicio_download = time.time()
 
-                                            # Após escolha do arquivo...
-                                            chunks = listar_chunks_do_arquivo(dados, nome_escolhido)
-
-                                            if not chunks:
-                                                print("Nenhum chunk disponível para esse arquivo.")
-                                            else:
-                                                print("Chunks disponíveis para este arquivo:")
-                                                # Se chunks forem strings:
+                                            dados_chunk_map = {
+                                                "action":"get_chunk_owners_online",
+                                                "arquivo":nome_arquivo_sem_extensao,
+                                                "username":usuario_logado
+                                            }
+                                            resposta_chunks = send_to_tracker(dados_chunk_map)
+                                            print(f"A resposta_chunks é {resposta_chunks}")
+                                            if resposta_chunks.get("status") == "ok":
+                                                chunk_map = resposta_chunks["chunks"]
                                                 total_chunks_sum = 0
-                                                if isinstance(chunks[0], str):
-                                                    threads = []
-                                                    for idx, chunk_nome in enumerate(chunks):
-                                                        print("É string")
-                                                        print(f"[{idx}] - {chunk_nome}")
-                                                        print(f"OS CHUNKS SÃO {chunks}")
-                                                        total_chunks_sum += len(chunk_nome)
-                                                        print(f"Baixando chunk [{idx}]: {chunk_nome}")
-                                                        requisitar_chunk(peer_ip,peer_port,usuario_logado,user,chunk_nome,inicio_download)
-                                                        #cria e inicia uma thread para baixar esse chunk
-                                                        #thread = threading.Thread(target=requisitar_chunk,
-                                                        #                        args=(peer_ip,peer_port,usuario_logado,user,chunk_nome)
-                                                        #                        )
-                                                        #threads.append(thread)
-                                                        #thread.start()
-                                                    print("✅ Todos os chunks foram requisitados e baixados.")
-                                                    integridade = True
-                                                    adicionar_dono_chunk("arquivos_cadastrados/arquivos_tracker.json", nome_escolhido, usuario_logado)
-                                                    with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
-                                                        fim_download = time.time()
-                                                        tempo_total = fim_download - inicio_download
-                                                        report_file.write(f"⏱ Tempo total de download de TODOS os chunks: {tempo_total:.2f} segundos.\n")
-                                                        #add_transfer_time(user, tempo_total)
-                                                        add_transfer_record(usuario_logado,tempo_total,total_chunks_sum,integridade)
+                                                integridade = True
 
-                                                        
+                                                for chunk_nome, donos in chunk_map.items():
+                                                    # Escolhe um peer online (pode usar random ou round-robin futuramente)
+                                                    chunk_baixado = False
+                                                    for peer_dono in donos:
+                                                        if peer_dono == usuario_logado:
+                                                            continue
+                                                        dados_peer_info = {
+                                                            "action":"get_peer_info_chunk",
+                                                            "username":peer_dono
+                                                        }
+                                                        resposta_info = send_to_tracker(dados_peer_info)
 
+                                                        if resposta_info.get("status") == "ok":
+                                                            ip = resposta_info["mensagem"]["ip"]
+                                                            port = resposta_info["mensagem"]["port"]
 
+                                                            print(f"Tentando baixar {chunk_nome} de {peer_dono} ({ip}:{port})")
+                                                            sucesso = requisitar_chunk(ip,port,usuario_logado,peer_dono,chunk_nome,inicio_download)
+                                                            print("o código executou até depois de sucesso")
 
-                                                        #arquivo_chunk_buscado = {chunk['checksum']}
-                                                        #requisitar_chunk(peer_ip,peer_port,usuario_logado,user,chunk_nome)
-                                                # Se chunks forem dicionários:
-                                                #else:
-                                                #    for idx, chunk in enumerate(chunks):
-                                                #        print("É Dictionary")
-                                                #        print(f"[{idx}] - {chunk['nome']} (checksum: {chunk.get('checksum', 'N/A')})")
-                                                #        print({chunk['nome']})
-                                                #        print({chunk['checksum']})
-                                                #        arquivo_chunk_buscado = {chunk['checksum']}
-                                                #        requisitar_chunk(peer_ip,peer_port,usuario_logado,user,arquivo_chunk_buscado)
+                                                            if sucesso:
+                                                                total_chunks_sum+=2
+                                                                chunk_baixado = True
+                                                                break
+                                                        else:
+                                                            print(f"Não foi possível obter o IP/porta do {peer_dono}")
+                                                    if not chunk_baixado:
+                                                        print(f"Falha ao baixar o chunk: {chunk_nome}. Nenhum dos peers respondeu ao pedido")
+                                                        integridade = False
+
+                                                print("✅ Todos os chunks foram requisitados e baixados.")
+                                                adicionar_dono_chunk("arquivos_cadastrados/arquivos_tracker.json", nome_escolhido, usuario_logado)
+
+                                                #Registro Tempo de Download
+                                                fim_download = time.time()
+                                                tempo_total = fim_download - inicio_download
+
+                                                with open("reports/transfer_report.txt","a",encoding='utf-8') as report_file:
+                                                    report_file.write(f"⏱ Tempo total de download de TODOS os chunks de {nome_escolhido}: {tempo_total:.2f} segundos.\n")
+                                                
+                                                add_transfer_record(usuario_logado,tempo_total,total_chunks_sum,integridade)
+                                            else:
+                                                    print("⚠️ Não foi possível obter os chunks do arquivo do tracker.")
                                     except ValueError:
                                         print("Entrada inválida. Digite um número.")
-
-                                #requisitar_chunk(peer_ip,peer_port,usuario_logado,user,texto)
-                #chunks_disponiveis = carregar_peers_com_chunks(caminho_json_chunks, meu_username)
                 input("Pressione Enter para continuar")
                 os.system('cls||clear')
         elif operation == "13":

@@ -402,7 +402,39 @@ def protocolos_restritos(mensagem, client_socket) -> None:
         client_socket.sendall(json.dumps(resposta).encode())
     #elif mensagem['action'] == "update_online_owners":
     #    try:
+    elif mensagem['action'] == "get_chunk_owners_online":
+            nome_arquivo = mensagem.get("arquivo")
+            solicitante = mensagem.get("username")
+            chunks_info = {}
+            path_base = "arquivos_cadastrados/chunkscriados"
 
+            try:
+                with open("usuarios_online.json", "r") as f:
+                    online_users = set(json.load(f))
+
+                for usuario in os.listdir(path_base):
+                    if not os.path.isdir(os.path.join(path_base, usuario)):
+                        continue
+
+                    json_path = os.path.join(path_base, usuario, nome_arquivo, f"{nome_arquivo}.json")
+                    if not os.path.exists(json_path):
+                        continue
+
+                    with open(json_path, "r") as f:
+                        chunks = json.load(f)
+                        for chunk in chunks:
+                            nome = chunk["nome"]
+                            donos = chunk.get("detentores_chunk", [])
+                            donos_online = [d for d in donos if d in online_users]
+                            if donos_online:
+                                chunks_info[nome] = donos_online
+
+                resposta = {"status": "ok", "chunks": chunks_info}
+
+            except Exception as e:
+                resposta = {"status": "erro", "mensagem": str(e)}
+
+            client_socket.sendall(json.dumps(resposta).encode())
 
 
     else:

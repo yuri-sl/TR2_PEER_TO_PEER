@@ -28,12 +28,11 @@
         "chunks_path": "arquivos_cadastrados/chunkscriados/F/TransferOne",
         "chunks": [
             "TransferOne.part0",
-            "TransferOne.part1",
-            "TransferOne.part2",
-            "TransferOne.part3"
+            "TransferOne.part1"
         ],
         "donos": [
-            "F"
+            "F",
+            "A"
         ]
     }
 }
