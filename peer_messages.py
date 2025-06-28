@@ -68,8 +68,7 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
         print(f"OS CHUNKS REGISTRADOS EM MEU USER SÃO:{chunks_do_usuario}")
         return chunks_do_usuario
     def handle_connection(conn, addr):
-        try:
-            print("bolllllaaaaaaaaaaaaaaaaaaaaaaaaa")
+        """try:
             buffer = b""
             while True:
                 chunk = conn.recv(4096)
@@ -83,14 +82,11 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                 print(f"   {mensagem['message']} ({mensagem['timestamp']})\n")
             except:
                 print(f"chunk recebido {mensagem['enviando']}:")
-        except:
-            print("BOmba clat")
-            """
                 ARQUIVO_JSON = "chunks_trocados.json"
                 sender = mensagem["sender"]
                 nome_arquivo = mensagem["enviando"]
                 dados = mensagem["dados"].encode()
-
+                print("ao menos isso")
                 # Tenta carregar o JSON existente
                 if os.path.exists(ARQUIVO_JSON):
                     with open(ARQUIVO_JSON, "r", encoding="utf-8") as f:
@@ -113,7 +109,9 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                 with open(ARQUIVO_JSON, "w", encoding="utf-8") as f:
                     json.dump(dados_existentes, f, indent=4, ensure_ascii=False)
 
-                print(f"[✓] Chunk '{mensagem['enviando']}' salvo/atualizado em '{ARQUIVO_JSON}'")"""
+                print(f"[✓] Chunk '{mensagem['enviando']}' salvo/atualizado em '{ARQUIVO_JSON}'")
+        except:
+            print("Tudo errado")"""
         def salvar_transmissao(peer_user, nome_chunk, tamanho, tempo):
             registro = {
                 "peer_user": peer_user,
