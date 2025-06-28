@@ -68,7 +68,8 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
         print(f"OS CHUNKS REGISTRADOS EM MEU USER SÃO:{chunks_do_usuario}")
         return chunks_do_usuario
     def handle_connection(conn, addr):
-        """try:
+        try:
+            print("bolllllaaaaaaaaaaaaaaaaaaaaaaaaa")
             buffer = b""
             while True:
                 chunk = conn.recv(4096)
@@ -81,7 +82,10 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                 print(f"\n📩 Nova mensagem de {mensagem['from']}:")
                 print(f"   {mensagem['message']} ({mensagem['timestamp']})\n")
             except:
-                #print(f"chunk recebido {mensagem['enviando']}:")
+                print(f"chunk recebido {mensagem['enviando']}:")
+        except:
+            print("BOmba clat")
+            """
                 ARQUIVO_JSON = "chunks_trocados.json"
                 sender = mensagem["sender"]
                 nome_arquivo = mensagem["enviando"]
@@ -589,48 +593,15 @@ def send_chunk(user,users, ip, port, nome_chunk, dados):
         s.shutdown(socket.SHUT_WR)
         #print(f"[✓] Chunk '{nome_chunk}' enviado com sucesso")
         # Recebe os dados do chunk
-        buffer = b""
+        """        buffer = b""
         while True:
             chunk = s.recv(4096)
             if not chunk:
                 break
             buffer += chunk
         print(buffer)
-        mensagem = json.loads(buffer.decode())
+        mensagem = json.loads(buffer.decode())"""
 
-        #Primeiro ler os 4 bytes que indicam o tamanho do JSON
-        tamanho_json = int.from_bytes(s.recv(4),byteorder='big')
-        json_bytes = b''
-        while len(json_bytes) < tamanho_json:
-            parte = s.recv(tamanho_json - len(json_bytes))
-            if not parte:
-                break
-            json_bytes += parte
-        json_data = json.loads(json_bytes.decode())
-        # atualiza a pontuação daquele peer:
-        #new_score = update_score(peer_id, bytes_sent=0,
-        #                 time_connected=ttf,
-        #                 successful_responses=successful)
-        print("nNNNNNNNIIIIIIICEEEEEEEE")
-        json_info = json_data[0]
-        nome_chunk = json_info['nome']
-        checksum_esperado = json_info['checksum']
-
-        #Lê o chunk e armazena em memória temporariamente
-        dados_recebidos = b''
-        #Lendo o Chunk
-        config = get_peer_priority(users, scoreboard)
-        while True:
-            dados = s.recv(config["largura_banda"])
-            if not dados:
-                break
-            dados_recebidos += dados
-            #print("Recebendo chunk...")
-
-        #Calcula o Hash e verifica o checksum
-        #print(dados_recebidos)
-        checksum_recebido = hashlib.sha256(dados_recebidos).hexdigest()
-        nome_diretorio = nome_chunk.split('.')[0]
         s.close()
         return True
     except Exception as e:
