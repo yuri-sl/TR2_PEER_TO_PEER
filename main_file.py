@@ -66,6 +66,11 @@ def listarUsuariosAtivos(usuario_logado):
             print(f" - {peer}")
     return portAssociationCon
 
+def get_bytes_score(peer_user):
+    with open("scoreboard.json", "r") as f:
+        scores = json.load(f)
+    return scores.get(peer_user, {}).get("bytes_sent", 0)
+
 def calcularPeersOnline(usuario_logado):
     peers_bleach_brave_souls = listarUsuariosAtivos(usuario_logado)
     dados = {
@@ -1126,8 +1131,12 @@ def interactiveMenu_1() -> bool:
 
                                                 for chunk_nome, donos in chunk_map.items():
                                                     # Escolhe um peer online (pode usar random ou round-robin futuramente)
+                                                    donos_ordenados = sorted(donos,key=lambda peer:get_bytes_score(peer),reverse=True)
+                                                    print(f"Ordem de tentativa para {chunk_nome}: {donos_ordenados}")
+
+
                                                     chunk_baixado = False
-                                                    for peer_dono in donos:
+                                                    for peer_dono in donos_ordenados:
                                                         if peer_dono == usuario_logado:
                                                             continue
                                                         dados_peer_info = {
