@@ -42,7 +42,7 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
 
         with open(caminho_json, 'r', encoding='utf-8') as f:
             dados = json.load(f)
-            print("DADOS CARREGADOS DO JSON")
+            #print("DADOS CARREGADOS DO JSON")
 
         chunks_do_usuario = []
         for info_arquivo in dados.values():
@@ -113,14 +113,14 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
             peer_user = None
 
         try:
-            print("Request chegou!", flush=True)
+            #print("Request chegou!", flush=True)
             requisicao = conn.recv(1024).decode()
             requisicao_json = json.loads(requisicao)
-            print(requisicao)
+            #print(requisicao)
             nome_chunk = requisicao_json.get("nome_chunk", "ahhh")
             user_to = requisicao_json.get("to", "bhhhhhh")
             user_from = requisicao_json.get("from", "chhhh")
-            print(nome_chunk)
+            #print(nome_chunk)
             #Salva o nome do peer para atualização depois
             peer_user = user_from
 
@@ -227,7 +227,8 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                     failed_transfers=1,
                     integrity_check=False)
         except Exception as e:
-            print(f"[Erro Chunk] {e}")
+            #print(f"[Erro Chunk] {e}")
+            return
         finally:
             #  Marca o final da conexão (-1) para o peer
             if peer_user:
@@ -391,7 +392,8 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                 print("flame")
 
         except Exception as e:
-            print(f"[Erro Chunk] {e}")
+            #print(f"[Erro Chunk] {e}")
+            return
         finally:
             #  Marca o final da conexão (-1) para o peer
             if peer_user:
@@ -513,25 +515,26 @@ def pedir_chunks(user):
                 
                 for users, ip, port in peers_ip:            # envia para todos os peers
                     if users != user:
-                        print(f"The users is {users} and the user is: {user}")
-                        print("Therefore we're both different from each other!")
+                        #print(f"The users is {users} and the user is: {user}")
+                        #print("Therefore we're both different from each other!")
                         nome_do_chunk, dados = escolher_chunk_compatível(user)
                         basename_chunk = os.path.basename(nome_do_chunk)
                         if basename_chunk:                   # Se eu for capaz de enviar
                             try: 
-                                print(f"[{user}] Enviando o pedido do chunk {os.path.basename(basename_chunk)} para {ip} : {port}")
+                                #print(f"[{user}] Enviando o pedido do chunk {os.path.basename(basename_chunk)} para {ip} : {port}")
                                 enviado = send_chunk(user,users, ip, port, basename_chunk, dados)# Vai enviar para esse ip pedindo um chunk aleatorio que eu preciso
                                 if enviado:                     # Se foi enviado o pedido com sucesso
                                     successful_responses = 1
                                     bytes_sent = 1
                                     update_score(user, bytes_sent, 0, successful_responses)
-                                    print(user,"enviando para", users)
+                                    #print(user,"enviando para", users)
                                 else:
                                     bytes_sent = -5
-                                    print("nao deu kk")
+                                    #print("nao deu kk")
                                     update_score(user, 0, 0, 0, failed_transfers=1)
                             except Exception as e:
-                                print(f"Não foi possível enviar o pedido para o peer {users}: {e}")
+                                #rint(f"Não foi possível enviar o pedido para o peer {users}: {e}")
+                                return
                         else:                               # mesmo qie nao tenha conseguido enviar vamos dar um incentivo a ele
                             break
 
@@ -558,7 +561,7 @@ def send_chunk(user,users, ip, port, nome_chunk, dados):
             if not chunk:
                 break
             buffer += chunk
-        print(buffer)
+        #print(buffer)
         resposta_raw = buffer.decode().strip()
 
         if resposta_raw.startswith("ERRO"):
@@ -585,7 +588,7 @@ def send_chunk(user,users, ip, port, nome_chunk, dados):
         s.close()
         return True
     except Exception as e:
-        print(f"[Erro ao enviar pedir pedaços] {e}")
+        #print(f"[Erro ao enviar pedir pedaços] {e}")
         return False
 
 

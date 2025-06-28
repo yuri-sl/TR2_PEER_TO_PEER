@@ -476,7 +476,7 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk, inicio_download=
 
     adicionar_conexao(to_user)
     print("Json gerado!")
-    print(pedidos)
+    #print(pedidos)
     print(f"A porta do host é: {port}")
     try:
         #inicio_download = time.time()

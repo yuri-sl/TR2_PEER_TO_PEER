@@ -6,6 +6,10 @@
         "checksum": "bbe079495d2144ec74f4fcaa9e0140b3f5dd173319b54742c5359d84f3885608",
         "detentores_chunk": [
             "A"
-        ]
+        ],
+        "detentores_online": [
+            "A"
+        ],
+        "quantidade_detentores_online": 1
     }
 ]

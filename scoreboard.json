@@ -1,22 +1,22 @@
 {
-    "A": {
-        "bytes_sent": 0,
-        "time_connected": 69,
-        "successful_responses": 0,
-        "failed_transfers": 276,
-        "transfer_times": [],
-        "integrity_checks": {},
-        "active_connections": 0,
-        "score": -246
-    },
-    "F": {
-        "bytes_sent": 0,
-        "time_connected": 276,
-        "successful_responses": 0,
-        "failed_transfers": 0,
-        "transfer_times": [],
-        "integrity_checks": {},
-        "active_connections": 0,
-        "score": 30
-    }
+  "F": {
+    "bytes_sent": 0,
+    "time_connected": 52,
+    "successful_responses": 0,
+    "failed_transfers": 51,
+    "transfer_times": [],
+    "integrity_checks": {},
+    "active_connections": 0,
+    "score": 1
+  },
+  "A": {
+    "bytes_sent": 0,
+    "time_connected": 356,
+    "successful_responses": 0,
+    "failed_transfers": 0,
+    "transfer_times": [],
+    "integrity_checks": {},
+    "active_connections": 0,
+    "score": 30
+  }
 }

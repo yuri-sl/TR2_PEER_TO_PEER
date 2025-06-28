@@ -470,27 +470,78 @@ def handle_clients(client_socket, addr) -> None:
 ##            else:
  #               s[u] += 1                                           # Incrementa contador de tempo
  #               print(f"{u,s[u]}")                                  # Retirar depois
+def atualizar_detentores_online_em_todos(active_peers):
+    print("🔧 Iniciando atualização de detentores_online...")
+    path_base = "arquivos_cadastrados/chunkscriados"
+
+    try:
+        with open("usuarios_online.json", "r") as f:
+            usuarios_online = set(json.load(f))
+            print("Carregados usuarios online")
+    except Exception as e:
+        print(f"❌ Erro ao carregar usuarios_online.json: {e}")
+        return
+
+    for usuario in os.listdir(path_base):
+
+        if usuario not in active_peers:
+            continue
+
+
+        caminho_usuario = path_base+"/"+usuario
+        if not os.path.isdir(caminho_usuario):
+            continue
+        print("O caminho do usuário é "+caminho_usuario)
+
+
+        for nome_pasta in os.listdir(caminho_usuario):
+            caminho_subpasta = caminho_usuario + "/" + nome_pasta
+            for nome_arquivo in os.listdir(caminho_subpasta):
+                if not nome_arquivo.endswith(".json"):
+                    continue
+                caminho_json = os.path.join(caminho_subpasta, nome_arquivo)
+                try:
+                    print(f"Tentou ler o nome do arquivo{caminho_json}")
+                    with open(caminho_json, "r") as f:
+                        chunks_info = json.load(f)
+                        print(chunks_info)
+                    print(f"A leitura do caminho_json está sendo feita: {caminho_json}")
+
+                    for chunk in chunks_info:
+                        detentores = chunk.get("detentores_chunk", [])
+                        chunk["detentores_online"] = [p for p in detentores if p in usuarios_online]
+                        chunk["quantidade_detentores_online"] = len(chunk["detentores_online"])
+
+                    with open(caminho_json, "w") as f:
+                        json.dump(chunks_info, f, indent=4)
+
+                    print(f"🔄 Atualizado detentores_online: {caminho_json}")
+
+                except Exception as e:
+                    print(f"❌ Erro ao processar {caminho_json}: {e}")
 
 def heartbeat(s: dict) -> None:
     while True:
         time.sleep(1)
         usuarios_online = []
+        print("Heartbeat funcionando!")
 
         for u in list(s.keys()):
-            if s[u] >= 15:  # 15s de timeout
+            if s[u] >= 15:
                 print(f"⏹️ Removendo {u} por inatividade")
                 s.pop(u, None)
             else:
                 s[u] += 1
                 usuarios_online.append(u)
 
-        # Salva os usuários online atualizados
         try:
             with open("usuarios_online.json", "w") as f:
                 json.dump(sorted(usuarios_online), f, indent=4)
         except Exception as e:
             print(f"Erro ao salvar usuarios_online.json: {e}")
 
+        # 🔁 Atualiza arquivos de chunk com base nos online atuais
+        atualizar_detentores_online_em_todos(usuarios_online)
 
 
 def start_tracker() -> None:                                        # Inicia o server
