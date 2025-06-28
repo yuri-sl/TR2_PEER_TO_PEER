@@ -513,11 +513,14 @@ def pedir_chunks(user):
                 
                 for users, ip, port in peers_ip:            # envia para todos os peers
                     if users != user:
-                        nome_do_chunk, dados = escolher_chunk_compatível(user) # escolhe um chunk aleatorio que eu preciso
-                        if nome_do_chunk:                   # Se eu for capaz de enviar
+                        print(f"The users is {users} and the user is: {user}")
+                        print("Therefore we're both different from each other!")
+                        nome_do_chunk, dados = escolher_chunk_compatível(user)
+                        basename_chunk = os.path.basename(nome_do_chunk)
+                        if basename_chunk:                   # Se eu for capaz de enviar
                             try: 
-                                print(f"[{user}] Enviando o pedido do chunk {os.path.basename(nome_do_chunk)} para {ip} : {port}")
-                                enviado = send_chunk(user,users, ip, port, nome_do_chunk, dados)# Vai enviar para esse ip pedindo um chunk aleatorio que eu preciso
+                                print(f"[{user}] Enviando o pedido do chunk {os.path.basename(basename_chunk)} para {ip} : {port}")
+                                enviado = send_chunk(user,users, ip, port, basename_chunk, dados)# Vai enviar para esse ip pedindo um chunk aleatorio que eu preciso
                                 if enviado:                     # Se foi enviado o pedido com sucesso
                                     successful_responses = 1
                                     bytes_sent = 1
@@ -556,7 +559,13 @@ def send_chunk(user,users, ip, port, nome_chunk, dados):
                 break
             buffer += chunk
         print(buffer)
-        mensagem = json.loads(buffer.decode())
+        resposta_raw = buffer.decode().strip()
+
+        if resposta_raw.startswith("ERRO"):
+            print(f"[Erro recebido do servidor]: {resposta_raw}")
+            return False
+
+        mensagem = json.loads(resposta_raw)
 
         #Primeiro ler os 4 bytes que indicam o tamanho do JSON
         tamanho_json = int.from_bytes(s.recv(4),byteorder='big')
@@ -857,9 +866,9 @@ def announce_file_novo(username, nome_arquivo):
     except Exception as e:
         print("Erro ao anunciar arquivo:", e)
 
-arquivosdesejados = ['TransferData.txt', 'TransferOne.txt', 'Lsa.txt', 'teste.txt', 'as.txt', 'Kal.txt', 'entradas_testes.txt', 'Eleven.txt', 'Kakarotto.txt', 'Asdf.txt'] # o peer pode escolher qual arquivo ele quer baixar
+arquivosdesejados = ['Asdf.txt'] # o peer pode escolher qual arquivo ele quer baixar
 
-def arquivos_desejado(resposta):
+def arquivos_desejados(resposta):
     global arquivosdesejados
     arquivosdesejados = []
 

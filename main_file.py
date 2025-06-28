@@ -26,6 +26,64 @@ menu_opcoes = "--Menu de operações do Usuário--(3/3)\n#14 - Meu perfil\n#10 -
 SCOREBOARD_FILE = "/scoreboard.json"
 TRANSFER_METRICS_FILE = "transfer_metrics_single.json"
 TRANSFER_METRICS_FILE_CONNECTIONS = "transfer_metrics_connections.json"
+def verificar_chunks_faltantes(username, nome_arquivo):
+    dados = {
+        "action": "verify_missing_chunks",
+        "username": username,
+        "nome_arquivo": nome_arquivo
+    }
+
+    resposta = send_to_tracker(dados)
+
+    if resposta.get("status") == "ok":
+        print(f"\n🔍 Verificação de chunks faltantes para '{nome_arquivo}':")
+        print(" - Chunks que você já possui:")
+        for chunk in resposta.get("chunks_recebidos", []):
+            print(f"   ✔ {chunk}")
+        print(" - Chunks disponíveis em outros peers:")
+        for chunk in resposta.get("chunks_disponiveis_outros_peers", []):
+            print(f"   📦 {chunk}")
+        print(" - Chunks que ainda estão faltando:")
+        for chunk in resposta.get("chunks_faltando", []):
+            print(f"   ❌ {chunk}")
+    else:
+        print(f"❌ Erro: {resposta.get('mensagem')}")
+
+def listarUsuariosAtivos(usuario_logado):
+    portAssociationCon = []
+    dados = {
+    "action": "list_clients",
+    "username": usuario_logado
+    }
+    resposta = send_to_tracker(dados)
+    print()
+    print("Peers Ativos: ")
+    for peer in resposta.get("mensagem", []):
+        portAssociationCon.append(peer)
+        if(peer == usuario_logado):
+            print(f" - {peer} (Você)")
+        else:
+            print(f" - {peer}")
+    return portAssociationCon
+
+def calcularPeersOnline(usuario_logado):
+    peers_bleach_brave_souls = listarUsuariosAtivos(usuario_logado)
+    dados = {
+        "action":"update_user_list",
+        "peers_online":peers_bleach_brave_souls,
+        "username":usuario_logado
+    }
+    resposta = send_to_tracker(dados)
+    print(resposta)
+
+def requisitar_atualizacao_detentores_online():
+    dados = {
+        "action":update_online_owners
+    }
+
+
+
+
 def baixar_chunks_em_paralelo(peer_ip, peer_port, usuario_logado, peer_user, chunks):
     """
     Inicia threads para baixar múltiplos chunks do mesmo peer em paralelo.
@@ -633,7 +691,7 @@ def start_heartbeat(username) -> None:
                 if resposta.get("status") != "ok":
                     print("⚠️ Você foi desconectado por inatividade. Faça login novamente.")
                     os._exit(1)
-                time.sleep(300)
+                time.sleep(5)
             except:
                 print("⚠️ Erro de conexão no heartbeat. Encerrando cliente.")
                 os._exit(1)
@@ -771,7 +829,7 @@ def interactiveMenu_1() -> bool:
                 print(resposta["mensagem"])
                 usuario_logado = username_login
                 start_peer_server(chat_port,chunk_port,usuario_logado)
-                #start_heartbeat(usuario_logado)
+                start_heartbeat(usuario_logado)
                 break  # break the first menu loop and go to the second
             if resposta.get("status") == "erro":
                 print("Erro - ",resposta['mensagem'])
@@ -790,6 +848,7 @@ def interactiveMenu_1() -> bool:
     # Now you're logged in (usuario_logado is set)
     while usuario_logado:
         os.system('cls||clear') #Limpar o diretório
+        calcularPeersOnline(usuario_logado)
         avaiable_menus = [menu_chats,menu_arquivos,menu_opcoes]
         active_menu = avaiable_menus[menu_index]
         print(active_menu)
@@ -813,20 +872,9 @@ def interactiveMenu_1() -> bool:
 
         elif operation == "5":
             try:
-                dados = {
-                    "action": "list_clients",
-                    "username": usuario_logado
-                }
-                resposta = send_to_tracker(dados)
-                print()
-                print("Peers Ativos: ")
-                for peer in resposta.get("mensagem", []):
-                    if(peer == usuario_logado):
-                        print(f" - {peer} (Você)")
-                    else:
-                        print(f" - {peer}")
+                listarUsuariosAtivos(usuario_logado)
                 input("Pressione Enter para continuar")
-                os.system('cls||clear')
+                os.system('cls||clear')              
             except:
                 print("Você provavavelmente foi desligado por inatividade")
                 input("Pressione Enter para continuar")
@@ -1158,23 +1206,7 @@ def interactiveMenu_1() -> bool:
                 menu_index = 0
         elif operation == "16":
             # Baixar chunk com múltiplas threads
-            dados = {
-                "action": "list_clients",
-                "username": usuario_logado
-            }
-            resposta = send_to_tracker(dados)
-
-            print("\nPeers Ativos: ")
-            portAssociationCon = []
-            for i, peer in enumerate(resposta.get("mensagem", [])):
-                if peer == usuario_logado:
-                    marcado = " (Você) "
-                else:
-                    marcado = ""
-                    portAssociationCon.append(peer)
-                print(f"[{i} - {peer}{marcado}]")
-                #marcado = " (Você)" if peer == usuario_logado else ""
-                #print(f"[{i}] - {peer}{marcado}")
+            portAssociationCon = listarUsuariosAtivos(usuario_logado)
 
             accept_chat = input("Gostaria de comunicar com um Peer?\n1-Sim    0-Não\n")
             if accept_chat == "1":
@@ -1266,7 +1298,8 @@ def interactiveMenu_1() -> bool:
         elif operation == "1":
             pedido = {"action" : "list_files",  "username": usuario_logado}
             resposta = send_to_tracker(pedido)
-            arquivos = arquivos_desejado(resposta) # O cliente pode escolher qual arquivo ele quer baixar
+            #arquivos_desejados(resposta) # O cliente pode escolher qual arquivo ele quer baixar
+            verificar_chunks_faltantes(username=usuario_logado, nome_arquivo="Asdf")
             input("Pressione Enter para continuar")
             os.system('cls||clear')
 

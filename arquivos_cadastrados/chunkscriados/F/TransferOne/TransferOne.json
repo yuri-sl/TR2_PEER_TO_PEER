@@ -1,0 +1,54 @@
+[
+    {
+        "nome": "TransferOne.part0",
+        "indice": 0,
+        "hash": "831fac4e1a872efaa0bc6470eebdb9e2b05f1542f212df4b9edce71cce4511b5",
+        "checksum": "831fac4e1a872efaa0bc6470eebdb9e2b05f1542f212df4b9edce71cce4511b5",
+        "detentores_chunk": [
+            "F"
+        ],
+        "numero_detentores": 1,
+        "detentores_online": [
+            "F"
+        ]
+    },
+    {
+        "nome": "TransferOne.part1",
+        "indice": 1,
+        "hash": "fa9574f3e04a90b6ca94e54fa355c5a07d67cb0fe701263763100627d5c839bc",
+        "checksum": "fa9574f3e04a90b6ca94e54fa355c5a07d67cb0fe701263763100627d5c839bc",
+        "detentores_chunk": [
+            "F"
+        ],
+        "numero_detentores": 1,
+        "detentores_online": [
+            "F"
+        ]
+    },
+    {
+        "nome": "TransferOne.part2",
+        "indice": 2,
+        "hash": "364c44fec6cdb081062f126a82d0ca5aa7849c04b0b6ae991136e02a725cbc83",
+        "checksum": "364c44fec6cdb081062f126a82d0ca5aa7849c04b0b6ae991136e02a725cbc83",
+        "detentores_chunk": [
+            "F"
+        ],
+        "numero_detentores": 1,
+        "detentores_online": [
+            "F"
+        ]
+    },
+    {
+        "nome": "TransferOne.part3",
+        "indice": 3,
+        "hash": "8c1e6c36a5ab101858247b56605c46a7b476ad6414ab43efa4812757c5629811",
+        "checksum": "8c1e6c36a5ab101858247b56605c46a7b476ad6414ab43efa4812757c5629811",
+        "detentores_chunk": [
+            "F"
+        ],
+        "numero_detentores": 1,
+        "detentores_online": [
+            "F"
+        ]
+    }
+]

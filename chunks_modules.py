@@ -75,7 +75,9 @@ def dividir_em_chunks(nome_arquivo, tamanho_chunk_kb=1024,usuario_logado: str=""
                     "indice": i,
                     "hash": chunk_hash,
                     "checksum":checksum,
-                    "detentores_chunk":detentores_chunk
+                    "detentores_chunk":detentores_chunk,
+                    "numero_detentores":len(detentores_chunk),
+                    "detentores_online":[usuario_logado]
                 })
                 i += 1
 
@@ -144,7 +146,9 @@ def dividir_em_chunks_user(nome_arquivo, tamanho_chunk_spec,usuario_logado: str=
                     "indice": i,
                     "hash": chunk_hash,
                     "checksum":checksum,
-                    "detentores_chunk":detentores_chunk
+                    "detentores_chunk":detentores_chunk,
+                    "numero_detentores":len(detentores_chunk),
+                    "detentores_online":[usuario_logado]
                 })
                 i += 1
 
@@ -157,11 +161,3 @@ def dividir_em_chunks_user(nome_arquivo, tamanho_chunk_spec,usuario_logado: str=
     except Exception as e:
         print(f"Erro ao dividir arquivo: {e}")
         return None
-
-# Exemplo de uso
-#chunks = dividir_em_chunks_user("testeAnuncio2.txt", 1024,"A")
-
-
-#arquivo = 'documento.txt'
-#nome_sem = os.path.splitext(arquivo)[0]
-#print(nome_sem)

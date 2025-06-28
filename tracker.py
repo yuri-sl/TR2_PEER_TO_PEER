@@ -322,6 +322,87 @@ def protocolos_restritos(mensagem, client_socket) -> None:
         except Exception as e:
             resposta = {"status": "erro", "mensagem": f"Erro ao anunciar arquivo: {str(e)}"}
         client_socket.sendall(json.dumps(resposta).encode())
+    elif mensagem['action'] == 'update_user_list':
+        try:
+            novos_usuarios_online = set(mensagem.get('peers_online', []))
+
+            if not isinstance(novos_usuarios_online, set):
+                raise ValueError("'peers_online' deve ser uma lista.")
+
+            # Carrega o estado atual
+            if os.path.exists("usuarios_online.json"):
+                with open("usuarios_online.json", "r") as f:
+                    estado_atual = set(json.load(f))
+            else:
+                estado_atual = set()
+
+            # Substitui pelos novos
+            estado_atual = estado_atual.intersection(novos_usuarios_online).union(novos_usuarios_online)
+
+            # Escreve o novo estado limpo (sem usuários offline)
+            with open("usuarios_online.json", "w") as f:
+                json.dump(sorted(list(estado_atual)), f, indent=4)
+
+            resposta = {"status": "ok", "mensagem": "Lista de usuários online atualizada com sucesso."}
+
+        except Exception as e:
+            resposta = {"status": "erro", "mensagem": f"Erro ao atualizar a lista de usersAtivos: {str(e)}"}
+
+        client_socket.sendall(json.dumps(resposta).encode())
+
+    
+    elif mensagem['action'] == 'verify_missing_chunks':
+        try:
+            username = mensagem['username']           # Ex: "F"
+            nome_arquivo = mensagem['nome_arquivo']   # Ex: "Kal"
+
+            base_chunks_path = "chunkscriados"
+            received_chunks_path = f"chunks_recebidos/{username}/{nome_arquivo}"
+
+            # Conjunto de todos os chunks disponíveis por outros peers
+            chunks_disponiveis = set()
+
+            # Itera sobre todas as pastas (usuários) em chunkscriados
+            for pasta_usuario in os.listdir(base_chunks_path):
+                if pasta_usuario == username:
+                    continue  # ignora a própria pasta do usuário
+
+                caminho_usuario = os.path.join(base_chunks_path, pasta_usuario)
+                for pastas_arquivos in os.listdir(caminho_usuario):
+
+                    if os.path.isdir(caminho_usuario):
+                        arquivos = [
+                            arq for arq in os.listdir(caminho_usuario)
+                            if os.path.isfile(os.path.join(caminho_usuario, arq))
+                        ]
+                        chunks_disponiveis.update(arquivos)
+
+            # Chunks que o usuário já possui
+            chunks_usuario = []
+            if os.path.exists(received_chunks_path):
+                chunks_usuario = [
+                    f for f in os.listdir(received_chunks_path)
+                    if os.path.isfile(os.path.join(received_chunks_path, f))
+                ]
+
+            # Verifica chunks faltantes
+            chunks_faltando = sorted(list(chunks_disponiveis - set(chunks_usuario)))
+
+            resposta = {
+                "status": "ok",
+                "mensagem": f"Verificação realizada para '{nome_arquivo}'.",
+                "chunks_faltando": chunks_faltando,
+                "chunks_recebidos": sorted(chunks_usuario),
+                "chunks_disponiveis_outros_peers": sorted(list(chunks_disponiveis))
+            }
+
+        except Exception as e:
+            resposta = {"status": "erro", "mensagem": f"Erro ao verificar chunks faltantes: {str(e)}"}
+
+        client_socket.sendall(json.dumps(resposta).encode())
+    #elif mensagem['action'] == "update_online_owners":
+    #    try:
+
 
 
     else:
@@ -372,23 +453,45 @@ def handle_clients(client_socket, addr) -> None:
     except Exception as e:                                          # Caso nao consiga conectar com o cliente
         print(f"Erro na conexão com {addr}: {e}")
 
-def heartbeat(s) -> None:
-    """
-    Manipula o heartbeat de um cliente.
+#def heartbeat(s) -> None:
+#    """
+#    Manipula o heartbeat de um cliente.
+#
+#    Args:
+#        s : nome do cliente
+#    """
+#    while True:
+#        time.sleep(1)
+#        for u in list(s.keys()):                                    # copia as chaves para evitar erro de modificação durante iteração
+#            if s[u] >= 300:
+#                print(f"Removendo {u} por inatividade")
+#                s.pop(u, None)                                      # Remove usuário inativo
+#
+##            else:
+ #               s[u] += 1                                           # Incrementa contador de tempo
+ #               print(f"{u,s[u]}")                                  # Retirar depois
 
-    Args:
-        s : nome do cliente
-    """
+def heartbeat(s: dict) -> None:
     while True:
         time.sleep(1)
-        for u in list(s.keys()):                                    # copia as chaves para evitar erro de modificação durante iteração
-            if s[u] >= 300:
-                print(f"Removendo {u} por inatividade")
-                s.pop(u, None)                                      # Remove usuário inativo
+        usuarios_online = []
 
+        for u in list(s.keys()):
+            if s[u] >= 15:  # 15s de timeout
+                print(f"⏹️ Removendo {u} por inatividade")
+                s.pop(u, None)
             else:
-                s[u] += 1                                           # Incrementa contador de tempo
-                print(f"{u,s[u]}")                                  # Retirar depois
+                s[u] += 1
+                usuarios_online.append(u)
+
+        # Salva os usuários online atualizados
+        try:
+            with open("usuarios_online.json", "w") as f:
+                json.dump(sorted(usuarios_online), f, indent=4)
+        except Exception as e:
+            print(f"Erro ao salvar usuarios_online.json: {e}")
+
+
 
 def start_tracker() -> None:                                        # Inicia o server
     """
