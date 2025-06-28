@@ -149,7 +149,8 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
             chunks_disponiveis = carregar_chunks(caminho_json_chunks, meu_username)
             #NOVO - Verificamos se existe umdiretório de chunks recebidos
             caminho_arquivo = os.path.basename(os.path.dirname(nome_chunk))
-            caminho_recebidos = f"chunks_recebidos/{meu_username}/{caminho_arquivo}/{nome_chunk}"
+            ultima_parte = os.path.basename(nome_chunk)
+            caminho_recebidos = f"chunks_recebidos/{meu_username}/{caminho_arquivo}/{ultima_parte}"
             tem_chunk_recebido = os.path.exists(caminho_recebidos)
             print("oooooooo",tem_chunk_recebido)
             print(f"Chunks disponiveis para {meu_username} transmitir são: {chunks_disponiveis}")
@@ -161,16 +162,26 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
             print(f"Chunks disponiveis para transmitir são: {chunks_disponiveis}")
             print(f"Existe no diretório de recebidos?: {'SIM' if tem_chunk_recebido else 'NÃO'}")
             temmesmo = False
-            # Verifica se o chunk está registrado NO JSON ou existe NO RECEBIDO
+
             for chunk in chunks_disponiveis:
-                if chunk in nome_chunk:
+                print(chunk, nome_chunk)
+                
+                # Extrai apenas o nome do arquivo sem extensão
+                nome_base = os.path.splitext(chunk)[0]  # "arq.txt" → "arq"
+                
+                # Verifica se o nome base está contido na string maior
+                if nome_base in nome_chunk:  # nome_chunk pode ser "pastacria/dono/arq/arq.pat0"
+                    print(f"Match encontrado: {chunk} → {nome_base} dentro de {nome_chunk}")
                     temmesmo = True
+
+            print(temmesmo)
+
             if temmesmo or tem_chunk_recebido:
                 # Se existe no diretório de recebidos, atualiza o caminho para enviar
                 if tem_chunk_recebido:
                     caminho = caminho_recebidos
                 else:
-                    caminho = f"arquivos_cadastrados/chunkscriados/{user_to}/{caminho_arquivo}/{nome_chunk}"
+                    caminho = f"arquivos_cadastrados/chunkscriados/{user_to}/{caminho_arquivo}/{ultima_parte}"
                     print(f"O caminho na busca é: {caminho}")
                 if os.path.exists(caminho):
                     # Calcula o checksum corretamente
@@ -589,7 +600,7 @@ def send_chunk(user,users, ip, port, nome_chunk, dados):
         #new_score = update_score(peer_id, bytes_sent=0,
         #                 time_connected=ttf,
         #                 successful_responses=successful)
-        print("JSON recebido decodificado:", json_bytes.decode())
+        print("nNNNNNNNIIIIIIICEEEEEEEE")
 
         s.close()
         return True
