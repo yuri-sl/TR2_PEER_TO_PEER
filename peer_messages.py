@@ -204,16 +204,16 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                     if not os.path.exists(caminho):
                         conn.send(b"ERRO: Chunk nao encontrado.")
                         conn.shutdown(socket.SHUT_WR)
-                        update_score(peer_user,
-                                    failed_transfers=1,
-                                    integrity_check=False)
+                        #update_score(peer_user,
+                        #            failed_transfers=1,
+                        #            integrity_check=False)
                         #print("flamegoo")
             else:
                 conn.send(b"ERRO: Chunk nao disponivel.")
                 conn.shutdown(socket.SHUT_WR)
-                update_score(peer_user,
-                    failed_transfers=1,
-                    integrity_check=False)
+                #update_score(peer_user,
+                #    failed_transfers=1,
+                #    integrity_check=False)
                 print("flame")
 
         except Exception as e:
@@ -354,7 +354,7 @@ def pedir_chunks(user):
                                 else:
                                     bytes_sent = -5
                                     #print("nao deu kk")
-                                    update_score(user, 0, 0, 0, failed_transfers=1)
+                                    #update_score(user, 0, 0, 0, failed_transfers=1)
                             except Exception as e:
                                 #rint(f"Não foi possível enviar o pedido para o peer {users}: {e}")
                                 return
