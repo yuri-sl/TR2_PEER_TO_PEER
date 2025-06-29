@@ -186,17 +186,16 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                     score = get_score(user_from)
                     if score <= 30:
                         #não envia pq tem pouco score
-                        print("pobreeeeeeeeeeeeeeeeeeee")
+                        print("Nao tem condicoes aindsa")
                         mensagem = {"recebido": nome_chunk,
                                     "score": False
                                 }
                         enviado = json.dumps(mensagem)
                         conn.sendall(enviado.encode())
                         #conn.shutdown(socket.SHUT_WR)
-                        print("PPPPPPPPPPPPPPPPPPPPPP")
                     elif score > 30:    # envia com uma thread so # arrumar dps pra ser entre 31 e 80
                         # Calcula o checksum corretamente
-                        print("RICOOOOOOOOOOOOOO")
+                        print("vctem escore eu poso manda")
                         with open(caminho, 'rb') as f:
                             dados_chunk = f.read()
                         checksum = hashlib.sha256(dados_chunk).hexdigest()
