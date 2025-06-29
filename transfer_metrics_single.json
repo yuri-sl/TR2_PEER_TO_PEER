@@ -34,6 +34,21 @@
             "tempo": 0.0029973983764648438,
             "volume": 0,
             "integridade": false
+        },
+        {
+            "tempo": 0.004998683929443359,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.006627082824707031,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.00799703598022461,
+            "volume": 0,
+            "integridade": false
         }
     ],
     "c": [
@@ -148,6 +163,56 @@
             "tempo": 8.543989181518555,
             "volume": 0,
             "integridade": false
+        },
+        {
+            "tempo": 8.58354926109314,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 8.575215578079224,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.008000612258911133,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.011999368667602539,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.0049991607666015625,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.0059969425201416016,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.008002758026123047,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 8.966568231582642,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 8.877272367477417,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 9.010247468948364,
+            "volume": 0,
+            "integridade": true
         }
     ]
 }

@@ -496,3 +496,15 @@
 ⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 0.02 segundos.
 ⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 8.54 segundos.
 [2025-06-28 15:13:53]✅ Arquivo 'TransferOne.txt' montado com sucesso em 'arquivos_montados/A/TransferOne.txt'!
+⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 0.00 segundos.
+⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 8.58 segundos.
+⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 8.58 segundos.
+⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 0.01 segundos.
+⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 0.01 segundos.
+⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 0.01 segundos.
+⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 0.00 segundos.
+⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 0.01 segundos.
+⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 0.01 segundos.
+⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 0.01 segundos.
+⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 8.97 segundos.
+⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 8.88 segundos.\n⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 9.01 segundos.\n

@@ -2167,5 +2167,95 @@
         "transfer_time": 8.534845113754272,
         "checksum_match": true,
         "bytes_transferred": 512680
+    },
+    {
+        "timestamp": "2025-06-28 15:46:09",
+        "from_user": "A",
+        "to_user": "F",
+        "chunk_name": "TransferOne.part0",
+        "transfer_time": 6.309166431427002,
+        "checksum_match": true,
+        "bytes_transferred": 497222
+    },
+    {
+        "timestamp": "2025-06-28 15:46:11",
+        "from_user": "A",
+        "to_user": "F",
+        "chunk_name": "TransferOne.part1",
+        "transfer_time": 8.576546907424927,
+        "checksum_match": true,
+        "bytes_transferred": 512680
+    },
+    {
+        "timestamp": "2025-06-28 15:47:12",
+        "from_user": "A",
+        "to_user": "F",
+        "chunk_name": "TransferOne.part0",
+        "transfer_time": 6.2792885303497314,
+        "checksum_match": true,
+        "bytes_transferred": 497222
+    },
+    {
+        "timestamp": "2025-06-28 15:47:14",
+        "from_user": "A",
+        "to_user": "F",
+        "chunk_name": "TransferOne.part1",
+        "transfer_time": 8.566215991973877,
+        "checksum_match": true,
+        "bytes_transferred": 512680
+    },
+    {
+        "timestamp": "2025-06-28 20:20:49",
+        "from_user": "A",
+        "to_user": "F",
+        "chunk_name": "TransferOne.part0",
+        "transfer_time": 6.490495443344116,
+        "checksum_match": true,
+        "bytes_transferred": 497222
+    },
+    {
+        "timestamp": "2025-06-28 20:20:52",
+        "from_user": "A",
+        "to_user": "F",
+        "chunk_name": "TransferOne.part1",
+        "transfer_time": 8.955076932907104,
+        "checksum_match": true,
+        "bytes_transferred": 512680
+    },
+    {
+        "timestamp": "2025-06-28 22:57:40",
+        "from_user": "A",
+        "to_user": "F",
+        "chunk_name": "TransferOne.part0",
+        "transfer_time": 6.439549207687378,
+        "checksum_match": true,
+        "bytes_transferred": 497222
+    },
+    {
+        "timestamp": "2025-06-28 22:57:42",
+        "from_user": "A",
+        "to_user": "F",
+        "chunk_name": "TransferOne.part1",
+        "transfer_time": 8.869268655776978,
+        "checksum_match": true,
+        "bytes_transferred": 512680
+    },
+    {
+        "timestamp": "2025-06-28 22:58:56",
+        "from_user": "A",
+        "to_user": "F",
+        "chunk_name": "TransferOne.part0",
+        "transfer_time": 6.4725182056427,
+        "checksum_match": true,
+        "bytes_transferred": 497222
+    },
+    {
+        "timestamp": "2025-06-28 22:58:58",
+        "from_user": "A",
+        "to_user": "F",
+        "chunk_name": "TransferOne.part1",
+        "transfer_time": 9.001949310302734,
+        "checksum_match": true,
+        "bytes_transferred": 512680
     }
 ]

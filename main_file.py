@@ -1,3 +1,4 @@
+import queue
 from tracker import *
 import subprocess
 import sys
@@ -81,6 +82,36 @@ def calcularPeersOnline(usuario_logado):
     resposta = send_to_tracker(dados)
     print(resposta)
 
+def get_transmisson_score(peer):
+    with open("scoreboard.json", "r") as f:
+        scores = json.load(f)
+    s = scores.get(peer, {})
+    return (
+        s.get("bytes_sent", 0)
+        + s.get("successful_responses", 0) * 10
+        + s.get("tempo_conectado", 0) * 2
+        - s.get("failed_transfers", 0) * 5
+    )
+
+def get_limite_conexoes(score):
+    if score < 10:
+        return 1
+    elif score < 30:
+        return 2
+    elif score < 60:
+        return 3
+    else:
+        return 4
+
+def get_peer_info(peer_dono):
+    dados_peer_info = {
+        "action":"get_peer_info_chunk",
+        "username": peer_dono
+    }
+    resposta_info = send_to_tracker(dados_peer_info)
+    if resposta_info.get("status") == "ok":
+        return resposta_info["mensagem"]
+    return None
 
 
 def baixar_chunks_em_paralelo(peer_ip, peer_port, usuario_logado, peer_user, chunks):
@@ -1074,7 +1105,7 @@ def interactiveMenu_1() -> bool:
             accept_chat = input(("Gostaria de comunicar com um Peer?\n1-Sim    0-Não\n"))
             if accept_chat == "1":
                 #selected_user = input("Digite o nome do usuário que deseja pedir o arquivo\n")
-
+                #Inicialmente, ele apenas escolhe um usuário aleatório, mas depois irá aplicar o incentivo para refazer a escolha
                 selected_user = random.choice(portAssociation)
                 if selected_user == usuario_logado:
                         print("Não é possível realizar a operação consigo mesmo!")
@@ -1128,6 +1159,7 @@ def interactiveMenu_1() -> bool:
                                                 chunk_map = resposta_chunks["chunks"]
                                                 total_chunks_sum = 0
                                                 integridade = True
+                                                fila_chunks = queue.Queue()
 
                                                 for chunk_nome, donos in chunk_map.items():
                                                     # Escolhe um peer online (pode usar random ou round-robin futuramente)
@@ -1200,88 +1232,117 @@ def interactiveMenu_1() -> bool:
             if menu_index <0:
                 menu_index = 0
         elif operation == "16":
-            # Baixar chunk com múltiplas threads
-            portAssociationCon = listarUsuariosAtivos(usuario_logado)
+            # Baixar chunk com múltiplas threads com incentivo
+            import queue
+            import threading
 
-            accept_chat = input("Gostaria de comunicar com um Peer?\n1-Sim    0-Não\n")
-            if accept_chat == "1":
-                #selected_user = input("Digite o nome do usuário que deseja pedir o arquivo\n")
-                selected_user = random.choice(portAssociationCon)
-                if selected_user == usuario_logado:
-                    print("Não é possível realizar a operação consigo mesmo!")
-                else:
-                    dados_start_chunk = {
-                        "action":"get_peer_info_chunk",
-                        "username": selected_user
-                    }
-                    resposta_start_chunk = send_to_tracker(dados_start_chunk)
+            dados = {
+                "action": "list_clients",
+                "username": usuario_logado
+            }
+            resposta = send_to_tracker(dados)
+            print("\\nPeers Ativos:")
+            portAssociation = [peer for peer in resposta.get("mensagem", []) if peer != usuario_logado]
 
-                    if resposta_start_chunk.get("status") == "ok":
-                        peer_info = resposta_start_chunk.get("mensagem", {})
-                        peer_ip = peer_info.get("ip")
-                        peer_port = peer_info.get("port")
-                        print(f"Iniciando a operação com {selected_user} em {peer_ip}:{peer_port}")
+            for i, peer in enumerate(resposta.get("mensagem", []), start=1):
+                status = "(Você)" if peer == usuario_logado else ""
+                print(f"[{i}] - {peer} {status}")
 
-                        caminho = "arquivos_cadastrados/arquivos_tracker.json"
-                        arquivos, dados = listarArquivos(caminho)
+            print(f"PortAssociation: {portAssociation}")
+            if input("Gostaria de comunicar com um Peer?\\n1-Sim    0-Não\\n") != "1":
+                return
 
-                        if not arquivos:
-                            print("Nenhum arquivo .txt disponível encontrado.")
-                        else:
-                            print("Arquivos disponíveis para seleção:")
-                            for i, nome in enumerate(arquivos):
-                                print(f"[{i}] - {nome}")
+            selected_user = random.choice(portAssociation)
+            if selected_user == usuario_logado:
+                print("Não é possível realizar a operação consigo mesmo!")
+                return
 
-                            try:
-                                escolha = int(input("Digite o número do arquivo que deseja selecionar: "))
-                                if 0 <= escolha < len(arquivos):
-                                    nome_escolhido = arquivos[escolha]
-                                    print(f"\nVocê escolheu o arquivo: {nome_escolhido}")
+            dados_peer = {"action": "get_peer_info_chunk", "username": selected_user}
+            resposta_peer = send_to_tracker(dados_peer)
+            if resposta_peer.get("status") != "ok":
+                return
 
-                                    inicio_download = time.time()
-                                    chunks = listar_chunks_do_arquivo(dados, nome_escolhido)
+            print(f"Iniciando operação com {selected_user}")
+            caminho = "arquivos_cadastrados/arquivos_tracker.json"
+            arquivos, dados = listarArquivos(caminho)
 
-                                    if not chunks:
-                                        print("Nenhum chunk disponível para esse arquivo.")
-                                    else:
-                                        threads = []
-                                        total_chunks_sum = 0
+            if not arquivos:
+                print("Nenhum arquivo .txt disponível.")
+                return
 
-                                        # Baixa todos os chunks em threads paralelas
-                                        for idx, chunk_nome in enumerate(chunks):
-                                            total_chunks_sum += len(chunk_nome)
-                                            registrar_conexao(selected_user, peer_port, chunk_nome)
+            for i, nome in enumerate(arquivos):
+                print(f"[{i}] - {nome}")
+            try:
+                escolha = int(input("Digite o número do arquivo que deseja selecionar: "))
+                if not (0 <= escolha < len(arquivos)):
+                    return
+                nome_escolhido = arquivos[escolha]
+                nome_arquivo_sem_extensao = os.path.splitext(nome_escolhido)[0]
+                print(f"Você escolheu: {nome_arquivo_sem_extensao}")
+            except ValueError:
+                print("Entrada inválida.")
+                return
 
-                                            t = threading.Thread(
-                                                target=requisitar_chunk,
-                                                args=(peer_ip, peer_port, usuario_logado, selected_user, chunk_nome, inicio_download)
-                                            )
-                                            t.start()
-                                            threads.append(t)
-                                            # Finaliza todas as conexões abertas para este peer
-                                            finalizar_conexao(selected_user, peer_port, chunk_nome)
+            inicio_download = time.time()
+            dados_chunk_map = {
+                "action": "get_chunk_owners_online",
+                "arquivo": nome_arquivo_sem_extensao,
+                "username": usuario_logado
+            }
+            resposta_chunks = send_to_tracker(dados_chunk_map)
+            if resposta_chunks.get("status") != "ok":
+                print("⚠️ Não foi possível obter os chunks.")
+                return
 
-                                        # Espera todas as threads terminarem
-                                        for t in threads:
-                                            t.join()
+            chunk_map = resposta_chunks["chunks"]
+            fila_chunks = queue.Queue()
+            for chunk_nome, donos in chunk_map.items():
+                donos_ordenados = sorted(donos, key=lambda peer: get_transmisson_score(peer), reverse=True)
+                fila_chunks.put((chunk_nome, donos_ordenados))
 
-                                        print("✅ Todos os chunks foram requisitados e baixados.")
-                                        integridade = True
-                                        adicionar_dono_chunk("arquivos_cadastrados/arquivos_tracker.json", nome_escolhido, usuario_logado)
+            def thread_worker(usuario_logado, fila_chunks, inicio_download):
+                while not fila_chunks.empty():
+                    try:
+                        chunk_nome, donos_ordenados = fila_chunks.get_nowait()
+                    except queue.Empty:
+                        break
+                    for peer_dono in donos_ordenados:
+                        if peer_dono == usuario_logado:
+                            continue
+                        info = get_peer_info(peer_dono)
+                        if info:
+                            ip = info["ip"]
+                            port = info["port"]
+                            print(f"Tentando baixar {chunk_nome} de {peer_dono} ({ip}:{port})")
+                            sucesso = requisitar_chunk(ip, port, usuario_logado, peer_dono, chunk_nome, inicio_download)
+                            if sucesso:
+                                print(f"Chunk {chunk_nome} baixado com sucesso.")
+                                break
+                    fila_chunks.task_done()
 
-                                        with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
-                                            fim_download = time.time()
-                                            tempo_total = fim_download - inicio_download
-                                            report_file.write(f"⏱ Tempo total de download de TODOS os chunks: {tempo_total:.2f} segundos.\n")
-                                            add_transfer_record_Connections(usuario_logado, tempo_total, total_chunks_sum, integridade)
+            todos_donos = [dono for donos in chunk_map.values() for dono in donos if dono != usuario_logado]
+            peer_mais_forte = max(todos_donos, key=get_score, default=None)
+            score_mais_forte = get_score(peer_mais_forte) if peer_mais_forte else 0
+            limite_conexoes = get_limite_conexoes(score_mais_forte)
+            print(f"Usando {limite_conexoes} conexões com base no peer {peer_mais_forte} (score: {score_mais_forte})")
 
-                                        atual_abertas = quantas_conexoes_abertas()
-                                        print(f"[INFO] Conexões abertas restantes após operação: {atual_abertas}")
+            threads = []
+            for _ in range(limite_conexoes):
+                t = threading.Thread(target=thread_worker, args=(usuario_logado, fila_chunks, inicio_download))
+                t.start()
+                threads.append(t)
+            for t in threads:
+                t.join()
 
-                            except ValueError:
-                                print("Entrada inválida. Digite um número.")
+            adicionar_dono_chunk("arquivos_cadastrados/arquivos_tracker.json", nome_escolhido, usuario_logado)
+            fim_download = time.time()
+            tempo_total = fim_download - inicio_download
+            with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
+                report_file.write(f"⏱ Tempo total de download de TODOS os chunks de {nome_escolhido}: {tempo_total:.2f} segundos.\\n")
+            add_transfer_record(usuario_logado, tempo_total, fila_chunks.qsize(), True)
             input("Pressione Enter para continuar")
             os.system('cls||clear')
+            
         elif operation == "17":
             plotarGraficoSingle()
             input("Pressione Enter para continuar")

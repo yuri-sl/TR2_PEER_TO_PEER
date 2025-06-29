@@ -1,19 +1,19 @@
 {
     "A": {
         "bytes_sent": 0,
-        "time_connected": 4,
+        "time_connected": 3,
         "successful_responses": 0,
-        "failed_transfers": 1,
+        "failed_transfers": 2,
         "transfer_times": [],
         "integrity_checks": {},
         "active_connections": 0,
-        "score": 3
+        "score": 1
     },
     "F": {
         "bytes_sent": 0,
-        "time_connected": 5,
+        "time_connected": 4,
         "successful_responses": 0,
-        "failed_transfers": 2,
+        "failed_transfers": 1,
         "transfer_times": [],
         "integrity_checks": {},
         "active_connections": 0,
