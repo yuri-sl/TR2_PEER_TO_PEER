@@ -192,7 +192,8 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                                 }
                         enviado = json.dumps(mensagem)
                         conn.sendall(enviado.encode())
-                        conn.shutdown(socket.SHUT_WR)
+                        #conn.shutdown(socket.SHUT_WR)
+                        print("PPPPPPPPPPPPPPPPPPPPPP")
                     elif score > 30:    # envia com uma thread so # arrumar dps pra ser entre 31 e 80
                         # Calcula o checksum corretamente
                         print("RICOOOOOOOOOOOOOO")
@@ -425,13 +426,18 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                                     integrity_check=False)
                         print("flamegoo")
             else:
-                conn.send(b"ERRO: Chunk nao disponivel.")
+                mensagem = {"recebido": nome_chunk,
+                            "score": True,
+                            "tenho?" : False
+                                }
+                enviado = json.dumps(mensagem)
+                conn.sendall(enviado.encode())
                 conn.shutdown(socket.SHUT_WR)
+                conn.close()
                 update_score(peer_user,
                     failed_transfers=1,
                     integrity_check=False)
                 print("flame")
-
         except Exception as e:
             print(f"[Erro Chunk] {e}")
         finally:
@@ -517,14 +523,14 @@ def p2p(user):
         if score <= 30:
             for i in range(1):
                 threading.Thread(target=pedir_chunks, args=(user,), daemon=True).start()
-        elif score < 80:
+        """elif score < 80:
             for i in range(4):
                 threading.Thread(target=pedir_chunks, args=(user,), daemon=True).start()
         else:
             for i in range(8):
                 threading.Thread(target=pedir_chunks, args=(user,), daemon=True).start()
-
-        time.sleep(1)
+"""
+        time.sleep(10)
 
 def pedir_chunks(user):
     getip = {
@@ -559,47 +565,46 @@ def pedir_chunks(user):
                         if nome_do_chunk:                   # Se eu for capaz de enviar
                             try: 
                                 print(f"[{user}] Enviando o pedido do chunk {os.path.basename(nome_do_chunk)} para {ip} : {port}")
-                                enviado = send_chunk(user,users, ip, port, nome_do_chunk, dados)# Vai enviar para esse ip pedindo um chunk aleatorio que eu preciso
+                                enviado = send_chunk(user,users, ip, port, nome_do_chunk)# Vai enviar para esse ip pedindo um chunk aleatorio que eu preciso
                                 if enviado:                     # Se foi enviado o pedido com sucesso
                                     successful_responses = 1
                                     bytes_sent = 1
                                     update_score(user, bytes_sent, 0, successful_responses)
                                     print(user,"enviando para", users)
                                 else:
-                                    bytes_sent = -5
+                                    #bytes_sent = -5
                                     print("nao deu kk")
-                                    update_score(user, 0, 0, 0, failed_transfers=1)
+                                    #update_score(user, bytes_sent, 0, 0, failed_transfers=1)
                             except Exception as e:
                                 print(f"Não foi possível enviar o pedido para o peer {users}: {e}")
                         else:                               # mesmo qie nao tenha conseguido enviar vamos dar um incentivo a ele
                             break
 
-def send_chunk(user,users, ip, port, nome_chunk, dados):
+def send_chunk(user,users, ip, port, nome_chunk):
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((ip, port))
         # Envia a requisição de chunk como JSON
-        mensagem = {"enviando": nome_chunk,
-                   #"dados"   :  dados,
-                   "sender"    : user,
-                   "to": users,
+        mensagem = {"to": users,
                    "from": user,
                    "nome_chunk": nome_chunk
                    }
+        #print(mensagem)
         enviado = json.dumps(mensagem)
         s.sendall(enviado.encode())
         s.shutdown(socket.SHUT_WR)
         #print(f"[✓] Chunk '{nome_chunk}' enviado com sucesso")
         # Recebe os dados do chunk
-        """        buffer = b""
+        time.sleep(0.5)
+        buffer = b""
         while True:
             chunk = s.recv(4096)
             if not chunk:
                 break
             buffer += chunk
-        print(buffer)
-        mensagem = json.loads(buffer.decode())"""
-
+        mensagem = json.loads(buffer.decode())
+        
+        print("wtf?s")
         s.close()
         return True
     except Exception as e:
