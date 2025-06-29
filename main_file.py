@@ -16,6 +16,8 @@ from peer_messages import *
 import threading
 from peer import *
 from new_graph import plotarGraficoMultiplas,plotarGraficoSingle
+import queue
+import threading
 
 menu_1 = "MENU PRINCIPAL \n#1 - Registrar;\n#2 - Login no Sistema;\n#3 - Sair do sistema;"
 menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;\n11 - Criar um novo arquivo .txt\n12 - Requisição de Chunk\n13 - Montar arquivo usando chunks\n 14 - Próxima página >>>>"
@@ -66,7 +68,44 @@ def listarUsuariosAtivos(usuario_logado):
         else:
             print(f" - {peer}")
     return portAssociationCon
+def registrar_dono_no_json_arquivo(nome_arquivo: str, novo_dono: str):
+    nome_arquivo_sem_extensao = os.path.splitext(nome_arquivo)[0]
+    caminho = None
 
+    for pasta_usuario in os.listdir("arquivos_cadastrados/chunkscriados"):
+        possivel_caminho = f"arquivos_cadastrados/chunkscriados/{pasta_usuario}/{nome_arquivo_sem_extensao}/{nome_arquivo_sem_extensao}.json"
+        if os.path.exists(possivel_caminho):
+            caminho = possivel_caminho
+            print("✅ Encontrei o caminho:", caminho)
+            break
+
+    if caminho is None:
+        print("⚠️ Arquivo JSON do chunk não encontrado para registrar dono.")
+        return
+
+    with open(caminho, 'r+', encoding='utf-8') as f:
+        dados = json.load(f)
+        modificado = False
+
+        for chunk in dados:
+            if chunk["nome"] == nome_arquivo:
+                detentores = chunk.get("detentores_chunk", [])
+                if novo_dono not in detentores:
+                    detentores.append(novo_dono)
+                    chunk["detentores_chunk"] = detentores
+                    chunk["numero_detentores"] = len(detentores)
+                    modificado = True
+                    print(f"✅ {novo_dono} adicionado como detentor de {nome_arquivo}")
+                else:
+                    print(f"ℹ️ {novo_dono} já era detentor de {nome_arquivo}")
+                break
+        else:
+            print(f"❌ Chunk com nome '{nome_arquivo}' não encontrado no JSON.")
+
+        if modificado:
+            f.seek(0)
+            json.dump(dados, f, indent=4)
+            f.truncate()
 def get_bytes_score(peer_user):
     with open("scoreboard.json", "r") as f:
         scores = json.load(f)
@@ -1184,10 +1223,14 @@ def interactiveMenu_1() -> bool:
                                                             print(f"Tentando baixar {chunk_nome} de {peer_dono} ({ip}:{port})")
                                                             sucesso = requisitar_chunk(ip,port,usuario_logado,peer_dono,chunk_nome,inicio_download)
                                                             print("o código executou até depois de sucesso")
+                                                            registrar_dono_no_json_arquivo(chunk_nome, usuario_logado)
+                                                            print(f"O sucesso foi: {sucesso}")
 
                                                             if sucesso:
+                                                                print(f"O sucesso foi: {sucesso}")
                                                                 total_chunks_sum+=2
                                                                 chunk_baixado = True
+                                                                registrar_dono_no_json_arquivo(chunk_nome, usuario_logado)
                                                                 break
                                                         else:
                                                             print(f"Não foi possível obter o IP/porta do {peer_dono}")
@@ -1204,7 +1247,8 @@ def interactiveMenu_1() -> bool:
 
                                                 with open("reports/transfer_report.txt","a",encoding='utf-8') as report_file:
                                                     report_file.write(f"⏱ Tempo total de download de TODOS os chunks de {nome_escolhido}: {tempo_total:.2f} segundos.\n")
-                                                
+                                                #registrar_dono_no_json_arquivo(nome_escolhido, usuario_logado)
+
                                                 add_transfer_record(usuario_logado,tempo_total,total_chunks_sum,integridade)
                                             else:
                                                     print("⚠️ Não foi possível obter os chunks do arquivo do tracker.")
@@ -1233,8 +1277,6 @@ def interactiveMenu_1() -> bool:
                 menu_index = 0
         elif operation == "16":
             # Baixar chunk com múltiplas threads com incentivo
-            import queue
-            import threading
 
             dados = {
                 "action": "list_clients",
@@ -1306,6 +1348,7 @@ def interactiveMenu_1() -> bool:
                         chunk_nome, donos_ordenados = fila_chunks.get_nowait()
                     except queue.Empty:
                         break
+                    chunk_sucesso = False
                     for peer_dono in donos_ordenados:
                         if peer_dono == usuario_logado:
                             continue
@@ -1316,8 +1359,13 @@ def interactiveMenu_1() -> bool:
                             print(f"Tentando baixar {chunk_nome} de {peer_dono} ({ip}:{port})")
                             sucesso = requisitar_chunk(ip, port, usuario_logado, peer_dono, chunk_nome, inicio_download)
                             if sucesso:
+                                chunk_sucesso = True
                                 print(f"Chunk {chunk_nome} baixado com sucesso.")
                                 break
+                            if not chunk_sucesso:
+                                print(f"[ERRO] Falha ao baixar o chunk {chunk_nome}. Nenhum peer respondeu.")
+                                nonlocal integridade
+                                integridade = False
                     fila_chunks.task_done()
 
             todos_donos = [dono for donos in chunk_map.values() for dono in donos if dono != usuario_logado]
@@ -1334,7 +1382,11 @@ def interactiveMenu_1() -> bool:
             for t in threads:
                 t.join()
 
-            adicionar_dono_chunk("arquivos_cadastrados/arquivos_tracker.json", nome_escolhido, usuario_logado)
+            if integridade:
+                adicionar_dono_chunk("arquivos_cadastrados/arquivos_tracker.json", nome_escolhido, usuario_logado)
+                print("✅ Todos os chunks foram baixados com sucesso e integridade verificada.")
+            else:
+                print("⚠️ Não foi possível obter todos os chunks. O arquivo não será registrado como completo.")
             fim_download = time.time()
             tempo_total = fim_download - inicio_download
             with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
@@ -1342,7 +1394,7 @@ def interactiveMenu_1() -> bool:
             add_transfer_record(usuario_logado, tempo_total, fila_chunks.qsize(), True)
             input("Pressione Enter para continuar")
             os.system('cls||clear')
-            
+
         elif operation == "17":
             plotarGraficoSingle()
             input("Pressione Enter para continuar")

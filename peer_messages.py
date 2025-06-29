@@ -336,6 +336,11 @@ def pedir_chunks(user):
                         #print(f"The users is {users} and the user is: {user}")
                         #print("Therefore we're both different from each other!")
                         nome_do_chunk, dados = escolher_chunk_compatível(user)
+
+                        if nome_do_chunk is None:
+                            #print(f"[{user}] Nenhum chunk compatível encontrado no momento.")
+                            continue  # ou `break`, dependendo da lógica desejada
+
                         basename_chunk = os.path.basename(nome_do_chunk)
                         if basename_chunk:                   # Se eu for capaz de enviar
                             try: 
@@ -411,27 +416,39 @@ def send_chunk(user,users, ip, port, nome_chunk, dados):
 
 
 #CHUNKS_FOLDER = "arquivos_cadastrados/chunkscriados/bigfile/"
-CHUNKS_FOLDER_BASE = "arquivos_cadastrados/chunkscriados"
-def escolher_chunk_compatível(usuario):    # Apenas para pegar um chunk aleatorio
-    """Seleciona aleatoriamente um arquivo que seja menor ou igual ao limite dado."""
-    pasta_usuario = os.path.join(CHUNKS_FOLDER_BASE,usuario)
-    if not os.path.exists(pasta_usuario):
-        os.makedirs(pasta_usuario)
+CHUNKS_CRIADOS_BASE = "arquivos_cadastrados/chunkscriados"
+CHUNKS_RECEBIDOS_BASE = "arquivos_cadastrados/chunks_recebidos"
+
+
+def escolher_chunk_compatível(usuario):
+    """
+    Seleciona aleatoriamente um chunk (arquivo .part) entre os que o usuário possui.
+    Pode ser tanto da pasta de chunks criados quanto da de recebidos.
+    """
     todosChunks = []
 
-    for pasta in os.listdir(pasta_usuario):
-        caminho_subpasta = os.path.join(pasta_usuario,pasta)
-        if os.path.isdir(caminho_subpasta):
-            for arquivo in os.listdir(caminho_subpasta):    
-                if arquivo.startswith(pasta) and ".part" in arquivo:
-                    todosChunks.append(os.path.join(caminho_subpasta,arquivo))
+    # Verifica em ambas as pastas
+    for base_path in [CHUNKS_CRIADOS_BASE, CHUNKS_RECEBIDOS_BASE]:
+        pasta_usuario = os.path.join(base_path, usuario)
+        if not os.path.exists(pasta_usuario):
+            continue
+
+        for subpasta in os.listdir(pasta_usuario):
+            caminho_subpasta = os.path.join(pasta_usuario, subpasta)
+            if os.path.isdir(caminho_subpasta):
+                for arquivo in os.listdir(caminho_subpasta):
+                    if arquivo.startswith(subpasta) and ".part" in arquivo:
+                        todosChunks.append(os.path.join(caminho_subpasta, arquivo))
+
     if not todosChunks:
         return None, None
+
     random.shuffle(todosChunks)
     caminho_chunk = todosChunks[0]
-    with open(caminho_chunk, "r") as arquivo:
+    with open(caminho_chunk, "r", encoding="utf-8") as arquivo:
         dados = arquivo.read()
-    return caminho_chunk, dados               # retorna todos os dados da chunk e o caminho dele
+
+    return caminho_chunk, dados
 
 def send_chunk_to_peer(ip, port, nome_chunk, destino_arquivo):
     """

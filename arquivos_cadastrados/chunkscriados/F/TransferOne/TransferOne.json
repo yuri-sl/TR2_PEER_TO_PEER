@@ -5,13 +5,17 @@
         "hash": "cb6e53b87bc7c27b64cd0a087908538f8c7b43954a452a1d9a3ca92747cbf01c",
         "checksum": "cb6e53b87bc7c27b64cd0a087908538f8c7b43954a452a1d9a3ca92747cbf01c",
         "detentores_chunk": [
-            "F"
+            "F",
+            "A",
+            "c"
         ],
-        "numero_detentores": 1,
+        "numero_detentores": 3,
         "detentores_online": [
-            "F"
+            "F",
+            "A",
+            "c"
         ],
-        "quantidade_detentores_online": 1
+        "quantidade_detentores_online": 3
     },
     {
         "nome": "TransferOne.part1",
@@ -19,12 +23,16 @@
         "hash": "1f5d7e539725ac1aec04202684260099da4d2e7876f7e690f18f0e4ade06bef8",
         "checksum": "1f5d7e539725ac1aec04202684260099da4d2e7876f7e690f18f0e4ade06bef8",
         "detentores_chunk": [
-            "F"
+            "F",
+            "A",
+            "c"
         ],
-        "numero_detentores": 1,
+        "numero_detentores": 3,
         "detentores_online": [
-            "F"
+            "F",
+            "A",
+            "c"
         ],
-        "quantidade_detentores_online": 1
+        "quantidade_detentores_online": 3
     }
 ]

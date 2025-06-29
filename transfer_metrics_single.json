@@ -54,6 +54,16 @@
             "tempo": 0.04600358009338379,
             "volume": 0,
             "integridade": true
+        },
+        {
+            "tempo": 6.63054347038269,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 26.075867891311646,
+            "volume": 0,
+            "integridade": false
         }
     ],
     "c": [
@@ -76,6 +86,26 @@
             "tempo": 164.96047496795654,
             "volume": 601,
             "integridade": true
+        },
+        {
+            "tempo": 0.005999088287353516,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 0.0040013790130615234,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 0.004001617431640625,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 12.870135307312012,
+            "volume": 0,
+            "integridade": false
         }
     ],
     "A": [
@@ -243,6 +273,46 @@
             "tempo": 13.02759313583374,
             "volume": 0,
             "integridade": true
+        },
+        {
+            "tempo": 12.826524019241333,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 4.811851263046265,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 5.038206577301025,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 13.013955354690552,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 12.80763578414917,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 5.095194578170776,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 5.027292013168335,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 14.077982902526855,
+            "volume": 0,
+            "integridade": false
         }
     ]
 }

@@ -503,54 +503,59 @@ def handle_clients(client_socket, addr) -> None:
  #               s[u] += 1                                           # Incrementa contador de tempo
  #               print(f"{u,s[u]}")                                  # Retirar depois
 def atualizar_detentores_online_em_todos(active_peers):
-    print("🔧 Iniciando atualização de detentores_online...")
+    print("🔧 Iniciando atualização de detentores_online e detentores_chunk...")
     path_base = "arquivos_cadastrados/chunkscriados"
 
     try:
-        with open("usuarios_online.json", "r") as f:
+        with open("usuarios_online.json", "r", encoding="utf-8") as f:
             usuarios_online = set(json.load(f))
-            print("Carregados usuarios online")
+            print("✅ Carregados usuários online:", usuarios_online)
     except Exception as e:
         print(f"❌ Erro ao carregar usuarios_online.json: {e}")
         return
 
     for usuario in os.listdir(path_base):
-
         if usuario not in active_peers:
             continue
 
-
-        caminho_usuario = path_base+"/"+usuario
+        caminho_usuario = os.path.join(path_base, usuario)
         if not os.path.isdir(caminho_usuario):
             continue
-        print("O caminho do usuário é "+caminho_usuario)
-
+        print(f"📁 Processando: {caminho_usuario}")
 
         for nome_pasta in os.listdir(caminho_usuario):
-            caminho_subpasta = caminho_usuario + "/" + nome_pasta
+            caminho_subpasta = os.path.join(caminho_usuario, nome_pasta)
+            if not os.path.isdir(caminho_subpasta):
+                continue
+
             for nome_arquivo in os.listdir(caminho_subpasta):
                 if not nome_arquivo.endswith(".json"):
                     continue
+
                 caminho_json = os.path.join(caminho_subpasta, nome_arquivo)
                 try:
-                    print(f"Tentou ler o nome do arquivo{caminho_json}")
-                    with open(caminho_json, "r") as f:
+                    with open(caminho_json, "r", encoding="utf-8") as f:
                         chunks_info = json.load(f)
-                        print(chunks_info)
-                    print(f"A leitura do caminho_json está sendo feita: {caminho_json}")
 
                     for chunk in chunks_info:
+                        # Garante que o dono do diretório esteja como detentor
                         detentores = chunk.get("detentores_chunk", [])
+                        if usuario not in detentores:
+                            detentores.append(usuario)
+                        chunk["detentores_chunk"] = detentores
+
+                        # Atualiza os detentores online
                         chunk["detentores_online"] = [p for p in detentores if p in usuarios_online]
                         chunk["quantidade_detentores_online"] = len(chunk["detentores_online"])
 
-                    with open(caminho_json, "w") as f:
+                    with open(caminho_json, "w", encoding="utf-8") as f:
                         json.dump(chunks_info, f, indent=4)
 
-                    print(f"🔄 Atualizado detentores_online: {caminho_json}")
+                    print(f"🔄 Atualizado: {caminho_json}")
 
                 except Exception as e:
                     print(f"❌ Erro ao processar {caminho_json}: {e}")
+
 
 def heartbeat(s: dict) -> None:
     while True:
