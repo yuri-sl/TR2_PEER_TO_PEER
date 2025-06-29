@@ -372,30 +372,36 @@ def montar_arquivo(caminho_pasta_chunks,usuarioLogado):
     nome_arquivo_final += ".txt"
     caminho_arquivo_final = f"arquivos_montados/{usuarioLogado}/{nome_arquivo_final}"
     os.makedirs(f"arquivos_montados/{usuarioLogado}", exist_ok=True)
-    #checksum_local = calcular_checksum_arquivo(caminho_arquivo_final)
 
-    #caminho = "arquivos_cadastrados/arquivos_tracker.json"
-    #nome_arquivo = "testeAnuncio.txt"
+    # ✅ VERIFICA SE ALGUM CHUNK ESTÁ FALTANDO
+    chunks_faltando = []
+    for idx, nome_chunk in chunks_ordenados:
+        caminho_chunk = os.path.join(caminho_pasta_chunks, nome_chunk)
+        if not os.path.exists(caminho_chunk):
+            chunks_faltando.append(nome_chunk)
 
-    #checksumEsperado = obter_checksum(caminho, nome_arquivo_final)
+    if chunks_faltando:
+        print("❌ Não é possível montar o arquivo! Os seguintes chunks estão faltando:")
+        for chunk in chunks_faltando:
+            print(f" - {chunk}")
+        return
 
-    #if checksumEsperado:
-    #    print("Checksum local:",checksum_local)
-    #    print("Checksum encontrado:", checksumEsperado)
-    #else:
-    #    print("Arquivo ou checksum não encontrado.")
-    #checksum_esperado = requisitar_checksum_arquivo(
-    #    host_do_tracker, porta_do_tracker, user, dono_original, nome_arquivo_final
-    #)
-    #print(checksumEsperado == checksum_local)
-    #if checksumEsperado == checksum_local:
-        #print("CheckSum é válido para aqui!✅ O arquivo vai ser construído!")
-        #Define o caminho com a extensão correta
-        #caminho_arquivo_final = f"arquivos_montados/{usuarioLogado}/{nome_arquivo_final}"
+    # ✅ VERIFICA SE O ARQUIVO JÁ FOI MONTADO
+    if os.path.exists(caminho_arquivo_final):
+        print(f"⚠️ O arquivo '{nome_arquivo_final}' já existe. Abortando montagem.")
+        return
 
-        #os.makedirs(f"arquivos_montados/{usuarioLogado}", exist_ok=True)
+    # ✅ MONTA O ARQUIVO
+    with open(caminho_arquivo_final, "wb") as f_saida:
+        for idx, nome_chunk in chunks_ordenados:
+            caminho_chunk = os.path.join(caminho_pasta_chunks, nome_chunk)
+            with open(caminho_chunk, "rb") as f_chunk:
+                dados = f_chunk.read()
+                f_saida.write(dados)
+            print(f"✅ Chunk {nome_chunk} ({idx}) adicionado ao arquivo final.")
 
-        # Abre o arquivo final com o nome correto (com .txt) para escrita em binário
+    print(f"[SUCESSO]Arquivo '{nome_arquivo_final}' montado com sucesso em '{caminho_arquivo_final}'!")
+
     with open(caminho_arquivo_final, "wb") as f_saida:
         for idx, nome_chunk in chunks_ordenados:
             caminho_chunk = os.path.join(caminho_pasta_chunks, nome_chunk)
@@ -515,7 +521,7 @@ def salvar_transfer_record(data):
     with open(arquivo, "w", encoding="utf-8") as f:
         json.dump(registros, f, indent=4, ensure_ascii=False)
 
-def requisitar_chunk(host, port,from_user, to_user, nome_chunk, inicio_download=0):
+def requisitar_chunk(host, port,from_user, to_user, nome_chunk, inicio_download=0,single=True):
     """
     Envia um pedido de chunk para um peer específico via conexão TCP.
 
@@ -633,6 +639,7 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk, inicio_download=
             checksum_recebido = hashlib.sha256(dados_recebidos).hexdigest()
             integridade_ok = (checksum_recebido == checksum_esperado)
 
+
             if integridade_ok:
                 os.makedirs(os.path.dirname(caminho_arquivo), exist_ok=True)
                 with open(caminho_arquivo, 'wb') as f:
@@ -644,6 +651,12 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk, inicio_download=
                 print(f"❌ Checksum não bate para '{nome_chunk}': esperado {checksum_esperado}, recebido {checksum_recebido}")
                 print(f"Esperado: {checksum_esperado}")
                 print(f"Recebido: {checksum_recebido}")
+            tempo_individual = time.time() - start_time
+            volume = len(dados_recebidos)
+            if single:
+                add_transfer_record(from_user, tempo_individual, volume, integridade_ok)
+            else:
+                add_transfer_record_Connections(from_user, tempo_individual, volume, integridade_ok)
 
             # Salva registro em JSON
             registro = {
@@ -1368,7 +1381,7 @@ def interactiveMenu_1() -> bool:
                             ip = info["ip"]
                             port = info["port"]
                             print(f"Tentando baixar {chunk_nome} de {peer_dono} ({ip}:{port})")
-                            sucesso = requisitar_chunk(ip, port, usuario_logado, peer_dono, chunk_nome, inicio_download)
+                            sucesso = requisitar_chunk(ip, port, usuario_logado, peer_dono, chunk_nome, inicio_download,False)
                             if sucesso:
                                 chunk_sucesso = True
                                 print(f"Chunk {chunk_nome} baixado com sucesso.")

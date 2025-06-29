@@ -1,0 +1,88 @@
+{
+    "A": [
+        {
+            "tempo": 4.013169527053833,
+            "volume": 1009902,
+            "integridade": true
+        },
+        {
+            "tempo": 4.096680402755737,
+            "volume": 1009902,
+            "integridade": true
+        },
+        {
+            "tempo": 4.009757041931152,
+            "volume": 1009902,
+            "integridade": true
+        },
+        {
+            "tempo": 3.9727234840393066,
+            "volume": 1009902,
+            "integridade": true
+        },
+        {
+            "tempo": 5.497780084609985,
+            "volume": 1009902,
+            "integridade": true
+        }
+    ],
+    "c": [
+        {
+            "tempo": 5.648019313812256,
+            "volume": 1009902,
+            "integridade": true
+        },
+        {
+            "tempo": 7.807701826095581,
+            "volume": 1009902,
+            "integridade": true
+        },
+        {
+            "tempo": 5.6233155727386475,
+            "volume": 1009902,
+            "integridade": true
+        },
+        {
+            "tempo": 5.915210962295532,
+            "volume": 1009902,
+            "integridade": true
+        },
+        {
+            "tempo": 5.435227870941162,
+            "volume": 1009902,
+            "integridade": true
+        },
+        {
+            "tempo": 6.2743613719940186,
+            "volume": 1009902,
+            "integridade": true
+        },
+        {
+            "tempo": 7.055736064910889,
+            "volume": 1009902,
+            "integridade": true
+        }
+    ],
+    "F": [
+        {
+            "tempo": 11.261581182479858,
+            "volume": 1009902,
+            "integridade": true
+        },
+        {
+            "tempo": 9.731178998947144,
+            "volume": 1009902,
+            "integridade": true
+        },
+        {
+            "tempo": 5.194132089614868,
+            "volume": 1009902,
+            "integridade": true
+        },
+        {
+            "tempo": 9.460896968841553,
+            "volume": 1009902,
+            "integridade": true
+        }
+    ]
+}
