@@ -507,4 +507,4 @@
 ⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 0.01 segundos.
 ⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 0.01 segundos.
 ⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 8.97 segundos.
-⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 8.88 segundos.\n⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 9.01 segundos.\n
+⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 8.88 segundos.\n⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 9.01 segundos.\n⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 14.01 segundos.\n⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 0.05 segundos.\n⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 13.08 segundos.\n⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 14.02 segundos.\n⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 13.01 segundos.\n⏱ Tempo total de download de TODOS os chunks de TransferOne.txt: 13.03 segundos.\n

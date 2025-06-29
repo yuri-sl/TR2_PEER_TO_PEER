@@ -1,6 +1,7 @@
 import json
 import os
 import time
+import math
 
 # Caminho para salvar o scoreboard
 SCOREBOARD_FILE = "scoreboard.json"
@@ -29,7 +30,7 @@ def map_score_to_range(score: float) -> int:
 
 # Pesos configuráveis para cada métrica
 WEIGHTS = {
-    'bytes_sent': 5,
+    'bytes_sent': 0.001,
     'time_connected': 1,
     'successful_responses': 1,
     'active_connections':1,
@@ -89,7 +90,9 @@ def update_score(peer_id: str, bytes_sent: int = 0, time_connected: int = 0,
                  active_connections: int = 0, log_history=False) -> int:
     """Atualiza todas as métricas para o peer."""
 
-    scoreboard = load_scoreboard()
+    global scoreboard
+
+    #scoreboard = load_scoreboard()
     metrics = scoreboard.get(peer_id, {
         "bytes_sent": 0,
         "time_connected": 0,
@@ -116,7 +119,7 @@ def update_score(peer_id: str, bytes_sent: int = 0, time_connected: int = 0,
     # Recalcula score
     if metrics["time_connected"] <= 60:
         score = (
-            WEIGHTS.get("bytes_sent", 1) * metrics["bytes_sent"] +
+            WEIGHTS.get("bytes_sent", 0.05) * math.log1p(metrics["bytes_sent"]) +
             WEIGHTS.get("time_connected", 1) * metrics["time_connected"] +
             WEIGHTS.get("successful_responses", 1) * metrics["successful_responses"] +
             WEIGHTS.get("failed_transfers", -1) * metrics["failed_transfers"] +
@@ -124,13 +127,15 @@ def update_score(peer_id: str, bytes_sent: int = 0, time_connected: int = 0,
         )
     else:
         score = (
-            WEIGHTS.get("bytes_sent", 1) * metrics["bytes_sent"] +
+            WEIGHTS.get("bytes_sent", 0.05) * math.log1p(metrics["bytes_sent"]) +
             30 + # sempre vale 30 pontos caso tenha mais que 60 segundos no serivdor
             WEIGHTS.get("successful_responses", 1) * metrics["successful_responses"] + 
             WEIGHTS.get("failed_transfers", -1) * metrics["failed_transfers"] +
             WEIGHTS.get("active_connections", 1) * metrics["active_connections"]
         )
     #metrics["score"] = map_score_to_range(score)
+    score = min(score,1000)
+
     metrics["score"] = score
     scoreboard[peer_id] = metrics
     save_scoreboard()
@@ -144,20 +149,26 @@ load_scoreboard()
 #save_scoreboard()
 #print(f"Nova pontuação de peerA: {score_example}")
 
-def get_score(peer_id: str) -> int:
+def get_score(peer_id: str, normalize=False) -> int:
     """
     Retorna a pontuação atual de um peer.
 
     Args:
-        peer_id (str): Identificador do peer.
+        peer_id (str): ID do peer.
+        normalize (bool): Se True, retorna score entre 0 e 100.
 
     Returns:
-        int: Pontuação armazenada, ou 0 se não existir.
+        int: Score do peer.
     """
-    score = load_scoreboard()
-    metrics = score.get(peer_id)
+    global scoreboard
+    load_scoreboard()
+
+    metrics = scoreboard.get(peer_id)
     if metrics and isinstance(metrics, dict):
-        return metrics.get("score", 0)
+        raw_score = metrics.get("score", 0)
+        if normalize:
+            return min(100, int(raw_score / 10))
+        return raw_score
     return 0
 
 def get_leaderboard(top_n: int = None) -> list:

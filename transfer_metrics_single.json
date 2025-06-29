@@ -49,6 +49,11 @@
             "tempo": 0.00799703598022461,
             "volume": 0,
             "integridade": false
+        },
+        {
+            "tempo": 0.04600358009338379,
+            "volume": 0,
+            "integridade": true
         }
     ],
     "c": [
@@ -211,6 +216,31 @@
         },
         {
             "tempo": 9.010247468948364,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 14.0070321559906,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 13.07851243019104,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 14.023318767547607,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 13.01462197303772,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 13.02759313583374,
             "volume": 0,
             "integridade": true
         }
