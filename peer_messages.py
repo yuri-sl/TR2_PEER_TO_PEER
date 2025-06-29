@@ -165,10 +165,17 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                     score_peer = get_score(peer_user)
                     bandwidth_limit = calcular_bandwidth(score_peer)
 
-                    chunk_size = min(128 * 1024, len(dados_chunk))
+                    min_chunk_size = 100 * 1024# Min Chunk_size = 100 KB
+                    max_chunk_size = 2* 1024 * 1024 #Max chunk size = 2MB
+
+                    MAX_BANDWIDTH = 10 * 1024 * 1024
+                    prop = min(bandwidth_limit / MAX_BANDWIDTH, 1.0)
+
+                    chunk_size = int(min_chunk_size + prop * (max_chunk_size - min_chunk_size))
                     sleep_interval  = (chunk_size / bandwidth_limit)
                     sleep_interval = max(0.5, min(sleep_interval, 1.5))
                     print(f"It sleeps for: {sleep_interval} seconds")
+                    print(f"[✓] Peer '{peer_user}' com score {score_peer} vai usar chunk_size {chunk_size} e banda de {bandwidth_limit} B/s")
                     bytes_enviados = 0
                     inicio = time.time()
 
@@ -181,6 +188,9 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                         bytes_enviados += len(parte)
                         porcentagem = (bytes_enviados / len(dados_chunk)) * 100
                         print(f"Bytes enviados atualizados: {bytes_enviados}/{len(dados_chunk)} ({porcentagem:.2f}%)")
+
+                        tempo_estimado = len(parte) / bandwidth_limit
+                        time.sleep(min(max(tempo_estimado,0.05),1.5))
                         #print(f"It's sleeping for {sleep_interval:.2f} seconds...")
                         time.sleep(sleep_interval)
                         #print(f"It's sleeping for {sleep_interval}")
@@ -188,6 +198,8 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                         #print("It has just slept")
                     #fim = time.time()
                     #tempo_transferencia = fim - inicio
+                    fim = time.time()
+                    tempo_total = fim - inicio
                     update_score(peer_user,
                             bytes_sent=len(dados_chunk),
                             successful_responses=1)
@@ -228,16 +240,15 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
     threading.Thread(target=chunk_server_loop, daemon=True).start()
     threading.Thread(target=p2p, args=(meu_username,), daemon=True).start()
     
-def calcular_bandwidth(score_peer, min_rate=10240 , max_rate=3*1024*1024, max_score=100000):
+def calcular_bandwidth(score_peer, min_rate=10*1024, max_rate=3*1024*1024, max_score=100000):
     """
-    Converte o score do peer numa largura de banda (bytes/s).
-    10240 = 10 KB/s
-    1024*1024 = 1 MiB/s
+    Converte o score do peer numa largura de banda (bytes/s) com escala logarítmica.
     """
     print(f"The peer's score is {score_peer}")
-    normalized = min(score_peer / max_score, 1.0)  # Normaliza para 0–1
-    bandwidth = min_rate + (max_rate - min_rate) * normalized
-    print(f"normalized: {normalized}\n bandwidth: {bandwidth}")
+    score_peer = max(score_peer, 1)  # evita log(0)
+    escala = math.log(score_peer + 1) / math.log(max_score + 1)
+    bandwidth = min_rate + (max_rate - min_rate) * escala
+    print(f"log escala: {escala:.4f} -> bandwidth: {bandwidth:.2f} bytes/s")
     return int(bandwidth)
 
 def send_to_tracker2(data) -> dict:
@@ -601,33 +612,26 @@ def construir_tamanhos_chunks_aleatorios(nome_arquivo, min_chunks=2, max_chunks=
     Retorna:
         List[int]: Lista de tamanhos dos chunks em bytes.
     """
-    tamanho_arquivo_bytes = os.path.getsize(nome_arquivo)
+    tamanho_total = os.path.getsize(nome_arquivo)
 
-    # Limita o número de chunks para não ultrapassar o tamanho do arquivo
-    max_chunks = min(max_chunks, tamanho_arquivo_bytes // min_chunk_size)
+    # Limite superior de chunks não pode ser maior que o número de bytes
+    max_chunks = min(max_chunks, tamanho_total)
 
-    # Garante que haja ao menos min_chunks e no máximo max_chunks possíveis
+    # Garante que min_chunks nunca ultrapasse max_chunks
+    if min_chunks > max_chunks:
+        min_chunks = max_chunks
+
     num_chunks = random.randint(min_chunks, max_chunks)
 
-    tamanho_medio_chunk = tamanho_arquivo_bytes // num_chunks
-    tamanhos_chunks = []
-    soma_chunks = 0
+    tamanhos = []
+    base_size = tamanho_total // num_chunks
+    resto = tamanho_total % num_chunks
 
-    for i in range(num_chunks - 1):
-        chunk_size = int(random.uniform(0.8, 1.2) * tamanho_medio_chunk)
+    for i in range(num_chunks):
+        tamanho_chunk = base_size + (1 if i < resto else 0)
+        tamanhos.append(tamanho_chunk)
 
-        # Garante o tamanho mínimo e não ultrapassar o restante
-        restante_necessario = (num_chunks - i - 1) * min_chunk_size
-        chunk_size = max(min_chunk_size, chunk_size)  
-        chunk_size = min(chunk_size, tamanho_arquivo_bytes - soma_chunks - restante_necessario)
-
-        tamanhos_chunks.append(chunk_size)
-        soma_chunks += chunk_size
-
-    # Último chunk recebe o restante
-    tamanhos_chunks.append(tamanho_arquivo_bytes - soma_chunks)
-
-    return tamanhos_chunks
+    return tamanhos
 
 def announce_file_novo(username, nome_arquivo):
     """

@@ -1225,6 +1225,7 @@ def interactiveMenu_1() -> bool:
                                                             print("o código executou até depois de sucesso")
                                                             registrar_dono_no_json_arquivo(chunk_nome, usuario_logado)
                                                             print(f"O sucesso foi: {sucesso}")
+                                                            total_chunks_sum+=1
 
                                                             if sucesso:
                                                                 print(f"O sucesso foi: {sucesso}")
@@ -1337,10 +1338,14 @@ def interactiveMenu_1() -> bool:
                 return
 
             chunk_map = resposta_chunks["chunks"]
+            volume_total = 0
             fila_chunks = queue.Queue()
             for chunk_nome, donos in chunk_map.items():
                 donos_ordenados = sorted(donos, key=lambda peer: get_transmisson_score(peer), reverse=True)
                 fila_chunks.put((chunk_nome, donos_ordenados))
+                caminho_chunk = f"chunks_recebidos/{usuario_logado}/{nome_arquivo_sem_extensao}/{chunk_nome}"
+                if os.path.exists(caminho_chunk):
+                    volume_total += os.path.getsize(caminho_chunk)
 
             def thread_worker(usuario_logado, fila_chunks, inicio_download):
                 while not fila_chunks.empty():
@@ -1391,7 +1396,8 @@ def interactiveMenu_1() -> bool:
             tempo_total = fim_download - inicio_download
             with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
                 report_file.write(f"⏱ Tempo total de download de TODOS os chunks de {nome_escolhido}: {tempo_total:.2f} segundos.\\n")
-            add_transfer_record(usuario_logado, tempo_total, fila_chunks.qsize(), True)
+
+            add_transfer_record_Connections(usuario_logado, tempo_total, volume_total, True)
             input("Pressione Enter para continuar")
             os.system('cls||clear')
 

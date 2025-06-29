@@ -5800,5 +5800,4877 @@
         "chunk": "TransferOne.part1",
         "tamanho": 512680,
         "tempo": 6.512589931488037
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferOne.part0",
+        "tamanho": 497222,
+        "tempo": 6.518702030181885
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TransferOne.part1",
+        "tamanho": 512680,
+        "tempo": 6.4366021156311035
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Kakarotto.part0",
+        "tamanho": 362565,
+        "tempo": 4.814192771911621
+    },
+    {
+        "peer_user": "A",
+        "chunk": "Kakarotto.part1",
+        "tamanho": 267516,
+        "tempo": 4.7405924797058105
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part0",
+        "tamanho": 123442,
+        "tempo": 1.6060729026794434
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part1",
+        "tamanho": 159329,
+        "tempo": 3.156773805618286
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part2",
+        "tamanho": 132259,
+        "tempo": 3.120469093322754
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part3",
+        "tamanho": 150649,
+        "tempo": 3.147582530975342
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part4",
+        "tamanho": 170080,
+        "tempo": 3.1456680297851562
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part5",
+        "tamanho": 129541,
+        "tempo": 1.6092231273651123
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part6",
+        "tamanho": 144602,
+        "tempo": 3.125410795211792
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part0",
+        "tamanho": 123442,
+        "tempo": 1.6039345264434814
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part1",
+        "tamanho": 159329,
+        "tempo": 3.160019636154175
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part2",
+        "tamanho": 132259,
+        "tempo": 3.1143529415130615
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part3",
+        "tamanho": 150649,
+        "tempo": 3.1423377990722656
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part4",
+        "tamanho": 170080,
+        "tempo": 3.1440846920013428
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part5",
+        "tamanho": 129541,
+        "tempo": 1.612288475036621
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part6",
+        "tamanho": 144602,
+        "tempo": 3.1262106895446777
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part0",
+        "tamanho": 123442,
+        "tempo": 1.6041362285614014
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part2",
+        "tamanho": 132259,
+        "tempo": 3.1201088428497314
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part3",
+        "tamanho": 150649,
+        "tempo": 3.1378653049468994
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part4",
+        "tamanho": 170080,
+        "tempo": 3.1434385776519775
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part5",
+        "tamanho": 129541,
+        "tempo": 1.618001937866211
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part6",
+        "tamanho": 144602,
+        "tempo": 3.1422791481018066
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part1",
+        "tamanho": 159329,
+        "tempo": 3.155451536178589
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part0",
+        "tamanho": 123442,
+        "tempo": 1.607849359512329
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part1",
+        "tamanho": 159329,
+        "tempo": 3.140346050262451
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part2",
+        "tamanho": 132259,
+        "tempo": 3.118773937225342
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part3",
+        "tamanho": 150649,
+        "tempo": 3.1401867866516113
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part4",
+        "tamanho": 170080,
+        "tempo": 3.155376672744751
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part5",
+        "tamanho": 129541,
+        "tempo": 1.616236925125122
+    },
+    {
+        "peer_user": "F",
+        "chunk": "Lsa.part6",
+        "tamanho": 144602,
+        "tempo": 3.1299142837524414
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 3.1919593811035156
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 3.1692728996276855
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 3.226581573486328
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 3.1932411193847656
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 3.1437432765960693
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 3.153374671936035
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 3.1902084350585938
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 3.1444554328918457
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 3.1498727798461914
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 3.153362512588501
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 3.1657533645629883
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 3.1547765731811523
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 3.1515541076660156
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 3.179518461227417
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 3.1942405700683594
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 3.203104257583618
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 3.2000064849853516
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 3.136260986328125
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 3.1835174560546875
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 3.1415112018585205
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 3.1370866298675537
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 3.166008949279785
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 3.2031211853027344
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 3.207559585571289
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.848268985748291
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7855923175811768
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.7976036071777344
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.7767560482025146
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7779669761657715
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.790985107421875
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7825801372528076
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.793142557144165
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.7869958877563477
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.7884776592254639
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7726430892944336
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7686746120452881
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7650628089904785
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7697479724884033
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.7685930728912354
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.765977144241333
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7763266563415527
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7688634395599365
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7681794166564941
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7748556137084961
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.7672832012176514
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.7727901935577393
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.763709306716919
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7759742736816406
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7776134014129639
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7787151336669922
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.7732837200164795
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.7882277965545654
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7665374279022217
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7679438591003418
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7871143817901611
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7596514225006104
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.7612786293029785
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.7687392234802246
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7670164108276367
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7591259479522705
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7532188892364502
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7645435333251953
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.7604389190673828
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.7656846046447754
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7909948825836182
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7686998844146729
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7991282939910889
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7981266975402832
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.7511603832244873
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.7631540298461914
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7617151737213135
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7572777271270752
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7769742012023926
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7771940231323242
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.7675297260284424
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.7629063129425049
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7731485366821289
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7570211887359619
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7582879066467285
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7707386016845703
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.7580173015594482
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.7617874145507812
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7558000087738037
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7560412883758545
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7615053653717041
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7588634490966797
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.7619662284851074
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.7541160583496094
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.757070779800415
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7529501914978027
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7618632316589355
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7600047588348389
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.7890913486480713
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.7585043907165527
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7531700134277344
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7648742198944092
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7598400115966797
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7720744609832764
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.7653648853302002
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.7680199146270752
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7647652626037598
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7946598529815674
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7564163208007812
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7476463317871094
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.7626566886901855
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.7512376308441162
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7549867630004883
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.752164363861084
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7572171688079834
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7634952068328857
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.7531270980834961
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.7560210227966309
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7660064697265625
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7645151615142822
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8109972476959229
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8119699954986572
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8003151416778564
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8214144706726074
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8024706840515137
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8007943630218506
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7954723834991455
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7915806770324707
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8120851516723633
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8302085399627686
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7990570068359375
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7897348403930664
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7949998378753662
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7935240268707275
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.7997837066650391
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8158435821533203
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.813896656036377
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7893886566162109
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7933797836303711
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7794430255889893
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.7911090850830078
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8069982528686523
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7946887016296387
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7932360172271729
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7824075222015381
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7821855545043945
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8518972396850586
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.7802660465240479
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7845337390899658
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7877631187438965
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7762031555175781
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7701852321624756
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.774268388748169
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.7870259284973145
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7749953269958496
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7769412994384766
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8086428642272949
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7883694171905518
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8266105651855469
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.7769966125488281
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7693982124328613
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7809991836547852
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.771526575088501
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7682287693023682
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.7783493995666504
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.770815372467041
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7990124225616455
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7867834568023682
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7682185173034668
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8184895515441895
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8443775177001953
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8065187931060791
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 1.0625104904174805
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8066647052764893
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7973992824554443
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7901320457458496
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.7707586288452148
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.7913520336151123
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7626101970672607
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7704744338989258
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7828061580657959
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.7710111141204834
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8006501197814941
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.7571587562561035
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7588963508605957
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.7899317741394043
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.7670023441314697
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8029899597167969
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.7740159034729004
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.7568752765655518
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.7696893215179443
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.763218879699707
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.9532010555267334
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.9369304180145264
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.908001184463501
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8919739723205566
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8866667747497559
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8906793594360352
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8898944854736328
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8760602474212646
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.9687657356262207
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.852025032043457
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8602175712585449
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8810667991638184
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.9559412002563477
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.9199976921081543
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8808085918426514
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8544225692749023
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.868966817855835
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8648838996887207
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8632063865661621
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.840721607208252
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8610036373138428
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.822948694229126
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8430631160736084
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8736977577209473
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8308112621307373
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8407602310180664
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8530874252319336
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.848393440246582
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8632135391235352
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8185412883758545
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8559155464172363
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8591001033782959
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8472256660461426
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8437361717224121
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8517076969146729
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8715968132019043
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8634710311889648
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8692731857299805
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8570291996002197
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8568134307861328
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8891801834106445
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8443243503570557
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8485183715820312
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8375957012176514
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8324804306030273
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8401906490325928
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8645288944244385
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.865164041519165
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8940463066101074
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8580334186553955
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8587000370025635
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8399934768676758
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8643863201141357
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8238565921783447
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8386940956115723
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8806717395782471
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8389718532562256
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8858144283294678
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 2.472229242324829
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8405561447143555
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8481669425964355
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.85451340675354
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8395578861236572
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8549337387084961
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8493776321411133
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8641057014465332
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8544723987579346
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.852863073348999
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8654613494873047
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8389241695404053
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8250772953033447
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8302679061889648
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8416862487792969
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8472728729248047
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8850038051605225
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8872280120849609
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8567349910736084
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8355824947357178
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8458173274993896
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8220400810241699
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8769974708557129
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8330459594726562
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.828521728515625
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8304197788238525
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8714683055877686
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8315224647521973
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8764634132385254
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8358123302459717
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8192288875579834
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8329982757568359
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.877312421798706
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8383529186248779
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8290183544158936
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8385345935821533
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8639359474182129
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8410398960113525
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8385803699493408
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8452789783477783
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8256189823150635
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.856003999710083
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8738613128662109
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.9340455532073975
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.9280004501342773
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8915188312530518
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8465521335601807
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8361184597015381
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 1.107008695602417
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 1.0240018367767334
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.9054358005523682
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.9075314998626709
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.9053812026977539
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8841094970703125
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8782382011413574
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8845200538635254
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.9130122661590576
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.9147913455963135
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8781449794769287
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 2.4466874599456787
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8920047283172607
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8525536060333252
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8457193374633789
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8305118083953857
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.832247257232666
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8360979557037354
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8155245780944824
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8790004253387451
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.841078519821167
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8532929420471191
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.9454729557037354
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.9012894630432129
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8520336151123047
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8532159328460693
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8418114185333252
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8444101810455322
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.842571496963501
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8462727069854736
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8490080833435059
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8436524868011475
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8432462215423584
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8696081638336182
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8601140975952148
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8672566413879395
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8428454399108887
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8696625232696533
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8655893802642822
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8535623550415039
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8386914730072021
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8487818241119385
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8460426330566406
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8486058712005615
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8414101600646973
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.843146562576294
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8430006504058838
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.9215214252471924
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8405675888061523
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8483998775482178
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8726043701171875
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8656976222991943
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.873528003692627
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8663356304168701
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8520832061767578
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8712682723999023
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.852027416229248
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8906223773956299
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8795304298400879
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8515594005584717
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8666856288909912
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8767387866973877
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 1.0294249057769775
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8611180782318115
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.859588623046875
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8640005588531494
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8451032638549805
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8728570938110352
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8809800148010254
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8843679428100586
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8511641025543213
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8504416942596436
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8512115478515625
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.9268496036529541
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.9247033596038818
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.9091124534606934
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8822500705718994
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8735430240631104
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8956542015075684
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.83262038230896
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8370001316070557
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8449385166168213
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8317723274230957
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8582069873809814
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8390007019042969
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8511481285095215
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8648576736450195
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8388054370880127
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8388535976409912
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8490185737609863
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8290925025939941
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8327293395996094
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8272991180419922
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8407905101776123
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8215243816375732
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.818934440612793
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8366000652313232
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8469994068145752
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8550798892974854
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8193650245666504
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8336582183837891
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8214735984802246
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8252530097961426
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8880462646484375
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.9049994945526123
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8490703105926514
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8279070854187012
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8470447063446045
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.9130053520202637
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8316981792449951
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8270285129547119
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8247115612030029
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8283669948577881
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8185584545135498
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8260781764984131
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8532450199127197
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8470022678375244
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8252694606781006
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8323752880096436
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8156156539916992
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8510041236877441
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.813373327255249
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8275146484375
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8173460960388184
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8167858123779297
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8021481037139893
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8289186954498291
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8077719211578369
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8414547443389893
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8082871437072754
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8119058609008789
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8247804641723633
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.9135944843292236
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8131790161132812
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8164405822753906
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8769974708557129
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8641073703765869
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8438553810119629
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8192322254180908
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8710007667541504
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8328063488006592
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8305168151855469
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8263447284698486
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8197822570800781
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.806969165802002
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 1.0668542385101318
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 1.2348551750183105
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8746583461761475
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8640868663787842
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 1.046320915222168
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 1.0347166061401367
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8800647258758545
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8781230449676514
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 2.7106757164001465
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 2.6857059001922607
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.954937219619751
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.9627275466918945
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.9366917610168457
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8554754257202148
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8915712833404541
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8481097221374512
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8509068489074707
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 2.4384214878082275
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8715188503265381
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8837850093841553
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8403770923614502
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8332009315490723
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8469760417938232
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8411197662353516
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8354268074035645
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 1.0319781303405762
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 1.140678882598877
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8301153182983398
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8859977722167969
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8725614547729492
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8560023307800293
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.9270644187927246
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8374629020690918
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.839184045791626
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8388597965240479
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.9328422546386719
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8489997386932373
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8499975204467773
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8680956363677979
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8329300880432129
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8551788330078125
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8360910415649414
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8995547294616699
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8308742046356201
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8421235084533691
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8559870719909668
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8330173492431641
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.838160514831543
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8550353050231934
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8619277477264404
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8308486938476562
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8428986072540283
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8489575386047363
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8425233364105225
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8282430171966553
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8506324291229248
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8389492034912109
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8326930999755859
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8304736614227295
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8359990119934082
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 1.1307835578918457
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 1.0576465129852295
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.9981317520141602
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 1.0148794651031494
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.9303252696990967
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.9179089069366455
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.914262056350708
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8964319229125977
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.9116127490997314
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.876516580581665
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8678731918334961
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8616683483123779
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8811793327331543
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8496861457824707
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8511192798614502
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8449742794036865
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8661906719207764
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8475525379180908
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8610801696777344
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8510606288909912
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8473310470581055
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8550229072570801
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8115649223327637
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8555591106414795
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8225643634796143
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.828108549118042
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8316793441772461
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.828826904296875
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8272292613983154
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8219985961914062
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8391194343566895
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8161263465881348
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8300304412841797
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8127169609069824
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8270480632781982
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.814035177230835
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8295209407806396
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.9305276870727539
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8600730895996094
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.827523946762085
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8416740894317627
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8400166034698486
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8540551662445068
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8538260459899902
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8395977020263672
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8480315208435059
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8382601737976074
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8380191326141357
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8536262512207031
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.851999044418335
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8260571956634521
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8244788646697998
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8296334743499756
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8310484886169434
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8200170993804932
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8607814311981201
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8331739902496338
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8454132080078125
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8231523036956787
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8426899909973145
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.821007490158081
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8600659370422363
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8402643203735352
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8400983810424805
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.833137035369873
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8418426513671875
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8216793537139893
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8615655899047852
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8293108940124512
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8451721668243408
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8399965763092041
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8745110034942627
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8665120601654053
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.833080530166626
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8352370262145996
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8276495933532715
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8298497200012207
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8215720653533936
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8276653289794922
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8528327941894531
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8463988304138184
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8179645538330078
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8220329284667969
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8525240421295166
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8244876861572266
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.820763349533081
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8247020244598389
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8170719146728516
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8182175159454346
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8252508640289307
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8500757217407227
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8215374946594238
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 1.0447688102722168
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8447690010070801
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8705434799194336
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8470330238342285
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8501935005187988
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8490641117095947
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8675711154937744
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8604593276977539
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8674764633178711
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8554432392120361
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8405823707580566
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8441050052642822
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.9860873222351074
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 1.1236650943756104
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 2.433250904083252
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.9709024429321289
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.9290924072265625
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.9285233020782471
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8986613750457764
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.9317090511322021
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.928403377532959
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.889030933380127
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8687584400177002
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8499495983123779
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.85400390625
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8490085601806641
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8543241024017334
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8564574718475342
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8486850261688232
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8520317077636719
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8550264835357666
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8570623397827148
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.874345064163208
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8559994697570801
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.849001407623291
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 1.0012049674987793
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8504714965820312
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8464725017547607
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8264732360839844
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.838982343673706
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8372440338134766
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8445334434509277
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8730781078338623
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8754713535308838
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8362994194030762
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8248136043548584
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.9052107334136963
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.856421709060669
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8760073184967041
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8407909870147705
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8315246105194092
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8341765403747559
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8280797004699707
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8604507446289062
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8389651775360107
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8372039794921875
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8318359851837158
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8441684246063232
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8303966522216797
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8268873691558838
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8481500148773193
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8328671455383301
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8373408317565918
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8890020847320557
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.9936180114746094
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8950605392456055
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8333215713500977
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8415591716766357
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8501088619232178
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8374462127685547
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8324973583221436
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8273921012878418
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8280613422393799
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8384604454040527
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8254430294036865
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8214354515075684
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8485240936279297
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8285858631134033
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8143455982208252
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8378291130065918
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.822016716003418
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8381836414337158
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8386034965515137
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8249969482421875
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8405437469482422
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8354630470275879
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8242805004119873
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8825819492340088
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8181712627410889
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8134570121765137
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8252055644989014
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8350157737731934
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8368680477142334
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8247549533843994
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8412845134735107
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8299987316131592
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8350043296813965
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8282721042633057
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.831345796585083
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.9355728626251221
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8256254196166992
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8267042636871338
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8363208770751953
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8192198276519775
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8337218761444092
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8129377365112305
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8354856967926025
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8191306591033936
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.826915979385376
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8330140113830566
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8430342674255371
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8432583808898926
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8259987831115723
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8370001316070557
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8226344585418701
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8335201740264893
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8682100772857666
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8262760639190674
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8216257095336914
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8171157836914062
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8152070045471191
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8355283737182617
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.834923505783081
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8192381858825684
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8149764537811279
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8164644241333008
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8349158763885498
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8942747116088867
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8063662052154541
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8152744770050049
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8505375385284424
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.9079568386077881
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8691146373748779
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.879967212677002
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8783962726593018
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8820199966430664
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.864710807800293
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.9190511703491211
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.916222333908081
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8539297580718994
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8488345146179199
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8533358573913574
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8391406536102295
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.8799014091491699
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.9100408554077148
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8894689083099365
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.9250597953796387
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8817903995513916
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.8323345184326172
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 2.450956344604492
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.8636112213134766
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.8548955917358398
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.8422219753265381
+    },
+    {
+        "peer_user": "F",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8520052433013916
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 1.0290684700012207
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 1.029195785522461
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.9748735427856445
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.8580083847045898
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 1.1844961643218994
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.9224989414215088
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.9541671276092529
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.9856967926025391
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.9298686981201172
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.9181361198425293
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.9278581142425537
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.9718663692474365
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.9151244163513184
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.9061360359191895
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.9088485240936279
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 1.031808853149414
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 1.1668734550476074
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.9098813533782959
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.9312469959259033
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 1.0392677783966064
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.9744858741760254
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.9301588535308838
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.9109773635864258
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.9844493865966797
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.9205145835876465
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.968055248260498
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.9010539054870605
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part2",
+        "tamanho": 168317,
+        "tempo": 0.9050619602203369
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 1.2415220737457275
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 0.9512567520141602
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part4",
+        "tamanho": 168317,
+        "tempo": 0.9717583656311035
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part5",
+        "tamanho": 168317,
+        "tempo": 0.9250607490539551
+    },
+    {
+        "peer_user": "A",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.921004056930542
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.971562385559082
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part1",
+        "tamanho": 168317,
+        "tempo": 0.9295125007629395
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part0",
+        "tamanho": 168317,
+        "tempo": 0.9422762393951416
+    },
+    {
+        "peer_user": "c",
+        "chunk": "TesteOne.part3",
+        "tamanho": 168317,
+        "tempo": 1.011282205581665
     }
-]
+]]

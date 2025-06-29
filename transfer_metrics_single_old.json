@@ -1,0 +1,348 @@
+{
+    "F": [
+        {
+            "tempo": 58.09594249725342,
+            "volume": 332,
+            "integridade": true
+        },
+        {
+            "tempo": 55.09073257446289,
+            "volume": 332,
+            "integridade": true
+        },
+        {
+            "tempo": 55.91662812232971,
+            "volume": 332,
+            "integridade": true
+        },
+        {
+            "tempo": 0.003000020980834961,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 0.0030031204223632812,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 0.003999948501586914,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 0.0029973983764648438,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.004998683929443359,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.006627082824707031,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.00799703598022461,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.04600358009338379,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 6.63054347038269,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 26.075867891311646,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 13.986242771148682,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 19.195834636688232,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 19.164020776748657,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 19.705835580825806,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 19.163240432739258,
+            "volume": 0,
+            "integridade": true
+        }
+    ],
+    "c": [
+        {
+            "tempo": 57.9486472606659,
+            "volume": 332,
+            "integridade": true
+        },
+        {
+            "tempo": 55.966437578201294,
+            "volume": 332,
+            "integridade": true
+        },
+        {
+            "tempo": 56.0525758266449,
+            "volume": 332,
+            "integridade": true
+        },
+        {
+            "tempo": 164.96047496795654,
+            "volume": 601,
+            "integridade": true
+        },
+        {
+            "tempo": 0.005999088287353516,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 0.0040013790130615234,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 0.004001617431640625,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 12.870135307312012,
+            "volume": 0,
+            "integridade": false
+        }
+    ],
+    "A": [
+        {
+            "tempo": 19.96697974205017,
+            "volume": 332,
+            "integridade": true
+        },
+        {
+            "tempo": 19.97026491165161,
+            "volume": 332,
+            "integridade": true
+        },
+        {
+            "tempo": 47.36961102485657,
+            "volume": 332,
+            "integridade": true
+        },
+        {
+            "tempo": 20.28275489807129,
+            "volume": 332,
+            "integridade": true
+        },
+        {
+            "tempo": 0.22890138626098633,
+            "volume": 601,
+            "integridade": true
+        },
+        {
+            "tempo": 122.9795126914978,
+            "volume": 601,
+            "integridade": true
+        },
+        {
+            "tempo": 0.004003286361694336,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 0.005010366439819336,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 0.003997325897216797,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 0.015003681182861328,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.015002012252807617,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.015531063079833984,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.014012575149536133,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.01500391960144043,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.014973878860473633,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.018646240234375,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.01599860191345215,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 8.543989181518555,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 8.58354926109314,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 8.575215578079224,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.008000612258911133,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.011999368667602539,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.0049991607666015625,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.0059969425201416016,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 0.008002758026123047,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 8.966568231582642,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 8.877272367477417,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 9.010247468948364,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 14.0070321559906,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 13.07851243019104,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 14.023318767547607,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 13.01462197303772,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 13.02759313583374,
+            "volume": 0,
+            "integridade": true
+        },
+        {
+            "tempo": 12.826524019241333,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 4.811851263046265,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 5.038206577301025,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 13.013955354690552,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 12.80763578414917,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 5.095194578170776,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 5.027292013168335,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 14.077982902526855,
+            "volume": 0,
+            "integridade": false
+        },
+        {
+            "tempo": 9.663273811340332,
+            "volume": 0,
+            "integridade": true
+        }
+    ]
+}

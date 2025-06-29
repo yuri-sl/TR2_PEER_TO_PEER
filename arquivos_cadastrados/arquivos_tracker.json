@@ -1,5 +1,7 @@
 {
     "A": [
+        "4.txt",
+        "a.txt",
         "as.txt",
         "Asdf.txt",
         "Eleven.txt",
@@ -12,6 +14,8 @@
         "TransferOne.txt"
     ],
     "F": [
+        "4.txt",
+        "a.txt",
         "as.txt",
         "Asdf.txt",
         "Eleven.txt",
@@ -23,16 +27,20 @@
         "TransferData.txt",
         "TransferOne.txt"
     ],
-    "TransferOne.txt": {
-        "checksum": "bc6c5dfb4d87b14461abd9414acd6e0ad4da2bfa20d5c7cb76390051d774ce92",
-        "chunks_path": "arquivos_cadastrados/chunkscriados/F/TransferOne",
+    "TesteOne.txt": {
+        "checksum": "18c397be8e36e462008852a789e6c171aec86ae127c7a2179a6e79ba212a803e",
+        "chunks_path": "arquivos_cadastrados/chunkscriados/A/TesteOne",
         "chunks": [
-            "TransferOne.part0",
-            "TransferOne.part1"
+            "TesteOne.part0",
+            "TesteOne.part1",
+            "TesteOne.part2",
+            "TesteOne.part3",
+            "TesteOne.part4",
+            "TesteOne.part5"
         ],
         "donos": [
-            "F",
             "A",
+            "F",
             "c"
         ]
     }

@@ -1,0 +1,100 @@
+[
+    {
+        "nome": "Lsa.part0",
+        "indice": 0,
+        "hash": "e4c5670fc155f2c888cc80578bce3aa13f3f14af44855a65b547da73849889d8",
+        "checksum": "e4c5670fc155f2c888cc80578bce3aa13f3f14af44855a65b547da73849889d8",
+        "detentores_chunk": [
+            "A"
+        ],
+        "numero_detentores": 1,
+        "detentores_online": [
+            "A"
+        ],
+        "quantidade_detentores_online": 1
+    },
+    {
+        "nome": "Lsa.part1",
+        "indice": 1,
+        "hash": "225b9fc158f21f18cc355b059577c241564231eb0c8db546516ae29c10babb8e",
+        "checksum": "225b9fc158f21f18cc355b059577c241564231eb0c8db546516ae29c10babb8e",
+        "detentores_chunk": [
+            "A"
+        ],
+        "numero_detentores": 1,
+        "detentores_online": [
+            "A"
+        ],
+        "quantidade_detentores_online": 1
+    },
+    {
+        "nome": "Lsa.part2",
+        "indice": 2,
+        "hash": "008246b52afc924ec7108f8c8a48ce0454d181cd8aabc23ae45628042a944a09",
+        "checksum": "008246b52afc924ec7108f8c8a48ce0454d181cd8aabc23ae45628042a944a09",
+        "detentores_chunk": [
+            "A"
+        ],
+        "numero_detentores": 1,
+        "detentores_online": [
+            "A"
+        ],
+        "quantidade_detentores_online": 1
+    },
+    {
+        "nome": "Lsa.part3",
+        "indice": 3,
+        "hash": "07c891846c4dd69df4704dca13fc6d6f568f296fbbc9c922d4876dc42c7886ef",
+        "checksum": "07c891846c4dd69df4704dca13fc6d6f568f296fbbc9c922d4876dc42c7886ef",
+        "detentores_chunk": [
+            "A"
+        ],
+        "numero_detentores": 1,
+        "detentores_online": [
+            "A"
+        ],
+        "quantidade_detentores_online": 1
+    },
+    {
+        "nome": "Lsa.part4",
+        "indice": 4,
+        "hash": "209e0358a64fae52b5908abd21448a89611ce3a392c269cf9b349b663c5e12bd",
+        "checksum": "209e0358a64fae52b5908abd21448a89611ce3a392c269cf9b349b663c5e12bd",
+        "detentores_chunk": [
+            "A"
+        ],
+        "numero_detentores": 1,
+        "detentores_online": [
+            "A"
+        ],
+        "quantidade_detentores_online": 1
+    },
+    {
+        "nome": "Lsa.part5",
+        "indice": 5,
+        "hash": "cbc8e52d1225e6af9cbcf08efb95f3f532aec779e7a8cdec0e7fbc294cc21a30",
+        "checksum": "cbc8e52d1225e6af9cbcf08efb95f3f532aec779e7a8cdec0e7fbc294cc21a30",
+        "detentores_chunk": [
+            "A"
+        ],
+        "numero_detentores": 1,
+        "detentores_online": [
+            "A"
+        ],
+        "quantidade_detentores_online": 1
+    },
+    {
+        "nome": "Lsa.part6",
+        "indice": 6,
+        "hash": "cd2b5465728d657617826a1107331b220eb90ef94667d09ba29aff760b445cd7",
+        "checksum": "cd2b5465728d657617826a1107331b220eb90ef94667d09ba29aff760b445cd7",
+        "detentores_chunk": [
+            "A"
+        ],
+        "numero_detentores": 1,
+        "detentores_online": [
+            "A"
+        ],
+        "quantidade_detentores_online": 1
+    }
+]

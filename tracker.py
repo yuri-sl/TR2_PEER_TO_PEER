@@ -318,6 +318,8 @@ def protocolos_restritos(mensagem, client_socket) -> None:
                     arquivos[nome_arquivo]['donos'].append(username)
 
             resposta = {"status": "ok", "mensagem": f"Arquivo '{nome_arquivo}' anunciado com sucesso."}
+            print("\n=== Estado atual de arquivos antes de salvar ===")
+            print(json.dumps(arquivos, indent=2))
             salvar_arquivos_em_json()
         except Exception as e:
             resposta = {"status": "erro", "mensagem": f"Erro ao anunciar arquivo: {str(e)}"}

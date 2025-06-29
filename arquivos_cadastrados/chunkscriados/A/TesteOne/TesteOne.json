@@ -1,0 +1,110 @@
+[
+    {
+        "nome": "TesteOne.part0",
+        "indice": 0,
+        "hash": "5371f4f33246bceca02e00d44ea66785b69a0394cc85cdae7ba324d41a29ce9b",
+        "checksum": "5371f4f33246bceca02e00d44ea66785b69a0394cc85cdae7ba324d41a29ce9b",
+        "detentores_chunk": [
+            "A",
+            "F",
+            "c"
+        ],
+        "numero_detentores": 3,
+        "detentores_online": [
+            "A",
+            "F",
+            "c"
+        ],
+        "quantidade_detentores_online": 3
+    },
+    {
+        "nome": "TesteOne.part1",
+        "indice": 1,
+        "hash": "b6cb66f6f48383019856169e65f99b7184eb240212ad9a8c72ed35df118a419b",
+        "checksum": "b6cb66f6f48383019856169e65f99b7184eb240212ad9a8c72ed35df118a419b",
+        "detentores_chunk": [
+            "A",
+            "F",
+            "c"
+        ],
+        "numero_detentores": 3,
+        "detentores_online": [
+            "A",
+            "F",
+            "c"
+        ],
+        "quantidade_detentores_online": 3
+    },
+    {
+        "nome": "TesteOne.part2",
+        "indice": 2,
+        "hash": "3227c132614fb53f6b974139aafd81ec95ca613cfd5619b82af9b7f24c0059da",
+        "checksum": "3227c132614fb53f6b974139aafd81ec95ca613cfd5619b82af9b7f24c0059da",
+        "detentores_chunk": [
+            "A",
+            "F",
+            "c"
+        ],
+        "numero_detentores": 3,
+        "detentores_online": [
+            "A",
+            "F",
+            "c"
+        ],
+        "quantidade_detentores_online": 3
+    },
+    {
+        "nome": "TesteOne.part3",
+        "indice": 3,
+        "hash": "d1ab0514fa3f93056cfd42eb09f6b7f2deb0d09e60784430f2d26e0cddb24cb5",
+        "checksum": "d1ab0514fa3f93056cfd42eb09f6b7f2deb0d09e60784430f2d26e0cddb24cb5",
+        "detentores_chunk": [
+            "A",
+            "F",
+            "c"
+        ],
+        "numero_detentores": 3,
+        "detentores_online": [
+            "A",
+            "F",
+            "c"
+        ],
+        "quantidade_detentores_online": 3
+    },
+    {
+        "nome": "TesteOne.part4",
+        "indice": 4,
+        "hash": "b40d879f88d844c3428c140e8e33da686b448aa566d861e1b8ee870bf41b8ad7",
+        "checksum": "b40d879f88d844c3428c140e8e33da686b448aa566d861e1b8ee870bf41b8ad7",
+        "detentores_chunk": [
+            "A",
+            "F",
+            "c"
+        ],
+        "numero_detentores": 3,
+        "detentores_online": [
+            "A",
+            "F",
+            "c"
+        ],
+        "quantidade_detentores_online": 3
+    },
+    {
+        "nome": "TesteOne.part5",
+        "indice": 5,
+        "hash": "952d723fb0deb14971c6e104d5504617b7d18d43307b13f9af53c0740e7149f2",
+        "checksum": "952d723fb0deb14971c6e104d5504617b7d18d43307b13f9af53c0740e7149f2",
+        "detentores_chunk": [
+            "A",
+            "F",
+            "c"
+        ],
+        "numero_detentores": 3,
+        "detentores_online": [
+            "A",
+            "F",
+            "c"
+        ],
+        "quantidade_detentores_online": 3
+    }
+]
