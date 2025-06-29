@@ -1196,6 +1196,7 @@ def interactiveMenu_1() -> bool:
                                             print(f"A resposta_chunks é {resposta_chunks}")
                                             if resposta_chunks.get("status") == "ok":
                                                 chunk_map = resposta_chunks["chunks"]
+                                                volume_total = 0
                                                 total_chunks_sum = 0
                                                 integridade = True
                                                 fila_chunks = queue.Queue()
@@ -1204,6 +1205,11 @@ def interactiveMenu_1() -> bool:
                                                     # Escolhe um peer online (pode usar random ou round-robin futuramente)
                                                     donos_ordenados = sorted(donos,key=lambda peer:get_bytes_score(peer),reverse=True)
                                                     print(f"Ordem de tentativa para {chunk_nome}: {donos_ordenados}")
+                                                    fila_chunks.put((chunk_nome, donos_ordenados))
+                                                    caminho_chunk = f"chunks_recebidos/{usuario_logado}/{nome_arquivo_sem_extensao}/{chunk_nome}"
+                                                    if os.path.exists(caminho_chunk):
+                                                        volume_total += os.path.getsize(caminho_chunk)
+
 
 
                                                     chunk_baixado = False
@@ -1250,7 +1256,7 @@ def interactiveMenu_1() -> bool:
                                                     report_file.write(f"⏱ Tempo total de download de TODOS os chunks de {nome_escolhido}: {tempo_total:.2f} segundos.\n")
                                                 #registrar_dono_no_json_arquivo(nome_escolhido, usuario_logado)
 
-                                                add_transfer_record(usuario_logado,tempo_total,total_chunks_sum,integridade)
+                                                add_transfer_record(usuario_logado,tempo_total,volume_total,integridade)
                                             else:
                                                     print("⚠️ Não foi possível obter os chunks do arquivo do tracker.")
                                     except ValueError:

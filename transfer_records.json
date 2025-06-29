@@ -601,5 +601,113 @@
         "transfer_time": 9.45589804649353,
         "checksum_match": true,
         "bytes_transferred": 168317
+    },
+    {
+        "timestamp": "2025-06-29 18:37:54",
+        "from_user": "A",
+        "to_user": "F",
+        "chunk_name": "TesteOne.part0",
+        "transfer_time": 0.932969331741333,
+        "checksum_match": true,
+        "bytes_transferred": 168317
+    },
+    {
+        "timestamp": "2025-06-29 18:37:55",
+        "from_user": "A",
+        "to_user": "F",
+        "chunk_name": "TesteOne.part1",
+        "transfer_time": 1.9797818660736084,
+        "checksum_match": true,
+        "bytes_transferred": 168317
+    },
+    {
+        "timestamp": "2025-06-29 18:37:56",
+        "from_user": "A",
+        "to_user": "F",
+        "chunk_name": "TesteOne.part2",
+        "transfer_time": 2.9126522541046143,
+        "checksum_match": true,
+        "bytes_transferred": 168317
+    },
+    {
+        "timestamp": "2025-06-29 18:37:57",
+        "from_user": "A",
+        "to_user": "F",
+        "chunk_name": "TesteOne.part3",
+        "transfer_time": 3.8611793518066406,
+        "checksum_match": true,
+        "bytes_transferred": 168317
+    },
+    {
+        "timestamp": "2025-06-29 18:37:57",
+        "from_user": "A",
+        "to_user": "F",
+        "chunk_name": "TesteOne.part4",
+        "transfer_time": 4.784029245376587,
+        "checksum_match": true,
+        "bytes_transferred": 168317
+    },
+    {
+        "timestamp": "2025-06-29 18:37:58",
+        "from_user": "A",
+        "to_user": "F",
+        "chunk_name": "TesteOne.part5",
+        "transfer_time": 5.704527854919434,
+        "checksum_match": true,
+        "bytes_transferred": 168317
+    },
+    {
+        "timestamp": "2025-06-29 18:41:56",
+        "from_user": "F",
+        "to_user": "A",
+        "chunk_name": "TesteOne.part0",
+        "transfer_time": 0.7902145385742188,
+        "checksum_match": true,
+        "bytes_transferred": 168317
+    },
+    {
+        "timestamp": "2025-06-29 18:41:57",
+        "from_user": "F",
+        "to_user": "A",
+        "chunk_name": "TesteOne.part1",
+        "transfer_time": 1.6022388935089111,
+        "checksum_match": true,
+        "bytes_transferred": 168317
+    },
+    {
+        "timestamp": "2025-06-29 18:41:58",
+        "from_user": "F",
+        "to_user": "A",
+        "chunk_name": "TesteOne.part2",
+        "transfer_time": 2.3958232402801514,
+        "checksum_match": true,
+        "bytes_transferred": 168317
+    },
+    {
+        "timestamp": "2025-06-29 18:41:59",
+        "from_user": "F",
+        "to_user": "A",
+        "chunk_name": "TesteOne.part3",
+        "transfer_time": 3.203418254852295,
+        "checksum_match": true,
+        "bytes_transferred": 168317
+    },
+    {
+        "timestamp": "2025-06-29 18:42:00",
+        "from_user": "F",
+        "to_user": "A",
+        "chunk_name": "TesteOne.part4",
+        "transfer_time": 3.9998414516448975,
+        "checksum_match": true,
+        "bytes_transferred": 168317
+    },
+    {
+        "timestamp": "2025-06-29 18:42:00",
+        "from_user": "F",
+        "to_user": "A",
+        "chunk_name": "TesteOne.part5",
+        "transfer_time": 4.796444416046143,
+        "checksum_match": true,
+        "bytes_transferred": 168317
     }
 ]
