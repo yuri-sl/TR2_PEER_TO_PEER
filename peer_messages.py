@@ -37,18 +37,18 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
     """
     def carregar_chunks(caminho_json, meu_username):
         if not os.path.exists(caminho_json):
-            print("NÃO EXISTEM ARQUIVOS COM O MEU PEER!")
+            #print("NÃO EXISTEM ARQUIVOS COM O MEU PEER!")
             return []
 
         with open(caminho_json, 'r', encoding='utf-8') as f:
             dados = json.load(f)
-            print("DADOS CARREGADOS DO JSON")
+            #print("DADOS CARREGADOS DO JSON")
 
         chunks_do_usuario = []
         for peer, chunks in dados.items():
             if peer == meu_username:
                 chunks_do_usuario.extend(chunks)
-        print(f"OS CHUNKS REGISTRADOS EM MEU USER SÃO:{chunks_do_usuario}")
+        #print(f"OS CHUNKS REGISTRADOS EM MEU USER SÃO:{chunks_do_usuario}")
         return chunks_do_usuario
     def carregar_peers_com_chunks(caminho_json, meu_username):
         if not os.path.exists(caminho_json):
@@ -154,18 +154,18 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
             ultima_parte = os.path.basename(nome_chunk)
             caminho_recebidos = f"chunks_recebidos/{meu_username}/{caminho_arquivo}/{ultima_parte}"
             tem_chunk_recebido = os.path.exists(caminho_recebidos)
-            print(f"Chunks disponiveis para {meu_username} transmitir são: {chunks_disponiveis}")
+            """print(f"Chunks disponiveis para {meu_username} transmitir são: {chunks_disponiveis}")
             print(f"Existe no diretório de recebidos?: {'SIM' if tem_chunk_recebido else 'NÃO'}")
             print("O JSON DE REQUISIÇÃO É: ")
             print(requisicao_json, flush=True)
             print(f"from user: {user_from}\n to_user: {user_to}\n nome_chunk:{nome_chunk}")
 
             print(f"Chunks disponiveis para transmitir são: {chunks_disponiveis}")
-            print(f"Existe no diretório de recebidos?: {'SIM' if tem_chunk_recebido else 'NÃO'}")
+            print(f"Existe no diretório de recebidos?: {'SIM' if tem_chunk_recebido else 'NÃO'}")"""
             temmesmo = False
 
             for chunk in chunks_disponiveis:
-                print(chunk, nome_chunk)
+                #print(chunk, nome_chunk)
                 
                 # Extrai apenas o nome do arquivo sem extensão
                 nome_base = os.path.splitext(chunk)[0]  # "arq.txt" → "arq"
@@ -229,7 +229,8 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                             if conn.fileno() == -1:
                                 break
                             parte = dados_chunk[bytes_enviados:bytes_enviados+chunk_size]
-                            print(f"Parte é: {parte}\n Enviando chunk a partir do offset: {bytes_enviados}\nlen_dados_chunk: {len(dados_chunk)}")
+                            #print(f"Parte é: {parte}\n Enviando chunk a partir do offset: {bytes_enviados}\nlen_dados_chunk: {len(dados_chunk)}")
+                            print(f"Parte é: \n Enviando chunk a partir do offset: {bytes_enviados}\nlen_dados_chunk: {len(dados_chunk)}")
                             conn.sendall(parte)
                             bytes_enviados += len(parte)
                             porcentagem = (bytes_enviados / len(dados_chunk)) * 100
@@ -242,7 +243,7 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                         #fim = time.time()
                         #tempo_transferencia = fim - inicio
                         update_score(peer_user,
-                                bytes_sent=len(dados_chunk),
+                                bytes_sent=3,
                                 successful_responses=1)
                         print(f"[✓] Chunk '{nome_chunk}' enviado com throttling ({chunk_size} bytes por pacote, {bandwidth_limit} bytes/s).")
                         salvar_transmissao(peer_user, nome_chunk, len(dados_chunk), time.time() - inicio)
@@ -264,7 +265,12 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                                     integrity_check=False)
                         print("flamegoo")
             else:
-                conn.send(b"ERRO: Chunk nao disponivel.")
+                mensagem = {"recebido": nome_chunk,
+                            "score": True,
+                            'tenho': False
+                                }
+                enviado = json.dumps(mensagem)
+                conn.sendall(enviado.encode())
                 conn.shutdown(socket.SHUT_WR)
                 update_score(peer_user,
                     failed_transfers=1,
@@ -426,14 +432,8 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                                     integrity_check=False)
                         print("flamegoo")
             else:
-                mensagem = {"recebido": nome_chunk,
-                            "score": True,
-                            "tenho?" : False
-                                }
-                enviado = json.dumps(mensagem)
-                conn.sendall(enviado.encode())
+                conn.send(b"ERRO: Chunk nao disponivel.")
                 conn.shutdown(socket.SHUT_WR)
-                conn.close()
                 update_score(peer_user,
                     failed_transfers=1,
                     integrity_check=False)
@@ -603,8 +603,12 @@ def send_chunk(user,users, ip, port, nome_chunk):
                 break
             buffer += chunk
         mensagem = json.loads(buffer.decode())
-        
-        print("wtf?s")
+        time.sleep(0.5)
+        try:
+            print(f"\n📩 Tenho capacidade para pedir? : {mensagem['score']}!:")
+            print(f"\n📩 O peer tem? : {mensagem['tenho']}!:")
+        except:
+            print(mensagem,"HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
         s.close()
         return True
     except Exception as e:
