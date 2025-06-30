@@ -77,6 +77,32 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
         while True:
             conn, addr = s.accept()
             threading.Thread(target=handle_chunk_request, args=(conn,), daemon=True).start()
+    def chat_server_loop():
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.bind(('0.0.0.0', chat_port))
+        s.listen()
+        print(f"[Servidor Chat] Aguardando mensagens em localhost:{chat_port}...\n")
+
+        while True:
+            conn, addr = s.accept()
+            threading.Thread(target=handle_chat_connection, args=(conn,), daemon=True).start()
+    def handle_chat_connection(conn):
+        try:
+            dados = b""
+            while True:
+                parte = conn.recv(1024)
+                if not parte:
+                    break
+                dados += parte
+            mensagem = json.loads(dados.decode())
+            print(f"\n📩 [Mensagem recebida de {mensagem['from']}]")
+            print(f"{mensagem['message']} (em {mensagem['timestamp']})\n")
+        except Exception as e:
+            print(f"[Erro no Chat] Falha ao processar mensagem: {e}")
+        finally:
+            conn.close()
+
+
     def handle_chunk_request(conn):
         def salvar_transmissao(peer_user, nome_chunk, tamanho, tempo):
             registro = {
@@ -238,6 +264,7 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
             conn.close()
     #threading.Thread(target=server_loop, daemon=True).start()
     threading.Thread(target=chunk_server_loop, daemon=True).start()
+    threading.Thread(target=chat_server_loop, daemon=True).start()
     threading.Thread(target=p2p, args=(meu_username,), daemon=True).start()
     
 def calcular_bandwidth(score_peer, min_rate=10*1024, max_rate=3*1024*1024, max_score=100000):
@@ -320,57 +347,18 @@ def pedir_chunks(user):
         "action":"get_ip",
         "username": user
     }
-    getfile = {
-        "action":"list_files",
-        "username": user
+    usuariologado = user
+    created_path = "arquivos_cadastrados/chunkscriados" + "/" + usuariologado
+    dados = {
+        'action': "get_missing_chunks",
+        'created_path': "arquivos_cadastrados/chunkscriados/A/",
+        "username":usuariologado
     }
-    global arquivosdesejados
-    resposta = send_to_tracker2(getip)# Pega todos os ips (Sempre renovando)
-    peers_ip = resposta["mensagem"]             # Pega os ips, ports e usarios correspondentes
-    resposta = send_to_tracker2(getfile)
-    files_peer = resposta["mensagem"]
-    for file in arquivosdesejados:
-        #print(f"\n🔎 Procurando peers com o arquivo: {file}")
-        # Verifica quem tem esse arquivo entre os peers listados em files_peer
-        for peer_id, arquivos_que_tem in files_peer.items():
-            if file in arquivos_que_tem and peer_id != user:
-                
-                # Descobre IP e porta do peer atual
-                peer_info = next((p for p in peers_ip if p[0] == peer_id), None)
-                #print(peer_info)
-                if peer_info is None:
-                    continue  # IP e porta não encontrados no peers_ip
-                users, ip, port = peer_info
-                
-                for users, ip, port in peers_ip:            # envia para todos os peers
-                    if users != user:
-                        #print(f"The users is {users} and the user is: {user}")
-                        #print("Therefore we're both different from each other!")
-                        nome_do_chunk, dados = escolher_chunk_compatível(user)
+    #print(dados)
+    #resposta = send_to_tracker2(dados)
+    #print(f"An answer has arrived! The answer is:")
+    #print(json.dumps(resposta, indent=2))
 
-                        if nome_do_chunk is None:
-                            #print(f"[{user}] Nenhum chunk compatível encontrado no momento.")
-                            continue  # ou `break`, dependendo da lógica desejada
-
-                        basename_chunk = os.path.basename(nome_do_chunk)
-                        if basename_chunk:                   # Se eu for capaz de enviar
-                            try: 
-                                #print(f"[{user}] Enviando o pedido do chunk {os.path.basename(basename_chunk)} para {ip} : {port}")
-                                enviado = send_chunk(user,users, ip, port, basename_chunk, dados)# Vai enviar para esse ip pedindo um chunk aleatorio que eu preciso
-                                if enviado:                     # Se foi enviado o pedido com sucesso
-                                    successful_responses = 1
-                                    bytes_sent = 1
-                                    update_score(user, bytes_sent, 0, successful_responses)
-                                    #print(user,"enviando para", users)
-                                else:
-                                    bytes_sent = -5
-                                    #print("nao deu kk")
-                                    #update_score(user, 0, 0, 0, failed_transfers=1)
-                            except Exception as e:
-                                #rint(f"Não foi possível enviar o pedido para o peer {users}: {e}")
-                                return
-                        else:                               # mesmo qie nao tenha conseguido enviar vamos dar um incentivo a ele
-                            break
 
 def send_chunk(user,users, ip, port, nome_chunk, dados):
     try:

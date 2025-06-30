@@ -437,6 +437,39 @@ def protocolos_restritos(mensagem, client_socket) -> None:
                 resposta = {"status": "erro", "mensagem": str(e)}
 
             client_socket.sendall(json.dumps(resposta).encode())
+    elif mensagem['action'] == "get_missing_chunks":
+        with open("arquivos_cadastrados/arquivos_tracker.json", "r") as f:
+            tracker_data = json.load(f)
+
+        arquivos_detalhados = {
+            k: v for k, v in tracker_data.items() if isinstance(v, dict) and 'chunks' in v
+        }
+
+        total_missing_chunks = {}
+        usuario_pedinte = mensagem['username']
+
+        for nome_arquivo, info in arquivos_detalhados.items():
+            chunks_path_tracker = os.path.dirname(info['chunks_path']) + "/"
+
+            # Ignora os arquivos que o próprio peer anunciou
+            if mensagem['created_path'] in chunks_path_tracker:
+                continue
+
+            nome_arquivo_sem_extensao = nome_arquivo.split('.txt')[0]
+            caminho_local_chunks = os.path.join("chunks_recebidos", usuario_pedinte, nome_arquivo_sem_extensao)
+            os.makedirs(caminho_local_chunks, exist_ok=True)
+            chunks_locais = set(os.listdir(caminho_local_chunks))
+
+            faltando = [
+                chunk for chunk in info["chunks"]
+                if chunk not in chunks_locais
+            ]
+
+            if faltando:
+                total_missing_chunks[nome_arquivo] = faltando
+
+        return total_missing_chunks
+
 
 
     else:

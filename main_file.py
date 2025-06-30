@@ -950,6 +950,7 @@ def interactiveMenu_1() -> bool:
                 input("Pressione Enter para continuar")
         elif operation == "6":
             try:
+                print(chat_port)
                 dados = {
                     "action": "list_clients",
                     "username": usuario_logado
