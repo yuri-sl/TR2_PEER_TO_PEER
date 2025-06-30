@@ -68,7 +68,35 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
         print(f"📦 Chunks efetivamente presentes com {meu_username}: {chunks_possuídos}")
         return chunks_possuídos
 
-    def chunk_server_loop():
+    def handle_connection(conn):
+        try:
+            buffer = b""
+            while True:
+                chunk = conn.recv(4096)
+                if not chunk:
+                    break
+                buffer += chunk
+
+            mensagem = json.loads(buffer.decode())
+            if mensagem['timestamp']:
+                print(f"\n📩 Nova mensagem de {mensagem['from']}:")
+                print(f"   {mensagem['message']} ({mensagem['timestamp']})\n")
+        except Exception as e:
+            print(f"Erro ao receber mensagem: {e}")
+            
+        finally:
+            conn.close()
+    def server_loop(chat_port):
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.bind(('0.0.0.0', chat_port))
+        s.listen()
+        print(f"[Servidor Chunks] Aguardando requisições de chunks em localhost:{chat_port}...\n")
+
+        while True:
+            print(chat_port)
+            conn, addr = s.accept()
+            threading.Thread(target=handle_connection, args=(conn,), daemon=True).start() 
+    def chunk_server_loop(chunk_port):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.bind(('0.0.0.0', chunk_port))
         s.listen()
@@ -236,8 +264,8 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
             if peer_user:
                 update_score(peer_user, 0, 0, 0, active_connections=-1)
             conn.close()
-    #threading.Thread(target=server_loop, daemon=True).start()
-    threading.Thread(target=chunk_server_loop, daemon=True).start()
+    threading.Thread(target=server_loop, args=(chat_port,), daemon=True).start()
+    threading.Thread(target=chunk_server_loop, args=(chunk_port,), daemon=True).start()
     threading.Thread(target=p2p, args=(meu_username,), daemon=True).start()
     
 def calcular_bandwidth(score_peer, min_rate=10*1024, max_rate=3*1024*1024, max_score=100000):

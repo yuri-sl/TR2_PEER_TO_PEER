@@ -847,8 +847,9 @@ def interactiveMenu_1() -> bool:
     Menu para o usuário
     """
     usuario_logado = None
-    chat_port = 5000 + random.randint(1,1000)
-    chunk_port = 5000 + random.randint(1,1000)
+    base_port = 5000 + random.randint(1, 1000)
+    chat_port = base_port
+    chunk_port = base_port + 1  # Sempre diferente
     os.system('cls||clear')
     menu_index = 0
 
