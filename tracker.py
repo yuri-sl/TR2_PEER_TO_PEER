@@ -474,9 +474,14 @@ def handle_clients(client_socket, addr) -> None:
                 print(f"Entrou no Try. Mensagem recebida foi: {mensagem}")
                 if mensagem['action'] == 'exit' and user in session:# Sai da sessao caso esteja conectado
                     session.pop(user, None)                         # Nao e mais um peers ativo
-                    files.pop(user, None)                         # Nao e mais um peers ativo
+                    files.pop(user, None)                         # Nao e mais um peers ativo update_user_list
                 elif user in session:                               # Se estiver logado pode continuar
                     session[user] = 0                               # Renova o tempo do usuario
+                    protocolos_restritos(mensagem, client_socket)
+                elif user in session and (mensagem['action'] == 'get_ip' or 
+                                          mensagem['action'] == 'list_files' or
+                                          mensagem['action'] == 'heartbeat'
+                                          ):                               # Se estiver logado pode continuar
                     protocolos_restritos(mensagem, client_socket)
                 else:                                               # Se nao tem que registrar ou logar
                     protocolos_base(mensagem, client_socket)
