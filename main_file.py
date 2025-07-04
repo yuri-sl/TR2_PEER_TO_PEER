@@ -39,18 +39,18 @@ def verificar_chunks_faltantes(username, nome_arquivo):
     resposta = send_to_tracker(dados)
 
     if resposta.get("status") == "ok":
-        print(f"\n🔍 Verificação de chunks faltantes para '{nome_arquivo}':")
+        print(f"\n[INFO] Verificação de chunks faltantes para '{nome_arquivo}':")
         print(" - Chunks que você já possui:")
         for chunk in resposta.get("chunks_recebidos", []):
             print(f"   ✔ {chunk}")
         print(" - Chunks disponíveis em outros peers:")
         for chunk in resposta.get("chunks_disponiveis_outros_peers", []):
-            print(f"   📦 {chunk}")
+            print(f"   ✔ {chunk}")
         print(" - Chunks que ainda estão faltando:")
         for chunk in resposta.get("chunks_faltando", []):
-            print(f"   ❌ {chunk}")
+            print(f"   × {chunk}")
     else:
-        print(f"❌ Erro: {resposta.get('mensagem')}")
+        print(f"[ERRO] Erro: {resposta.get('mensagem')}")
 
 def listarUsuariosAtivos(usuario_logado):
     portAssociationCon = []
@@ -59,7 +59,6 @@ def listarUsuariosAtivos(usuario_logado):
     "username": usuario_logado
     }
     resposta = send_to_tracker(dados)
-    print()
     print("Peers Ativos: ")
     for peer in resposta.get("mensagem", []):
         portAssociationCon.append(peer)
@@ -76,11 +75,11 @@ def registrar_dono_no_json_arquivo(nome_arquivo: str, novo_dono: str):
         possivel_caminho = f"arquivos_cadastrados/chunkscriados/{pasta_usuario}/{nome_arquivo_sem_extensao}/{nome_arquivo_sem_extensao}.json"
         if os.path.exists(possivel_caminho):
             caminho = possivel_caminho
-            print("✅ Encontrei o caminho:", caminho)
+            print("[SUCESSO] Encontrei o caminho:", caminho)
             break
 
     if caminho is None:
-        print("⚠️ Arquivo JSON do chunk não encontrado para registrar dono.")
+        print("[WARN] Arquivo JSON do chunk não encontrado para registrar dono.")
         return
 
     with open(caminho, 'r+', encoding='utf-8') as f:
@@ -95,12 +94,12 @@ def registrar_dono_no_json_arquivo(nome_arquivo: str, novo_dono: str):
                     chunk["detentores_chunk"] = detentores
                     chunk["numero_detentores"] = len(detentores)
                     modificado = True
-                    print(f"✅ {novo_dono} adicionado como detentor de {nome_arquivo}")
+                    print(f"[SUCESSO] {novo_dono} adicionado como detentor de {nome_arquivo}")
                 else:
-                    print(f"ℹ️ {novo_dono} já era detentor de {nome_arquivo}")
+                    print(f"[INFO] {novo_dono} já era detentor de {nome_arquivo}")
                 break
         else:
-            print(f"❌ Chunk com nome '{nome_arquivo}' não encontrado no JSON.")
+            print(f"[ERRO] Chunk com nome '{nome_arquivo}' não encontrado no JSON.")
 
         if modificado:
             f.seek(0)
@@ -373,7 +372,7 @@ def montar_arquivo(caminho_pasta_chunks,usuarioLogado):
     caminho_arquivo_final = f"arquivos_montados/{usuarioLogado}/{nome_arquivo_final}"
     os.makedirs(f"arquivos_montados/{usuarioLogado}", exist_ok=True)
 
-    # ✅ VERIFICA SE ALGUM CHUNK ESTÁ FALTANDO
+    # [SUCESSO] VERIFICA SE ALGUM CHUNK ESTÁ FALTANDO
     chunks_faltando = []
     for idx, nome_chunk in chunks_ordenados:
         caminho_chunk = os.path.join(caminho_pasta_chunks, nome_chunk)
@@ -381,24 +380,24 @@ def montar_arquivo(caminho_pasta_chunks,usuarioLogado):
             chunks_faltando.append(nome_chunk)
 
     if chunks_faltando:
-        print("❌ Não é possível montar o arquivo! Os seguintes chunks estão faltando:")
+        print("[ERRO] Não é possível montar o arquivo! Os seguintes chunks estão faltando:")
         for chunk in chunks_faltando:
             print(f" - {chunk}")
         return
 
-    # ✅ VERIFICA SE O ARQUIVO JÁ FOI MONTADO
+    # [SUCESSO] VERIFICA SE O ARQUIVO JÁ FOI MONTADO
     if os.path.exists(caminho_arquivo_final):
-        print(f"⚠️ O arquivo '{nome_arquivo_final}' já existe. Abortando montagem.")
+        print(f"[WARN] O arquivo '{nome_arquivo_final}' já existe. Abortando montagem.")
         return
 
-    # ✅ MONTA O ARQUIVO
+    # [SUCESSO] MONTA O ARQUIVO
     with open(caminho_arquivo_final, "wb") as f_saida:
         for idx, nome_chunk in chunks_ordenados:
             caminho_chunk = os.path.join(caminho_pasta_chunks, nome_chunk)
             with open(caminho_chunk, "rb") as f_chunk:
                 dados = f_chunk.read()
                 f_saida.write(dados)
-            print(f"✅ Chunk {nome_chunk} ({idx}) adicionado ao arquivo final.")
+            print(f"[SUCESSO] Chunk {nome_chunk} ({idx}) adicionado ao arquivo final.")
 
     print(f"[SUCESSO]Arquivo '{nome_arquivo_final}' montado com sucesso em '{caminho_arquivo_final}'!")
 
@@ -409,7 +408,7 @@ def montar_arquivo(caminho_pasta_chunks,usuarioLogado):
                 dados = f_chunk.read()
                 f_saida.write(dados)
             print(f"Chunk {nome_chunk} ({idx}) adicionado ao arquivo final.")
-    print(f"✅ Arquivo '{nome_arquivo_final}' montado com sucesso em '{caminho_arquivo_final}'!")
+    print(f"[SUCESSO] Arquivo '{nome_arquivo_final}' montado com sucesso em '{caminho_arquivo_final}'!")
     # Só agora calcula o checksum real
     checksum_local = calcular_checksum_arquivo(caminho_arquivo_final)
     checksumEsperado = obter_checksum("arquivos_cadastrados/arquivos_tracker.json", nome_arquivo_final)
@@ -418,24 +417,24 @@ def montar_arquivo(caminho_pasta_chunks,usuarioLogado):
     print("Checksum esperado  :", checksumEsperado)
 
     if checksum_local == checksumEsperado:
-        print("✅ Checksum válido! Transferência concluída.")
+        print("[SUCESSO] Checksum válido! Transferência concluída.")
         os.makedirs("reports", exist_ok=True)
         with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
             timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            report_file.write(f"[{timestamp}]✅ Arquivo '{nome_arquivo_final}' montado com sucesso em '{caminho_arquivo_final}'!\n")
+            report_file.write(f"[{timestamp}][SUCESSO] Arquivo '{nome_arquivo_final}' montado com sucesso em '{caminho_arquivo_final}'!\n")
     else:
-        print("❌ Checksum inválido! O arquivo pode estar corrompido.")
+        print("[ERRO] Checksum inválido! O arquivo pode estar corrompido.")
         os.makedirs("reports", exist_ok=True)
         with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
             timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            report_file.write(f"{timestamp}❌CHECKSUM INVÁLIDO!! ARQUIVO NÃO FOI CONSTRUÍDO!\n")
+            report_file.write(f"{timestamp}[ERRO]CHECKSUM INVÁLIDO!! ARQUIVO NÃO FOI CONSTRUÍDO!\n")
 
     #else:
     #    print("CHECKSUM INVÁLIDO!! ARQUIVO NÃO FOI CONSTRUÍDO!")
     #    os.makedirs("reports", exist_ok=True)
     #    with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
     #        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    #        report_file.write(f"{timestamp}❌CHECKSUM INVÁLIDO!! ARQUIVO NÃO FOI CONSTRUÍDO!")
+    #        report_file.write(f"{timestamp}[ERRO]CHECKSUM INVÁLIDO!! ARQUIVO NÃO FOI CONSTRUÍDO!")
 
 
 def escolher_pasta_para_montar(caminho_base="chunks_recebidos"):
@@ -457,7 +456,7 @@ def escolher_pasta_para_montar(caminho_base="chunks_recebidos"):
     subpastas = [f for f in os.listdir(caminho_base) if os.path.isdir(os.path.join(caminho_base, f))]
 
     if not subpastas:
-        print(f"Nenhuma pasta encontrada dentro de '{caminho_base}'.")
+        print(f"[ERRO] Nenhuma pasta encontrada dentro de '{caminho_base}'.")
         return None
 
     print("Pastas disponíveis para montar o arquivo:")
@@ -472,7 +471,7 @@ def escolher_pasta_para_montar(caminho_base="chunks_recebidos"):
                 pasta_escolhida = subpastas[escolha_int - 1]
                 print(f"Você escolheu: {pasta_escolhida}")
                 return os.path.join(caminho_base, pasta_escolhida)
-        print("Opção inválida. Tente novamente.")
+        print("[ERRO] Opção inválida. Tente novamente.")
 
 def adicionar_dono_chunk(arquivo_json, nome_arquivo, novo_dono):
     """
@@ -484,14 +483,14 @@ def adicionar_dono_chunk(arquivo_json, nome_arquivo, novo_dono):
         novo_dono (str): Nome do usuário a ser adicionado como dono.
     """
     if not os.path.exists(arquivo_json):
-        print("Arquivo JSON de tracker não encontrado.")
+        print("[WARN] Arquivo JSON de tracker não encontrado.")
         return
 
     with open(arquivo_json, "r", encoding="utf-8") as f:
         dados = json.load(f)
 
     if nome_arquivo not in dados:
-        print(f"O arquivo {nome_arquivo} não está registrado no tracker.")
+        print(f"[WARN]O arquivo {nome_arquivo} não está registrado no tracker.")
         return
 
     if "donos" not in dados[nome_arquivo]:
@@ -503,9 +502,9 @@ def adicionar_dono_chunk(arquivo_json, nome_arquivo, novo_dono):
         with open(arquivo_json, "w", encoding="utf-8") as f:
             json.dump(dados, f, indent=4, ensure_ascii=False)
 
-        print(f"✅ Usuário '{novo_dono}' agora listado como dono de '{nome_arquivo}'.")
+        print(f"[SUCESSO] Usuário '{novo_dono}' agora listado como dono de '{nome_arquivo}'.")
     else:
-        print(f"ℹ️ Usuário '{novo_dono}' já é dono de '{nome_arquivo}'.")
+        print(f"[INFO] Usuário '{novo_dono}' já é dono de '{nome_arquivo}'.")
 
 def salvar_transfer_record(data):
     """Salva o registro de transferência em transfer_records.json"""
@@ -558,7 +557,7 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk, inicio_download=
         start_time = time.time()
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((host, port))
-        print(f"Conexão bem-sucedida com {to_user} ({host}:{port}) ✅")
+        print(f"[SUCESSO] Conexão bem-sucedida com {to_user} ({host}:{port}) [SUCESSO]")
         s.sendall(json.dumps(pedidos).encode())
         s.shutdown(socket.SHUT_WR)
         ttf = time.time() - start_time
@@ -567,7 +566,7 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk, inicio_download=
 
         # Caminho completo do arquivo que será salvo
         caminho_arquivo = os.path.join("chunks_recebidos", nome_chunk)
-        print(f"\n Requisição enviada para {to_user} ({host}:{port})✅\n")
+        print(f"\n Requisição enviada para {to_user} ({host}:{port})[SUCESSO]\n")
         # Recebe os dados do chunk e grava no disco
 
         # Lê os primeiros 4 bytes que indicam o tamanho do JSON
@@ -577,7 +576,7 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk, inicio_download=
             return False
 
         tamanho_json = int.from_bytes(tamanho_bytes, byteorder='big')
-        print(f"📦 Esperado tamanho do JSON: {tamanho_json} bytes")
+        print(f"Esperado tamanho do JSON: {tamanho_json} bytes")
 
         json_bytes = b''
         while len(json_bytes) < tamanho_json:
@@ -628,7 +627,7 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk, inicio_download=
                 f.write(dados_recebidos)
             fim_download = time.time()
             tempo_total = fim_download - inicio_download
-            print(f"\n📥 Chunk '{nome_chunk}' recebido de {to_user} e salvo em '{caminho_arquivo}'. ✅\n")
+            print(f"\n[RECEBIDO] Chunk '{nome_chunk}' recebido de {to_user} e salvo em '{caminho_arquivo}'. [SUCESSO]\n")
             print(f"Checksum confirmado: {checksum_recebido}")
             print(f"O Tempo total de download: {tempo_total:.2f} segundos.")
 
@@ -645,10 +644,10 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk, inicio_download=
                 with open(caminho_arquivo, 'wb') as f:
                     f.write(dados_recebidos)
 
-                print(f"✅ Chunk '{nome_chunk}' recebido e salvo em '{caminho_arquivo}'.")
+                print(f"[SUCESSO] Chunk '{nome_chunk}' recebido e salvo em '{caminho_arquivo}'.")
 
             else:
-                print(f"❌ Checksum não bate para '{nome_chunk}': esperado {checksum_esperado}, recebido {checksum_recebido}")
+                print(f"[ERRO] Checksum não bate para '{nome_chunk}': esperado {checksum_esperado}, recebido {checksum_recebido}")
                 print(f"Esperado: {checksum_esperado}")
                 print(f"Recebido: {checksum_recebido}")
             tempo_individual = time.time() - start_time
@@ -671,7 +670,7 @@ def requisitar_chunk(host, port,from_user, to_user, nome_chunk, inicio_download=
             salvar_transfer_record(registro)
 
     except Exception as e:
-        print(f"❌ Erro ao requisitar chunk: {e}")
+        print(f"[ERRO] Erro ao requisitar chunk: {e}")
 
     finally:
         remover_conexao(to_user)
@@ -759,11 +758,11 @@ def start_heartbeat(username) -> None:
                 dados = {"action": "heartbeat", "username": username}
                 resposta = send_to_tracker(dados)
                 if resposta.get("status") != "ok":
-                    print("⚠️ Você foi desconectado por inatividade. Faça login novamente.")
+                    print("[WARN] Você foi desconectado por inatividade. Faça login novamente.")
                     os._exit(1)
                 time.sleep(5)
             except:
-                print("⚠️ Erro de conexão no heartbeat. Encerrando cliente.")
+                print("[WARN] Erro de conexão no heartbeat. Encerrando cliente.")
                 os._exit(1)
     threading.Thread(target=loop, daemon=True).start()
 
@@ -1009,7 +1008,7 @@ def interactiveMenu_1() -> bool:
                             else:
                                 print("Erro ao obter infos do User")
                             break
-                    print("Este usuário não está online ou não existe!")
+                    print("[ERRO] Este usuário não está online ou não existe!")
                 
                 input("Pressione Enter para continuar")
                 os.system('cls||clear')
@@ -1051,11 +1050,11 @@ def interactiveMenu_1() -> bool:
                 cs = assemble_file(lista_arquivos[arquivo])
                 print(cs)
                 if cstracker == cs:
-                    print(f"Arquivo reassemblado com sucesso")
+                    print(f"[SUCESSO] Arquivo reassemblado com sucesso")
                 else:
                     raise Exception("Checksum não confere")
             except:
-                print("não foi possivel juntar este arquivo por não existir ou nao estar completo")
+                print("[ERRO] Não foi possivel juntar este arquivo por não existir ou nao estar completo")
             input("Pressione Enter para continuar")
             os.system('cls||clear')
         elif operation == "8":
@@ -1111,7 +1110,7 @@ def interactiveMenu_1() -> bool:
             file_name = base_name + ".txt"
 
             if os.path.exists(file_name):
-                print(f"⚠️ O arquivo '{file_name}' já existe.")
+                print(f"[WARN] O arquivo '{file_name}' já existe.")
                 escolha = input("[1] Substituir o arquivo atual\n[2] Digitar outro nome\n[3] Adicionar contador ao nome\n[4] Cancelar\nEscolha: ")
 
                 if escolha == "1":
@@ -1128,12 +1127,12 @@ def interactiveMenu_1() -> bool:
                             break
                         contador += 1
                 else:
-                    print("❌ Operação cancelada.")
+                    print("[ERRO] Operação cancelada.")
                     continue
 
             file_size = int(input("Digite o tamanho do arquivo (MB): "))
             create_big_text_file(file_name, file_size)
-            print(f"✅ Arquivo '{file_name}' criado com sucesso.")
+            print(f"[SUCESSO] Arquivo '{file_name}' criado com sucesso.")
 
         elif operation == "12":
             #Baixar chunk
@@ -1259,7 +1258,7 @@ def interactiveMenu_1() -> bool:
                                                         print(f"Falha ao baixar o chunk: {chunk_nome}. Nenhum dos peers respondeu ao pedido")
                                                         integridade = False
 
-                                                print("✅ Todos os chunks foram requisitados e baixados.")
+                                                print("[SUCESSO] Todos os chunks foram requisitados e baixados.")
                                                 adicionar_dono_chunk("arquivos_cadastrados/arquivos_tracker.json", nome_escolhido, usuario_logado)
 
                                                 #Registro Tempo de Download
@@ -1267,12 +1266,12 @@ def interactiveMenu_1() -> bool:
                                                 tempo_total = fim_download - inicio_download
 
                                                 with open("reports/transfer_report.txt","a",encoding='utf-8') as report_file:
-                                                    report_file.write(f"⏱ Tempo total de download de TODOS os chunks de {nome_escolhido}: {tempo_total:.2f} segundos.\n")
+                                                    report_file.write(f"Tempo total de download de TODOS os chunks de {nome_escolhido}: {tempo_total:.2f} segundos.\n")
                                                 #registrar_dono_no_json_arquivo(nome_escolhido, usuario_logado)
 
                                                 add_transfer_record(usuario_logado,tempo_total,volume_total,integridade)
                                             else:
-                                                    print("⚠️ Não foi possível obter os chunks do arquivo do tracker.")
+                                                    print("[WARN] Não foi possível obter os chunks do arquivo do tracker.")
                                     except ValueError:
                                         print("Entrada inválida. Digite um número.")
                 input("Pressione Enter para continuar")
@@ -1354,7 +1353,7 @@ def interactiveMenu_1() -> bool:
             }
             resposta_chunks = send_to_tracker(dados_chunk_map)
             if resposta_chunks.get("status") != "ok":
-                print("⚠️ Não foi possível obter os chunks.")
+                print("[WARN] Não foi possível obter os chunks.")
                 return
 
             chunk_map = resposta_chunks["chunks"]
@@ -1409,13 +1408,13 @@ def interactiveMenu_1() -> bool:
 
             if integridade:
                 adicionar_dono_chunk("arquivos_cadastrados/arquivos_tracker.json", nome_escolhido, usuario_logado)
-                print("✅ Todos os chunks foram baixados com sucesso e integridade verificada.")
+                print("[SUCESSO] Todos os chunks foram baixados com sucesso e integridade verificada.")
             else:
-                print("⚠️ Não foi possível obter todos os chunks. O arquivo não será registrado como completo.")
+                print("[WARN] Não foi possível obter todos os chunks. O arquivo não será registrado como completo.")
             fim_download = time.time()
             tempo_total = fim_download - inicio_download
             with open("reports/transfer_report.txt", "a", encoding='utf-8') as report_file:
-                report_file.write(f"⏱ Tempo total de download de TODOS os chunks de {nome_escolhido}: {tempo_total:.2f} segundos.\\n")
+                report_file.write(f" Tempo total de download de TODOS os chunks de {nome_escolhido}: {tempo_total:.2f} segundos.\\n")
 
             add_transfer_record_Connections(usuario_logado, tempo_total, volume_total, True)
             input("Pressione Enter para continuar")

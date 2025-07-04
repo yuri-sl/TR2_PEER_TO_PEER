@@ -63,9 +63,9 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                                 if chunk_nome:
                                     chunks_possuídos.append(chunk_nome)
                     except Exception as e:
-                        print(f"⚠️ Erro ao ler {caminho_json}: {e}")
+                        print(f"[ERRO] Erro ao ler {caminho_json}: {e}")
 
-        print(f"📦 Chunks efetivamente presentes com {meu_username}: {chunks_possuídos}")
+        print(f"[CHEGOU] Chunks efetivamente presentes com {meu_username}: {chunks_possuídos}")
         return chunks_possuídos
 
     def handle_connection(conn):
@@ -79,10 +79,10 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
 
             mensagem = json.loads(buffer.decode())
             if mensagem['timestamp']:
-                print(f"\n📩 Nova mensagem de {mensagem['from']}:")
-                print(f"   {mensagem['message']} ({mensagem['timestamp']})\n")
+                print(f"\n[RECEBIDO] Nova mensagem de {mensagem['from']}:")
+                print(f"[MENSAGEM]   {mensagem['message']} ({mensagem['timestamp']})\n")
         except Exception as e:
-            print(f"Erro ao receber mensagem: {e}")
+            print(f"[ERRO] Erro ao receber mensagem: {e}")
             
         finally:
             conn.close()
@@ -132,25 +132,25 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
 
             #Salva o nome do peer para atualização depois
             peer_user = user_from
-            print(f"nome_chunk: {nome_chunk}\nuser_to: {user_to}\nuser_from: {user_from} \npeer_user: {peer_user}")
+            print(f"[INFO] nome_chunk: {nome_chunk}\nuser_to: {user_to}\nuser_from: {user_from} \npeer_user: {peer_user}")
 
             #Marca conexão ativa (+1)
             update_score(peer_user,0,0,0,active_connections=1)
             #input(f"[DEBUG] Verifique o JSON após AUMENTAR active_connections para {peer_user}. Pressione Enter para continuar...")
             
 
-            # ✅ Recarrega a cada request:
-            print(f"The score was updated!")
+            # [SUCESSO] Recarrega a cada request:
+            print(f"[INFO] The score was updated!")
             caminho_json_chunks = "arquivos_cadastrados/arquivos_tracker.json"
             chunks_disponiveis = carregar_peers_com_chunks(meu_username)
-            print("We found out the avaiable chunks!")
+            print("[INFO] We found out the avaiable chunks!")
             #NOVO - Verificamos se existe umdiretório de chunks recebidos
             caminho_arquivo = nome_chunk.split('.')[0]
             caminho_recebidos = f"chunks_recebidos/{meu_username}/{caminho_arquivo}/{nome_chunk}"
             tem_chunk_recebido = os.path.exists(caminho_recebidos)
 
-            print(f"Chunks disponiveis para {meu_username} transmitir são: {chunks_disponiveis}")
-            print(f"Existe no diretório de recebidos?: {'SIM' if tem_chunk_recebido else 'NÃO'}")
+            print(f"[INFO] Chunks disponiveis para {meu_username} transmitir são: {chunks_disponiveis}")
+            print(f"[INFO] Existe no diretório de recebidos?: {'SIM' if tem_chunk_recebido else 'NÃO'}")
 
 
 
@@ -169,14 +169,14 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                     caminho = caminho_recebidos
                 else:
                     caminho = f"arquivos_cadastrados/chunkscriados/{user_to}/{caminho_arquivo}/{nome_chunk}"
-                    print(f"O caminho na busca é: {caminho}")
+                    print(f"[INFO] O caminho na busca é: {caminho}")
                 if os.path.exists(caminho):
                     # Calcula o checksum corretamente
                     with open(caminho, 'rb') as f:
                         dados_chunk = f.read()
                     checksum = hashlib.sha256(dados_chunk).hexdigest()
 
-                    print(f"O nome do chunk é {nome_chunk}\n o checksum é {checksum}")
+                    print(f"[INFO] O nome do chunk é {nome_chunk}\n o checksum é {checksum}")
 
                     # Prepara JSON com nome e checksum
                     json_data = [{
@@ -211,11 +211,11 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                         if conn.fileno() == -1:
                             break
                         parte = dados_chunk[bytes_enviados:bytes_enviados+chunk_size]
-                        print(f"Parte é: {parte}\n Enviando chunk a partir do offset: {bytes_enviados}\nlen_dados_chunk: {len(dados_chunk)}")
+                        print(f"[INFO] Parte é: {parte}\n Enviando chunk a partir do offset: {bytes_enviados}\nlen_dados_chunk: {len(dados_chunk)}")
                         conn.sendall(parte)
                         bytes_enviados += len(parte)
                         porcentagem = (bytes_enviados / len(dados_chunk)) * 100
-                        print(f"Bytes enviados atualizados: {bytes_enviados}/{len(dados_chunk)} ({porcentagem:.2f}%)")
+                        print(f"[INFO] Bytes enviados atualizados: {bytes_enviados}/{len(dados_chunk)} ({porcentagem:.2f}%)")
 
                         tempo_estimado = len(parte) / bandwidth_limit
                         time.sleep(min(max(tempo_estimado,0.05),1.5))
@@ -247,14 +247,12 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                         #update_score(peer_user,
                         #            failed_transfers=1,
                         #            integrity_check=False)
-                        #print("flamegoo")
             else:
                 conn.send(b"ERRO: Chunk nao disponivel.")
                 conn.shutdown(socket.SHUT_WR)
                 #update_score(peer_user,
                 #    failed_transfers=1,
                 #    integrity_check=False)
-                print("flame")
 
         except Exception as e:
             #print(f"[Erro Chunk] {e}")
@@ -272,11 +270,11 @@ def calcular_bandwidth(score_peer, min_rate=10*1024, max_rate=3*1024*1024, max_s
     """
     Converte o score do peer numa largura de banda (bytes/s) com escala logarítmica.
     """
-    print(f"The peer's score is {score_peer}")
+    print(f"[INFO] The peer's score is {score_peer}")
     score_peer = max(score_peer, 1)  # evita log(0)
     escala = math.log(score_peer + 1) / math.log(max_score + 1)
     bandwidth = min_rate + (max_rate - min_rate) * escala
-    print(f"log escala: {escala:.4f} -> bandwidth: {bandwidth:.2f} bytes/s")
+    print(f"[INFO] log escala: {escala:.4f} -> bandwidth: {bandwidth:.2f} bytes/s")
     return int(bandwidth)
 
 def send_to_tracker2(data) -> dict:
@@ -548,7 +546,7 @@ def send_message_to_peer(ip, port, from_user, to_user, text) -> None:
         s.sendall(json.dumps(mensagem_json).encode())
         s.shutdown(socket.SHUT_WR)
         s.close()
-        print(f"\n Mensagem enviada para {to_user} ({ip}:{port})✅\n")
+        print(f"\n Mensagem enviada para {to_user} ({ip}:{port})[SUCESSO]\n")
     except Exception as e:
         print(f"Erro ao enviar mensagem: {e}")
 
@@ -598,7 +596,7 @@ def announce_files (username) -> None:
         resposta = json.loads(buffer.decode())
         print("\n=> Resultado do anúncio:", resposta.get("mensagem"))
     except Exception as e:
-        print("Erro ao anunciar arquivos:", e)
+        print("[ERRO] Erro ao anunciar arquivos:", e)
 
 def construir_tamanhos_chunks_fixos(nome_arquivo: str, tamanho_max_chunk_bytes: int = 2 * 1024 * 1024) -> List[int]:
     """
@@ -682,7 +680,7 @@ def announce_file_novo(username, nome_arquivo):
 
     print(f"chunks_info é:")
     if not chunks_info:
-        print("Erro ao dividir o arquivo.")
+        print("[ERRO] Erro ao dividir o arquivo.")
         return
     
     #Calculo do checksum
@@ -692,7 +690,7 @@ def announce_file_novo(username, nome_arquivo):
 
     print("O arquivo foi divido em chunks!")
     nome_pasta = os.path.splitext(nome_arquivo)[0]
-    print(f"O nome_pasta é:{nome_pasta}")
+    print(f"[INFO] O nome_pasta é:{nome_pasta}")
     caminho_chunks = f"arquivos_cadastrados/chunkscriados/{username}/{nome_pasta}"
     json_path = caminho_chunks+"/"+nome_pasta+".json"
     #json_path = os.path.join(caminho_chunks, nome_pasta + ".json")
@@ -734,7 +732,7 @@ def announce_file_novo(username, nome_arquivo):
         return nomes_chunks
 
     except Exception as e:
-        print("Erro ao anunciar arquivo:", e)
+        print("[ERRO] Erro ao anunciar arquivo:", e)
 
 arquivosdesejados = ['Asdf.txt'] # o peer pode escolher qual arquivo ele quer baixar
 
@@ -750,7 +748,7 @@ def arquivos_desejados(resposta):
     lista_arquivos = sorted(todos_arquivos)
 
     # Exibe lista com índice
-    print(f"\n🌐 Arquivos disponíveis para escolher:")
+    print(f"\nArquivos disponíveis para escolher:")
     print(f"[0] - Todos os arquivos")
     for i, nome in enumerate(lista_arquivos, 1):
         print(f"[{i}] - {nome}")
@@ -761,16 +759,16 @@ def arquivos_desejados(resposta):
             escolha = int(input("\n📥 Digite o número do arquivo que deseja baixar: "))
             if 1 <= escolha <= len(lista_arquivos):
                 arquivo_escolhido = lista_arquivos[escolha - 1]
-                print(f"\n✅ Você escolheu: {arquivo_escolhido}\n")
+                print(f"\n[SUCESSO] Você escolheu: {arquivo_escolhido}\n")
                 arquivosdesejados.append(arquivo_escolhido)
                 break
             elif escolha == 0:
                 arquivosdesejados.extend(lista_arquivos)
-                print("\n✅ Você escolheu TODOS os arquivos!")
+                print("\n[SUCESSO] Você escolheu TODOS os arquivos!")
                 for a in lista_arquivos:
                     print(f"  - {a}")
                 break
             else:
-                print("Número inválido. Tente novamente.")
+                print("[ERRO] Número inválido. Tente novamente.")
         except ValueError:
-            print("Entrada inválida. Digite apenas o número.")
+            print("[ERRO] Entrada inválida. Digite apenas o número.")

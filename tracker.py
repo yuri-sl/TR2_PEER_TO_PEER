@@ -47,7 +47,7 @@ def carregar_usuarios() -> dict:
         json.dump({},f)
     else:
         f = open(USER_LIST_PATH,'r')
-        print("O Arquivo existe!")
+        print("[SUCESSO]O Arquivo existe!")
         return json.load(f)
 
 def salvar_usuarios(usuario_input) -> None:
@@ -150,12 +150,12 @@ def list_clients() -> list[str]:
                    Retorna uma lista vazia caso o arquivo não exista.
     """
     if not os.path.exists(USER_LIST_PATH):
-        print("Arquivo de usuários não encontrado.")
+        print("[ERRO] Arquivo de usuários não encontrado.")
         return {}
     with open(USER_LIST_PATH, 'r') as f:
         data = json.load(f)
         lista_usuarios = list(data.keys())  # Lista de usuarios ativos
-        print("Usuários cadastrados:")
+        print("[SUCESSO] Usuários cadastrados:")
         for usuario in lista_usuarios:
             print(f" - {usuario}")
         return lista_usuarios
@@ -171,7 +171,7 @@ def protocolos_base(mensagem, client_socket) -> None:
         username = mensagem["username"]
         password = mensagem["password"]
         sucesso, msg = registrar_usuario(username, password)            # Bool caso aceito e a mensagem 
-        print(f"A mensagem dada pela função foi: {msg}, e o status de sucesso foi: {sucesso}")
+        print(f"[INFO] A mensagem dada pela função foi: {msg}, e o status de sucesso foi: {sucesso}")
         resposta = {"status": "ok" if sucesso else "erro", "mensagem": msg}
         client_socket.sendall(json.dumps(resposta).encode())            # resposta para o cliente
     elif mensagem['action'] == 'login':                                 # Fazer login
@@ -186,7 +186,7 @@ def protocolos_base(mensagem, client_socket) -> None:
             user_ip = client_socket.getpeername()[0]
             avaiableForChat.append((username,user_ip,user_port))
             avaiableForSeed.append((username,user_ip,user_chunk_port))
-        print(f"O login obteve sucesso?{sucesso}, a mensagem dada foi: {msg}")
+        print(f"[INFO] O login obteve sucesso?{sucesso}, a mensagem dada foi: {msg}")
         resposta = {"status": "ok" if sucesso else "erro", "mensagem": msg}
         client_socket.sendall(json.dumps(resposta).encode())
     else:
@@ -471,7 +471,7 @@ def handle_clients(client_socket, addr) -> None:
             try:
                 mensagem = json.loads(data)
                 user = mensagem['username'] # Nome do usuario
-                print(f"Entrou no Try. Mensagem recebida foi: {mensagem}")
+                print(f"[INFO] Entrou no Try. Mensagem recebida foi: {mensagem}")
                 if mensagem['action'] == 'exit' and user in session:# Sai da sessao caso esteja conectado
                     session.pop(user, None)                         # Nao e mais um peers ativo
                     files.pop(user, None)                         # Nao e mais um peers ativo update_user_list
@@ -488,9 +488,9 @@ def handle_clients(client_socket, addr) -> None:
             except Exception as e:                                  # Caso algum deles de errado sai com msg de erro
                 client_socket.sendall(json.dumps({"status": "erro", "mensagem": str(e)}).encode())
         client_socket.close()                                       # Sempre fecha a conexao 
-        print(f"Conexão encerrada com {addr}")
+        print(f"[INFO] Conexão encerrada com {addr}")
     except Exception as e:                                          # Caso nao consiga conectar com o cliente
-        print(f"Erro na conexão com {addr}: {e}")
+        print(f"[ERRO] Erro na conexão com {addr}: {e}")
 
 #def heartbeat(s) -> None:
 #    """
@@ -510,15 +510,15 @@ def handle_clients(client_socket, addr) -> None:
  #               s[u] += 1                                           # Incrementa contador de tempo
  #               print(f"{u,s[u]}")                                  # Retirar depois
 def atualizar_detentores_online_em_todos(active_peers):
-    print("🔧 Iniciando atualização de detentores_online e detentores_chunk...")
+    print("[INFO] Iniciando atualização de detentores_online e detentores_chunk...")
     path_base = "arquivos_cadastrados/chunkscriados"
 
     try:
         with open("usuarios_online.json", "r", encoding="utf-8") as f:
             usuarios_online = set(json.load(f))
-            print("✅ Carregados usuários online:", usuarios_online)
+            print("[SUCESSO] Carregados usuários online:", usuarios_online)
     except Exception as e:
-        print(f"❌ Erro ao carregar usuarios_online.json: {e}")
+        print(f"[ERRO] Erro ao carregar usuarios_online.json: {e}")
         return
 
     for usuario in os.listdir(path_base):
@@ -528,7 +528,7 @@ def atualizar_detentores_online_em_todos(active_peers):
         caminho_usuario = os.path.join(path_base, usuario)
         if not os.path.isdir(caminho_usuario):
             continue
-        print(f"📁 Processando: {caminho_usuario}")
+        print(f"[INFO] Processando: {caminho_usuario}")
 
         for nome_pasta in os.listdir(caminho_usuario):
             caminho_subpasta = os.path.join(caminho_usuario, nome_pasta)
@@ -558,21 +558,21 @@ def atualizar_detentores_online_em_todos(active_peers):
                     with open(caminho_json, "w", encoding="utf-8") as f:
                         json.dump(chunks_info, f, indent=4)
 
-                    print(f"🔄 Atualizado: {caminho_json}")
+                    print(f"[INFO] Atualizado: {caminho_json}")
 
                 except Exception as e:
-                    print(f"❌ Erro ao processar {caminho_json}: {e}")
+                    print(f"[ERRO] Erro ao processar {caminho_json}: {e}")
 
 
 def heartbeat(s: dict) -> None:
     while True:
         time.sleep(1)
         usuarios_online = []
-        print("Heartbeat funcionando!")
+        print("[INFO] Heartbeat funcionando!")
 
         for u in list(s.keys()):
             if s[u] >= 15:
-                print(f"⏹️ Removendo {u} por inatividade")
+                print(f"[INFO] Removendo {u} por inatividade")
                 s.pop(u, None)
             else:
                 s[u] += 1
@@ -582,7 +582,7 @@ def heartbeat(s: dict) -> None:
             with open("usuarios_online.json", "w") as f:
                 json.dump(sorted(usuarios_online), f, indent=4)
         except Exception as e:
-            print(f"Erro ao salvar usuarios_online.json: {e}")
+            print(f"[ERRO] Erro ao salvar usuarios_online.json: {e}")
 
         # 🔁 Atualiza arquivos de chunk com base nos online atuais
         atualizar_detentores_online_em_todos(usuarios_online)
