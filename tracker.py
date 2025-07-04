@@ -538,15 +538,15 @@ def handle_clients(client_socket, addr) -> None:
  #               s[u] += 1                                           # Incrementa contador de tempo
  #               print(f"{u,s[u]}")                                  # Retirar depois
 def atualizar_detentores_online_em_todos(active_peers):
-    print("🔧 Iniciando atualização de detentores_online e detentores_chunk...")
+    print("[INFO] Iniciando atualização de detentores_online e detentores_chunk...")
     path_base = "arquivos_cadastrados/chunkscriados"
 
     try:
         with open("usuarios_online.json", "r", encoding="utf-8") as f:
             usuarios_online = set(json.load(f))
-            print("✅ Carregados usuários online:", usuarios_online)
+            print("[SUCESSO] Carregados usuários online:", usuarios_online)
     except Exception as e:
-        print(f"❌ Erro ao carregar usuarios_online.json: {e}")
+        print(f"[ERRO] Erro ao carregar usuarios_online.json: {e}")
         return
 
     for usuario in os.listdir(path_base):
@@ -556,7 +556,7 @@ def atualizar_detentores_online_em_todos(active_peers):
         caminho_usuario = os.path.join(path_base, usuario)
         if not os.path.isdir(caminho_usuario):
             continue
-        print(f"📁 Processando: {caminho_usuario}")
+        print(f"[INFO] Processando: {caminho_usuario}")
 
         for nome_pasta in os.listdir(caminho_usuario):
             caminho_subpasta = os.path.join(caminho_usuario, nome_pasta)
@@ -586,10 +586,10 @@ def atualizar_detentores_online_em_todos(active_peers):
                     with open(caminho_json, "w", encoding="utf-8") as f:
                         json.dump(chunks_info, f, indent=4)
 
-                    print(f"🔄 Atualizado: {caminho_json}")
+                    print(f"[INFO] Atualizado: {caminho_json}")
 
                 except Exception as e:
-                    print(f"❌ Erro ao processar {caminho_json}: {e}")
+                    print(f"[ERRO] Erro ao processar {caminho_json}: {e}")
 
 
 def heartbeat(s: dict) -> None:
@@ -600,7 +600,7 @@ def heartbeat(s: dict) -> None:
 
         for u in list(s.keys()):
             if s[u] >= 15:
-                print(f"⏹️ Removendo {u} por inatividade")
+                print(f" Removendo {u} por inatividade")
                 s.pop(u, None)
             else:
                 s[u] += 1
@@ -612,7 +612,7 @@ def heartbeat(s: dict) -> None:
         except Exception as e:
             print(f"Erro ao salvar usuarios_online.json: {e}")
 
-        # 🔁 Atualiza arquivos de chunk com base nos online atuais
+        #  Atualiza arquivos de chunk com base nos online atuais
         atualizar_detentores_online_em_todos(usuarios_online)
 
 
