@@ -10,7 +10,7 @@ def atualizar_detentores_online_em_todos():
             print("Carreguei os usuários online")
             usuarios_online = set(json.load(f))
     except Exception as e:
-        print(f"❌ Erro ao carregar usuarios_online.json: {e}")
+        print(f"[ERRO] Erro ao carregar usuarios_online.json: {e}")
         return
 
     # Percorre todas as pastas de usuários
@@ -36,10 +36,10 @@ def atualizar_detentores_online_em_todos():
                 with open(caminho_json, "w") as f:
                     json.dump(chunks_info, f, indent=4)
 
-                print(f"✅ Atualizado: {caminho_json}")
+                print(f"[SUCESSO] Atualizado: {caminho_json}")
 
             except Exception as e:
-                print(f"❌ Erro ao processar {caminho_json}: {e}")
+                print(f"[ERRO] Erro ao processar {caminho_json}: {e}")
 
 # Executa a função
 atualizar_detentores_online_em_todos()

@@ -63,9 +63,9 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                                 if chunk_nome:
                                     chunks_possuídos.append(chunk_nome)
                     except Exception as e:
-                        print(f"⚠️ Erro ao ler {caminho_json}: {e}")
+                        print(f"[WARN] Erro ao ler {caminho_json}: {e}")
 
-        print(f"📦 Chunks efetivamente presentes com {meu_username}: {chunks_possuídos}")
+        print(f" Chunks efetivamente presentes com {meu_username}: {chunks_possuídos}")
         return chunks_possuídos
 
     def chunk_server_loop():
@@ -111,7 +111,7 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
             #input(f"[DEBUG] Verifique o JSON após AUMENTAR active_connections para {peer_user}. Pressione Enter para continuar...")
             
 
-            # ✅ Recarrega a cada request:
+            # [SUCESSO] Recarrega a cada request:
             print(f"The score was updated!")
             caminho_json_chunks = "arquivos_cadastrados/arquivos_tracker.json"
             chunks_disponiveis = carregar_peers_com_chunks(meu_username)
@@ -520,7 +520,7 @@ def send_message_to_peer(ip, port, from_user, to_user, text) -> None:
         s.sendall(json.dumps(mensagem_json).encode())
         s.shutdown(socket.SHUT_WR)
         s.close()
-        print(f"\n Mensagem enviada para {to_user} ({ip}:{port})✅\n")
+        print(f"\n Mensagem enviada para {to_user} ({ip}:{port})[SUCESSO]\n")
     except Exception as e:
         print(f"Erro ao enviar mensagem: {e}")
 
@@ -722,7 +722,7 @@ def arquivos_desejados(resposta):
     lista_arquivos = sorted(todos_arquivos)
 
     # Exibe lista com índice
-    print(f"\n🌐 Arquivos disponíveis para escolher:")
+    print(f"\n[INFO] Arquivos disponíveis para escolher:")
     print(f"[0] - Todos os arquivos")
     for i, nome in enumerate(lista_arquivos, 1):
         print(f"[{i}] - {nome}")
@@ -730,15 +730,15 @@ def arquivos_desejados(resposta):
     # Escolha do usuário
     while True:
         try:
-            escolha = int(input("\n📥 Digite o número do arquivo que deseja baixar: "))
+            escolha = int(input("\n Digite o número do arquivo que deseja baixar: "))
             if 1 <= escolha <= len(lista_arquivos):
                 arquivo_escolhido = lista_arquivos[escolha - 1]
-                print(f"\n✅ Você escolheu: {arquivo_escolhido}\n")
+                print(f"\n[SUCESSO] Você escolheu: {arquivo_escolhido}\n")
                 arquivosdesejados.append(arquivo_escolhido)
                 break
             elif escolha == 0:
                 arquivosdesejados.extend(lista_arquivos)
-                print("\n✅ Você escolheu TODOS os arquivos!")
+                print("\n[SUCESSO] Você escolheu TODOS os arquivos!")
                 for a in lista_arquivos:
                     print(f"  - {a}")
                 break

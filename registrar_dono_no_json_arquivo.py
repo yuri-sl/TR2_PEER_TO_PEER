@@ -9,11 +9,11 @@ def registrar_dono_no_json_arquivo(nome_arquivo: str, novo_dono: str):
         possivel_caminho = f"arquivos_cadastrados/chunkscriados/{pasta_usuario}/{nome_arquivo_sem_extensao}/{nome_arquivo_sem_extensao}.json"
         if os.path.exists(possivel_caminho):
             caminho = possivel_caminho
-            print("✅ Encontrei o caminho:", caminho)
+            print("[SUCESSO] Encontrei o caminho:", caminho)
             break
 
     if caminho is None:
-        print("⚠️ Arquivo JSON do chunk não encontrado para registrar dono.")
+        print("[WARN] Arquivo JSON do chunk não encontrado para registrar dono.")
         return
 
     with open(caminho, 'r+', encoding='utf-8') as f:
@@ -28,12 +28,12 @@ def registrar_dono_no_json_arquivo(nome_arquivo: str, novo_dono: str):
                     chunk["detentores_chunk"] = detentores
                     chunk["numero_detentores"] = len(detentores)
                     modificado = True
-                    print(f"✅ {novo_dono} adicionado como detentor de {nome_arquivo}")
+                    print(f"[SUCESSO] {novo_dono} adicionado como detentor de {nome_arquivo}")
                 else:
-                    print(f"ℹ️ {novo_dono} já era detentor de {nome_arquivo}")
+                    print(f"[INFO] {novo_dono} já era detentor de {nome_arquivo}")
                 break
         else:
-            print(f"❌ Chunk com nome '{nome_arquivo}' não encontrado no JSON.")
+            print(f"[ERRO] Chunk com nome '{nome_arquivo}' não encontrado no JSON.")
 
         if modificado:
             f.seek(0)
@@ -51,7 +51,7 @@ def atualizar_detentores_online_em_todos():
             usuarios_online = set(json.load(f))
             print("Usuários online:", usuarios_online)
     except Exception as e:
-        print(f"❌ Erro ao carregar usuarios_online.json: {e}")
+        print(f"[ERRO] Erro ao carregar usuarios_online.json: {e}")
         return
 
     for usuario in os.listdir(path_base):
@@ -72,7 +72,7 @@ def atualizar_detentores_online_em_todos():
                 try:
                     with open(caminho_json, "r", encoding="utf-8") as f:
                         chunks_info = json.load(f)
-                        print(f"\n📁 Processando: {caminho_json}")
+                        print(f"\n[INFO] Processando: {caminho_json}")
 
                     for chunk in chunks_info:
                         detentores = chunk.get("detentores_chunk", [])
@@ -82,8 +82,8 @@ def atualizar_detentores_online_em_todos():
                     with open(caminho_json, "w", encoding="utf-8") as f:
                         json.dump(chunks_info, f, indent=4)
 
-                    print(f"✅ Atualizado com sucesso: {caminho_json}")
+                    print(f"[SUCESSO] Atualizado com sucesso: {caminho_json}")
 
                 except Exception as e:
-                    print(f"❌ Erro ao processar {caminho_json}: {e}")
+                    print(f"[ERRO] Erro ao processar {caminho_json}: {e}")
 atualizar_detentores_online_em_todos()
