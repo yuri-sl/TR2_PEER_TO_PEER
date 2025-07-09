@@ -952,6 +952,47 @@ def interactiveMenu_1() -> bool:
             try:
                 print(chat_port)
                 dados = {
+                    "action": "list_group",
+                    "username": usuario_logado
+                }
+                resposta = send_to_tracker(dados)
+                print()
+                print("grupo Ativos: ")
+                i = 0
+                for grupo in resposta.get("mensagem", []):
+                    print(f"[{i}] - {grupo}")
+                accept_chat = input(("Quer entrar em um grupo?\n1-Sim    0-Não\n"))
+                if accept_chat == "1":
+                    selected_group = input("Qual grupo você gostaria de entrar?\n")
+                    i = 0
+                    for group in resposta.get("mensagem",[]):
+                        i += 1
+                        if selected_group == group or str(i) == selected_group:
+                            print("Grupo escolhido para conversar com sucesso!")
+                            senha = input("Digite a sua senha:")
+                            dados_start_chat_group = {
+                                "action":"get_group_info",
+                                "username": group,
+                                "senha" : senha
+                            }
+                            resposta_start_chat = send_to_tracker(dados_start_chat_group)
+
+                            if resposta_start_chat.get("status")=="ok":
+                                print("Entrou no grupo com sucesso")
+                            else:
+                                print("Senha não bate")
+                            break
+                    print("Este usuário não está online ou não existe!")
+                
+                input("Pressione Enter para continuar")
+                os.system('cls||clear')
+            except:
+                #print("Você provavavelmente foi desligado por inatividade")
+                input("Pressione Enter para continuar")
+        elif operation == "2":
+            try:
+                print(chat_port)
+                dados = {
                     "action": "list_clients",
                     "username": usuario_logado
                 }
@@ -969,53 +1010,48 @@ def interactiveMenu_1() -> bool:
                 if accept_chat == "1":
                     name_group = input("\nQual será o nome do grupo?:\n")
                     password_group = input("\nQual será a senha do grupo?:\n")
-                    selected_user = input("Digite os nomes dos usuários que deseja por no grupo\n").split()
+                    peers = input("Digite os nomes dos usuários que deseja por no grupo\n").split()
+                    selected_group = []
                     i = 0
-                    for user in selected_user:
+                    for user in peers:
                         if user in resposta.get("mensagem",[]):
                             print(f"{user} será adicionado ao grupo")
-                            dados_start_chat = {
-                                "action":"get_peer_info",
-                                "username": user
-                            }
-                            resposta_start_chat = send_to_tracker(dados_start_chat)
+                            selected_group.append(user)
+                    if selected_group:
+                        texto = []
+                        registro_mensagem = {
+                            "name_group" : name_group,
+                            "password_group" : password_group,
+                            "moderador" : usuario_logado,
+                            "usuarios": selected_group,
+                            "mensagem":texto
+                        }
+                        print(registro_mensagem)
+                        msgPath = "messages_list_group.json"
 
-                            if resposta_start_chat.get("status")=="ok":
-                                peer_info = resposta_start_chat.get("mensagem",{})
-                                peer_ip = peer_info.get("ip")
-                                peer_port = peer_info.get("port")
-                                print(f"{user} com ip e porta {peer_ip}:{peer_port}")
-                                #texto = input("Digite sua mensagem:")
-                                #send_message_to_peer(peer_ip, peer_port, usuario_logado, user, texto, True)
-                                #Escrevendo a mensagem em JSON
-                                texto = []
-                                registro_mensagem = {
-                                    "name_group" : name_group,
-                                    "password_group" : password_group,
-                                    "moderador" : usuario_logado,
-                                    "usuarios": selected_user,
-                                    "mensagem":texto
-                                }
-                                print(registro_mensagem)
-                                msgPath = "messages_list_group.json"
-
-                                #Verifica se o arquivo já existe e carrega o interior dele
-                                if os.path.exists(msgPath):
-                                    try:
-                                        print("Arquivo existe!")
-                                        f = open(msgPath,"r",encoding="utf-8")
-                                        recorded_messages = json.load(f)
-                                    except:
-                                        print("ok")
-                                else:
-                                    recorded_messages = []
-                                recorded_messages.append(registro_mensagem)
-                                f = open(msgPath,"w",encoding="utf-8")
-                                json.dump(recorded_messages,f,indent=4,ensure_ascii=False)
-                                print(f"{peer} adicionado com suceso")
-                            else:
-                                print("Erro ao obter infos do User")
-                    print("colocado todos os peers")
+                        #Verifica se o arquivo já existe e carrega o interior dele
+                        if os.path.exists(msgPath):
+                            try:
+                                print("Arquivo existe!")
+                                with open(msgPath, "r", encoding="utf-8") as f:
+                                    recorded_messages = json.load(f)
+                            except:
+                                print("ok")
+                                recorded_messages = []
+                        else:
+                            recorded_messages = []
+                        recorded_messages.append(registro_mensagem)
+                        with open(msgPath, "w", encoding="utf-8") as f:
+                            json.dump(recorded_messages,f,indent=4,ensure_ascii=False)
+                        print("colocado todos os peers")
+                        dados_start_chat = dados = {
+                            "action": "create_groups",
+                            "name_group": name_group
+                        }
+                        resposta_start_chat = send_to_tracker(dados_start_chat)
+                        print("Grupo criado com sucesso")
+                    else:
+                        print("Grupo não foi criado")
                 else:
                     print("tchau")
                 input("Pressione Enter para continuar")
@@ -1042,11 +1078,11 @@ def interactiveMenu_1() -> bool:
                         print(f"[{i}] - {peer}")
                 accept_chat = input(("Gostaria de comunicar com um Peer?\n1-Sim    0-Não\n"))
                 if accept_chat == "1":
-                    selected_user = input("Digite o nome do usuário que deseja falar com\n")
+                    selected_group = input("Digite o nome do usuário que deseja falar com\n")
                     i = 0
                     for user in resposta.get("mensagem",[]):
                         i += 1
-                        if selected_user == user or str(i) == selected_user:
+                        if selected_group == user or str(i) == selected_group:
                             print("Usuário Escolhido para conversar com sucesso!")
                             dados_start_chat = {
                                 "action":"get_peer_info",
@@ -1234,15 +1270,15 @@ def interactiveMenu_1() -> bool:
             if accept_chat == "1":
                 #selected_user = input("Digite o nome do usuário que deseja pedir o arquivo\n")
                 #Inicialmente, ele apenas escolhe um usuário aleatório, mas depois irá aplicar o incentivo para refazer a escolha
-                selected_user = random.choice(portAssociation)
-                if selected_user == usuario_logado:
+                selected_group = random.choice(portAssociation)
+                if selected_group == usuario_logado:
                         print("Não é possível realizar a operação consigo mesmo!")
                 else:
                     #Continuação do processo de seleção
                     i = 0
                     for user in resposta.get("mensagem",[]):
                         i += 1                      
-                        if selected_user == user or str(i) == selected_user:
+                        if selected_group == user or str(i) == selected_group:
                             print("Usuário Escolhido para operação com sucesso!")
                             dados_start_chunk = {
                                 "action":"get_peer_info_chunk",
@@ -1390,17 +1426,17 @@ def interactiveMenu_1() -> bool:
             if input("Gostaria de comunicar com um Peer?\\n1-Sim    0-Não\\n") != "1":
                 return
 
-            selected_user = random.choice(portAssociation)
-            if selected_user == usuario_logado:
+            selected_group = random.choice(portAssociation)
+            if selected_group == usuario_logado:
                 print("Não é possível realizar a operação consigo mesmo!")
                 return
 
-            dados_peer = {"action": "get_peer_info_chunk", "username": selected_user}
+            dados_peer = {"action": "get_peer_info_chunk", "username": selected_group}
             resposta_peer = send_to_tracker(dados_peer)
             if resposta_peer.get("status") != "ok":
                 return
 
-            print(f"Iniciando operação com {selected_user}")
+            print(f"Iniciando operação com {selected_group}")
             caminho = "arquivos_cadastrados/arquivos_tracker.json"
             arquivos, dados = listarArquivos(caminho)
 

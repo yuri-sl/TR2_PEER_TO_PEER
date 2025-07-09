@@ -13,6 +13,7 @@ session = {}
 files = {}
 avaiableForChat = []
 avaiableForSeed = []
+avaiableForGroup = []
 chunks = {}
 checksunsarq = {}
 import json
@@ -205,7 +206,17 @@ def protocolos_restritos(mensagem, client_socket) -> None:
         arquivos = list_files(peers)
         resposta = {"status": "ok", "mensagem": arquivos}
         client_socket.sendall(json.dumps(resposta).encode())
-
+    elif mensagem['action'] == "create_groups":
+        try:
+            avaiableForGroup.append(mensagem['name_group'])
+            resposta = {"status": "ok", "mensagem": avaiableForGroup}
+            client_socket.sendall(json.dumps(resposta).encode())
+        except:
+            resposta = {"status": "erro", "mensagem": "erro"}
+            client_socket.sendall(json.dumps(resposta).encode())
+    elif mensagem['action'] == 'list_group':
+        resposta = {"status": "ok", "mensagem": avaiableForGroup}
+        client_socket.sendall(json.dumps(resposta).encode())
     elif mensagem['action'] == "get_peer_info":
         asked_user = mensagem['username']
         peer_found = None
