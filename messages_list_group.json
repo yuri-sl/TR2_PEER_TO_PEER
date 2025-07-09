@@ -1,0 +1,20 @@
+[
+    {
+        "name_group": "ae",
+        "password_group": "ae",
+        "moderador": "b",
+        "usuarios": [
+            "a"
+        ],
+        "mensagem": []
+    },
+    {
+        "name_group": "aw",
+        "password_group": "aw",
+        "moderador": "b",
+        "usuarios": [
+            "a"
+        ],
+        "mensagem": []
+    }
+]

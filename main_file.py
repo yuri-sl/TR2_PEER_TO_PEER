@@ -971,7 +971,7 @@ def interactiveMenu_1() -> bool:
                             print("Grupo escolhido para conversar com sucesso!")
                             senha = input("Digite a sua senha:")
                             dados_start_chat_group = {
-                                "action":"get_group_info",
+                                "action" : "enter_group",
                                 "username": group,
                                 "senha" : senha
                             }

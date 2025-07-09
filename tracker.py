@@ -212,11 +212,40 @@ def protocolos_restritos(mensagem, client_socket) -> None:
             resposta = {"status": "ok", "mensagem": avaiableForGroup}
             client_socket.sendall(json.dumps(resposta).encode())
         except:
-            resposta = {"status": "erro", "mensagem": "erro"}
+            resposta = {"status": "erro", "mensagem": "create_groups"}
             client_socket.sendall(json.dumps(resposta).encode())
+
     elif mensagem['action'] == 'list_group':
         resposta = {"status": "ok", "mensagem": avaiableForGroup}
         client_socket.sendall(json.dumps(resposta).encode())
+
+    elif mensagem['action'] == 'enter_group':
+        try:
+
+            with open("messages_list_group.json", "r", encoding="utf-8") as f:
+                recorded_messages = json.load(f)
+                
+            encontrado = False
+            for grupo in recorded_messages:
+                if grupo["name_group"] == mensagem['username']:
+                    encontrado = True
+                    if grupo["password_group"] == mensagem['senha']:
+                        resposta = {"status": "ok", "mensagem": "Senha correta, entrou no grupo"}
+                        client_socket.sendall(json.dumps(resposta).encode())
+                    else:
+                        print("Senha incorreta.")
+                        resposta = {"status": "ok", "mensagem": "Senha incorreta"}
+                        client_socket.sendall(json.dumps(resposta).encode())
+                    break
+
+            if not encontrado:
+                print("Grupo não encontrado.")
+
+            resposta = {"status": "ok", "mensagem": "não tem esse grupo"}
+            client_socket.sendall(json.dumps(resposta).encode())
+        except:
+            resposta = {"status": "erro", "mensagem": "entergroup"}
+            client_socket.sendall(json.dumps(resposta).encode())
     elif mensagem['action'] == "get_peer_info":
         asked_user = mensagem['username']
         peer_found = None
