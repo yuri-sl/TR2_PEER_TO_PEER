@@ -22,7 +22,7 @@ import threading
 menu_1 = "MENU PRINCIPAL \n#1 - Registrar;\n#2 - Login no Sistema;\n#3 - Sair do sistema;"
 menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;\n11 - Criar um novo arquivo .txt\n12 - Requisição de Chunk\n13 - Montar arquivo usando chunks\n 14 - Próxima página >>>>"
 
-menu_chats = "--Menu de interações de chats por usuários--(1/3)\n#5 - Listagem de peers Ativos\n#6 - Iniciar chat com um Peer\n\n#14 - Próxima página >>>>"
+menu_chats = "--Menu de interações de chats por usuários--(1/3)\n#2 - Criar chat em grupo\n#3 - Iniciar chat em grupo\n#5 - Listagem de peers Ativos\n#6 - Iniciar chat com um Peer\n\n#14 - Próxima página >>>>"
 menu_arquivos = "--Menu de Operações por arquivos--(2/3)\n#11 - Criar um arquivo .txt\n#8 - Anunciar um arquivo manualmente\n#12 - Requisição de Chunks com uma conexão\n#16 - Requisição de chunks com múltiplas conexões\n#13 - Montar um Arquivo\n#17 - Plotar Gráfico Transmissão única\n#18 - Plotar Gráfico Transmissão Múltiplas Conexões\n#1 - Pedir arquivos\n\n#14 - Próxima página >>>>\n#15 - Página anterior <<<<<<"
 menu_opcoes = "--Menu de operações do Usuário--(3/3)\n#14 - Meu perfil\n#10 - Sair do sistema\n\n#15 - Página anterior <<<<<<"
 
@@ -947,6 +947,81 @@ def interactiveMenu_1() -> bool:
                 os.system('cls||clear')              
             except:
                 print("Você provavavelmente foi desligado por inatividade")
+                input("Pressione Enter para continuar")
+        elif operation == "3":
+            try:
+                print(chat_port)
+                dados = {
+                    "action": "list_clients",
+                    "username": usuario_logado
+                }
+                resposta = send_to_tracker(dados)
+                print()
+                print("Peers Ativos: ")
+                i = 0
+                for peer in resposta.get("mensagem", []):
+                    i += 1
+                    if(peer == usuario_logado):
+                        print(f"[{i}] - {peer} (Você)")
+                    else:
+                        print(f"[{i}] - {peer}")
+                accept_chat = input(("Quer criar um grupo?\n"))
+                if accept_chat == "1":
+                    name_group = input("\nQual será o nome do grupo?:\n")
+                    password_group = input("\nQual será a senha do grupo?:\n")
+                    selected_user = input("Digite os nomes dos usuários que deseja por no grupo\n").split()
+                    i = 0
+                    for user in selected_user:
+                        if user in resposta.get("mensagem",[]):
+                            print(f"{user} será adicionado ao grupo")
+                            dados_start_chat = {
+                                "action":"get_peer_info",
+                                "username": user
+                            }
+                            resposta_start_chat = send_to_tracker(dados_start_chat)
+
+                            if resposta_start_chat.get("status")=="ok":
+                                peer_info = resposta_start_chat.get("mensagem",{})
+                                peer_ip = peer_info.get("ip")
+                                peer_port = peer_info.get("port")
+                                print(f"{user} com ip e porta {peer_ip}:{peer_port}")
+                                #texto = input("Digite sua mensagem:")
+                                #send_message_to_peer(peer_ip, peer_port, usuario_logado, user, texto, True)
+                                #Escrevendo a mensagem em JSON
+                                texto = []
+                                registro_mensagem = {
+                                    "name_group" : name_group,
+                                    "password_group" : password_group,
+                                    "moderador" : usuario_logado,
+                                    "usuarios": selected_user,
+                                    "mensagem":texto
+                                }
+                                print(registro_mensagem)
+                                msgPath = "messages_list_group.json"
+
+                                #Verifica se o arquivo já existe e carrega o interior dele
+                                if os.path.exists(msgPath):
+                                    try:
+                                        print("Arquivo existe!")
+                                        f = open(msgPath,"r",encoding="utf-8")
+                                        recorded_messages = json.load(f)
+                                    except:
+                                        print("ok")
+                                else:
+                                    recorded_messages = []
+                                recorded_messages.append(registro_mensagem)
+                                f = open(msgPath,"w",encoding="utf-8")
+                                json.dump(recorded_messages,f,indent=4,ensure_ascii=False)
+                                print(f"{peer} adicionado com suceso")
+                            else:
+                                print("Erro ao obter infos do User")
+                    print("colocado todos os peers")
+                else:
+                    print("tchau")
+                input("Pressione Enter para continuar")
+                os.system('cls||clear')
+            except:
+                #print("Você provavavelmente foi desligado por inatividade")
                 input("Pressione Enter para continuar")
         elif operation == "6":
             try:

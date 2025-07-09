@@ -95,8 +95,12 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                     break
                 dados += parte
             mensagem = json.loads(dados.decode())
-            print(f"\n📩 [Mensagem recebida de {mensagem['from']}]")
-            print(f"{mensagem['message']} (em {mensagem['timestamp']})\n")
+            if mensagem['group']:
+                print(f"\n📩 [Mensagem recebida do grupo: {mensagem['from']}]")
+                print(f"{mensagem['message']} (em {mensagem['timestamp']})\n")
+            else:
+                print(f"\n📩 [Mensagem recebida de {mensagem['from']}]")
+                print(f"{mensagem['message']} (em {mensagem['timestamp']})\n")
         except Exception as e:
             print(f"[Erro no Chat] Falha ao processar mensagem: {e}")
         finally:
@@ -482,7 +486,7 @@ def send_chunk_to_peer(ip, port, nome_chunk, destino_arquivo):
     except Exception as e:
         print(f"[Erro ao solicitar chunk] {e}")
 
-def send_message_to_peer(ip, port, from_user, to_user, text) -> None:
+def send_message_to_peer(ip, port, from_user, to_user, text, is_group) -> None:
     """
     Envia uma mensagem para um peer específico via conexão TCP.
 
@@ -497,6 +501,7 @@ def send_message_to_peer(ip, port, from_user, to_user, text) -> None:
     texto da mensagem e timestamp do envio.
     """
     mensagem_json = {
+        "group" : is_group,
         "from": from_user,
         "to": to_user,
         "message": text,
