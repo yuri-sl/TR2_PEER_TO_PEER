@@ -239,12 +239,9 @@ def protocolos_restritos(mensagem, client_socket) -> None:
                 
             encontrado = False
             for grupo in recorded_messages:
-                print("olaaaaa",grupo)
                 if grupo["name_group"] == mensagem['name_group']:
                     encontrado = True
-                    print("olaaaaa",grupo)
                     if grupo["password_group"] == mensagem['senha']:
-                        print(grupo["password_group"])
                         if mensagem["username"] not in grupo["usuarios"]:
                             grupo["usuarios"].append(mensagem["username"])
                             # Salva a atualização no JSON
@@ -254,15 +251,13 @@ def protocolos_restritos(mensagem, client_socket) -> None:
                         else:
                             resposta = {"status": "ok", "mensagem": "já está no grupo"}
                     else:
-                        print("aaaaaaaaaaSenha incorreta.")
+                        print("Senha incorreta.")
                         resposta = {"status": "incorreto", "mensagem": "Senha incorreta"}
                     break
 
             if encontrado:
-                print("NICE")
                 client_socket.sendall(json.dumps(resposta).encode())
             else:
-                print("broxou")
                 resposta = {"status": "inexistente", "mensagem": "não existe este grupo"}
                 client_socket.sendall(json.dumps(resposta).encode())
         except Exception as e:

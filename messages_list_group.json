@@ -7,7 +7,12 @@
             "a",
             "b"
         ],
-        "mensagem": []
+        "mensagem": [
+            "abaca",
+            "bcaba",
+            "11:27:30 : alo tudo bem",
+            "11:29:14 : blz?"
+        ]
     },
     {
         "name_group": "aw",
@@ -15,6 +20,19 @@
         "moderador": "b",
         "usuarios": [
             "a"
+        ],
+        "mensagem": [
+            "agaga",
+            "baga"
+        ]
+    },
+    {
+        "name_group": "art",
+        "password_group": "art",
+        "moderador": "a",
+        "usuarios": [
+            "a",
+            "b"
         ],
         "mensagem": []
     }

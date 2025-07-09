@@ -949,52 +949,127 @@ def interactiveMenu_1() -> bool:
                 print("Você provavavelmente foi desligado por inatividade")
                 input("Pressione Enter para continuar")
         elif operation == "3":
-            try:
-                print(chat_port)
-                dados = {
-                    "action": "list_group",
-                    "username": usuario_logado
-                }
-                resposta = send_to_tracker(dados)
-                print()
-                print("grupo Ativos: ")
-                i = 0
-                for grupo in resposta.get("mensagem", []):
-                    i += 1
-                    print(f"[{i}] - {grupo}")
-                if resposta.get("mensagem", []):
+            option = int(input("Deseja entrar em um grupo ou conversar?\n[1] - Para entrar \n[2] - Para conversar"))
+            if option == 1:
+                try:
+                    print(chat_port)
+                    dados = {
+                        "action": "list_group",
+                        "username": usuario_logado
+                    }
+                    resposta = send_to_tracker(dados)
+                    print()
+                    print("grupo Ativos: ")
+                    i = 0
+                    for grupo in resposta.get("mensagem", []):
+                        i += 1
+                        print(f"[{i}] - {grupo}")
+                    if resposta.get("mensagem", []):
+                        accept_chat = input(("Quer entrar em um grupo?\n1-Sim    0-Não\n"))
+                        if accept_chat == "1":
+                            selected_group = input("Qual grupo você gostaria de entrar?\n")
+                            i = 0
+                            for group in resposta.get("mensagem",[]):
+                                i += 1
+                                if selected_group == group or str(i) == selected_group:
+                                    print(f"Grupo {group} escolhido para conversar com sucesso!")
+                                    senha = input("Digite a sua senha:")
+                                    dados_start_chat_group = {
+                                        "action" : "enter_group",
+                                        "username": usuario_logado,
+                                        "name_group" : group,
+                                        "senha" : senha
+                                    }
+                                    resposta_start_chat = send_to_tracker(dados_start_chat_group)
+
+                                    if resposta_start_chat.get("status") == "ok":
+                                        print("Entrou no grupo com sucesso")
+                                        
+                                        print(resposta_start_chat.get("mensagem"))
+                                    elif resposta_start_chat.get("status") == "incorreto":
+                                        print(resposta_start_chat.get("mensagem"))
+                                    else:
+                                        print(resposta_start_chat.get("mensagem"))
+                                    break
+                    else: 
+                        print("não tem grupos ativos ainda")
+                    input("Pressione Enter para continuar")
+                    os.system('cls||clear')
+                except:
+                    print("Você provavavelmente foi desligado por inatividade")
+                    input("Pressione Enter para continuar")
+            elif option == 2:
+                try:
+                    print(chat_port)
+                    dados = {
+                        "action": "list_group",
+                        "username": usuario_logado
+                    }
+                    resposta = send_to_tracker(dados)
+
+                    print()
+                    print("grupo que você tem acesso: ")
+                    with open("messages_list_group.json", "r", encoding="utf-8") as f:
+                        recorded_messages = json.load(f)
+                    
+                    grupoPertence = []
+                    i = 0
+                    for grupo in recorded_messages:
+                        if usuario_logado in grupo["usuarios"]:
+                            grupoPertence.append(grupo["name_group"])
+                    for group in grupoPertence:
+                        i += 1
+                        print(f"[{i}] - {group}")
                     accept_chat = input(("Quer entrar em um grupo?\n1-Sim    0-Não\n"))
                     if accept_chat == "1":
                         selected_group = input("Qual grupo você gostaria de entrar?\n")
                         i = 0
-                        for group in resposta.get("mensagem",[]):
+                        for group_info in recorded_messages:
                             i += 1
-                            if selected_group == group or str(i) == selected_group:
-                                print(f"Grupo {group} escolhido para conversar com sucesso!")
-                                senha = input("Digite a sua senha:")
-                                dados_start_chat_group = {
-                                    "action" : "enter_group",
-                                    "username": usuario_logado,
-                                    "name_group" : group,
-                                    "senha" : senha
-                                }
-                                resposta_start_chat = send_to_tracker(dados_start_chat_group)
-
-                                if resposta_start_chat.get("status") == "ok":
-                                    print("Entrou no grupo com sucesso")
-                                    print(resposta_start_chat.get("mensagem"))
-                                elif resposta_start_chat.get("status") == "incorreto":
-                                    print(resposta_start_chat.get("mensagem"))
-                                else:
-                                    print(resposta_start_chat.get("mensagem"))
+                            if selected_group == group_info["name_group"] or str(i) == selected_group:
+                                continuar = True
+                                while continuar:
+                                    os.system('cls||clear')
+                                    print("Digite 'sair' para sair do chat")
+                                    try:
+                                        with open("messages_list_group.json", "r", encoding="utf-8") as f:
+                                            recorded_messages = json.load(f)
+                                    except:
+                                        recorded_messages = []
+                                    # Procura o grupo novamente
+                                    grupo_atual = next((g for g in recorded_messages if g["name_group"] == selected_group), None)
+                                    print(grupo_atual)
+                                    if grupo_atual:
+                                        novas_mensagens = grupo_atual["mensagem"]
+                                        for mensagem in novas_mensagens:
+                                            print(mensagem)
+                                    else:
+                                        print("grupo ainda não tem mensagens, seja o primeiro a comentar!")
+                                    texto = input("Digite sua mensagem: ")
+                                    if texto == "sair":
+                                        continuar = False
+                                    else:
+                                        horario = datetime.now().strftime("%H:%M:%S")
+                                        mensagem_formatada = f"{horario} ({usuario_logado}): {texto}"
+                                        group_info["mensagem"].append(mensagem_formatada)
+                                        # Salva no JSON
+                                        with open("messages_list_group.json", "w", encoding="utf-8") as f:
+                                            json.dump(recorded_messages, f, indent=4, ensure_ascii=False)
+                                            time.sleep(0.5)
                                 break
-                else: 
-                    print("não tem grupos ativos ainda")
+                        print("conversa encerrada")
+                        input("Pressione Enter para continuar")
+                    else:
+                        print("Tchau!")
+                except Exception as e:
+                    print(f"Possivel erro é {e}")
+                    print("Você provavavelmente foi desligado por inatividade")
+                    input("Pressione Enter para continuar")
+                    os.system('cls||clear')
+            else:
+                print("Opção errada")
                 input("Pressione Enter para continuar")
                 os.system('cls||clear')
-            except:
-                print("Você provavavelmente foi desligado por inatividade")
-                input("Pressione Enter para continuar")
         elif operation == "2":
             try:
                 print(chat_port)
