@@ -216,36 +216,60 @@ def protocolos_restritos(mensagem, client_socket) -> None:
             client_socket.sendall(json.dumps(resposta).encode())
 
     elif mensagem['action'] == 'list_group':
+        if os.path.exists("messages_list_group.json"):
+            try:
+                print("Arquivo existe!")
+                with open("messages_list_group.json", "r", encoding="utf-8") as f:
+                    recorded_messages = json.load(f)
+            except:
+                print("ok")
+                recorded_messages = []
+        else:
+            recorded_messages = []
+        for grupo in recorded_messages:
+            if grupo["name_group"] not in avaiableForGroup:
+                avaiableForGroup.append(grupo["name_group"])
         resposta = {"status": "ok", "mensagem": avaiableForGroup}
         client_socket.sendall(json.dumps(resposta).encode())
 
     elif mensagem['action'] == 'enter_group':
         try:
-
             with open("messages_list_group.json", "r", encoding="utf-8") as f:
                 recorded_messages = json.load(f)
                 
             encontrado = False
             for grupo in recorded_messages:
-                if grupo["name_group"] == mensagem['username']:
+                print("olaaaaa",grupo)
+                if grupo["name_group"] == mensagem['name_group']:
                     encontrado = True
+                    print("olaaaaa",grupo)
                     if grupo["password_group"] == mensagem['senha']:
-                        resposta = {"status": "ok", "mensagem": "Senha correta, entrou no grupo"}
-                        client_socket.sendall(json.dumps(resposta).encode())
+                        print(grupo["password_group"])
+                        if mensagem["username"] not in grupo["usuarios"]:
+                            grupo["usuarios"].append(mensagem["username"])
+                            # Salva a atualização no JSON
+                            with open("messages_list_group.json", "w", encoding="utf-8") as f:
+                                json.dump(recorded_messages, f, indent=4, ensure_ascii=False)
+                            resposta = {"status": "ok", "mensagem": "Senha correta, entrou no grupo"}
+                        else:
+                            resposta = {"status": "ok", "mensagem": "já está no grupo"}
                     else:
-                        print("Senha incorreta.")
-                        resposta = {"status": "ok", "mensagem": "Senha incorreta"}
-                        client_socket.sendall(json.dumps(resposta).encode())
+                        print("aaaaaaaaaaSenha incorreta.")
+                        resposta = {"status": "incorreto", "mensagem": "Senha incorreta"}
                     break
 
-            if not encontrado:
-                print("Grupo não encontrado.")
-
-            resposta = {"status": "ok", "mensagem": "não tem esse grupo"}
-            client_socket.sendall(json.dumps(resposta).encode())
-        except:
+            if encontrado:
+                print("NICE")
+                client_socket.sendall(json.dumps(resposta).encode())
+            else:
+                print("broxou")
+                resposta = {"status": "inexistente", "mensagem": "não existe este grupo"}
+                client_socket.sendall(json.dumps(resposta).encode())
+        except Exception as e:
+            print("Erro ao entrar no grupo:", e)
             resposta = {"status": "erro", "mensagem": "entergroup"}
             client_socket.sendall(json.dumps(resposta).encode())
+
     elif mensagem['action'] == "get_peer_info":
         asked_user = mensagem['username']
         peer_found = None

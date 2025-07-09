@@ -4,7 +4,8 @@
         "password_group": "ae",
         "moderador": "b",
         "usuarios": [
-            "a"
+            "a",
+            "b"
         ],
         "mensagem": []
     },

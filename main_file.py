@@ -22,7 +22,7 @@ import threading
 menu_1 = "MENU PRINCIPAL \n#1 - Registrar;\n#2 - Login no Sistema;\n#3 - Sair do sistema;"
 menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;\n11 - Criar um novo arquivo .txt\n12 - Requisição de Chunk\n13 - Montar arquivo usando chunks\n 14 - Próxima página >>>>"
 
-menu_chats = "--Menu de interações de chats por usuários--(1/3)\n#2 - Criar chat em grupo\n#3 - Iniciar chat em grupo\n#5 - Listagem de peers Ativos\n#6 - Iniciar chat com um Peer\n\n#14 - Próxima página >>>>"
+menu_chats = "--Menu de interações de chats por usuários--(1/3)\n#2 - Criar chat em grupo\n#3 - Entrar em um grupo\n#5 - Listagem de peers Ativos\n#6 - Iniciar chat com um Peer\n\n#14 - Próxima página >>>>"
 menu_arquivos = "--Menu de Operações por arquivos--(2/3)\n#11 - Criar um arquivo .txt\n#8 - Anunciar um arquivo manualmente\n#12 - Requisição de Chunks com uma conexão\n#16 - Requisição de chunks com múltiplas conexões\n#13 - Montar um Arquivo\n#17 - Plotar Gráfico Transmissão única\n#18 - Plotar Gráfico Transmissão Múltiplas Conexões\n#1 - Pedir arquivos\n\n#14 - Próxima página >>>>\n#15 - Página anterior <<<<<<"
 menu_opcoes = "--Menu de operações do Usuário--(3/3)\n#14 - Meu perfil\n#10 - Sair do sistema\n\n#15 - Página anterior <<<<<<"
 
@@ -960,34 +960,40 @@ def interactiveMenu_1() -> bool:
                 print("grupo Ativos: ")
                 i = 0
                 for grupo in resposta.get("mensagem", []):
+                    i += 1
                     print(f"[{i}] - {grupo}")
-                accept_chat = input(("Quer entrar em um grupo?\n1-Sim    0-Não\n"))
-                if accept_chat == "1":
-                    selected_group = input("Qual grupo você gostaria de entrar?\n")
-                    i = 0
-                    for group in resposta.get("mensagem",[]):
-                        i += 1
-                        if selected_group == group or str(i) == selected_group:
-                            print("Grupo escolhido para conversar com sucesso!")
-                            senha = input("Digite a sua senha:")
-                            dados_start_chat_group = {
-                                "action" : "enter_group",
-                                "username": group,
-                                "senha" : senha
-                            }
-                            resposta_start_chat = send_to_tracker(dados_start_chat_group)
+                if resposta.get("mensagem", []):
+                    accept_chat = input(("Quer entrar em um grupo?\n1-Sim    0-Não\n"))
+                    if accept_chat == "1":
+                        selected_group = input("Qual grupo você gostaria de entrar?\n")
+                        i = 0
+                        for group in resposta.get("mensagem",[]):
+                            i += 1
+                            if selected_group == group or str(i) == selected_group:
+                                print(f"Grupo {group} escolhido para conversar com sucesso!")
+                                senha = input("Digite a sua senha:")
+                                dados_start_chat_group = {
+                                    "action" : "enter_group",
+                                    "username": usuario_logado,
+                                    "name_group" : group,
+                                    "senha" : senha
+                                }
+                                resposta_start_chat = send_to_tracker(dados_start_chat_group)
 
-                            if resposta_start_chat.get("status")=="ok":
-                                print("Entrou no grupo com sucesso")
-                            else:
-                                print("Senha não bate")
-                            break
-                    print("Este usuário não está online ou não existe!")
-                
+                                if resposta_start_chat.get("status") == "ok":
+                                    print("Entrou no grupo com sucesso")
+                                    print(resposta_start_chat.get("mensagem"))
+                                elif resposta_start_chat.get("status") == "incorreto":
+                                    print(resposta_start_chat.get("mensagem"))
+                                else:
+                                    print(resposta_start_chat.get("mensagem"))
+                                break
+                else: 
+                    print("não tem grupos ativos ainda")
                 input("Pressione Enter para continuar")
                 os.system('cls||clear')
             except:
-                #print("Você provavavelmente foi desligado por inatividade")
+                print("Você provavavelmente foi desligado por inatividade")
                 input("Pressione Enter para continuar")
         elif operation == "2":
             try:
