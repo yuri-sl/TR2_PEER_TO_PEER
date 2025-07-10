@@ -41,5 +41,20 @@
         ],
         "mensagem": [],
         "excluidos": []
+    },
+    {
+        "name_group": "jogos",
+        "password_group": "jogos123",
+        "moderador": "a",
+        "usuarios": [
+            "a",
+            "b"
+        ],
+        "mensagem": [
+            "11:53:48 (b): aol",
+            "11:53:59 (a): lao",
+            "11:54:08 (b): tudo bom"
+        ],
+        "excluidos": []
     }
 ]
