@@ -949,7 +949,7 @@ def interactiveMenu_1() -> bool:
                 print("Você provavavelmente foi desligado por inatividade")
                 input("Pressione Enter para continuar")
         elif operation == "3":
-            option = int(input("Deseja entrar em um grupo ou conversar?\n[1] - Para entrar \n[2] - Para conversar"))
+            option = int(input("Deseja entrar em um grupo ou conversar?\n[1] - Para entrar \n[2] - Para conversar\n"))
             if option == 1:
                 try:
                     print(chat_port)
@@ -966,7 +966,7 @@ def interactiveMenu_1() -> bool:
                         print(f"[{i}] - {grupo}")
                     if resposta.get("mensagem", []):
                         accept_chat = input(("Quer entrar em um grupo?\n1-Sim    0-Não\n"))
-                        if accept_chat == "1":
+                        if accept_chat == "1" and resposta.get("mensagem", []):
                             selected_group = input("Qual grupo você gostaria de entrar?\n")
                             i = 0
                             for group in resposta.get("mensagem",[]):
@@ -1021,8 +1021,8 @@ def interactiveMenu_1() -> bool:
                         i += 1
                         print(f"[{i}] - {group}")
                     accept_chat = input(("Quer entrar em um grupo?\n1-Sim    0-Não\n"))
-                    if accept_chat == "1":
-                        selected_group = input("Qual grupo você gostaria de entrar?\n")
+                    if accept_chat == "1" and grupoPertence:
+                        selected_group = input("Qual grupo você gostaria de mandar mensagem?\n")
                         continuar = True
                         while continuar:
                             try:
@@ -1076,6 +1076,8 @@ def interactiveMenu_1() -> bool:
                                                             json.dump(recorded_messages, f, indent=4, ensure_ascii=False)
                                                 else:
                                                     print("Usuario nao logado")
+                                                    with open("messages_list_group.json", "w", encoding="utf-8") as f:
+                                                        json.dump(recorded_messages, f, indent=4, ensure_ascii=False)
                                             except Exception as e:
                                                 print(f"deu erro por causa de {e}")
                                         else:
@@ -1085,7 +1087,7 @@ def interactiveMenu_1() -> bool:
                         print("conversa encerrada")
                         input("Pressione Enter para continuar")
                     else:
-                        print("Tchau!")
+                        print("Você não tem nenhum grupo")
                         input("Pressione Enter para continuar")
                 except Exception as e:
                     print(f"Possivel erro é {e}")
@@ -1124,9 +1126,9 @@ def interactiveMenu_1() -> bool:
                         selected_group = []
                         i = 0
                         for user in peers:
-                            if user in resposta.get("mensagem",[]):
-                                print(f"{user} será adicionado ao grupo")
-                                selected_group.append(user)
+                            selected_group.append(user)
+                            print(f"{user} será adicionado ao grupo")
+
                         if selected_group:
                             texto = []
                             registro_mensagem = {
@@ -1137,7 +1139,7 @@ def interactiveMenu_1() -> bool:
                                 "mensagem":texto,
                                 "excluidos": []
                             }
-                            print(registro_mensagem)
+                            #print(registro_mensagem)
                             msgPath = "messages_list_group.json"
 
                             #Verifica se o arquivo já existe e carrega o interior dele
@@ -1191,9 +1193,9 @@ def interactiveMenu_1() -> bool:
                 for group in grupoPertence:
                     i += 1
                     print(f"[{i}] - {group}")
-                escolhido = input("\nQual grupo deseja mexer?")
+                escolhido = input("\nQual grupo deseja mexer?\n")
                 if escolhido in grupoPertence:
-                    opt = int(input("Deseja excluir alguem? digite: 1\nDeseja adicionar alguem? digite: 2\nExcluir mensagens: digite 3"))
+                    opt = int(input("Deseja excluir alguem? digite: 1\nDeseja adicionar alguem? digite: 2\nExcluir mensagens: digite 3\n"))
                     if opt == 1:
                         try:
                             i = 0
@@ -1204,37 +1206,45 @@ def interactiveMenu_1() -> bool:
                                         print(f"[{i}] - {nome}")
                             excluido = input("\nQuem deseja excluir?\n ")
                             for grupo in recorded_messages:
-                                print(grupo["usuarios"])
                                 if excluido in grupo["usuarios"] and escolhido == grupo["name_group"]:
-                                    print(grupo["usuarios"])
                                     grupo["usuarios"].remove(excluido)
                                     grupo["excluidos"].append(excluido)
-                                    print(grupo["usuarios"])
-                                    print(grupo["excluidos"])
                                     break
                             with open("messages_list_group.json", "w", encoding="utf-8") as f:
                                 json.dump(recorded_messages,f,indent=4,ensure_ascii=False)
+                            print(f"{excluido} excluido com sucesso!")
+                            input("Pressione Enter para continuar")
                         except Exception as e:
                             print(f"Possivel erro é {e}")
+                            input("Pressione Enter para continuar")
                     elif opt == 2:
                         try:
+                            dados = {
+                                "action": "list_clients",
+                                "username": usuario_logado
+                            }
+                            resposta = send_to_tracker(dados)
+                            print()
+                            print("Peers Ativos: ")
                             i = 0
-                            for group in recorded_messages:
-                                if escolhido == group["name_group"]:
-                                    for nome in group["usuarios"]:
-                                        i += 1
-                                        print(f"[{i}] - {nome}")
+                            for peer in resposta.get("mensagem", []):
+                                i += 1
+                                if(peer == usuario_logado):
+                                    print(f"[{i}] - {peer} (Você)")
+                                else:
+                                    print(f"[{i}] - {peer}")
                             incluido = input("\nQuem você deseja incluir?\n ")
                             for grupo in recorded_messages:
-                                if incluido in grupo["usuarios"] and grupo["name_group"] == escolhido:
+                                if grupo["name_group"] == escolhido:
                                     grupo["usuarios"].append(incluido)
-                                    print(grupo["usuarios"])
-                                    grupo["usuarios"].remove(excluido)
-                                    print(grupo["excluidos"])
+                                    grupo["excluidos"].remove(incluido)
                             with open("messages_list_group.json", "w", encoding="utf-8") as f:
                                 json.dump(recorded_messages,f,indent=4,ensure_ascii=False)
+                            print(f"{incluido} incluido com sucesso")
+                            input("Pressione Enter para continuar")
                         except Exception as e:
                             print(f"Possivel erro é {e}")
+                            input("Pressione Enter para continuar")
                     elif opt == 3:
                         try:
                             continuar = True
@@ -1248,23 +1258,56 @@ def interactiveMenu_1() -> bool:
                                 try:
                                     range = list(map(int,input("\nQuais mensagens você quer excluir digite de qual mensagem até onde quer excluir: ").split()))
                                 except:
-                                    print("vc nao lembra bb")
-                                print(range)
-                                range = input("\nQuais mensagens você quer excluir digite de qual mensagem até onde quer excluir: ").split()
+                                    print("tente novamente")
                                 limite_inf = int(range[0])
                                 limite_sup = int(range[1])
                                 for grupo in recorded_messages:
                                     if grupo["name_group"] == escolhido:
                                         grupo["mensagem"] = grupo["mensagem"][limite_inf:limite_sup]
-                                        print(grupo["mensage,"])
+                                        print(grupo["mensagem"])
                                 with open("messages_list_group.json", "w", encoding="utf-8") as f:
                                     json.dump(recorded_messages,f,indent=4,ensure_ascii=False)
+                                if limite_inf == limite_sup == 0:
+                                    continuar = False
                         except Exception as e:
                             print(f"Possivel erro é {e}")
                 else:
                     print("Grupo não existe ou você não é moderador")
+                    input("")
             elif option == "3":  
                 print(f"Você só pode mexer nos grupos no qual é moderador")
+                dados = {
+                    "action": "list_group",
+                    "username": usuario_logado
+                }
+                resposta = send_to_tracker(dados)
+
+                print()
+                print("grupo que você tem acesso: ")
+                with open("messages_list_group.json", "r", encoding="utf-8") as f:
+                    recorded_messages = json.load(f)
+                
+                grupoPertence = []
+                i = 0
+                for grupo in recorded_messages:
+                    if usuario_logado == grupo["moderador"]:
+                        grupoPertence.append(grupo["name_group"])
+                for group in grupoPertence:
+                    i += 1
+                    print(f"[{i}] - {group}")
+                if grupoPertence:
+                    escolhido = input("\nQual grupo deseja excluir?\n")
+                    for grupo in recorded_messages:
+                        if grupo["name_group"] == escolhido:
+                            recorded_messages.remove(grupo)
+                            with open("messages_list_group.json", "w", encoding="utf-8") as f:
+                                json.dump(recorded_messages,f,indent=4,ensure_ascii=False)
+                            break
+                    print(f"{escolhido} incluido com sucesso")
+                    input("Pressione Enter para continuar")
+                else:
+                    print("Nenhum")
+                    input("Pressione Enter para continuar")
             else:
                 print("Opção invalida")
         elif operation == "6":

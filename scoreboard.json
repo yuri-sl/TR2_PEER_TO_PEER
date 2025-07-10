@@ -1,32 +1,22 @@
 {
-    "A": {
+    "a": {
         "bytes_sent": 0,
-        "time_connected": 442,
+        "time_connected": 22,
         "successful_responses": 0,
         "failed_transfers": 0,
         "transfer_times": [],
         "integrity_checks": {},
         "active_connections": 0,
-        "score": 30.0
-    },
-    "F": {
-        "bytes_sent": 0,
-        "time_connected": 406,
-        "successful_responses": 0,
-        "failed_transfers": 0,
-        "transfer_times": [],
-        "integrity_checks": {},
-        "active_connections": 0,
-        "score": 30.0
+        "score": 22.0
     },
     "c": {
-        "bytes_sent": 3029706,
-        "time_connected": 407,
-        "successful_responses": 18,
+        "bytes_sent": 0,
+        "time_connected": 22,
+        "successful_responses": 0,
         "failed_transfers": 0,
         "transfer_times": [],
         "integrity_checks": {},
         "active_connections": 0,
-        "score": 48.01492397647314
+        "score": 22.0
     }
 }
