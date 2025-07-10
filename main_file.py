@@ -1025,52 +1025,57 @@ def interactiveMenu_1() -> bool:
                         selected_group = input("Qual grupo você gostaria de entrar?\n")
                         continuar = True
                         while continuar:
-                            #os.system('cls||clear')
-                            print("Digite 'sair' para sair do chat")
-                            with open("messages_list_group.json", "r", encoding="utf-8") as f:
-                                recorded_messages = json.load(f)
-                            for group in recorded_messages:
-                                if selected_group == group["name_group"]:
-                                    for mensagem in group["mensagem"]:
-                                        mensagens = group["mensagem"]
-                                    break
-                            if mensagens:
-                                for m in mensagens:
-                                    print(m)
-                            else:
-                                print("grupo ainda não tem mensagens, seja o primeiro a comentar!")
-                            mensagem = input("Digite sua mensagem: ")
-                            
-                            if mensagem == "sair":
-                                continuar = False
-                            else:
-                                horario = datetime.now().strftime("%H:%M:%S")
-                                mensagem_formatada = f"{horario} ({usuario_logado}): {mensagem}"
-                                group["mensagem"].append(mensagem_formatada)
-                                for peer in group["usuarios"]:
-                                    if peer != usuario_logado:
-                                        dados_start_chat = {
-                                            "action":"get_peer_info",
-                                            "username": usuario_logado
-                                        }
-                                        resposta_start_chat = send_to_tracker(dados_start_chat)
-
-                                        if resposta_start_chat.get("status")=="ok":
-                                            peer_info = resposta_start_chat.get("mensagem",{})
-                                            peer_ip = peer_info.get("ip")
-                                            peer_port = peer_info.get("port")
-                                            #print(f"Iniciando a conversa com {user} em {peer_ip}:{peer_port}")
-                                            #print(f"Digite a sua mensagem para falar com {user}:")
-                                            texto = {
-                                                "name_group" : group["name_group"],
-                                                "texto": mensagem_formatada,
+                            try:
+                                os.system('cls||clear')
+                                print("Digite 'sair' para sair do chat")
+                                with open("messages_list_group.json", "r", encoding="utf-8") as f:
+                                    recorded_messages = json.load(f)
+                                for group in recorded_messages:
+                                    if selected_group == group["name_group"]:
+                                        for mensagem in group["mensagem"]:
+                                            mensagens = group["mensagem"]
+                                        break
+                                if mensagens:
+                                    for m in mensagens:
+                                        print(m)
+                                else:
+                                    print("grupo ainda não tem mensagens, seja o primeiro a comentar!")
+                                mensagem = input("Digite sua mensagem: ")
+                                
+                                if mensagem == "sair":
+                                    continuar = False
+                                elif mensagem == "":
+                                    pass
+                                else:
+                                    horario = datetime.now().strftime("%H:%M:%S")
+                                    mensagem_formatada = f"{horario} ({usuario_logado}): {mensagem}"
+                                    group["mensagem"].append(mensagem_formatada)
+                                    for peer in group["usuarios"]:
+                                        if peer != usuario_logado:
+                                            dados_start_chat = {
+                                                "action":"get_peer_info",
+                                                "username": usuario_logado
                                             }
-                                            try:
-                                                send_message_to_peer(peer_ip, peer_port, usuario_logado, peer, texto, True)
-                                            except:
-                                                print(f"Peer {peer} não está on line, salvo localmente")
-                                                with open("messages_list_group.json", "w", encoding="utf-8") as f:
-                                                    json.dump(recorded_messages, f, indent=4, ensure_ascii=False)
+                                            resposta_start_chat = send_to_tracker(dados_start_chat)
+
+                                            if resposta_start_chat.get("status")=="ok":
+                                                peer_info = resposta_start_chat.get("mensagem",{})
+                                                peer_ip = peer_info.get("ip")
+                                                peer_port = peer_info.get("port")
+                                                #print(f"Iniciando a conversa com {user} em {peer_ip}:{peer_port}")
+                                                #print(f"Digite a sua mensagem para falar com {user}:")
+                                                texto = {
+                                                    "name_group" : group["name_group"],
+                                                    "texto": mensagem_formatada,
+                                                }
+                                                try:
+                                                    send_message_to_peer(peer_ip, peer_port, usuario_logado, peer, texto, True)
+                                                except:
+                                                    print(f"Peer {peer} não está on line, salvo localmente")
+                                                    with open("messages_list_group.json", "w", encoding="utf-8") as f:
+                                                        json.dump(recorded_messages, f, indent=4, ensure_ascii=False)
+                            except:
+                                print("nao foi possivel registrar a mensagem")
                         print("conversa encerrada")
                         input("Pressione Enter para continuar")
                     else:

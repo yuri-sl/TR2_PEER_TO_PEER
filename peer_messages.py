@@ -103,23 +103,18 @@ def start_peer_server(chat_port,chunk_port, meu_username) -> None:
                     with open("messages_list_group.json", "r", encoding="utf-8") as f:
                         recorded_messages = json.load(f)
                     texto = mensagem['message']
-                    print(texto, flush=True)
                     selected_group = texto["name_group"]
                     mensagem_formatada = texto["texto"]
                     for group in recorded_messages:
                         if selected_group == group["name_group"]:
                             if mensagem_formatada not in group["mensagem"]:
                                 group["mensagem"].append(mensagem_formatada)
-                    # Salva no JSON
                     with open("messages_list_group.json", "w", encoding="utf-8") as f:
                         json.dump(recorded_messages, f, indent=4, ensure_ascii=False)
-                    print("Ok", flush=True)
         except Exception as e:
             print(f"[Erro no Chat] Falha ao processar mensagem: {e}")
         finally:
             conn.close()
-
-
     def handle_chunk_request(conn):
         def salvar_transmissao(peer_user, nome_chunk, tamanho, tempo):
             registro = {
