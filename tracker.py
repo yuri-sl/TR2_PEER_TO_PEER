@@ -242,7 +242,9 @@ def protocolos_restritos(mensagem, client_socket) -> None:
                 if grupo["name_group"] == mensagem['name_group']:
                     encontrado = True
                     if grupo["password_group"] == mensagem['senha']:
-                        if mensagem["username"] not in grupo["usuarios"]:
+                        if mensagem["username"] in grupo["excluidos"]:
+                            resposta = {"status": "ok", "mensagem": "Banido permanentemente até o moderador incluir de novo!"}
+                        elif mensagem["username"] not in grupo["usuarios"]:
                             grupo["usuarios"].append(mensagem["username"])
                             # Salva a atualização no JSON
                             with open("messages_list_group.json", "w", encoding="utf-8") as f:

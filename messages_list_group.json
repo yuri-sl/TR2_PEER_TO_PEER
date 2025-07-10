@@ -1,52 +1,57 @@
 [
     {
-        "name_group": "ae",
-        "password_group": "ae",
-        "moderador": "b",
+        "name_group": "ggg",
+        "password_group": "ggg",
+        "moderador": "a",
+        "usuarios": [
+            "a"
+        ],
+        "mensagem": [],
+        "excluidos": [
+            "a"
+        ]
+    },
+    {
+        "name_group": "at",
+        "password_group": "at",
+        "moderador": "a",
         "usuarios": [
             "a",
             "b",
             "c"
         ],
         "mensagem": [
-            "20:38:35 (b): ga",
-            "20:39:58 (c): afsa",
-            "20:39:58 (c): afsa",
-            "20:43:07 (a): a",
-            "20:53:04 (b): agggg",
-            "20:54:12 (a): hhh",
-            "20:55:16 (c): gaagga",
-            "20:55:21 (a): a",
-            "20:55:25 (b): ",
-            "20:56:04 (b): asagggggggg",
-            "20:56:29 (a): ",
-            "20:56:32 (c): ",
-            "20:57:00 (b): agaaa",
-            "20:57:06 (a): ",
-            "20:57:20 (c): "
-        ]
-    },
-    {
-        "name_group": "aw",
-        "password_group": "aw",
-        "moderador": "b",
-        "usuarios": [
-            "a"
+            "09:52:55 (b): alo",
+            "09:52:57 (b): asgl",
+            "09:52:59 (b): asgl",
+            "09:53:00 (b): sagl",
+            "09:53:07 (a): saf",
+            "09:53:19 (a): asf",
+            "09:53:20 (a): a",
+            "09:53:22 (a): a",
+            "09:53:23 (a): a",
+            "09:53:24 (a): a",
+            "09:53:26 (a): a",
+            "09:53:27 (a): a",
+            "09:53:28 (a): fsa",
+            "09:54:41 (b): a",
+            "09:54:44 (a): a",
+            "09:54:48 (a): aasfasf",
+            "09:54:49 (a): as",
+            "09:54:49 (a): f",
+            "09:54:49 (a): af",
+            "09:54:50 (a): fa",
+            "09:54:50 (a): fsa",
+            "09:54:51 (a): fas",
+            "09:54:54 (a): afs",
+            "09:54:55 (a): afs",
+            "09:54:55 (a): fsa",
+            "09:54:56 (a): af",
+            "09:54:56 (a): a",
+            "09:54:57 (a): a",
+            "09:54:58 (a): a",
+            "09:56:00 (c): astats"
         ],
-        "mensagem": [
-            "19:24:35 (a): a"
-        ]
-    },
-    {
-        "name_group": "art",
-        "password_group": "art",
-        "moderador": "a",
-        "usuarios": [
-            "a",
-            "b"
-        ],
-        "mensagem": [
-            "18:02:10 (a): a"
-        ]
+        "excluidos": []
     }
 ]

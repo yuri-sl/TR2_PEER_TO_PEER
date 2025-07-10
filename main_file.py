@@ -22,7 +22,7 @@ import threading
 menu_1 = "MENU PRINCIPAL \n#1 - Registrar;\n#2 - Login no Sistema;\n#3 - Sair do sistema;"
 menu_2 = "\n4 - Anunciar um Arquivo;\n5 - Listagem de Peers Ativos;\n6 - Iniciar Chat com Peer;\n7 - Montar arquivo;\n8 - Anunciar arquivos manualmente;\n9 - Anunciar todos os chunks;\n10 - Sair do Sistema;\n11 - Criar um novo arquivo .txt\n12 - Requisição de Chunk\n13 - Montar arquivo usando chunks\n 14 - Próxima página >>>>"
 
-menu_chats = "--Menu de interações de chats por usuários--(1/3)\n#2 - Criar chat em grupo\n#3 - Entrar em um grupo\n#5 - Listagem de peers Ativos\n#6 - Iniciar chat com um Peer\n\n#14 - Próxima página >>>>"
+menu_chats = "--Menu de interações de chats por usuários--(1/3)\n#2 - Criar, editar ou excluir chat em grupo\n#3 - Entrar em um grupo\n#5 - Listagem de peers Ativos\n#6 - Iniciar chat com um Peer\n\n#14 - Próxima página >>>>"
 menu_arquivos = "--Menu de Operações por arquivos--(2/3)\n#11 - Criar um arquivo .txt\n#8 - Anunciar um arquivo manualmente\n#12 - Requisição de Chunks com uma conexão\n#16 - Requisição de chunks com múltiplas conexões\n#13 - Montar um Arquivo\n#17 - Plotar Gráfico Transmissão única\n#18 - Plotar Gráfico Transmissão Múltiplas Conexões\n#1 - Pedir arquivos\n\n#14 - Próxima página >>>>\n#15 - Página anterior <<<<<<"
 menu_opcoes = "--Menu de operações do Usuário--(3/3)\n#14 - Meu perfil\n#10 - Sair do sistema\n\n#15 - Página anterior <<<<<<"
 
@@ -1032,8 +1032,7 @@ def interactiveMenu_1() -> bool:
                                     recorded_messages = json.load(f)
                                 for group in recorded_messages:
                                     if selected_group == group["name_group"]:
-                                        for mensagem in group["mensagem"]:
-                                            mensagens = group["mensagem"]
+                                        mensagens = group["mensagem"]
                                         break
                                 if mensagens:
                                     for m in mensagens:
@@ -1045,35 +1044,42 @@ def interactiveMenu_1() -> bool:
                                 if mensagem == "sair":
                                     continuar = False
                                 elif mensagem == "":
-                                    pass
+                                    continue
                                 else:
                                     horario = datetime.now().strftime("%H:%M:%S")
                                     mensagem_formatada = f"{horario} ({usuario_logado}): {mensagem}"
                                     group["mensagem"].append(mensagem_formatada)
                                     for peer in group["usuarios"]:
                                         if peer != usuario_logado:
-                                            dados_start_chat = {
-                                                "action":"get_peer_info",
-                                                "username": usuario_logado
-                                            }
-                                            resposta_start_chat = send_to_tracker(dados_start_chat)
-
-                                            if resposta_start_chat.get("status")=="ok":
-                                                peer_info = resposta_start_chat.get("mensagem",{})
-                                                peer_ip = peer_info.get("ip")
-                                                peer_port = peer_info.get("port")
-                                                #print(f"Iniciando a conversa com {user} em {peer_ip}:{peer_port}")
-                                                #print(f"Digite a sua mensagem para falar com {user}:")
-                                                texto = {
-                                                    "name_group" : group["name_group"],
-                                                    "texto": mensagem_formatada,
+                                            try:
+                                                dados_start_chat = {
+                                                    "action":"get_peer_info",
+                                                    "username": peer
                                                 }
-                                                try:
-                                                    send_message_to_peer(peer_ip, peer_port, usuario_logado, peer, texto, True)
-                                                except:
-                                                    print(f"Peer {peer} não está on line, salvo localmente")
-                                                    with open("messages_list_group.json", "w", encoding="utf-8") as f:
-                                                        json.dump(recorded_messages, f, indent=4, ensure_ascii=False)
+                                                resposta_start_chat = send_to_tracker(dados_start_chat)
+
+                                                if resposta_start_chat.get("status")=="ok":
+                                                    peer_info = resposta_start_chat.get("mensagem",{})
+                                                    peer_ip = peer_info.get("ip")
+                                                    peer_port = peer_info.get("port")
+                                                    #print(f"Iniciando a conversa com {user} em {peer_ip}:{peer_port}")
+                                                    #print(f"Digite a sua mensagem para falar com {user}:")
+                                                    texto = {
+                                                        "name_group" : group["name_group"],
+                                                        "texto": mensagem_formatada,
+                                                    }
+                                                    try:
+                                                        send_message_to_peer(peer_ip, peer_port, usuario_logado, peer, texto, True)
+                                                    except:
+                                                        print(f"Peer {peer} não está on line, salvo localmente")
+                                                        with open("messages_list_group.json", "w", encoding="utf-8") as f:
+                                                            json.dump(recorded_messages, f, indent=4, ensure_ascii=False)
+                                                else:
+                                                    print("Usuario nao logado")
+                                            except Exception as e:
+                                                print(f"deu erro por causa de {e}")
+                                        else:
+                                            print("EU MESMO OK")
                             except:
                                 print("nao foi possivel registrar a mensagem")
                         print("conversa encerrada")
@@ -1091,75 +1097,176 @@ def interactiveMenu_1() -> bool:
                 input("Pressione Enter para continuar")
                 os.system('cls||clear')
         elif operation == "2":
-            try:
-                print(chat_port)
+            os.system('cls||clear')
+            option = input(f"Escolha uma opção:\n[1] - Criar chat em grupo\n[2] - Editar chat em grupo\n[3] - Excluir grupo de chat\nResposta: ")
+            if option == "1":
+                try:
+                    print(chat_port)
+                    dados = {
+                        "action": "list_clients",
+                        "username": usuario_logado
+                    }
+                    resposta = send_to_tracker(dados)
+                    print()
+                    print("Peers Ativos: ")
+                    i = 0
+                    for peer in resposta.get("mensagem", []):
+                        i += 1
+                        if(peer == usuario_logado):
+                            print(f"[{i}] - {peer} (Você)")
+                        else:
+                            print(f"[{i}] - {peer}")
+                    accept_chat = input(("Quer criar um grupo? Digite S ou 1 para Sim\n"))
+                    if accept_chat == "1" or accept_chat == "S":
+                        name_group = input("\nQual será o nome do grupo?:\n")
+                        password_group = input("\nQual será a senha do grupo?:\n")
+                        peers = input("Digite os nomes dos usuários que deseja por no grupo\n").split()
+                        selected_group = []
+                        i = 0
+                        for user in peers:
+                            if user in resposta.get("mensagem",[]):
+                                print(f"{user} será adicionado ao grupo")
+                                selected_group.append(user)
+                        if selected_group:
+                            texto = []
+                            registro_mensagem = {
+                                "name_group" : name_group,
+                                "password_group" : password_group,
+                                "moderador" : usuario_logado,
+                                "usuarios": selected_group,
+                                "mensagem":texto,
+                                "excluidos": []
+                            }
+                            print(registro_mensagem)
+                            msgPath = "messages_list_group.json"
+
+                            #Verifica se o arquivo já existe e carrega o interior dele
+                            if os.path.exists(msgPath):
+                                try:
+                                    print("Arquivo existe!")
+                                    with open(msgPath, "r", encoding="utf-8") as f:
+                                        recorded_messages = json.load(f)
+                                except:
+                                    print("ok")
+                                    recorded_messages = []
+                            else:
+                                recorded_messages = []
+                            recorded_messages.append(registro_mensagem)
+                            with open(msgPath, "w", encoding="utf-8") as f:
+                                json.dump(recorded_messages,f,indent=4,ensure_ascii=False)
+                            print("colocado todos os peers")
+                            dados_start_chat = dados = {
+                                "action": "create_groups",
+                                "name_group": name_group
+                            }
+                            resposta_start_chat = send_to_tracker(dados_start_chat)
+                            print("Grupo criado com sucesso")
+                        else:
+                            print("Grupo não foi criado")
+                    else:
+                        print("tchau")
+                    input("Pressione Enter para continuar")
+                    os.system('cls||clear')
+                except:
+                    #print("Você provavavelmente foi desligado por inatividade")
+                    input("Pressione Enter para continuar")
+            elif option == "2":
+                print(f"Você só pode mexer nos grupos no qual é moderador")
                 dados = {
-                    "action": "list_clients",
+                    "action": "list_group",
                     "username": usuario_logado
                 }
                 resposta = send_to_tracker(dados)
-                print()
-                print("Peers Ativos: ")
-                i = 0
-                for peer in resposta.get("mensagem", []):
-                    i += 1
-                    if(peer == usuario_logado):
-                        print(f"[{i}] - {peer} (Você)")
-                    else:
-                        print(f"[{i}] - {peer}")
-                accept_chat = input(("Quer criar um grupo?\n"))
-                if accept_chat == "1":
-                    name_group = input("\nQual será o nome do grupo?:\n")
-                    password_group = input("\nQual será a senha do grupo?:\n")
-                    peers = input("Digite os nomes dos usuários que deseja por no grupo\n").split()
-                    selected_group = []
-                    i = 0
-                    for user in peers:
-                        if user in resposta.get("mensagem",[]):
-                            print(f"{user} será adicionado ao grupo")
-                            selected_group.append(user)
-                    if selected_group:
-                        texto = []
-                        registro_mensagem = {
-                            "name_group" : name_group,
-                            "password_group" : password_group,
-                            "moderador" : usuario_logado,
-                            "usuarios": selected_group,
-                            "mensagem":texto
-                        }
-                        print(registro_mensagem)
-                        msgPath = "messages_list_group.json"
 
-                        #Verifica se o arquivo já existe e carrega o interior dele
-                        if os.path.exists(msgPath):
-                            try:
-                                print("Arquivo existe!")
-                                with open(msgPath, "r", encoding="utf-8") as f:
-                                    recorded_messages = json.load(f)
-                            except:
-                                print("ok")
-                                recorded_messages = []
-                        else:
-                            recorded_messages = []
-                        recorded_messages.append(registro_mensagem)
-                        with open(msgPath, "w", encoding="utf-8") as f:
-                            json.dump(recorded_messages,f,indent=4,ensure_ascii=False)
-                        print("colocado todos os peers")
-                        dados_start_chat = dados = {
-                            "action": "create_groups",
-                            "name_group": name_group
-                        }
-                        resposta_start_chat = send_to_tracker(dados_start_chat)
-                        print("Grupo criado com sucesso")
-                    else:
-                        print("Grupo não foi criado")
+                print()
+                print("grupo que você tem acesso: ")
+                with open("messages_list_group.json", "r", encoding="utf-8") as f:
+                    recorded_messages = json.load(f)
+                
+                grupoPertence = []
+                i = 0
+                for grupo in recorded_messages:
+                    if usuario_logado == grupo["moderador"]:
+                        grupoPertence.append(grupo["name_group"])
+                for group in grupoPertence:
+                    i += 1
+                    print(f"[{i}] - {group}")
+                escolhido = input("\nQual grupo deseja mexer?")
+                if escolhido in grupoPertence:
+                    opt = int(input("Deseja excluir alguem? digite: 1\nDeseja adicionar alguem? digite: 2\nExcluir mensagens: digite 3"))
+                    if opt == 1:
+                        try:
+                            i = 0
+                            for group in recorded_messages:
+                                if escolhido == group["name_group"]:
+                                    for nome in group["usuarios"]:
+                                        i += 1
+                                        print(f"[{i}] - {nome}")
+                            excluido = input("\nQuem deseja excluir?\n ")
+                            for grupo in recorded_messages:
+                                print(grupo["usuarios"])
+                                if excluido in grupo["usuarios"] and escolhido == grupo["name_group"]:
+                                    print(grupo["usuarios"])
+                                    grupo["usuarios"].remove(excluido)
+                                    grupo["excluidos"].append(excluido)
+                                    print(grupo["usuarios"])
+                                    print(grupo["excluidos"])
+                                    break
+                            with open("messages_list_group.json", "w", encoding="utf-8") as f:
+                                json.dump(recorded_messages,f,indent=4,ensure_ascii=False)
+                        except Exception as e:
+                            print(f"Possivel erro é {e}")
+                    elif opt == 2:
+                        try:
+                            i = 0
+                            for group in recorded_messages:
+                                if escolhido == group["name_group"]:
+                                    for nome in group["usuarios"]:
+                                        i += 1
+                                        print(f"[{i}] - {nome}")
+                            incluido = input("\nQuem você deseja incluir?\n ")
+                            for grupo in recorded_messages:
+                                if incluido in grupo["usuarios"] and grupo["name_group"] == escolhido:
+                                    grupo["usuarios"].append(incluido)
+                                    print(grupo["usuarios"])
+                                    grupo["usuarios"].remove(excluido)
+                                    print(grupo["excluidos"])
+                            with open("messages_list_group.json", "w", encoding="utf-8") as f:
+                                json.dump(recorded_messages,f,indent=4,ensure_ascii=False)
+                        except Exception as e:
+                            print(f"Possivel erro é {e}")
+                    elif opt == 3:
+                        try:
+                            continuar = True
+                            while continuar:
+                                i = 0
+                                for group in recorded_messages:
+                                    if escolhido == group["name_group"]:
+                                        for mensagem in group["mensagem"]:
+                                            i += 1
+                                            print(f"[{i}] - {mensagem}")
+                                try:
+                                    range = list(map(int,input("\nQuais mensagens você quer excluir digite de qual mensagem até onde quer excluir: ").split()))
+                                except:
+                                    print("vc nao lembra bb")
+                                print(range)
+                                range = input("\nQuais mensagens você quer excluir digite de qual mensagem até onde quer excluir: ").split()
+                                limite_inf = int(range[0])
+                                limite_sup = int(range[1])
+                                for grupo in recorded_messages:
+                                    if grupo["name_group"] == escolhido:
+                                        grupo["mensagem"] = grupo["mensagem"][limite_inf:limite_sup]
+                                        print(grupo["mensage,"])
+                                with open("messages_list_group.json", "w", encoding="utf-8") as f:
+                                    json.dump(recorded_messages,f,indent=4,ensure_ascii=False)
+                        except Exception as e:
+                            print(f"Possivel erro é {e}")
                 else:
-                    print("tchau")
-                input("Pressione Enter para continuar")
-                os.system('cls||clear')
-            except:
-                #print("Você provavavelmente foi desligado por inatividade")
-                input("Pressione Enter para continuar")
+                    print("Grupo não existe ou você não é moderador")
+            elif option == "3":  
+                print(f"Você só pode mexer nos grupos no qual é moderador")
+            else:
+                print("Opção invalida")
         elif operation == "6":
             try:
                 print(chat_port)
