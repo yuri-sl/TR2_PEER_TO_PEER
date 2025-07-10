@@ -1237,7 +1237,10 @@ def interactiveMenu_1() -> bool:
                             for grupo in recorded_messages:
                                 if grupo["name_group"] == escolhido:
                                     grupo["usuarios"].append(incluido)
-                                    grupo["excluidos"].remove(incluido)
+                                    try:
+                                        grupo["excluidos"].remove(incluido)
+                                    except:
+                                        print("")
                             with open("messages_list_group.json", "w", encoding="utf-8") as f:
                                 json.dump(recorded_messages,f,indent=4,ensure_ascii=False)
                             print(f"{incluido} incluido com sucesso")
